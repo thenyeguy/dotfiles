@@ -98,7 +98,7 @@ let g:ycm_filetype_blacklist = {
       \ 'gitconfig':1, 'gitcommit':1, 'gitrebase':1,
       \ 'tex':1
       \}                              " Ignore these filetypes
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion = 2 " Disable automatic completion
 
 
