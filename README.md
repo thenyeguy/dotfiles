@@ -12,3 +12,6 @@ out into `~/.dotfiles`. To install, perform the following:
     cd
     git clone git@github.com:thenyeguy/dotfiles.git .dotfiles
     .dotfiles/install.sh
+
+The existing configuration files will be moved into `~/dotfiles.bak` before
+installation takes place.
