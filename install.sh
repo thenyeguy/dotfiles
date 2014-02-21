@@ -10,7 +10,7 @@ echo " "
 # Backup old links
 echo "Backing up old data..."
 mkdir ~/dotfiles.bak
-mv ~/.gitconfig ~/.gvimrc ~/.vim ~/.vimrc ~/.zshrc ~/dotfile.bak
+mv ~/.gitconfig ~/.gvimrc ~/.vim ~/.vimrc ~/.zshrc ~/dotfiles.bak
 echo " "
 
 
