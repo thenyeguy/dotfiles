@@ -30,8 +30,8 @@ alias mv='mv -i'
 alias smlnj='rlwrap sml'
 alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
 
-alias vimrc="vim ~/.dotfiles/vim/vimrc"
-alias zshrc="vim ~/.dotfiles/zshrc"
+alias vimrc="vim ~/.vim/vimrc"
+alias zshrc="vim ~/.zshrc"
 
 
 # Add developer tools to path
