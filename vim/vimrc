@@ -36,7 +36,6 @@ set so=7            "Start scrolling page a few lines from edge
 set showmatch       "Briefly flash matching braces when inserted
 set mouse=a         "Enable mouse use
 set splitbelow      "Open split below by default
-set splitright      "Open split to right by default
 set completeopt-=preview       "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
 
@@ -68,17 +67,27 @@ set shiftwidth=4
 "
 " ADD COMMANDS AND ALIASES FOR CONVENIENCE
 "
+" Change leader to space
+let mapleader=" "
+
+" Shortcuts for split buffers
+nnoremap <leader>j <C-W><C-J>
+nnoremap <leader>k <C-W><C-K>
+nnoremap <leader>l <C-W><C-L>
+nnoremap <leader>h <C-W><C-H>
+
+" Misc shortcuts
+nnoremap <leader>n :noh<CR>
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :wq<CR>
+nnoremap <leader>p :CtrlP<CR>
+
 " Mappings that fix my typos on save and quit
 command W w
 command Q q
 command Wq wq
 command WQ wq
-
-" Shortcuts for moving between split buffers
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
 
 
 
@@ -110,28 +119,24 @@ au BufNewFile,BufRead *.c0 set filetype=c "Support for c0
 au BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
 au BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
 au BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
+au BufNewFile,BufRead *.sig set filetype=sml "SML sigs
 au BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
-
-" Change indent for sml
-au BufNewFile,BufRead *.sig set filetype=sml "Support for SML sigs
-autocmd FileType ml,sml set tabstop=2
-autocmd Filetype ml,sml set softtabstop=2
-autocmd Filetype ml,sml set shiftwidth=2
 
 " Mappings for braces in languages that use them
 autocmd FileType c,cpp,java,arduino inoremap {<CR> {<CR>}<esc>ko
 
+" Change indent for sml
+autocmd FileType ml,sml set tabstop=2
+autocmd Filetype ml,sml set softtabstop=2
+autocmd Filetype ml,sml set shiftwidth=2
+
 " Make sure to use tab in Makefiles
 autocmd FileType make setlocal noexpandtab
-
-" Mappings that expand c0 contracts
-inoremap @li @loop_invariant
 
 " Set additional keywords for python
 au FileType python syn keyword pythonDecorator True None False self
 
-" Tex typesetting and spelling
+" Setlatex configuration
 autocmd FileType tex set spell
 autocmd FileType tex command Typeset !pdflatex "%"
-autocmd FileType tex nmap <C-L> :Typeset<CR>
-
+autocmd FileType tex nmap <leader>t :Typeset<CR>
