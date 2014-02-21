@@ -1,0 +1,137 @@
+"
+" MANAGE OUR INSTALLED BUNDLES
+"
+" Configure vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Define our installed bundles
+Bundle 'gmarik/vundle'
+Bundle 'kien/ctrlp.vim'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'mhinz/vim-startify'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'Valloric/YouCompleteMe'
+
+
+
+"
+" CONFIGURE VIM EDITOR BEHAVIOR
+"
+" Colors and Syntax Highlighting
+syntax on
+colorscheme wombat
+
+" Editor displays
+set number      "Line number gutter
+set ruler       "Current line and column pos
+set cursorline  "Highlight current line
+set showcmd     "Info on current command
+set ls=2        "Always show status bar w/ filename
+
+" General editor behavior
+set textwidth=80    "Autowrap at 80 chars
+set so=7            "Start scrolling page a few lines from edge
+set showmatch       "Briefly flash matching braces when inserted
+set mouse=a         "Enable mouse use
+set splitbelow      "Open split below by default
+set splitright      "Open split to right by default
+set completeopt-=preview       "Don't open buffer with suggestion
+set wildignore+=*.o,*.obj,.git "ignore certain file types
+
+" Code folding
+set foldmethod=syntax
+set nofoldenable
+
+" Search/replace settings
+set hlsearch    "Highlights current search
+set incsearch   "Searches as you type
+set ignorecase  "Search ignores case
+set smartcase   "Doesn't ignore uppercase characters in search
+set gdefault    "Defaults to replacing ALL occurrences on a line
+
+" Editor whitespace stuff
+filetype indent plugin on "Makes editor manage indent semantically for code
+set formatoptions+=r      "Smart formatting settings
+
+set backspace=2  "Allows backspacing over tab and line breaks
+set autoindent   "Copies indent from previous line when starting a new one
+set expandtab    "Replace tabs with spaces
+
+set tabstop=4     "Tab stops are 4 wide
+set softtabstop=4
+set shiftwidth=4
+
+
+
+"
+" ADD COMMANDS AND ALIASES FOR CONVENIENCE
+"
+" Mappings that fix my typos on save and quit
+command W w
+command Q q
+command Wq wq
+command WQ wq
+
+" Shortcuts for moving between split buffers
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+
+
+"
+" CONFIGURE BUNDLE SETTINGS
+"
+" Configure ctrlp
+let g:ctrlp_max_height = 30            " show more files by default
+let g:ctrlp_working_path_mode = 'a'    " only show files contained in working dir
+let g:ctrlp_custom_ignore = '/bin/'    " don't show files in /bin/
+let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
+
+" Configure YouCompleteMe
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
+      \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
+      \ 'gitconfig':1, 'gitcommit':1, 'gitrebase':1,
+      \ 'tex':1
+      \}                              " Ignore these filetypes
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_min_num_of_chars_for_completion = 2 " Disable automatic completion
+
+
+"
+" DEFINE FILETYPE SPECIFIC SETTINGS
+"
+" Add filetype support
+au BufNewFile,BufRead *.c0 set filetype=c "Support for c0
+au BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
+au BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
+au BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
+au BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
+
+" Change indent for sml
+au BufNewFile,BufRead *.sig set filetype=sml "Support for SML sigs
+autocmd FileType ml,sml set tabstop=2
+autocmd Filetype ml,sml set softtabstop=2
+autocmd Filetype ml,sml set shiftwidth=2
+
+" Mappings for braces in languages that use them
+autocmd FileType c,cpp,java,arduino inoremap {<CR> {<CR>}<esc>ko
+
+" Make sure to use tab in Makefiles
+autocmd FileType make setlocal noexpandtab
+
+" Mappings that expand c0 contracts
+inoremap @li @loop_invariant
+
+" Set additional keywords for python
+au FileType python syn keyword pythonDecorator True None False self
+
+" Tex typesetting and spelling
+autocmd FileType tex set spell
+autocmd FileType tex command Typeset !pdflatex "%"
+autocmd FileType tex nmap <C-L> :Typeset<CR>
+

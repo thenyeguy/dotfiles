@@ -1,0 +1,16 @@
+# By default, PDF files should not be included
+*.pdf
+
+# LaTeX shit
+*.aux
+*.log
+*.out
+
+# Mac shit
+.DS_Store
+
+# Vim shit
+.*.swp
+
+# MATLAB shit
+*.m~

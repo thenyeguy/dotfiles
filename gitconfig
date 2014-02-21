@@ -1,0 +1,10 @@
+[user]
+	name = Michael Nye
+	email = thenyeguy@gmail.com
+[core]
+	editor = vim
+	excludesfile = ~/.dotfiles/globalgitignore
+[color]
+	ui = true
+[push]
+    default = simple
