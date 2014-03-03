@@ -10,6 +10,7 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Valloric/YouCompleteMe'
