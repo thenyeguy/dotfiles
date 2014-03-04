@@ -91,6 +91,10 @@ nnoremap <leader>l <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <leader> <C-W><C-H>
 
+" Better shortcuts for fold all
+nnoremap zO zr
+nnoremap zC zm
+
 " Misc shortcuts
 nnoremap <leader>n :noh<CR>
 nnoremap <leader>w :w<CR>
