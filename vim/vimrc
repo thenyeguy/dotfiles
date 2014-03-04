@@ -51,7 +51,7 @@ set ignorecase  "Search ignores case
 set smartcase   "Doesn't ignore uppercase characters in search
 set gdefault    "Defaults to replacing ALL occurrences on a line
 
-" Editor whitespace stuff
+" Editor formatting stuff
 filetype indent plugin on "Makes editor manage indent semantically for code
 set formatoptions+=r      "Smart formatting settings
 
@@ -62,6 +62,14 @@ set expandtab    "Replace tabs with spaces
 set tabstop=4     "Tab stops are 4 wide
 set softtabstop=4
 set shiftwidth=4
+
+" Line wrapping
+set linebreak " wrap at words
+" Swap jkhl and g+jkhl
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
 
 
 
