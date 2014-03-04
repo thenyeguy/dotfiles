@@ -7,6 +7,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Define our installed bundles
+Bundle 'gerw/vim-latex-suite'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -14,6 +15,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'xuhdev/vim-latex-live-preview'
 
 
 
@@ -122,6 +124,10 @@ let g:ycm_filetype_blacklist = {
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
 let g:ycm_min_num_of_chars_for_completion = 2 " Disable automatic completion
 
+" Configure vim live preview
+let g:livepreview_previewer = 'open -a Preview'
+autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
+
 
 "
 " DEFINE FILETYPE SPECIFIC SETTINGS
@@ -150,5 +156,3 @@ au FileType python syn keyword pythonDecorator True None False self
 
 " Setlatex configuration
 autocmd FileType tex set spell
-autocmd FileType tex command Typeset !pdflatex "%"
-autocmd FileType tex nmap <leader>t :Typeset<CR>
