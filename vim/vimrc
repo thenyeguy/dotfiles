@@ -7,13 +7,14 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Define our installed bundles
+Bundle 'bling/vim-airline'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-fugitive'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'xuhdev/vim-latex-live-preview'
 
@@ -112,6 +113,11 @@ command WQ wq
 "
 " CONFIGURE BUNDLE SETTINGS
 "
+" Configure airline
+let g:airline_detect_whitespace = 0
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'powerlineish'
+
 " Configure ctrlp
 let g:ctrlp_max_height = 30            " show more files by default
 let g:ctrlp_working_path_mode = 'a'    " only show files contained in working dir
@@ -131,6 +137,7 @@ let g:ycm_min_num_of_chars_for_completion = 2 " Disable automatic completion
 " Configure vim live preview
 let g:livepreview_previewer = 'open -a Preview'
 autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
+
 
 
 "
