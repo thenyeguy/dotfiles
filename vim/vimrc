@@ -36,14 +36,15 @@ set showcmd     "Info on current command
 set ls=2        "Always show status bar w/ filename
 
 " General editor behavior
-set textwidth=80    "Autowrap at 80 chars
-set so=7            "Start scrolling page a few lines from edge
-set showmatch       "Briefly flash matching braces when inserted
-set mouse=a         "Enable mouse use
-set splitbelow      "Open split below by default
+set textwidth=80       "Autowrap at 80 chars
+set so=7               "Start scrolling page a few lines from edge
+set showmatch          "Briefly flash matching braces when inserted
+set splitbelow         "Open split below by default
+set mouse=a            "Enable mouse use
+set clipboard+=unnamed "Uses the * register by default for OS copy+paste
 set completeopt-=preview       "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
-set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,.
+set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 
 " Code folding
 set foldmethod=syntax
@@ -60,21 +61,14 @@ set gdefault    "Defaults to replacing ALL occurrences on a line
 filetype indent plugin on "Makes editor manage indent semantically for code
 set formatoptions+=r      "Smart formatting settings
 
-set backspace=2  "Allows backspacing over tab and line breaks
-set autoindent   "Copies indent from previous line when starting a new one
-set expandtab    "Replace tabs with spaces
+set linebreak " wrap at words
+set backspace=2   "Allows backspacing over tab and line breaks
+set autoindent    "Copies indent from previous line when starting a new one
+set expandtab     "Replace tabs with spaces
 
 set tabstop=4     "Tab stops are 4 wide
 set softtabstop=4
 set shiftwidth=4
-
-" Line wrapping
-set linebreak " wrap at words
-" Swap jkhl and g+jkhl
-nnoremap j gj
-nnoremap gj j
-nnoremap k gk
-nnoremap gk k
 
 
 
@@ -83,6 +77,12 @@ nnoremap gk k
 "
 " Change leader to space
 let mapleader=" "
+
+" Swap jkhl and g+jkhl
+nnoremap j gj
+nnoremap gj j
+nnoremap k gk
+nnoremap gk k
 
 " Shortcuts for split buffers
 nnoremap <C-J> <C-W><C-J>
