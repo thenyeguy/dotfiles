@@ -15,6 +15,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'xuhdev/vim-latex-live-preview'
 
@@ -42,6 +43,7 @@ set mouse=a         "Enable mouse use
 set splitbelow      "Open split below by default
 set completeopt-=preview       "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
+set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,.
 
 " Code folding
 set foldmethod=syntax
