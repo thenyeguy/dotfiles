@@ -13,7 +13,8 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
-Bundle 'tomtom/tcomment_vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
@@ -85,14 +86,10 @@ nnoremap k gk
 nnoremap gk k
 
 " Shortcuts for split buffers
-nnoremap <C-J> <C-W><C-J>
 nnoremap <leader>j <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
 nnoremap <leader>k <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
 nnoremap <leader>l <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <leader> <C-W><C-H>
+nnoremap <leader>h <C-W><C-H>
 
 " Better shortcuts for fold all
 nnoremap zO zr
@@ -115,6 +112,9 @@ command WQ wq
 "
 " CONFIGURE BUNDLE SETTINGS
 "
+" Configure ack.vim
+let g:ackhighlight = 1
+
 " Configure airline
 let g:airline_detect_whitespace = 0
 let g:airline_powerline_fonts = 1
@@ -122,9 +122,15 @@ let g:airline_theme = 'powerlineish'
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30            " show more files by default
-let g:ctrlp_working_path_mode = 'a'    " only show files contained in working dir
 let g:ctrlp_custom_ignore = '/bin/'    " don't show files in /bin/
 let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
+
+" Configure Easy Motion
+map / <plug>(easymotion-sn)
+hi link EasyMotionIncSearch String
+
+" Configure NERD Commenter
+let g:NERDSpaceDelims = 1
 
 " Configure YouCompleteMe
 let g:ycm_filetype_blacklist = {

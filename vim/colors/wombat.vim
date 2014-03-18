@@ -33,9 +33,10 @@ hi StatusLine 	 guifg=#f6f3e8 guibg=#444444 gui=italic ctermfg=230  ctermbg=238 
 hi StatusLineNC  guifg=#857b6f guibg=#444444 gui=none   ctermfg=101  ctermbg=238  cterm=none
 hi VertSplit 	 guifg=#444444 guibg=#444444 gui=none   ctermfg=238  ctermbg=238  cterm=none
 hi Folded 		 guibg=#384048 guifg=#a0a8b0 gui=none   ctermbg=237  ctermfg=248  cterm=none
-hi Title 		 guifg=#f6f3e8 guibg=#000000 gui=bold   ctermfg=230  ctermbg=238    cterm=bold
+hi Title 		 guifg=#f6f3e8 guibg=#000000 gui=bold   ctermfg=230  ctermbg=238  cterm=bold
 hi Visual		 guifg=NONE    guibg=#444444 gui=none   ctermfg=NONE ctermbg=238  cterm=none
 hi SpecialKey	 guifg=#808080 guibg=#343434 gui=none   ctermfg=244  ctermbg=236  cterm=none
+hi Search        guifg=#242424 guibg=#cae682 gui=bold   ctermfg=234  ctermbg=149  cterm=bold
 
 " Syntax highlighting
 hi Comment 		guifg=#99968b gui=italic ctermfg=244       cterm=none          
@@ -50,5 +51,3 @@ hi Keyword		guifg=#8ac6f2 gui=none   ctermfg=75        cterm=none
 hi PreProc 		guifg=#e5786d gui=none   ctermfg=167       cterm=none         
 hi Number		guifg=#e5786d gui=none   ctermfg=167       cterm=none         
 hi Special		guifg=#e7f6da gui=none   ctermfg=7         cterm=none         
-
-
