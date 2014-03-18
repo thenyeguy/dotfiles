@@ -8,6 +8,7 @@ call vundle#rc()
 
 " Define our installed bundles
 Bundle 'bling/vim-airline'
+Bundle 'blueyed/vim-diminactive'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
