@@ -32,7 +32,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 # Shortcuts to common calls
-alias smlnj='rlwrap sml'
+alias sml='rlwrap sml'
 alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
 
 alias vimrc="vim ~/.vim/vimrc"
@@ -48,6 +48,7 @@ export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
 export PATH=/Applications/androidndk:$PATH
 
 # Add tex and homebrew directory to path 
+# Homebrew is last to ensure its packages come first
 export PATH=/usr/local/texlive/2010/bin/x86_64-darwin:$PATH
 export PATH=/usr/local/lib:/usr/local/bin:/usr/local/Cellar:$PATH
 
@@ -62,8 +63,3 @@ export SPTKDIR=/usr/local/festival/build/SPTK
 # SET GREETING!
 #
 fortune -a | cowsay -nf stegosaurus
-
-# Old prompt
-#autoload -U colors && colors
-#PROMPT="%{$fg_bold[blue]%}[%n @ %m: %2~]: %b"
-#RPROMPT="%{$fg_bold[yellow]%}[%T]%{$reset_color%}"
