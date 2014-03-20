@@ -85,8 +85,7 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
-'-isystem',
-'/Applications/androidndk/platforms/android-19/arch-arm/usr/include'
+'-I/Applications/androidndk/platforms/android-19/arch-arm/usr/include'
 ]
 
 
