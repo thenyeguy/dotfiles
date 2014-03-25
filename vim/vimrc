@@ -16,6 +16,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
@@ -96,6 +97,10 @@ nnoremap <leader>h <C-W><C-H>
 nnoremap zO zr
 nnoremap zC zm
 
+" Region expanding
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 " Misc shortcuts
 nnoremap <leader>n :noh<CR>
 nnoremap <leader>w :w<CR>
@@ -125,6 +130,8 @@ let g:airline_theme = 'powerlineish'
 let g:ctrlp_max_height = 30            " show more files by default
 let g:ctrlp_custom_ignore = '/bin/'    " don't show files in /bin/
 let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
 
 " Configure Easy Motion
 map / <plug>(easymotion-sn)
@@ -132,6 +139,9 @@ hi link EasyMotionIncSearch String
 
 " Configure NERD Commenter
 let g:NERDSpaceDelims = 1
+
+" Configure startify
+let g:startify_change_to_vcs_root = 1
 
 " Configure YouCompleteMe
 let g:ycm_filetype_blacklist = {

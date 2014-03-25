@@ -37,6 +37,7 @@ import ycm_core
 flags = [
 '-Wall',
 '-Werror',
+'-Wc++98-compat',
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-Wno-unused-variable',
@@ -49,6 +50,7 @@ flags = [
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
 '-std=c++11',
+'-stdlib=libc++',
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
@@ -58,29 +60,7 @@ flags = [
 '-isystem',
 '../BoostParts',
 '-isystem',
-# This path will only work on OS X, but extra paths that don't exist are not
-# harmful
 '/System/Library/Frameworks/Python.framework/Headers',
-'-isystem',
-'../llvm/include',
-'-isystem',
-'../llvm/tools/clang/include',
-'-I',
-'.',
-'-I',
-'./ClangCompleter',
-'-isystem',
-'./tests/gmock/gtest',
-'-isystem',
-'./tests/gmock/gtest/include',
-'-isystem',
-'./tests/gmock',
-'-isystem',
-'./tests/gmock/include',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/local/include',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
