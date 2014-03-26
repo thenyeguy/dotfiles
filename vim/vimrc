@@ -44,7 +44,6 @@ set so=7               "Start scrolling page a few lines from edge
 set showmatch          "Briefly flash matching braces when inserted
 set splitbelow         "Open split below by default
 set mouse=a            "Enable mouse use
-set clipboard+=unnamed "Uses the * register by default for OS copy+paste
 set completeopt-=preview       "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
@@ -82,16 +81,16 @@ set shiftwidth=4
 let mapleader=" "
 
 " Swap jkhl and g+jkhl
-nnoremap j gj
-nnoremap gj j
-nnoremap k gk
-nnoremap gk k
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
 
 " Shortcuts for split buffers
-nnoremap <leader>j <C-W><C-J>
-nnoremap <leader>k <C-W><C-K>
-nnoremap <leader>l <C-W><C-L>
-nnoremap <leader>h <C-W><C-H>
+noremap <leader>j <C-W><C-J>
+noremap <leader>k <C-W><C-K>
+noremap <leader>l <C-W><C-L>
+noremap <leader>h <C-W><C-H>
 
 " Better shortcuts for fold all
 nnoremap zO zr
@@ -100,6 +99,13 @@ nnoremap zC zm
 " Region expanding
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
+
+" Copy/paste
+vmap <Leader>y "+y
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " Misc shortcuts
 nnoremap <leader>n :noh<CR>
