@@ -42,6 +42,7 @@ flags = [
 '-Wno-unused-variable',
 '-fexceptions',
 '-DNDEBUG',
+
 # THIS IS IMPORTANT! Without a "-std=<something>" flag, clang won't know which
 # language to use when compiling headers. So it will guess. Badly. So C++
 # headers will be compiled as C headers. You don't want that so ALWAYS specify
@@ -49,22 +50,40 @@ flags = [
 # For a C project, you would set this to something like 'c99' instead of
 # 'c++11'.
 '-std=c++11',
-'-stdlib=libc++',
+
 # ...and the same thing goes for the magic -x option which specifies the
 # language that the files to be compiled are written in. This is mostly
 # relevant for c++ headers.
 # For a C project, you would set this to 'c' instead of 'c++'.
 '-x',
 'c++',
+
+# Not all paths will only work on OS X, but extra paths that don't exist are not
+# harmful
 '-isystem',
 '../BoostParts',
 '-isystem',
 '/System/Library/Frameworks/Python.framework/Headers',
 '-isystem',
+'../llvm/include',
+'-isystem',
+'../llvm/tools/clang/include',
+'-I',
+'.',
+'-I',
+'./ClangCompleter',
+'-isystem',
+'/usr/include',
+'-isystem',
+'/usr/local/include',
+'-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
-'-I/Applications/androidndk/platforms/android-19/arch-arm/usr/include'
+
+# Android NDK C++ headers
+'-I',
+'/Applications/androidndk/platforms/android-19/arch-arm/usr/include'
 ]
 
 

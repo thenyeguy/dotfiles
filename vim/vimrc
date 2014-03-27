@@ -157,7 +157,6 @@ let g:ycm_filetype_blacklist = {
       \ 'tex':1
       \}                              " Ignore these filetypes
 let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
-let g:ycm_min_num_of_chars_for_completion = 2 " Disable automatic completion
 
 " Configure vim live preview
 let g:livepreview_previewer = 'open -a Preview'

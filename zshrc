@@ -32,6 +32,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 # Shortcuts to common calls
+alias help='man'
 alias sml='rlwrap sml'
 alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
 
