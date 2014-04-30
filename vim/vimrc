@@ -63,10 +63,10 @@ set gdefault    "Defaults to replacing ALL occurrences on a line
 filetype indent plugin on "Makes editor manage indent semantically for code
 set formatoptions+=r      "Smart formatting settings
 
-set linebreak " wrap at words
-set backspace=2   "Allows backspacing over tab and line breaks
-set autoindent    "Copies indent from previous line when starting a new one
-set expandtab     "Replace tabs with spaces
+set linebreak   " wrap at words
+set backspace=2 "Allows backspacing over tab and line breaks
+set autoindent  "Copies indent from previous line when starting a new one
+set expandtab   "Replace tabs with spaces
 
 set tabstop=4     "Tab stops are 4 wide
 set softtabstop=4
@@ -134,10 +134,14 @@ let g:airline_theme = 'powerlineish'
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30            " show more files by default
-let g:ctrlp_custom_ignore = '/bin/'    " don't show files in /bin/
 let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-let g:ctrlp_use_caching = 0
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git/', 'cd %s && git ls-files']
+    \ },
+    \ 'fallback': 'find %s -type f'
+    \ }
 
 " Configure Easy Motion
 map / <plug>(easymotion-sn)

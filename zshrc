@@ -44,6 +44,7 @@ alias zshrc="vim ~/.zshrc"
 # CONFIGURE PATH
 #
 # Add developer tools to path
+export PATH=/Applications/MATLAB.app/bin:$PATH
 export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
 export PATH=/Applications/androidndk:$PATH
