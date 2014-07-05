@@ -20,6 +20,7 @@ Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'wting/rust.vim'
 Bundle 'xuhdev/vim-latex-live-preview'
 
 
