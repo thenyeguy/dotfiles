@@ -1,4 +1,11 @@
 #
+# Settings for this local environment
+#
+export TERM='xterm-256color'
+/usr/bin/setxkbmap -option "caps:swapescape"
+
+
+#
 # INITIALIZE OH MY ZSH
 #
 # Set preferences
@@ -12,12 +19,6 @@ source ~/.dotfiles/oh-my-zsh/oh-my-zsh.sh
 
 # Workaround, this plugin doesn't seem to load...
 source $ZSH/plugins/history-substring-search/history-substring-search.zsh
-
-
-#
-# SET xterm256
-#
-export TERM='xterm-256color'
 
 
 #
