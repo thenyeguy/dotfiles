@@ -6,8 +6,6 @@
 	excludesfile = ~/.dotfiles/globalgitignore
 [color]
 	ui = true
-[push]
-    default = simple
 [alias]
 	graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 [filter "media"]

@@ -15,6 +15,12 @@ source $ZSH/plugins/history-substring-search/history-substring-search.zsh
 
 
 #
+# SET xterm256
+#
+export TERM='xterm-256color'
+
+
+#
 # CONFIGURE COMMANDS
 #
 # Set default editor
@@ -64,4 +70,4 @@ export SPTKDIR=/usr/local/festival/build/SPTK
 #
 # SET GREETING!
 #
-fortune -a | cowsay -nf stegosaurus
+#fortune -a | cowsay -nf stegosaurus
