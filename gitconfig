@@ -1,6 +1,6 @@
 [user]
 	name = Michael Nye
-	email = thenyeguy@gmail.com
+	email = michael.nye@vocitec.com
 [core]
 	editor = vim
 	excludesfile = ~/.dotfiles/globalgitignore
