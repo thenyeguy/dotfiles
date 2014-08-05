@@ -47,6 +47,7 @@ set splitbelow         "Open split below by default
 set mouse=a            "Enable mouse use
 set completeopt-=preview       "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
+set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 
 " Code folding
@@ -145,7 +146,6 @@ let g:ctrlp_user_command = {
     \ }
 
 " Configure Easy Motion
-map / <plug>(easymotion-sn)
 hi link EasyMotionIncSearch String
 
 " Configure NERD Commenter

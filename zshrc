@@ -46,6 +46,9 @@ alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
 alias vimrc="vim ~/.vim/vimrc"
 alias zshrc="vim ~/.zshrc"
 
+# Fast escape key response
+export KEYTIMEOUT=1
+
 
 #
 # CONFIGURE PATH
