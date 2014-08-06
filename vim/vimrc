@@ -147,6 +147,9 @@ let g:ctrlp_user_command = {
 " Configure Easy Motion
 hi link EasyMotionIncSearch String
 
+" Configure Jedi Vim
+let g:jedi#usages_command = "<leader>u"
+
 " Configure NERD Commenter
 let g:NERDSpaceDelims = 1
 
