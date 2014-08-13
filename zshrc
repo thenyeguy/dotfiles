@@ -2,7 +2,7 @@
 # Settings for this local environment
 #
 export TERM='xterm-256color'
-/usr/bin/setxkbmap -option "caps:swapescape"
+export PYTHONPATH='/home/mnye/Documents/repos/boxsystem'
 
 
 #

@@ -58,7 +58,7 @@ set hlsearch    "Highlights current search
 set incsearch   "Searches as you type
 set ignorecase  "Search ignores case
 set smartcase   "Doesn't ignore uppercase characters in search
-"set gdefault    "Defaults to replacing ALL occurrences on a line
+set gdefault    "Defaults to replacing ALL occurrences on a line
 
 " Editor formatting stuff
 filetype indent plugin on "Makes editor manage indent semantically for code
