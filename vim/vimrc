@@ -8,6 +8,7 @@ call vundle#rc()
 
 " Define our installed bundles
 Bundle 'bling/vim-airline'
+Bundle 'blueyed/vim-diminactive'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'gmarik/vundle'
@@ -19,6 +20,7 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-expand-region'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'wting/rust.vim'
 Bundle 'xuhdev/vim-latex-live-preview'
 
