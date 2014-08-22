@@ -41,32 +41,8 @@ alias mv='mv -i'
 
 # Shortcuts to common calls
 alias help='man'
-alias sml='rlwrap sml'
-alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
-
 alias vimrc="vim ~/.vim/vimrc"
 alias zshrc="vim ~/.zshrc"
-
-
-#
-# CONFIGURE PATH
-#
-# Add developer tools to path
-export PATH=/Applications/MATLAB.app/bin:$PATH
-export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
-export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
-export PATH=/Applications/androidndk:$PATH
-
-# Add tex and homebrew directory to path 
-# Homebrew is last to ensure its packages come first
-export PATH=/usr/local/texlive/2010/bin/x86_64-darwin:$PATH
-export PATH=/usr/local/lib:/usr/local/bin:/usr/local/Cellar:$PATH
-
-# Stuff for Festival - set environment variables
-export ESTDIR=/usr/local/festival/build/speech_tools
-export FESTVOXDIR=/usr/local/festival/build/festvox
-export FESTIVALDIR=/usr/local/festival/build/festival
-export SPTKDIR=/usr/local/festival/build/SPTK
 
 
 #
