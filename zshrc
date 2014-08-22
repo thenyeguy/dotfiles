@@ -1,12 +1,4 @@
 #
-# SOURCE LOCAL CONFIGURATIONS
-#
-if [ -f ~/.zshrc-local ]; then
-    source ~/.zshrc-local
-fi
-
-
-#
 # INITIALIZE OH MY ZSH
 #
 # Set preferences
@@ -34,7 +26,7 @@ alias dc='cd'
 alias mr='rm -i'
 alias pc='cp -i'
 
-# Make standard commands nicer
+# Make standard commands safer
 alias cp='cp -i'
 alias rm='rm -i'
 alias mv='mv -i'
@@ -43,6 +35,14 @@ alias mv='mv -i'
 alias help='man'
 alias vimrc="vim ~/.vim/vimrc"
 alias zshrc="vim ~/.zshrc"
+
+
+#
+# SOURCE LOCAL CONFIGURATIONS
+#
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
 
 
 #

@@ -15,3 +15,11 @@ out into `~/.dotfiles`. To install, perform the following:
 
 The existing configuration files will be moved into `~/dotfiles.bak` before
 installation takes place.
+
+
+Local configurations
+--------------------
+
+My zshrc and vimrc will automatically source the files ~/.zshrc.local and
+~/.vimrc.local when they load. This allows configurations that are specific to
+the local machine without modifying the primary config files.
