@@ -1,0 +1,14 @@
+# Otherwise you don't get color terminals
+export TERM='xterm-256color'
+
+# Fast escape key response
+export KEYTIMEOUT=1
+
+# Include the Voci Python APIs
+export PYTHONPATH='/home/mnye/Documents/repos/boxsystem':$PYTHONPATH
+
+# CUDA settings
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH 
+
+print 'sourced'
