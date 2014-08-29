@@ -9,7 +9,6 @@ call vundle#rc()
 " Define our installed bundles
 Bundle 'bling/vim-airline'
 Bundle 'blueyed/vim-diminactive'
-"Bundle 'davidhalter/jedi-vim'
 Bundle 'gerw/vim-latex-suite'
 Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
@@ -148,9 +147,6 @@ let g:ctrlp_user_command = {
 
 " Configure Easy Motion
 hi link EasyMotionIncSearch String
-
-" Configure Jedi Vim
-let g:jedi#usages_command = "<leader>u"
 
 " Configure NERD Commenter
 let g:NERDSpaceDelims = 1
