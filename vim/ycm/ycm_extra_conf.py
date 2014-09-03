@@ -73,7 +73,7 @@ flags = [
 '-I',
 './ClangCompleter',
 '-I',
-'/home/mnye/wrksp/utils/src/',
+'/home/mnye/worksp/utils/src/',
 '-isystem',
 '/usr/include',
 '-isystem',
