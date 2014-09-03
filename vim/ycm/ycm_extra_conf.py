@@ -58,8 +58,16 @@ flags = [
 '-x',
 'c++',
 
-# Not all paths will only work on OS X, but extra paths that don't exist are not
-# harmful
+# Extra paths that don't exist are not harmful, so we list paths for multiple
+# systems below
+
+# Paths for all unix systems
+'-isystem',
+'/usr/include',
+'-isystem',
+'/usr/local/include',
+
+# Paths for my Macbook
 '-isystem',
 '../BoostParts',
 '-isystem',
@@ -72,18 +80,16 @@ flags = [
 '.',
 '-I',
 './ClangCompleter',
-'-I',
-'/home/mnye/worksp/utils/src/',
-'-isystem',
-'/usr/include',
-'-isystem',
-'/usr/local/include',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/c++/v1',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
+
+# Paths for Voci systems
+'-I',
+'/home/mnye/worksp/utils/src/',
 ]
 
 
