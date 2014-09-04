@@ -85,11 +85,11 @@ flags = [
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../lib/clang/5.1/include',
 '-isystem',
-'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include'
+'/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
 
 # Paths for Voci systems
 '-I',
-'/home/mnye/worksp/utils/src/',
+'/home/mnye/worksp/utils/src/'
 ]
 
 
