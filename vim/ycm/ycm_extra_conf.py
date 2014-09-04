@@ -89,7 +89,9 @@ flags = [
 
 # Paths for Voci systems
 '-I',
-'/home/mnye/worksp/utils/src/'
+'/home/mnye/worksp/utils/src/',
+'-I',
+'/usr/include/python2.7'
 ]
 
 
