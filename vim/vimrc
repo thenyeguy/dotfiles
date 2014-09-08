@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 Bundle 'kien/ctrlp.vim'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'mhinz/vim-startify'
+Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'mileszs/ack.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'terryma/vim-expand-region'
@@ -193,7 +194,7 @@ autocmd Filetype ml,sml set shiftwidth=2
 autocmd FileType make setlocal noexpandtab
 
 " Set additional keywords for python
-au FileType python syn keyword pythonDecorator True None False self
+au FileType python,pyrex syn keyword pythonDecorator True None False self
 
 " Setlatex configuration
 autocmd FileType tex set spell
