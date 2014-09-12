@@ -40,6 +40,7 @@ flags = [
 '-Wno-long-long',
 '-Wno-variadic-macros',
 '-Wno-unused-variable',
+'-Wno-unused-function',
 '-fexceptions',
 '-DNDEBUG',
 
