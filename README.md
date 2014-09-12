@@ -20,6 +20,6 @@ installation takes place.
 Local configurations
 --------------------
 
-My zshrc and vimrc will automatically source the files ~/.zshrc.local and
-~/.vimrc.local when they load. This allows configurations that are specific to
+My zshrc and bashrc will automatically source the files ~/.zshrc.local and
+~/.bashrc.local when they load. This allows configurations that are specific to
 the local machine without modifying the primary config files.

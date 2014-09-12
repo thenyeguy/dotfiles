@@ -18,3 +18,11 @@ fi
 
 # Export my prompt
 export PS1="\n\e[30;46m \@ \e[36;40m\e[39;40m \u@\h (bash) \e[30;44m\e[30;44m \w \e[0;34m\e[m \n >> "
+
+
+#
+# SOURCE LOCAL CONFIGURATIONS
+#
+if [ -f ~/.bashrc.local ]; then
+    source ~/.bashrc.local
+fi
