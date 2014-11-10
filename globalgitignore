@@ -1,4 +1,9 @@
-# Created by http://www.gitignore.io
+# Ignore a specific shell script I put in many repos
+rsync.sh
+
+######################################
+# Created by http://www.gitignore.io #
+######################################
 
 ### OSX ###
 .DS_Store
