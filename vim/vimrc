@@ -183,7 +183,10 @@ au BufNewFile,BufRead *.sig set filetype=sml "SML sigs
 au BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
 
 " Mappings for braces in languages that use them
-autocmd FileType c,cpp,java,arduino inoremap {<CR> {<CR>}<esc>ko
+autocmd FileType c,cpp,java,arduino,rust inoremap {<CR> {<CR>}<esc>ko
+
+" Override rust.vim textwidth
+autocmd FileType rust set textwidth=80
 
 " Change indent for sml
 autocmd FileType ml,sml set tabstop=2
