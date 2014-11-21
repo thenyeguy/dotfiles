@@ -48,4 +48,10 @@ fi
 #
 # SET GREETING!
 #
-fortune -a | cowsay -nf stegosaurus
+if type doge > /dev/null; then
+    doge
+elif type fortune > /dev/null && type cowsay > /dev/null; then
+    fortune -a | cowsay -nf stegosaurus
+else
+    echo "Hello, Michael!"
+fi
