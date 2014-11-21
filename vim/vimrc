@@ -185,21 +185,22 @@ au BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
 " Mappings for braces in languages that use them
 autocmd FileType c,cpp,java,arduino,rust inoremap {<CR> {<CR>}<esc>ko
 
-" Override rust.vim textwidth
+" Rust - Override textwidth, set documentation highlighting
 autocmd FileType rust set textwidth=80
+highlight link rustCommentLineDoc Comment
 
-" Change indent for sml
+" SML - change indent size
 autocmd FileType ml,sml set tabstop=2
 autocmd Filetype ml,sml set softtabstop=2
 autocmd Filetype ml,sml set shiftwidth=2
 
-" Make sure to use tab in Makefiles
+" Makefiles - always use tabs
 autocmd FileType make setlocal noexpandtab
 
-" Set additional keywords for python
+" Python - add additional keywords
 au FileType python,pyrex syn keyword pythonDecorator True None False self
 
-" Setlatex configuration
+" Latex - use spellcheck
 autocmd FileType tex set spell
 
 
