@@ -49,7 +49,7 @@ fi
 # SET GREETING!
 #
 if type doge > /dev/null; then
-    doge
+    doge --season xmas
 elif type fortune > /dev/null && type cowsay > /dev/null; then
     fortune -a | cowsay -nf stegosaurus
 else
