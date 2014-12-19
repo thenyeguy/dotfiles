@@ -102,6 +102,10 @@ noremap <leader>h <C-W><C-H>
 nnoremap zO zr
 nnoremap zC zm
 
+" Don't deselect after indent
+vnoremap < <gv
+vnoremap > >gv
+
 " Region expanding
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
