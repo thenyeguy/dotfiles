@@ -37,42 +37,46 @@ syntax on
 colorscheme wombat
 
 " Editor displays
-set number      "Line number gutter
-set ruler       "Current line and column pos
-set cursorline  "Highlight current line
-set showcmd     "Info on current command
-set ls=2        "Always show status bar w/ filename
+set number "Line number gutter
+set ruler "Current line and column pos
+set cursorline "Highlight current line
+set showcmd "Info on current command
+set laststatus=2 "Always show status bar w/ filename
 
 " General editor behavior
-set textwidth=80       "Autowrap at 80 chars
-set so=7               "Start scrolling page a few lines from edge
-set showmatch          "Briefly flash matching braces when inserted
-set splitbelow         "Open split below by default
-set mouse=a            "Enable mouse use
-set completeopt-=preview       "Don't open buffer with suggestion
+set textwidth=80 "Autowrap at 80 chars
+set scrolloff=7 "Start scrolling page a few lines from edge
+set showmatch "Briefly flash matching braces when inserted
+set splitbelow "Open split below by default
+set mouse=a "Enable mouse use
+set completeopt-=preview "Don't open buffer with suggestion
 set wildignore+=*.o,*.obj,.git "ignore certain file types
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
+
+" Invisible characters
+set list
+set listchars=tab:»-,trail:·
 
 " Code folding
 set foldmethod=syntax
 set nofoldenable
 
 " Search/replace settings
-set hlsearch    "Highlights current search
-set incsearch   "Searches as you type
-set ignorecase  "Search ignores case
-set smartcase   "Doesn't ignore uppercase characters in search
-set gdefault    "Defaults to replacing ALL occurrences on a line
+set hlsearch "Highlights current search
+set incsearch "Searches as you type
+set ignorecase "Search ignores case
+set smartcase "Doesn't ignore uppercase characters in search
+set gdefault "Defaults to replacing ALL occurrences on a line
 
 " Editor formatting stuff
-filetype indent on   "Makes editor manage indent semantically for code
+filetype indent on "Makes editor manage indent semantically for code
 set formatoptions+=r "Smart formatting settings
 
-set linebreak   " wrap at words
-set backspace=2 "Allows backspacing over tab and line breaks
-set autoindent  "Copies indent from previous line when starting a new one
-set expandtab   "Replace tabs with spaces
+set linebreak " wrap at words
+set backspace=indent,eol,start "Allows backspacing over tab and line breaks
+set autoindent "Copies indent from previous line when starting a new one
+set expandtab "Replace tabs with spaces
 
 set tabstop=4     "Tab stops are 4 wide
 set softtabstop=4
@@ -84,7 +88,7 @@ set shiftwidth=4
 " ADD COMMANDS AND ALIASES FOR CONVENIENCE
 "
 " Change leader to space
-let mapleader=" "
+let g:mapleader=" "
 
 " Swap jkhl and g+jkhl
 noremap j gj
@@ -118,7 +122,7 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 " Misc shortcuts
-nnoremap <leader>n :noh<CR>
+nnoremap <leader>n :nohlsearch<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :wq<CR>
@@ -129,6 +133,14 @@ command Q q
 command Wq wq
 command WQ wq
 
+
+
+"
+" CONFIGURE AUTOCMD GROUP
+"
+augroup vimrc
+    autocmd!
+augroup END
 
 
 "
@@ -154,7 +166,7 @@ let g:ctrlp_user_command = {
     \ }
 
 " Configure Easy Motion
-hi link EasyMotionIncSearch String
+highlight link EasyMotionIncSearch String
 
 " Configure NERD Commenter
 let g:NERDSpaceDelims = 1
@@ -174,7 +186,7 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
 
 " Configure vim live preview
 let g:livepreview_previewer = 'open -a Preview'
-autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
+autocmd vimrc Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 
 
 
@@ -182,38 +194,38 @@ autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 " DEFINE FILETYPE SPECIFIC SETTINGS
 "
 " Add filetype support
-au BufNewFile,BufRead *.c0 set filetype=c "Support for c0
-au BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
-au BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
-au BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
-au BufNewFile,BufRead *.sig set filetype=sml "SML sigs
-au BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
+autocmd vimrc BufNewFile,BufRead *.c0 set filetype=c "Support for c0
+autocmd vimrc BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
+autocmd vimrc BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
+autocmd vimrc BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
+autocmd vimrc BufNewFile,BufRead *.sig set filetype=sml "SML sigs
+autocmd vimrc BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
 
 " Mappings for braces in languages that use them
-autocmd FileType arduino,c,cpp,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
+autocmd vimrc FileType arduino,c,cpp,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
 
 " Rust - Override textwidth, set documentation highlighting
-autocmd FileType rust set textwidth=80
+autocmd vimrc FileType rust set textwidth=80
 highlight link rustCommentLineDoc Comment
 
 " SML - change indent size
-autocmd FileType ml,sml set tabstop=2|softtabstop=2|shiftwidth=2
+autocmd vimrc FileType ml,sml set tabstop=2|softtabstop=2|shiftwidth=2
 
 " Makefiles - always use tabs
-autocmd FileType make setlocal noexpandtab
+autocmd vimrc FileType make setlocal noexpandtab
 
 " Python - add additional keywords, override tabstop
-autocmd FileType python,pyrex syn keyword pythonDecorator True None False self
-autocmd FileType python set tabstop=4|set shiftwidth=4
+autocmd vimrc FileType python,pyrex syn keyword pythonDecorator True None False self
+autocmd vimrc FileType python set tabstop=4|set shiftwidth=4
 
 " Latex - use spellcheck
-autocmd FileType tex set spell
+autocmd vimrc FileType tex set spell
 
 
 
 "
 " SOURCE LOCAL VIMRC IF IT EXISTS
 "
-if filereadable(glob("~/.vimrc.local")) 
+if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif
