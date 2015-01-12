@@ -38,7 +38,7 @@ hi Title         guifg=#f6f3e8 guibg=#000000 gui=bold      ctermfg=230  ctermbg=
 hi Visual        guifg=NONE    guibg=#444444 gui=none      ctermfg=NONE ctermbg=238  cterm=none
 hi SpecialKey    guifg=#404040 guibg=#242424 gui=none      ctermfg=240  ctermbg=234  cterm=none
 hi Search        guifg=#242424 guibg=#cae682 gui=bold      ctermfg=234  ctermbg=149  cterm=bold
-hi SpellBad      guifg=#e5786d guibg=none    gui=undercurl ctermfg=167  ctermbg=NONE cterm=underline
+hi SpellBad      guifg=#e5786d guibg=NONE    gui=undercurl ctermfg=167  ctermbg=NONE cterm=underline
 
 " Syntax highlighting
 hi Comment      guifg=#99968b gui=italic ctermfg=244       cterm=none
