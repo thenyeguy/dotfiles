@@ -114,8 +114,6 @@ vmap <C-v> <Plug>(expand_region_shrink)
 vmap <Leader>y "+y
 nmap <Leader>p "+p
 nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
 
 " Misc shortcuts
 nnoremap <leader>n :nohlsearch<CR>
@@ -216,6 +214,9 @@ autocmd vimrc FileType python set tabstop=4|set shiftwidth=4
 
 " Latex - use spellcheck
 autocmd vimrc FileType tex set spell
+
+" Git commits - use spellcheck
+autocmd vimrc FileType gitcommit set spell
 
 
 
