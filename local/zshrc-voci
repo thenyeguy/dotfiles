@@ -24,3 +24,6 @@ export PATH=/home/mnye/worksp/vad/src:$PATH
 
 # Convenience shortcut to clienttest
 alias clienttest='python /home/mnye/worksp/boxsystem/clienttest.py'
+alias clienttestvm='clienttest -s 10.173.215.101'
+alias clienttestg1='clienttest -s vocig1'
+alias clienttestg8='clienttest -s vocig8'
