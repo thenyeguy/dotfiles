@@ -29,6 +29,7 @@
 
 CURRENT_BG='NONE'
 SEGMENT_SEPARATOR=''
+MODE_INDICATOR="%{$fg_bold[red]%}%{$fg[red]%}>>%{$reset_color%}"
 
 # Begin a segment
 # Takes two arguments, background and foreground. Both can be omitted,
@@ -50,6 +51,7 @@ prompt_segment() {
 prompt_start() {
   echo -n "\n"
 }
+
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
     echo -n " %{%k%F{$CURRENT_BG}%}$SEGMENT_SEPARATOR"
@@ -57,7 +59,7 @@ prompt_end() {
     echo -n "%{%k%}"
   fi
   echo -n "%{%f%}"
-  echo -n "\n >>"
+  echo -n "\n"
   CURRENT_BG=''
 }
 
@@ -166,6 +168,14 @@ prompt_time() {
   prompt_segment cyan black `date "+%l:%M%p"`
 }
 
+prompt_indicator() {
+  if [[ $KEYMAP == "vicmd" ]]; then
+    echo " %{$fg_bold[red]%}%{$fg[red]%}<<%{$reset_color%}"
+  else
+    echo " >>"
+  fi
+}
+
 ## Main prompt
 build_prompt() {
   RETVAL=$?
@@ -178,6 +188,7 @@ build_prompt() {
   prompt_git
   prompt_hg
   prompt_end
+  prompt_indicator
 }
 
 PROMPT='%{%f%b%k%}$(build_prompt) '
