@@ -41,6 +41,7 @@ flags = [
 '-Wno-variadic-macros',
 '-Wno-unused-variable',
 '-Wno-unused-function',
+'-Wno-writable-strings',
 '-fexceptions',
 '-DNDEBUG',
 
