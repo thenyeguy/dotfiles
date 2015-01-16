@@ -1,17 +1,21 @@
 [user]
-	name = Michael Nye
-	email = thenyeguy@gmail.com
+    name = Michael Nye
+    email = thenyeguy@gmail.com
 [core]
-	editor = vim
-	excludesfile = ~/.dotfiles/globalgitignore
+    editor = vim
+    excludesfile = ~/.dotfiles/globalgitignore
 [color]
-	ui = true
+    ui = true
 [alias]
-	graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+    graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
 [push]
-	default = matching
+    default = matching
 [include]
     path = ~/.gitconfig.local
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+    prompt = false
