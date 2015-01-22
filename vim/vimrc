@@ -1,7 +1,7 @@
 "
 " MANAGE OUR INSTALLED PLUGINS
 "
-" " Configure vundle
+" Configure vundle
 filetype off
 call plug#begin('~/.vim/plugged')
 
@@ -33,6 +33,7 @@ syntax on
 colorscheme wombat
 
 " Editor displays
+set title "Sets terminal title
 set number "Line number gutter
 set ruler "Current line and column pos
 set cursorline "Highlight current line
@@ -67,7 +68,9 @@ set gdefault "Defaults to replacing ALL occurrences on a line
 
 " Editor formatting stuff
 filetype indent on "Makes editor manage indent semantically for code
-set formatoptions+=r "Smart formatting settings
+set formatoptions+=j "Remove leading comment chars on join
+set formatoptions+=r "Add comment leader on new line
+set formatoptions+=n "Intelligently format lists
 
 set linebreak " wrap at words
 set backspace=indent,eol,start "Allows backspacing over tab and line breaks
