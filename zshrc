@@ -39,6 +39,7 @@ alias zshrc="vim ~/.zshrc"
 # Bindings for intelligent history search
 bindkey "^R" history-incremental-search-backward
 bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
 bindkey -a 'k' up-line-or-search
 bindkey -a 'j' down-line-or-search
 
