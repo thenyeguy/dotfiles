@@ -47,7 +47,7 @@ set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
 set mouse=a "Enable mouse use
 set completeopt-=preview "Don't open buffer with suggestion
-set wildignore+=*.o,*.obj,.git "ignore certain file types
+set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 
@@ -159,7 +159,8 @@ let g:ctrlp_user_command = {
     \ 'types': {
         \ 1: ['.git/', 'cd %s && git ls-files']
     \ },
-    \ 'fallback': 'find %s -type f'
+    \ 'fallback': 'find %s -type f -not -name "*.pyc" -not -name "*.pyo"
+                 \ -not -name "*.o" -not -name "*.ob" -not -name ".git"'
     \ }
 
 " Configure Easy Motion
