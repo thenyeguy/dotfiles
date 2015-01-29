@@ -159,9 +159,7 @@ let g:ctrlp_user_command = {
     \ 'types': {
         \ 1: ['.git/', 'cd %s && git ls-files']
     \ },
-    \ 'fallback': 'find %s -type f -not -name "*.pyc" -not -name "*.pyo"
-                 \ -not -name "*.o" -not -name "*.ob" -not -name ".git"'
-    \ }
+\ }
 
 " Configure Easy Motion
 highlight link EasyMotionIncSearch String
