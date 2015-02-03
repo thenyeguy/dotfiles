@@ -33,6 +33,7 @@ syntax on
 colorscheme wombat
 
 " Editor displays
+set t_ut= "Fixes screen/tmux background color
 set title "Sets terminal title
 set number "Line number gutter
 set ruler "Current line and column pos
@@ -41,6 +42,7 @@ set showcmd "Info on current command
 set laststatus=2 "Always show status bar w/ filename
 
 " General editor behavior
+set encoding=utf-8
 set textwidth=80 "Autowrap at 80 chars
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
