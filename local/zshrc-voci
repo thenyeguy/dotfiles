@@ -15,7 +15,6 @@ export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH 
 
 # Include the Voci APIs
-export PYTHONPATH='/home/mnye/worksp':$PYTHONPATH
 export PYTHONPATH='/home/mnye/worksp/boxsystem':$PYTHONPATH
 
 # Add voci code to path
@@ -23,7 +22,7 @@ export PATH=/home/mnye/worksp/sphinx/deploy/bin:$PATH
 export PATH=/home/mnye/worksp/vad/src:$PATH
 
 # Convenience shortcut to clienttest
-alias clienttest='python /home/mnye/worksp/boxsystem/clienttest.py'
-alias clienttestvm='clienttest -s 10.173.215.101'
-alias clienttestg1='clienttest -s vocig1'
-alias clienttestg8='clienttest -s vocig8'
+alias clt='python /home/mnye/worksp/boxsystem/clienttest.py'
+alias cltvm='clt -s 10.173.215.101'
+alias cltg1='clt -s vocig1'
+alias cltg8='clt -s vocig8'
