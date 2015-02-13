@@ -6,12 +6,12 @@ oh-my-zsh. It includes oh-my-zsh and vim/vundle as submodules. It also includes
 an install script, which when run will initialize a bare checkout of the
 repository, and set hardlinks to my config files in the root directory.
 
-Both the install script and my configuration assume this repository is checked
-out into `~/.dotfiles`. To install, perform the following:
+To install, perform the following:
 
-    cd
-    git clone http://github.com/thenyeguy/dotfiles.git .dotfiles
-    .dotfiles/install.sh
+    wget https://raw.githubusercontent.com/thenyeguy/dotfiles/master/install.sh && /bin/bash install.sh checkout
+
+Both the install script and my configuration assume this repository is checked
+out into `~/.dotfiles`.
 
 The existing configuration files will be moved into `~/dotfiles.bak` before
 installation takes place.

@@ -1,27 +1,37 @@
-#!/bin/sh
+#!/bin/bash
+
+# Check out the repository
+if [[ $@ == **checkout** ]]
+then
+    echo "Checkout out git repository"
+    git clone https://github.com/thenyeguy/dotfiles.git $HOME/.dotfiles
+fi
 
 # Enter our directory and initialize our submodules
 echo "Initializing git repos..."
-cd ~/.dotfiles
+pushd $HOME/.dotfiles
 git submodule update --init --recursive
 echo " "
 
+# Define files to hardlink
+dotfiles=(bashrc gitconfig gvimrc vim vimrc zshrc)
 
 # Backup old links
-echo "Backing up old data..."
-mkdir ~/dotfiles.bak
-mv ~/.bashrc ~/.gitconfig ~/.gvimrc ~/.vim ~/.vimrc ~/.zshrc ~/dotfiles.bak
+echo "Backing up old data to dotfiles.bak..."
+mkdir $HOME/dotfiles.bak
+for dotfile in ${dotfiles[*]}
+do
+    mv $HOME/$dotfile $HOME/dotfiles.bak
+done
 echo " "
 
 
 # Create our hardlinks
 echo "Creating hardlinks in home directory..."
-ln -s ~/.dotfiles/bashrc     ~/.bashrc
-ln -s ~/.dotfiles/gitconfig ~/.gitconfig
-ln -s ~/.dotfiles/gvimrc    ~/.gvimrc
-ln -s ~/.dotfiles/vim       ~/.vim
-ln -s ~/.dotfiles/vim/vimrc ~/.vimrc
-ln -s ~/.dotfiles/zshrc     ~/.zshrc
+for dotfile in ${dotfiles[*]}
+do
+    ln -s $HOME/.dotfiles/$dotfile $HOME/.$dotfile
+done
 echo " "
 
 echo "Install complete!"
