@@ -4,6 +4,9 @@
 # Ignore a specific shell script I put in many repos
 rsync.sh
 
+# Ignore local ack customizations
+.ackrc
+
 ######################################
 # Created by http://www.gitignore.io #
 ######################################
