@@ -199,6 +199,7 @@ autocmd vimrc BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
 autocmd vimrc BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
 autocmd vimrc BufNewFile,BufRead *.sig set filetype=sml "SML sigs
 autocmd vimrc BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
+autocmd vimrc BufNewFile,BufRead *.conf set filetype=cfg
 
 " Mappings for braces in languages that use them
 autocmd vimrc FileType arduino,c,cpp,css,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
