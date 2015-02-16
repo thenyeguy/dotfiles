@@ -33,7 +33,7 @@ alias mv='mv -i'
 
 # Shortcuts to common calls
 alias help='man'
-alias vimrc="vim ~/.vim/vimrc"
+alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 
 # Bindings for intelligent history search
