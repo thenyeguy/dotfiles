@@ -10,14 +10,11 @@ export LANG="C"
 # Shortcut to ack
 alias ack='ack-grep'
 
-# Add CUDA to paths
-export PATH=/usr/local/cuda/bin:$PATH
-export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH 
-
 # Include the Voci APIs
 export PYTHONPATH='/home/mnye/worksp/boxsystem':$PYTHONPATH
 
 # Add voci code to path
+export PATH=/home/mnye/worksp/openSMILE-2.1.0/inst/bin:$PATH
 export PATH=/home/mnye/worksp/sphinx/deploy/bin:$PATH
 export PATH=/home/mnye/worksp/vad/src:$PATH
 
