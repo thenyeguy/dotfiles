@@ -17,7 +17,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
-Plug 'wting/rust.vim', { 'for': 'rust' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 call plug#end()
