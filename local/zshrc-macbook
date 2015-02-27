@@ -13,7 +13,7 @@ export PATH=/Applications/androidndk:$PATH
 # Add tex and homebrew directory to path 
 # Homebrew is last to ensure its packages come first
 export PATH=/usr/local/texlive/2010/bin/x86_64-darwin:$PATH
-export PATH=/usr/local/include:/usr/local/lib:/usr/local/bin:$PATH
+export PATH=/usr/local/include:/usr/local/lib:/usr/local/bin:/usr/local/sbin:$PATH
 
 # Stuff for Festival - set environment variables
 export ESTDIR=/usr/local/festival/build/speech_tools
