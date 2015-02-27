@@ -1,17 +1,19 @@
 #
-# INITIALIZE OH MY ZSH
+# INITIALIZE ANTIGEN
 #
-# Set preferences
-ZSH=~/.dotfiles/oh-my-zsh
-ZSH_CUSTOM=~/.dotfiles/oh-my-zsh-custom
-ZSH_THEME="agnoster-custom"
+export ADOTDIR=~/.dotfiles/antigen-bundles
+source ~/.dotfiles/antigen/antigen.zsh
+antigen use oh-my-zsh
 
-# Set plugins and load
-plugins=(brew colored-man colorize git history history-substring-search vi-mode)
-source ~/.dotfiles/oh-my-zsh/oh-my-zsh.sh
+# Plugins
+antigen bundle brew
+antigen bundle brew-cask
+antigen bundle git
+antigen bundle colored-man
+antigen bundle vi-mode
 
-# Workaround, this plugin doesn't seem to load...
-source $ZSH/plugins/history-substring-search/history-substring-search.zsh
+# Theme
+antigen theme ~/.dotfiles/antigen-bundles/themes agnoster-custom
 
 
 #
