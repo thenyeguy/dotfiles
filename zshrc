@@ -3,17 +3,20 @@
 #
 export ADOTDIR=~/.dotfiles/antigen-bundles
 source ~/.dotfiles/antigen/antigen.zsh
+
 antigen use oh-my-zsh
 
-# Plugins
 antigen bundle brew
 antigen bundle brew-cask
 antigen bundle git
 antigen bundle colored-man
+antigen bundle pip
+antigen bundle pylint
 antigen bundle vi-mode
 
-# Theme
 antigen theme ~/.dotfiles/antigen-bundles/themes agnoster-custom
+
+antigen apply
 
 
 #
