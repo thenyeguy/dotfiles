@@ -20,6 +20,6 @@ export PATH=/home/mnye/worksp/vad/src:$PATH
 
 # Convenience shortcut to clienttest
 alias clt='python /home/mnye/worksp/boxsystem/clienttest.py'
-alias cltvm='clt -s 10.173.215.101'
+alias cltvm='clt -s 10.173.215.103'
 alias cltg1='clt -s vocig1'
 alias cltg8='clt -s vocig8'
