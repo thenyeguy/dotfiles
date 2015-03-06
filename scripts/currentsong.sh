@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Maximum segment length
+MAXLENGTH=50
+
 # Queries a Mac media player using applescript
 function checkMacPlayer () {
     # First query if the app is running
@@ -43,7 +46,11 @@ function displaySong () {
         color="colour31"
     fi
     icon=""
-    echo "#[fg=colour31] #[fg=$color]$icon $2 - $3 "
+    text="$2 - $3"
+    if (( ${#text} > $MAXLENGTH )); then
+        text="${text:0:$MAXLENGTH}..."
+    fi
+    echo "#[fg=colour31] #[fg=$color]$icon $text "
     exit 0
 }
 
