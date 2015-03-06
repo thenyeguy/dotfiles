@@ -1,7 +1,8 @@
-"
-" MANAGE OUR INSTALLED PLUGINS
-"
-" Configure vundle
+" ---------------------------- "
+" MANAGE OUR INSTALLED PLUGINS "
+" ---------------------------- "
+
+" Configure plugged
 filetype off
 call plug#begin('~/.vim/plugged')
 
@@ -25,9 +26,10 @@ filetype plugin on
 
 
 
-"
-" CONFIGURE VIM EDITOR BEHAVIOR
-"
+" ----------------------------- "
+" CONFIGURE VIM EDITOR BEHAVIOR "
+" ----------------------------- "
+
 " Colors and Syntax Highlighting
 syntax on
 colorscheme wombat
@@ -85,9 +87,10 @@ set shiftwidth=4
 
 
 
-"
-" ADD COMMANDS AND ALIASES FOR CONVENIENCE
-"
+" ---------------------------------------- "
+" ADD COMMANDS AND ALIASES FOR CONVENIENCE "
+" ---------------------------------------- "
+
 " Change leader to space
 let g:mapleader=" "
 
@@ -134,17 +137,19 @@ command WQ wq
 
 
 
-"
-" CONFIGURE AUTOCMD GROUP
-"
+" ----------------------- "
+" CONFIGURE AUTOCMD GROUP "
+" ----------------------- "
+
 augroup vimrc
     autocmd!
 augroup END
 
 
-"
-" CONFIGURE BUNDLE SETTINGS
-"
+" ------------------------- "
+" CONFIGURE BUNDLE SETTINGS "
+" ------------------------- "
+
 " Configure ack.vim
 let g:ackhighlight = 1
 
@@ -189,9 +194,10 @@ autocmd vimrc Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 
 
 
-"
-" DEFINE FILETYPE SPECIFIC SETTINGS
-"
+" --------------------------------- "
+" DEFINE FILETYPE SPECIFIC SETTINGS "
+" --------------------------------- "
+
 " Add filetype support
 autocmd vimrc BufNewFile,BufRead *.c0 set filetype=c "Support for c0
 autocmd vimrc BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
@@ -226,9 +232,10 @@ autocmd vimrc FileType gitcommit set spell
 
 
 
-"
-" SOURCE LOCAL VIMRC IF IT EXISTS
-"
+" ------------------------------- "
+" SOURCE LOCAL VIMRC IF IT EXISTS "
+" ------------------------------- "
+
 if filereadable(glob("~/.vimrc.local"))
     source ~/.vimrc.local
 endif

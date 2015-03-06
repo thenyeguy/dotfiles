@@ -1,6 +1,7 @@
-#
-# INITIALIZE ANTIGEN
-#
+# ------------------ #
+# INITIALIZE ANTIGEN #
+# ------------------ #
+
 export ADOTDIR=~/.dotfiles/antigen-bundles
 source ~/.dotfiles/antigen/antigen.zsh
 
@@ -19,9 +20,10 @@ antigen theme ~/.dotfiles/antigen-bundles/themes agnoster-custom
 antigen apply
 
 
-#
-# CONFIGURE COMMANDS
-#
+# ------------------ #
+# CONFIGURE COMMANDS #
+# ------------------ #
+
 # Set default editor
 export EDITOR="vim"
 
@@ -54,17 +56,19 @@ bindkey -a 'j' down-line-or-beginning-search
 bindkey "^R" history-incremental-search-backward
 
 
-#
-# SOURCE LOCAL CONFIGURATIONS
-#
+# --------------------------- #
+# SOURCE LOCAL CONFIGURATIONS #
+# --------------------------- #
+
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
 
-#
-# SET GREETING!
-#
+# ------------- #
+# SET GREETING! #
+# ------------- #
+
 if type doge > /dev/null; then
     doge
 elif type fortune > /dev/null && type cowsay > /dev/null; then
