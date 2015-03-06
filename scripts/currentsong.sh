@@ -19,7 +19,7 @@ function checkMacPlayer () {
             artist of current track as string")
         track=$(osascript -e "tell application \"$service\" to \
             name of current track as string")
-        displaySong $status "$artist" "$track"
+        displaySong $state "$artist" "$track"
     fi
 }
 
