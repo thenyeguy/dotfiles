@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Check for pmset to determine if we are on OSX
-if type pmset > /dev/null; then
+if type pmset &> /dev/null; then
     # Parse out relevent sections of report
     percent=$(pmset -g batt | egrep "([0-9]+\%)" -o)
     remaining=$(pmset -g batt | egrep "([0-9:])+ remaining" -o)
@@ -23,7 +23,7 @@ if type pmset > /dev/null; then
     fi
 
     # Display tmux segment
-    echo "#[fg=colour31] #[fg=$color] #[fg=colour81]$percent$remaining"
+    echo "#[fg=colour31] #[fg=$color] #[fg=colour81]$percent$remaining "
     exit 0
 else
     exit 1
