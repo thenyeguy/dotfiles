@@ -21,7 +21,7 @@ echo "Backing up old data to dotfiles.bak..."
 mkdir $HOME/dotfiles.bak
 for dotfile in ${dotfiles[*]}
 do
-    mv $HOME/$dotfile $HOME/dotfiles.bak
+    mv $HOME/.$dotfile $HOME/dotfiles.bak/$dotfile
 done
 echo " "
 
