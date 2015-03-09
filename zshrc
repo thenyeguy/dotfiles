@@ -9,6 +9,7 @@ antigen use oh-my-zsh
 
 antigen bundle brew
 antigen bundle brew-cask
+antigen bundle debian
 antigen bundle git
 antigen bundle colored-man
 antigen bundle pip
