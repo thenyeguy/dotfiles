@@ -1,5 +1,12 @@
-# Otherwise you don't get color terminals
-export TERM='screen-256color'
+# Store tmux sessions in home directory
+export TMUX_TMPDIR='/home/mnye/.tmux'
+
+# Fix the terminal type
+if [ -n "$TMUX" ]; then
+    export TERM='screen-256color'
+else
+    export TERM='xterm-256color'
+fi
 
 # Fast escape key response
 export KEYTIMEOUT=1
