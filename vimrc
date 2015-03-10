@@ -164,7 +164,7 @@ let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_user_command = {
     \ 'types': {
-        \ 1: ['.git/', 'cd %s && git ls-files']
+        \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
     \ },
 \ }
 
