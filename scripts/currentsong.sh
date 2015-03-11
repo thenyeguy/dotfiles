@@ -14,7 +14,7 @@ function checkMacPlayer () {
     # If the app is running, then check whether it is playing
     state=$(osascript -e "tell application \"$service\" to \
         player state as string")
-    if [[ "$state" == "playing" ]]; then
+    if [[ "$state" == "playing" || "$state" == "paused" ]]; then
         artist=$(osascript -e "tell application \"$service\" to \
             artist of current track as string")
         track=$(osascript -e "tell application \"$service\" to \
