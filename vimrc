@@ -34,9 +34,12 @@ filetype plugin on
 syntax on
 colorscheme wombat
 
-" Editor displays
+" Console settings
 set t_ut= "Fixes screen/tmux background color
+set ttymouse=xterm2 "Fixes mouse drag in tmux
 set title "Sets terminal title
+
+" Editor displays
 set number "Line number gutter
 set ruler "Current line and column pos
 set cursorline "Highlight current line
