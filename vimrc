@@ -161,9 +161,9 @@ augroup END
 let g:ackhighlight = 1
 
 " Configure airline
-let g:airline_detect_whitespace = 0
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'powerlineish'
+let g:airline#extensions#whitespace#enabled = 0
 
 " Configure ctrlp
 let g:ctrlp_max_height = 30            " show more files by default
