@@ -98,6 +98,9 @@ set shiftwidth=4
 " Change leader to space
 let g:mapleader=" "
 
+" Use semicolon for commands
+noremap ; :
+
 " Swap jkhl and g+jkhl
 noremap j gj
 noremap gj j
