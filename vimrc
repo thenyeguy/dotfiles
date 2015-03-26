@@ -105,10 +105,10 @@ noremap k gk
 noremap gk k
 
 " Shortcuts for split buffers
-noremap <leader>j <C-W><C-J>
-noremap <leader>k <C-W><C-K>
-noremap <leader>l <C-W><C-L>
-noremap <leader>h <C-W><C-H>
+noremap <C-j> <C-W><C-J>
+noremap <C-k> <C-W><C-K>
+noremap <C-l> <C-W><C-L>
+noremap <C-h> <C-W><C-H>
 
 " Better shortcuts for fold all
 nnoremap zO zr
