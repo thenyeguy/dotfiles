@@ -250,6 +250,6 @@ augroup END
 " SOURCE LOCAL VIMRC IF IT EXISTS "
 " ------------------------------- "
 
-if filereadable(glob("~/.vimrc.local"))
+if filereadable("~/.vimrc.local")
     source ~/.vimrc.local
 endif
