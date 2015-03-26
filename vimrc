@@ -144,15 +144,6 @@ command WQ wq
 
 
 
-" ----------------------- "
-" CONFIGURE AUTOCMD GROUP "
-" ----------------------- "
-
-augroup vimrc
-    autocmd!
-augroup END
-
-
 " ------------------------- "
 " CONFIGURE BUNDLE SETTINGS "
 " ------------------------- "
@@ -197,7 +188,6 @@ highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 
 " Configure vim live preview
 let g:livepreview_previewer = 'open -a Preview'
-autocmd vimrc Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 
 
 
@@ -205,37 +195,54 @@ autocmd vimrc Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 " DEFINE FILETYPE SPECIFIC SETTINGS "
 " --------------------------------- "
 
-" Add filetype support
-autocmd vimrc BufNewFile,BufRead *.c0 set filetype=c "Support for c0
-autocmd vimrc BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
-autocmd vimrc BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
-autocmd vimrc BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
-autocmd vimrc BufNewFile,BufRead *.sig set filetype=sml "SML sigs
-autocmd vimrc BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
-autocmd vimrc BufNewFile,BufRead *.conf set filetype=cfg
+" Label come additional file extensions
+augroup new_filetypes
+    autocmd BufNewFile,BufRead *.c0 set filetype=c "Support for c0
+    autocmd BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
+    autocmd BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
+    autocmd BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
+    autocmd BufNewFile,BufRead *.sig set filetype=sml "SML sigs
+    autocmd BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
+    autocmd BufNewFile,BufRead *.conf set filetype=cfg
+augroup END
 
 " Mappings for braces in languages that use them
-autocmd vimrc FileType arduino,c,cpp,css,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
+augroup braces_macros
+    autocmd FileType arduino,c,cpp,css,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
+augroup END
 
 " Rust - Override textwidth, set documentation highlighting
-autocmd vimrc FileType rust set textwidth=80
+augroup filetype_rust
+    autocmd FileType rust set textwidth=80
+augroup END
 highlight link rustCommentLineDoc Comment
 
 " SML - change indent size
-autocmd vimrc FileType ml,sml set tabstop=2|softtabstop=2|shiftwidth=2
+augroup filetype_sml
+    autocmd FileType ml,sml set tabstop=2|softtabstop=2|shiftwidth=2
+augroup END
 
 " Makefiles - always use tabs
-autocmd vimrc FileType make setlocal noexpandtab
+augroup filetype_makefile
+    autocmd FileType make setlocal noexpandtab
+augroup END
 
 " Python - add additional keywords, override tabstop
-autocmd vimrc FileType python,pyrex syn keyword pythonDecorator True None False self
-autocmd vimrc FileType python set tabstop=4|set shiftwidth=4
+augroup filetype_python
+    autocmd FileType python,pyrex syn keyword pythonDecorator True None False self
+    autocmd FileType python set tabstop=4|set shiftwidth=4
+augroup END
 
-" Latex - use spellcheck
-autocmd vimrc FileType tex set spell
+" Latex - use spellcheck, create live preview shortcut
+augroup filetype_latex
+    autocmd FileType tex set spell
+    autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
+augroup END
 
 " Git commits - use spellcheck
-autocmd vimrc FileType gitcommit set spell
+augroup filetype_git
+    autocmd FileType gitcommit set spell
+augroup END
 
 
 
