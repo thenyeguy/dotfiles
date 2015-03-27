@@ -159,7 +159,7 @@ let g:airline#extensions#whitespace#enabled = 0
 " Configure ctrlp
 let g:ctrlp_max_height = 30            " show more files by default
 let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 'ra'   " use vcs root or cwd
 let g:ctrlp_user_command = {
     \ 'types': {
         \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
@@ -174,6 +174,7 @@ let g:NERDSpaceDelims = 1
 
 " Configure startify
 let g:startify_change_to_vcs_root = 1
+let g:startify_bookmarks = [ '~/.vimrc', '~/.zshrc', '~/.tmux.conf' ]
 
 " Configure YouCompleteMe
 let g:ycm_confirm_extra_conf = 0
