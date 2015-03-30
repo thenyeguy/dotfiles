@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Maximum segment length
+MAXARTISTLENGTH=20
 MAXLENGTH=50
 
 # Queries a Mac media player using applescript
@@ -40,13 +41,19 @@ function checkNuvola () {
 
 # Write a tmux prompt segment and exit
 function displaySong () {
+    state=$1
     if [ "$1" == "playing" ]; then
         color="colour81"
     else
         color="colour31"
     fi
     icon=""
-    text="$2 - $3"
+    artist=$2
+    if (( ${#artist} > $MAXARTISTLENGTH )); then
+        artist="${artist:0:$MAXARTISTLENGTH}..."
+    fi
+    song=$3
+    text="$artist - $song"
     if (( ${#text} > $MAXLENGTH )); then
         text="${text:0:$MAXLENGTH}..."
     fi
