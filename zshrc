@@ -57,6 +57,15 @@ bindkey -a 'j' down-line-or-beginning-search
 bindkey "^R" history-incremental-search-backward
 
 
+# ---------------------------- #
+# Fix SSH auth socket for tmux #
+# ---------------------------- #
+if [[ -S "$SSH_AUTH_SOCK" && ! -h "$SSH_AUTH_SOCK" ]]; then
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock;
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
+
+
 # --------------------------- #
 # SOURCE LOCAL CONFIGURATIONS #
 # --------------------------- #
