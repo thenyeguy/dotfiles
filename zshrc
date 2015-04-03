@@ -28,6 +28,9 @@ antigen apply
 # Set default editor
 export EDITOR="vim"
 
+# Add scripts to the path
+export PATH=~/.dotfiles/scripts:$PATH
+
 # Fix typos
 alias sl='ls'
 alias dc='cd'
