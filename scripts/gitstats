@@ -24,7 +24,8 @@ function checkRepoStatus () {
 
     ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits" -o | sed "s/of '.\+' //")
     behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits" -o | sed "s/'.\+' //")
-    diverged=$(echo "$gitstat" | egrep "[0-9]+ and [0-9]+ different commits" -o)
+    diverged=$(echo "$gitstat" | egrep "[0-9]+ and [0-9]+ different commits" -o | \
+        sed "s/\([0-9]\+\) and \([0-9]\+\) different commits/\1 ahead, \2 behind/")
     unstaged=$(echo "$gitstat" | egrep "(not staged for commit)|(Changed but not updated)" -o)
     staged=$(echo "$gitstat" | egrep "to be committed" -o)
 
@@ -41,7 +42,7 @@ function checkRepoStatus () {
         echo -n "$behind"
     elif [ -n "$diverged" ]; then
         echo -en "\e[31m"
-        echo -n "diverged with $diverged"
+        echo -n "diverged ($diverged)"
     else
         if [ -n "$staged" ] || [ -n "$unstaged" ]; then
             echo -en "\e[33m"
