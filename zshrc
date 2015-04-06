@@ -47,6 +47,7 @@ alias help='man'
 alias vimrc="vim ~/.vimrc"
 alias zshrc="vim ~/.zshrc"
 alias callgrind="valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
+alias gitroot='cd "./`git rev-parse --show-cdup`"'
 
 # Bindings for intelligent history search
 autoload -U up-line-or-beginning-search
