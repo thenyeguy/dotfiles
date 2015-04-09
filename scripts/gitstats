@@ -9,6 +9,7 @@ normal=`tput sgr0`
 function fetchRepoUpdates () {
     dir="$1"
     pushd "$dir" > /dev/null
+    printf "$(echo "$dir" | sed "s/\.\/\(.*\)\//\1/") "
     git fetch &> /dev/null
     popd > /dev/null
 }
@@ -22,10 +23,10 @@ function checkRepoStatus () {
     gitbranch=$(git rev-parse --abbrev-ref HEAD)
     gitstat=$(git status)
 
-    ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits" -o | sed "s/of '.\+' //")
-    behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits" -o | sed "s/'.\+' //")
-    diverged=$(echo "$gitstat" | egrep "[0-9]+ and [0-9]+ different commits" -o | \
-        sed "s/\([0-9]\+\) and \([0-9]\+\) different commits/\1 ahead, \2 behind/")
+    ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits?" -o | sed "s/of '.\+' //")
+    behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits?" -o | sed "s/'.\+' //")
+    diverged=$(echo "$gitstat" | egrep "[0-9]+ and [0-9]+ different commits?" -o | \
+        sed "s/\([0-9]\+\) and \([0-9]\+\) different commits\?/\1 ahead, \2 behind/")
     unstaged=$(echo "$gitstat" | egrep "(not staged for commit)|(Changed but not updated)" -o)
     staged=$(echo "$gitstat" | egrep "to be committed" -o)
 
@@ -101,7 +102,7 @@ if [ $fetch == true ]; then
             fetchRepoUpdates "$dir"
         fi
     done
-    echo ""
+    printf "\n\n"
 fi
 
 
