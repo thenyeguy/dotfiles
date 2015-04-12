@@ -33,38 +33,38 @@ function checkRepoStatus () {
     echo -en "${bold}$gitdir${normal}\t"
 
     if [ "$gitbranch" != "master" ]; then
-        echo -en "\e[34m"
+        echo -en "\x1B[34m"
         echo -n "in branch $gitbranch"
     elif [ -n "$ahead" ]; then
-        echo -en "\e[35m"
+        echo -en "\x1B[35m"
         echo -n "$ahead"
     elif [ -n "$behind" ]; then
-        echo -en "\e[36m"
+        echo -en "\x1B[36m"
         echo -n "$behind"
     elif [ -n "$diverged" ]; then
-        echo -en "\e[31m"
+        echo -en "\x1B[31m"
         echo -n "diverged ($diverged)"
     else
         if [ -n "$staged" ] || [ -n "$unstaged" ]; then
-            echo -en "\e[33m"
+            echo -en "\x1B[33m"
         else
-            echo -en "\e[32m"
+            echo -en "\x1B[32m"
         fi
         echo -n "up to date"
     fi
 
     if [ -n "$staged" ] && [ -n "$unstaged" ]; then
-        echo -en "\e[33m"
+        echo -en "\x1B[33m"
         echo -n ", with staged and unstaged changes"
     elif [ -n "$staged" ]; then
-        echo -en "\e[33m"
+        echo -en "\x1B[33m"
         echo -n ", with staged changes"
     elif [ -n "$unstaged" ]; then
-        echo -en "\e[33m"
+        echo -en "\x1B[33m"
         echo -n ", with unstaged changes"
     fi
 
-    echo -e "\e[0m"
+    echo -e "\x1B[0m"
     popd > /dev/null
 }
 
