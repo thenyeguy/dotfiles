@@ -23,11 +23,15 @@ function checkRepoStatus () {
     gitbranch=$(git rev-parse --abbrev-ref HEAD)
     gitstat=$(git status)
 
-    ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits?" -o | sed "s/of '.\+' //")
-    behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits?" -o | sed "s/'.\+' //")
+    uptodate=$(echo "$gitstat" | egrep "up-to-date" -o)
+    ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits?" -o | \
+        sed "s/of '.\+' //")
+    behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits?" -o | \
+        sed "s/'.\+' //")
     diverged=$(echo "$gitstat" | egrep "[0-9]+ and [0-9]+ different commits?" -o | \
         sed "s/\([0-9]\+\) and \([0-9]\+\) different commits\?/\1 ahead, \2 behind/")
-    unstaged=$(echo "$gitstat" | egrep "(not staged for commit)|(Changed but not updated)" -o)
+    unstaged=$(echo "$gitstat" | \
+        egrep "(not staged for commit)|(Changed but not updated)" -o)
     staged=$(echo "$gitstat" | egrep "to be committed" -o)
 
     echo -en "${bold}$gitdir${normal}\t"
@@ -44,24 +48,26 @@ function checkRepoStatus () {
     elif [ -n "$diverged" ]; then
         echo -en "\x1B[31m"
         echo -n "diverged ($diverged)"
-    else
+    elif [ -n "$uptodate" ]; then
         if [ -n "$staged" ] || [ -n "$unstaged" ]; then
             echo -en "\x1B[33m"
         else
             echo -en "\x1B[32m"
         fi
         echo -n "up to date"
+    else
+        echo -n "no upstream"
     fi
 
     if [ -n "$staged" ] && [ -n "$unstaged" ]; then
-        echo -en "\x1B[33m"
-        echo -n ", with staged and unstaged changes"
+        echo -en ", \x1B[33m"
+        echo -n "staged and unstaged changes"
     elif [ -n "$staged" ]; then
-        echo -en "\x1B[33m"
-        echo -n ", with staged changes"
+        echo -en ", \x1B[33m"
+        echo -n "staged changes"
     elif [ -n "$unstaged" ]; then
-        echo -en "\x1B[33m"
-        echo -n ", with unstaged changes"
+        echo -en ", \x1B[33m"
+        echo -n "unstaged changes"
     fi
 
     echo -e "\x1B[0m"
