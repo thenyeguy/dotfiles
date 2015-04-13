@@ -5,6 +5,14 @@
 bold=`tput bold`
 normal=`tput sgr0`
 
+blue="\x1B[34m"
+cyan="\x1B[36m"
+nocolor="\x1B[0m"
+green="\x1B[32m"
+orange="\x1B[33m"
+purple="\x1B[35m"
+red="\x1B[31m"
+
 # Given a directory name (./dirname/), fetch remote changes
 function fetchRepoUpdates () {
     dir="$1"
@@ -37,22 +45,18 @@ function checkRepoStatus () {
     echo -en "${bold}$gitdir${normal}\t"
 
     if [ "$gitbranch" != "master" ]; then
-        echo -en "\x1B[34m"
-        echo -n "in branch $gitbranch"
+        echo -en "${blue}in branch $gitbranch"
     elif [ -n "$ahead" ]; then
-        echo -en "\x1B[35m"
-        echo -n "$ahead"
+        echo -en "$purple$ahead"
     elif [ -n "$behind" ]; then
-        echo -en "\x1B[36m"
-        echo -n "$behind"
+        echo -en "$cyan$behind"
     elif [ -n "$diverged" ]; then
-        echo -en "\x1B[31m"
-        echo -n "diverged ($diverged)"
+        echo -en "${red}diverged ($diverged)"
     elif [ -n "$uptodate" ]; then
         if [ -n "$staged" ] || [ -n "$unstaged" ]; then
-            echo -en "\x1B[33m"
+            echo -en "$orange"
         else
-            echo -en "\x1B[32m"
+            echo -en "$green"
         fi
         echo -n "up to date"
     else
@@ -60,17 +64,14 @@ function checkRepoStatus () {
     fi
 
     if [ -n "$staged" ] && [ -n "$unstaged" ]; then
-        echo -en ", \x1B[33m"
-        echo -n "staged and unstaged changes"
+        echo -en ", ${orange}staged and unstaged changes"
     elif [ -n "$staged" ]; then
-        echo -en ", \x1B[33m"
-        echo -n "staged changes"
+        echo -en ", ${orange}staged changes"
     elif [ -n "$unstaged" ]; then
-        echo -en ", \x1B[33m"
-        echo -n "unstaged changes"
+        echo -en ", ${orange}unstaged changes"
     fi
 
-    echo -e "\x1B[0m"
+    echo -e "$nocolor"
     popd > /dev/null
 }
 
