@@ -31,7 +31,6 @@ Plug 'mileszs/ack.vim'
     let g:ackhighlight = 1
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
-Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
     let g:ycm_filetype_blacklist = {
@@ -145,10 +144,6 @@ nnoremap zC zm
 " Don't deselect after indent
 vnoremap < <gv
 vnoremap > >gv
-
-" Region expanding
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
 
 " Copy/paste
 vmap <Leader>y "+y
