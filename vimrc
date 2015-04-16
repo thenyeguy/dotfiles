@@ -245,6 +245,11 @@ augroup filetype_git
     autocmd FileType gitcommit set spell
 augroup END
 
+" Vim - make Plug a keyword
+augroup filetype_vim
+    autocmd FileType vim syn keyword Statement Plug
+augroup END
+
 
 
 " ------------------------------- "
