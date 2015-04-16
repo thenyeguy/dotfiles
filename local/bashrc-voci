@@ -13,3 +13,4 @@ export PYTHONPATH='/home/mnye/worksp/boxsystem':$PYTHONPATH
 # Add voci code to path
 export PATH=/home/mnye/worksp/sphinx/deploy/bin:$PATH
 export PATH=/home/mnye/worksp/vad/src:$PATH
+export PATH=/opt/voci/bin:$PATH

@@ -25,6 +25,7 @@ export PATH=/home/mnye/worksp/trainingtools/libsvm-3.17/bin:$PATH
 export PATH=/home/mnye/worksp/openSMILE-2.1.0/inst/bin:$PATH
 export PATH=/home/mnye/worksp/sphinx/deploy/bin:$PATH
 export PATH=/home/mnye/worksp/vad/src:$PATH
+export PATH=/opt/voci/bin:$PATH
 
 # Convenience shortcut to clienttest
 alias clt='python /home/mnye/worksp/boxsystem/clienttest.py'
