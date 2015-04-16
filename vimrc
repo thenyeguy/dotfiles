@@ -7,19 +7,44 @@ filetype off
 call plug#begin('~/.vim/plugged')
 
 Plug 'bling/vim-airline'
+    let g:airline_powerline_fonts = 1
+    let g:airline_theme = 'powerlineish'
+    let g:airline#extensions#whitespace#enabled = 0
 Plug 'blueyed/vim-diminactive'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'kien/ctrlp.vim'
+    let g:ctrlp_max_height = 30 " show more files
+    let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
+    let g:ctrlp_working_path_mode = 'ra' " use vcs root or cwd
+    let g:ctrlp_user_command = {
+        \ 'types': {
+            \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
+        \ },
+    \ } " build index with git-ls-files in git repos (faster)
 Plug 'Lokaltog/vim-easymotion'
+    highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
+    let g:startify_change_to_vcs_root = 1
+    let g:startify_bookmarks = [ '~/.vimrc', '~/.zshrc', '~/.tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'mileszs/ack.vim'
+    let g:ackhighlight = 1
 Plug 'scrooloose/nerdcommenter'
+    let g:NERDSpaceDelims = 1
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+    let g:ycm_filetype_blacklist = {
+          \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
+          \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
+          \ 'gitconfig':1, 'gitcommit':1, 'gitrebase':1,
+          \ 'tex':1
+          \} " Ignore these filetypes
+    let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
+    highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+    let g:livepreview_previewer = 'open -a Preview'
 
 call plug#end()
 filetype plugin on
@@ -141,54 +166,6 @@ command W w
 command Q q
 command Wq wq
 command WQ wq
-
-
-
-" ------------------------- "
-" CONFIGURE BUNDLE SETTINGS "
-" ------------------------- "
-
-" Configure ack.vim
-let g:ackhighlight = 1
-
-" Configure airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'powerlineish'
-let g:airline#extensions#whitespace#enabled = 0
-
-" Configure ctrlp
-let g:ctrlp_max_height = 30            " show more files by default
-let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
-let g:ctrlp_working_path_mode = 'ra'   " use vcs root or cwd
-let g:ctrlp_user_command = {
-    \ 'types': {
-        \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
-    \ },
-\ }
-
-" Configure Easy Motion
-highlight link EasyMotionIncSearch String
-
-" Configure NERD Commenter
-let g:NERDSpaceDelims = 1
-
-" Configure startify
-let g:startify_change_to_vcs_root = 1
-let g:startify_bookmarks = [ '~/.vimrc', '~/.zshrc', '~/.tmux.conf' ]
-
-" Configure YouCompleteMe
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
-      \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
-      \ 'gitconfig':1, 'gitcommit':1, 'gitrebase':1,
-      \ 'tex':1
-      \}                              " Ignore these filetypes
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
-highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
-
-" Configure vim live preview
-let g:livepreview_previewer = 'open -a Preview'
 
 
 
