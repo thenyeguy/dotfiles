@@ -13,6 +13,8 @@ Plug 'bling/vim-airline'
 Plug 'blueyed/vim-diminactive'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'kien/ctrlp.vim'
+    nnoremap <C-p> <C-o>
+    let g:ctrlp_map = '<c-o>'
     let g:ctrlp_max_height = 30 " show more files
     let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
     let g:ctrlp_working_path_mode = 'ra' " use vcs root or cwd
