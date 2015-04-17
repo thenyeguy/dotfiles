@@ -14,7 +14,7 @@ git submodule update --init --recursive
 echo " "
 
 # Define files to hardlink
-dotfiles=(bashrc gitconfig gvimrc tmux.conf vim vimrc zshrc)
+dotfiles=(bashrc gitconfig tmux.conf vim vimrc zshrc)
 
 # Backup old links
 echo "Backing up old data to dotfiles.bak..."
