@@ -32,6 +32,7 @@ function checkRepoStatus () {
     gitstat=$(git status)
 
     remote=$(git remote)
+    uptodate=$(echo "$gitstat" | egrep "up-to-date")
     ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits?" -o | \
         sed "s/of '.\+' //")
     behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits?" -o | \
@@ -45,14 +46,16 @@ function checkRepoStatus () {
     echo -en "${bold}$gitdir${normal}\t"
 
     if [ "$gitbranch" != "master" ]; then
-        echo -en "${blue}in branch $gitbranch"
-    elif [ -n "$ahead" ]; then
+        echo -en "${blue}in branch $gitbranch, "
+    fi
+
+    if [ -n "$ahead" ]; then
         echo -en "$purple$ahead"
     elif [ -n "$behind" ]; then
         echo -en "$cyan$behind"
     elif [ -n "$diverged" ]; then
         echo -en "${red}diverged ($diverged)"
-    elif [ -n "$remote" ]; then
+    elif [ -n "$remote" ] && [ -n "$uptodate" ]; then
         if [ -n "$staged" ] || [ -n "$unstaged" ]; then
             echo -en "$orange"
         else
