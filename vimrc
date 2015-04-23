@@ -11,6 +11,7 @@ Plug 'bling/vim-airline'
     let g:airline_theme = 'powerlineish'
     let g:airline#extensions#whitespace#enabled = 0
 Plug 'blueyed/vim-diminactive'
+Plug 'briancollins/vim-jst'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'kien/ctrlp.vim'
     nnoremap <C-p> <C-o>
