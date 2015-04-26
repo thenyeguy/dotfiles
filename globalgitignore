@@ -1,5 +1,17 @@
-# Ignore audio files
+# Audio files
 *.wav
+*.mp3
+*.aac
+*.m4a
+
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Other binary files
+*.pdf
 
 # Ignore a specific shell script I put in many repos
 rsync.sh
