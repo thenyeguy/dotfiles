@@ -44,8 +44,8 @@ alias mv='mv -i'
 
 # Shortcuts to common calls
 alias help='man'
-alias vimrc="vim ~/.vimrc"
-alias zshrc="vim ~/.zshrc"
+alias vimrc="vim ~/.dotfiles/vimrc"
+alias zshrc="vim ~/.dotfiles/zshrc"
 alias callgrind="valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 
 alias gitroot='cd "./`git rev-parse --show-cdup`"'
