@@ -12,7 +12,7 @@
     clean = git-media-clean %f
     smudge = git-media-smudge %f
 [push]
-    default = matching
+    default = simple
 [include]
     path = ~/.gitconfig.local
 [merge]
