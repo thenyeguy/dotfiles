@@ -14,7 +14,6 @@ Plug 'blueyed/vim-diminactive'
 Plug 'briancollins/vim-jst'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'kien/ctrlp.vim'
-    nnoremap <C-p> <C-o>
     let g:ctrlp_map = '<c-o>'
     let g:ctrlp_max_height = 30 " show more files
     let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
@@ -84,7 +83,7 @@ set mouse=a "Enable mouse use
 set completeopt-=preview "Don't open buffer with suggestion
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
-set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
+set directory=~/.vim/swp,~/tmp,.,/var/tmp,/tmp,. "swp file location
 
 " Invisible characters
 set list
@@ -92,7 +91,7 @@ set listchars=tab:»-,trail:·
 
 " Code folding
 set foldmethod=syntax
-set nofoldenable
+set foldlevelstart=99
 
 " Search/replace settings
 set hlsearch "Highlights current search
@@ -140,24 +139,22 @@ noremap <C-k> <C-W><C-K>
 noremap <C-l> <C-W><C-L>
 noremap <C-h> <C-W><C-H>
 
-" Better shortcuts for fold all
-nnoremap zO zr
-nnoremap zC zm
+" Jumplist shortcuts
+nnoremap <C-p> <C-o>
+nnoremap <C-n> <C-i>
 
 " Don't deselect after indent
 vnoremap < <gv
 vnoremap > >gv
 
 " Copy/paste
-vmap <Leader>y "+y
-nmap <Leader>p "+p
-nmap <Leader>P "+P
+vnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
 
 " Misc shortcuts
 nnoremap <leader>n :nohlsearch<CR>
-nnoremap <leader>w :w<CR>
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :wq<CR>
+nnoremap Y y$
 
 " Mappings that fix my typos on save and quit
 command W w
@@ -207,6 +204,7 @@ augroup END
 augroup filetype_python
     autocmd FileType python,pyrex syn keyword pythonDecorator True None False self
     autocmd FileType python set tabstop=4|set shiftwidth=4
+    autocmd FileType python set foldmethod=indent
 augroup END
 
 " Latex - use spellcheck, create live preview shortcut
