@@ -112,7 +112,6 @@ set autoindent "Copies indent from previous line when starting a new one
 set expandtab "Replace tabs with spaces
 
 set tabstop=4     "Tab stops are 4 wide
-set softtabstop=4
 set shiftwidth=4
 
 
