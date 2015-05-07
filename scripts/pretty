@@ -1,0 +1,39 @@
+#!/bin/bash
+
+function usage () {
+    echo "Usage: $0 <format> [args...]"
+    echo ""
+    echo "Available formats are:"
+    echo "    none - perform no formatting"
+    echo "    json - format json"
+    echo "    table <seperator> - split columns and display as a table."
+    echo "            Seperators (default spaces): spaces, tabs, commas"
+
+    if [ -n "$1" ]; then
+        exit $1
+    else
+        exit 1
+    fi
+}
+
+if [ "$1" == "none" ]; then
+    format="cat"
+elif [ "$1" == "json" ]; then
+    format="python -m json.tool"
+elif [ "$1" == "table" ]; then
+    if [ -z "$2" ] || [ "$2" == "spaces" ]; then
+        format="column -e -t -s' '"
+    elif [ "$2" == "tabs" ]; then
+        format="column -e -t -s $'\t'"
+    elif [ "$2" == "commas" ]; then
+        format="column -e -t -s','"
+    else
+        usage
+    fi
+elif [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+    usage 0
+else
+    usage
+fi
+
+eval "$format" <&0
