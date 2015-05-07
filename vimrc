@@ -176,6 +176,7 @@ augroup new_filetypes
     autocmd BufNewFile,BufRead *.sig set filetype=sml "SML sigs
     autocmd BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
     autocmd BufNewFile,BufRead *.conf set filetype=cfg
+    autocmd BufNewFile,BufRead *.md set filetype=markdown
 augroup END
 
 " Mappings for braces in languages that use them
@@ -210,6 +211,11 @@ augroup END
 augroup filetype_latex
     autocmd FileType tex set spell
     autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
+augroup END
+
+" Markdown - use spellcheck
+augroup filetype_markdown
+    autocmd FileType markdown set spell
 augroup END
 
 " Git commits - use spellcheck
