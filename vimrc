@@ -115,7 +115,6 @@ set tabstop=4     "Tab stops are 4 wide
 set shiftwidth=4
 
 
-
 " ---------------------------------------- "
 " ADD COMMANDS AND ALIASES FOR CONVENIENCE "
 " ---------------------------------------- "

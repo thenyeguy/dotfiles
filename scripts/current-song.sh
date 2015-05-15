@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# Maximum segment length
-MAXARTISTLENGTH=20
-MAXLENGTH=50
+# Check for printout mode
+if [ "$1" == "--tmux" ]; then
+    tmux=true
+fi
 
 # Queries a Mac media player using applescript
 function checkMacPlayer () {
@@ -39,25 +40,20 @@ function checkNuvola () {
     fi
 }
 
-# Write a tmux prompt segment and exit
+# Display the results
 function displaySong () {
     state=$1
-    if [ "$1" == "playing" ]; then
-        color="colour81"
-    else
-        color="colour31"
-    fi
-    icon=""
     artist=$2
-    if (( ${#artist} > $MAXARTISTLENGTH )); then
-        artist="${artist:0:$MAXARTISTLENGTH}..."
-    fi
     song=$3
-    text="$artist - $song"
-    if (( ${#text} > $MAXLENGTH )); then
-        text="${text:0:$MAXLENGTH}..."
+    if [ -n "$tmux" ]; then
+        echo -e "$state\t$artist\t$song"
+    else
+        echo -n "$artist - $song"
+        if [ "$state" == "paused" ]; then
+            echo -n " (paused)"
+        fi
+        echo ""
     fi
-    echo "#[fg=colour31] #[fg=$color]$icon $text "
     exit 0
 }
 
