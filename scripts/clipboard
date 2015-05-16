@@ -1,0 +1,36 @@
+#!/bin/bash
+
+function usage () {
+    echo "Usage: $0 <copy/paste>"
+    exit 1
+}
+
+function noclip () {
+    echo "No clipboard function found"
+    exit 2
+}
+
+function copy () {
+    if type pbcopy &> /dev/null; then
+        pbcopy <&0
+    else
+        noclip
+    fi
+}
+
+function paste () {
+    if type pbpaste &> /dev/null; then
+        pbpaste
+    else
+        noclip
+    fi
+}
+
+
+if [ "$1" == "copy" ]; then
+    copy
+elif [ "$1" == "paste" ]; then
+    paste
+else
+    usage
+fi
