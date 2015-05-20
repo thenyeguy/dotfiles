@@ -7,12 +7,15 @@ function usage () {
 
 function noclip () {
     echo "No clipboard function found"
+    echo "On linux, try installing xclip."
     exit 2
 }
 
 function copy () {
     if type pbcopy &> /dev/null; then
         pbcopy <&0
+    elif type xclip &> /dev/null; then
+        xclip -sel clip -i <&0
     else
         noclip
     fi
@@ -21,6 +24,8 @@ function copy () {
 function paste () {
     if type pbpaste &> /dev/null; then
         pbpaste
+    elif type xclip &> /dev/null; then
+        xclip -sel clip -o <&0
     else
         noclip
     fi
