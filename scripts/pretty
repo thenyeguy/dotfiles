@@ -22,11 +22,11 @@ elif [ "$1" == "json" ]; then
     format="python -m json.tool"
 elif [ "$1" == "table" ]; then
     if [ -z "$2" ] || [ "$2" == "spaces" ]; then
-        format="column -e -t -s' '"
+        format="column -t -s' '"
     elif [ "$2" == "tabs" ]; then
-        format="column -e -t -s $'\t'"
+        format="column -t -s $'\t'"
     elif [ "$2" == "commas" ]; then
-        format="column -e -t -s','"
+        format="column -t -s','"
     else
         usage
     fi
