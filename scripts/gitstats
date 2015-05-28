@@ -31,7 +31,7 @@ function checkRepoStatus () {
     gitbranch=$(git rev-parse --abbrev-ref HEAD)
     gitstat=$(git status)
 
-    remote=$(git remote)
+    remote=$(git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD))
     ahead=$(echo "$gitstat" | egrep "ahead of '.+' by [0-9]+ commits?" -o | \
         sed "s/of '.\+' //")
     behind=$(echo "$gitstat" | egrep "behind '.+' by [0-9]+ commits?" -o | \
