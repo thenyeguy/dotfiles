@@ -29,8 +29,8 @@ Plug 'mhinz/vim-startify'
     let g:startify_change_to_vcs_root = 1
     let g:startify_bookmarks = [ '~/.dotfiles/vimrc', '~/.dotfiles/zshrc', '~/.dotfiles/tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'mileszs/ack.vim'
-    let g:ackhighlight = 1
+Plug 'rking/ag.vim'
+    let g:aghighlight = 1
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
 Plug 'tpope/vim-fugitive'
