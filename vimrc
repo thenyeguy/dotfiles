@@ -61,7 +61,6 @@ syntax on
 colorscheme wombat
 
 " Console settings
-set t_ut= "Fixes screen/tmux background color
 set ttymouse=xterm2 "Fixes mouse drag in tmux
 set title "Sets terminal title
 
