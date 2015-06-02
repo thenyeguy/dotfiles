@@ -35,11 +35,11 @@ if [ -n "$music" ]; then
         color="$DIM"
     fi
     icon=""
-    if (( ${#artist} > $MAXARTISTLENGTH )); then
+    if (( ${#artist} > $MAXARTISTLENGTH+3 )); then
         artist="${artist:0:$MAXARTISTLENGTH}..."
     fi
     text="$artist - $song"
-    if (( ${#text} > $MAXMUSICLENGTH )); then
+    if (( ${#text} > $MAXMUSICLENGTH+3 )); then
         text="${text:0:$MAXMUSICLENGTH}..."
     fi
     echo -en " #[fg=$DIM]$SEP #[fg=$color]$icon $text"
