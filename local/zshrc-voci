@@ -29,5 +29,6 @@ export PATH=/opt/voci/bin:$PATH
 
 # Convenience shortcut to clienttest
 alias clt='python /home/mnye/worksp/boxsystem/clienttest.py'
+alias cltvm='clt -s centosvm'
 alias cltg1='clt -s vocig1'
 alias cltg8='clt -s vocig8'
