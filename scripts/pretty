@@ -7,7 +7,7 @@ function usage () {
     echo "    none - perform no formatting"
     echo "    json - format json"
     echo "    table <seperator> - split columns and display as a table."
-    echo "            Seperators (default spaces): spaces, tabs, commas"
+    echo "            Seperators (default tabs): commas, spaces, tabs"
 
     if [ -n "$1" ]; then
         exit $1
@@ -21,10 +21,10 @@ if [ "$1" == "none" ]; then
 elif [ "$1" == "json" ]; then
     format="python -m json.tool"
 elif [ "$1" == "table" ]; then
-    if [ -z "$2" ] || [ "$2" == "spaces" ]; then
-        format="column -t -s' '"
-    elif [ "$2" == "tabs" ]; then
+    if [ -z "$2" ] || [ "$2" == "tabs" ]; then
         format="column -t -s $'\t'"
+    elif [ "$2" == "spaces" ]; then
+        format="column -t -s' '"
     elif [ "$2" == "commas" ]; then
         format="column -t -s','"
     else
