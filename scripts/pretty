@@ -7,7 +7,7 @@ function usage () {
     echo "    none - perform no formatting"
     echo "    json - format json"
     echo "    table <seperator> - split columns and display as a table."
-    echo "            Seperators (default tabs): commas, spaces, tabs"
+    echo "            Seperators (default tabs): csv/commas, spaces, tabs"
 
     if [ -n "$1" ]; then
         exit $1
@@ -25,7 +25,7 @@ elif [ "$1" == "table" ]; then
         format="column -t -s $'\t'"
     elif [ "$2" == "spaces" ]; then
         format="column -t -s' '"
-    elif [ "$2" == "commas" ]; then
+    elif [ "$2" == "commas" ] || [ "$2" == "csv" ]; then
         format="column -t -s','"
     else
         usage
