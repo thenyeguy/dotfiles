@@ -5,6 +5,7 @@
 " Configure plugged
 filetype off
 call plug#begin('~/.vim/plugged')
+let g:plug_window = 'belowright new'
 
 Plug 'bling/vim-airline'
     let g:airline_powerline_fonts = 1
