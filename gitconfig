@@ -1,25 +1,35 @@
 [user]
     name = Michael Nye
     email = thenyeguy@gmail.com
+
 [core]
     editor = vim
     excludesfile = ~/.dotfiles/globalgitignore
+
 [color]
-    ui = true
-[alias]
-    graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
-[filter "media"]
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+    ui = auto
+[column]
+    ui = auto
+
 [push]
     default = simple
-[include]
-    path = ~/.gitconfig.local
+[pull]
+    rebase = true
+
 [merge]
     tool = vimdiff
     conflictstyle = diff3
+[mergetool]
     prompt = false
-[branch]
-    autosetuprebase = always
-[pull]
-    rebase = true
+
+[alias]
+    amend = commit --amend
+    fuck = reset --hard
+    graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+
+[filter "media"]
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+
+[include]
+    path = ~/.gitconfig.local
