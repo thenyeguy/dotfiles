@@ -27,17 +27,15 @@ function checkMacPlayer () {
 
 # Queries Nuvola Player using its command line interface
 function checkNuvola () {
-    info=$(nuvolaplayer3ctl track-info 2> /dev/null)
-    if [ "$?" -eq "0" ]; then
-        state=$(echo "$info" | egrep "State: ([a-zA-Z]+)" -o | cut -c "8-")
-        if [[ "$state" == "playing" || "$state" == "paused" ]]; then
-            artist=$(echo "$info" | egrep "Artist: (.+)" -o | cut -c "9-")
-            track=$(echo "$info" | egrep "Title: (.+)" -o | cut -c "8-")
+    state=$(nuvolaplayer3ctl track-info state 2> /dev/null)
+    if [[ "$state" == "playing" || "$state" == "paused" ]]; then
+        artist=$(nuvolaplayer3ctl track-info artist 2> /dev/null)
+        track=$(nuvolaplayer3ctl track-info title 2> /dev/null)
 
-            # Nuvola reports as "paused" when it is really "stopped" with no music
-            if [[ -n $artist && -n $track ]]; then
-                displaySong $state "$artist" "$track"
-            fi
+        # Nuvola reports as "paused" when it is really "stopped" with no music,
+        # so we check that we actually found a playing song first
+        if [[ -n $artist && -n $track ]]; then
+            displaySong $state "$artist" "$track"
         fi
     fi
 }
