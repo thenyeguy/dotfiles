@@ -17,7 +17,9 @@ red="\x1B[31m"
 function fetchRepoUpdates () {
     dir="$1"
     pushd "$dir" > /dev/null
-    printf "$(echo "$dir" | sed "s/\.\/\(.*\)\//\1/") "
+    gitdir=$(echo "$dir" | sed "s/\.\/\(.*\)\//\1/" |
+        sed "s/\.\//$(basename `pwd`)/")
+    printf "$gitdir "
     git fetch &> /dev/null
     popd > /dev/null
 }
@@ -27,7 +29,8 @@ function checkRepoStatus () {
     dir="$1"
     pushd "$dir" > /dev/null
 
-    gitdir=$(echo "$dir" | sed "s/\.\/\(.*\)\//\1/")
+    gitdir=$(echo "$dir" | sed "s/\.\/\(.*\)\//\1/" |
+        sed "s/\.\//$(basename `pwd`)/")
     gitbranch=$(git rev-parse --abbrev-ref HEAD)
     gitstat=$(git status)
 
@@ -101,13 +104,18 @@ if [ -n "$1" ]; then
 fi
 
 
+# If the current directory is a git repo, then 
+if [ -d ".git" ]; then
+    directories=./
+else
+    directories=./*/
+fi
+
 # Check for updates
 if [ $fetch == true ]; then
     echo "Checking for remote updates..."
-    for dir in ./*/
-    do
-        if [ -d "$dir/.git" ]
-        then
+    for dir in $directories; do
+        if [ -d "$dir/.git" ]; then
             fetchRepoUpdates "$dir"
         fi
     done
@@ -116,10 +124,8 @@ fi
 
 
 # Print statuses, piping to columns for formatting
-for dir in ./*/
-do
-    if [ -d "$dir/.git" ]
-    then
+for dir in $directories; do
+    if [ -d "$dir/.git" ]; then
         checkRepoStatus "$dir"
     fi
 done | column -s $'\t' -t
