@@ -149,10 +149,12 @@ vnoremap > >gv
 vnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
-
-" Misc shortcuts
-nnoremap <leader>n :nohlsearch<CR>
 nnoremap Y y$
+
+" Clear search highlight
+nnoremap <leader>n :nohlsearch<CR>
+" Rewrap paragraph
+nnoremap <leader>q gqip
 
 " Mappings that fix my typos on save and quit
 command W w
