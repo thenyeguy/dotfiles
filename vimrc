@@ -13,8 +13,7 @@ Plug 'bling/vim-airline'
     let g:airline#extensions#whitespace#enabled = 0
 Plug 'blueyed/vim-diminactive'
 Plug 'briancollins/vim-jst'
-Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_map = '<c-o>'
     let g:ctrlp_max_height = 30 " show more files
     let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
@@ -24,6 +23,7 @@ Plug 'kien/ctrlp.vim'
             \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
         \ },
     \ } " build index with git-ls-files in git repos (faster)
+Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
