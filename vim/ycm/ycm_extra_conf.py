@@ -90,12 +90,6 @@ flags = [
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/5.1/include',
 '-isystem',
 '/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include',
-
-# Paths for Voci systems
-'-I',
-'/home/mnye/worksp/utils/src/',
-'-I',
-'/usr/include/python2.7'
 ]
 
 
