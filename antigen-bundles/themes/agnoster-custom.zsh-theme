@@ -101,47 +101,12 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:git:*' unstagedstr $VCS_UNSTAGED_SYM
+    zstyle ':vcs_info:*' unstagedstr $VCS_UNSTAGED_SYM
     zstyle ':vcs_info:*' stagedstr $VCS_STAGED_SYM
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats '%u%c'
+    zstyle ':vcs_info:*' formats '%b %u%c'
+    zstyle ':vcs_info:*' actionformats '%b (%a) %u%c'
     vcs_info
-    echo -n "${ref/refs\/heads\//$VCS_SYM }${vcs_info_msg_0_}"
-  fi
-}
-
-prompt_hg() {
-  local rev status
-  if $(hg id >/dev/null 2>&1); then
-    if $(hg prompt >/dev/null 2>&1); then
-      if [[ $(hg prompt "{status|unknown}") = "?" ]]; then
-        # if files are not added
-        prompt_segment red white
-        st='±'
-      elif [[ -n $(hg prompt "{status|modified}") ]]; then
-        # if any modification
-        prompt_segment yellow black
-        st='±'
-      else
-        # if working copy is clean
-        prompt_segment green black
-      fi
-      echo -n $(hg prompt "☿ {rev}@{branch}") $st
-    else
-      st=""
-      rev=$(hg id -n 2>/dev/null | sed 's/[^-0-9]//g')
-      branch=$(hg id -b 2>/dev/null)
-      if `hg st | grep -Eq "^\?"`; then
-        prompt_segment red black
-        st='±'
-      elif `hg st | grep -Eq "^(M|A)"`; then
-        prompt_segment yellow black
-        st='±'
-      else
-        prompt_segment green black
-      fi
-      echo -n "☿ $rev@$branch" $st
-    fi
+    echo -n "${VCS_SYM} ${vcs_info_msg_0_}"
   fi
 }
 
@@ -196,7 +161,6 @@ build_prompt() {
   prompt_context
   prompt_dir
   prompt_git
-  prompt_hg
   prompt_end
   prompt_indicator
 }
