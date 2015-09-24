@@ -1,14 +1,15 @@
-" ----------------------------- "
-" CONFIGURE VIM EDITOR BEHAVIOR "
-" ----------------------------- "
+" ------------------------- "
+" CONFIGURE EDITOR BEHAVIOR "
+" ------------------------- "
+
+" Console settings
+set title "Sets terminal title
+set ttymouse=xterm2 "Fixes mouse drag in tmux
+set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 
 " Colors and Syntax Highlighting
 syntax on
 colorscheme wombat
-
-" Console settings
-set ttymouse=xterm2 "Fixes mouse drag in tmux
-set title "Sets terminal title
 
 " Editor displays
 set number "Line number gutter
@@ -25,18 +26,21 @@ set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
 set wildmenu "Show cmd autocomplete on its own line
 set mouse=a "Enable mouse use
+set backspace=indent,eol,start "Allows backspacing over tab and line breaks
 set completeopt-=preview "Don't open buffer with suggestion
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
-set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
-set directory=~/.vim/swp,~/tmp,.,/var/tmp,/tmp,. "swp file location
+set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 
-" Invisible characters
-set list
-set listchars=tab:»-,trail:·
-
-" Code folding
-set foldmethod=syntax
-set foldlevelstart=99
+" Editor formatting stuff
+filetype indent on "Makes editor manage indent semantically for code
+set formatoptions+=j "Remove leading comment chars on join
+set formatoptions+=r "Add comment leader on new line
+set formatoptions+=n "Intelligently format lists
+set linebreak "Wrap at words
+set autoindent "Copies indent from previous line
+set expandtab "Replace tabs with spaces
+set tabstop=4 "Tab stops are 4 wide
+set shiftwidth=4
 
 " Search/replace settings
 set hlsearch "Highlights current search
@@ -45,19 +49,13 @@ set ignorecase "Search ignores case
 set smartcase "Doesn't ignore uppercase characters in search
 set gdefault "Defaults to replacing ALL occurrences on a line
 
-" Editor formatting stuff
-filetype indent on "Makes editor manage indent semantically for code
-set formatoptions+=j "Remove leading comment chars on join
-set formatoptions+=r "Add comment leader on new line
-set formatoptions+=n "Intelligently format lists
+" Invisible characters
+set list
+set listchars=tab:»-,trail:·
 
-set linebreak " wrap at words
-set backspace=indent,eol,start "Allows backspacing over tab and line breaks
-set autoindent "Copies indent from previous line when starting a new one
-set expandtab "Replace tabs with spaces
-
-set tabstop=4     "Tab stops are 4 wide
-set shiftwidth=4
+" Code folding
+set foldmethod=syntax
+set foldlevelstart=99
 
 
 " ---------------------------------------- "
@@ -90,10 +88,10 @@ nnoremap <C-n> <C-i>
 vnoremap < <gv
 vnoremap > >gv
 
-" Copy/paste
-vnoremap <Leader>y "+y
-nnoremap <Leader>p "+p
-nnoremap <Leader>P "+P
+" System copy/paste
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 nnoremap Y y$
 
 " Clear search highlight
