@@ -153,10 +153,9 @@ augroup filetype_python
     autocmd FileType python set foldmethod=indent
 augroup END
 
-" Latex - use spellcheck, create live preview shortcut
+" Latex - use spellcheck
 augroup filetype_latex
     autocmd FileType tex set spell
-    autocmd Filetype tex nmap <leader>lt :LLPStartPreview<CR>
 augroup END
 
 " Markdown - use spellcheck
@@ -223,8 +222,6 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
     highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-    let g:livepreview_previewer = 'open -a Preview'
 
 call plug#end()
 filetype plugin on
