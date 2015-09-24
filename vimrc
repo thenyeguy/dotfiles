@@ -7,11 +7,8 @@ set title "Sets terminal title
 set ttymouse=xterm2 "Fixes mouse drag in tmux
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 
-" Colors and Syntax Highlighting
-syntax on
-colorscheme wombat
-
 " Editor displays
+colorscheme wombat "Set colors
 set number "Line number gutter
 set ruler "Current line and column pos
 set cursorline "Highlight current line
@@ -19,7 +16,8 @@ set showcmd "Info on current command
 set laststatus=2 "Always show status bar w/ filename
 
 " General editor behavior
-set encoding=utf-8
+syntax on "Parse code syntax
+set encoding=utf-8 "Use utf-8 for text encoding
 set textwidth=80 "Autowrap at 80 chars
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
@@ -31,7 +29,7 @@ set completeopt-=preview "Don't open buffer with suggestion
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 
-" Editor formatting stuff
+" Editor formatting
 set formatoptions+=j "Remove leading comment chars on join
 set formatoptions+=r "Add comment leader on new line
 set formatoptions+=n "Intelligently format lists
@@ -48,13 +46,13 @@ set ignorecase "Search ignores case
 set smartcase "Doesn't ignore uppercase characters in search
 set gdefault "Defaults to replacing ALL occurrences on a line
 
-" Invisible characters
+" Code folding
+set foldmethod=syntax "Use code syntax to fold
+set foldlevelstart=99 "Start unfolded
+
+" Highlight invisible characters: tabs and trailing whitespace
 set list
 set listchars=tab:»-,trail:·
-
-" Code folding
-set foldmethod=syntax
-set foldlevelstart=99
 
 " Persistent undo
 set undofile
@@ -100,6 +98,7 @@ nnoremap Y y$
 
 " Clear search highlight
 nnoremap <leader>n :nohlsearch<CR>
+
 " Rewrap paragraph
 nnoremap <leader>q gqip
 
