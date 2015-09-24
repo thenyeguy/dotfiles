@@ -57,6 +57,11 @@ set listchars=tab:»-,trail:·
 set foldmethod=syntax
 set foldlevelstart=99
 
+" Persistent undo
+set undofile
+set undodir=$HOME/.vim/undo
+
+
 
 " ---------------------------------------- "
 " ADD COMMANDS AND ALIASES FOR CONVENIENCE "

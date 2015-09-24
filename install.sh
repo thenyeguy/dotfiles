@@ -34,4 +34,9 @@ do
 done
 echo " "
 
+
+# Create vim subdirectories
+mkdir $HOME/.vim/swp
+mkdir $HOME/.vim/undo
+
 echo "Install complete!"
