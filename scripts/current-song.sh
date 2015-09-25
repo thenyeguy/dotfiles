@@ -63,7 +63,7 @@ if type osascript &> /dev/null; then
     checkMacPlayer Spotify
     exit 2
 # Check for Nuvola Player
-elif type nuvolaplayer3ctl > /dev/null; then
+elif type nuvolaplayer3ctl &> /dev/null; then
     checkNuvola
     exit 2
 else
