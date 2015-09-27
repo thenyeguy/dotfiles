@@ -149,7 +149,7 @@ Plug 'rking/ag.vim'
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     let g:ycm_filetype_blacklist = {
           \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
           \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
