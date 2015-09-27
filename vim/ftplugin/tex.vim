@@ -110,3 +110,6 @@ endif " exists("loaded_matchit")
 let &cpo = s:save_cpo
 
 " vim:sts=2:sw=2:
+
+" Always spellcheck
+setlocal spell

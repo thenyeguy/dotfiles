@@ -102,6 +102,9 @@ nnoremap <leader>n :nohlsearch<CR>
 " Rewrap paragraph
 nnoremap <leader>q gqip
 
+" Auto expand curly braces
+inoremap {<CR> {<CR>}<esc>ko
+
 " Mappings that fix my typos on save and quit
 command W w
 command Q q
@@ -158,69 +161,3 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.sh --clang-completer' }
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
-
-
-
-" --------------- "
-" DEFINE AUTOCMDS "
-" --------------- "
-
-" Label come additional file extensions
-augroup new_filetypes
-    autocmd BufNewFile,BufRead *.c0 set filetype=c "Support for c0
-    autocmd BufNewFile,BufRead *.h0 set filetype=c "Support for c0 header
-    autocmd BufNewFile,BufRead *.pde set filetype=arduino "Arduino code
-    autocmd BufNewFile,BufRead *.ino set filetype=arduino "Arduino code
-    autocmd BufNewFile,BufRead *.sig set filetype=sml "SML sigs
-    autocmd BufNewFile,BufRead *.sable set filetype=xml "SABLE markup
-    autocmd BufNewFile,BufRead *.conf set filetype=cfg
-    autocmd BufNewFile,BufRead *.md set filetype=markdown
-augroup END
-
-" Mappings for braces in languages that use them
-augroup braces_macros
-    autocmd FileType arduino,c,cpp,css,java,javascript,rust inoremap {<CR> {<CR>}<esc>ko
-augroup END
-
-" Rust - Override textwidth, set documentation highlighting
-augroup filetype_rust
-    autocmd FileType rust set textwidth=80
-augroup END
-highlight link rustCommentLineDoc Comment
-
-" SML - change indent size
-augroup filetype_sml
-    autocmd FileType ml,sml set tabstop=2|softtabstop=2|shiftwidth=2
-augroup END
-
-" Makefiles - always use tabs
-augroup filetype_makefile
-    autocmd FileType make setlocal noexpandtab
-augroup END
-
-" Python - add additional keywords, override tabstop
-augroup filetype_python
-    autocmd FileType python,pyrex syn keyword pythonDecorator True None False self
-    autocmd FileType python set tabstop=4|set shiftwidth=4
-    autocmd FileType python set foldmethod=indent
-augroup END
-
-" Latex - use spellcheck
-augroup filetype_latex
-    autocmd FileType tex set spell
-augroup END
-
-" Markdown - use spellcheck
-augroup filetype_markdown
-    autocmd FileType markdown set spell
-augroup END
-
-" Git commits - use spellcheck
-augroup filetype_git
-    autocmd FileType gitcommit set spell
-augroup END
-
-" Vim - make Plug a keyword
-augroup filetype_vim
-    autocmd FileType vim syn keyword Statement Plug
-augroup END
