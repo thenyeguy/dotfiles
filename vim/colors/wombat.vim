@@ -41,15 +41,15 @@ hi Search        guifg=#242424 guibg=#cae682 gui=bold      ctermfg=234  ctermbg=
 hi SpellBad      guifg=#e5786d guibg=NONE    gui=undercurl ctermfg=167  ctermbg=NONE cterm=underline
 
 " Syntax highlighting
-hi Comment      guifg=#99968b gui=italic ctermfg=244       cterm=none
-hi Todo         guifg=#8f8f8f gui=italic ctermfg=245       cterm=none
-hi Constant     guifg=#e5786d gui=none   ctermfg=167       cterm=none
-hi String       guifg=#95e454 gui=none   ctermfg=154       cterm=none
-hi Identifier   guifg=#cae682 gui=none   ctermfg=186       cterm=none
-hi Function     guifg=#8ac6f2 gui=none   ctermfg=75        cterm=none
-hi Type         guifg=#cae682 gui=none   ctermfg=149       cterm=none
-hi Statement    guifg=#8ac6f2 gui=none   ctermfg=75        cterm=bold
-hi Keyword      guifg=#8ac6f2 gui=none   ctermfg=75        cterm=none
-hi PreProc      guifg=#e5786d gui=none   ctermfg=167       cterm=none
-hi Number       guifg=#e5786d gui=none   ctermfg=167       cterm=none
-hi Special      guifg=#e7f6da gui=none   ctermfg=7         cterm=none
+hi Comment      guifg=#99968b gui=italic ctermfg=244              cterm=none
+hi Todo         guifg=#8f8f8f gui=italic ctermfg=214 ctermbg=none cterm=bold,underline
+hi Constant     guifg=#e5786d gui=none   ctermfg=167              cterm=none
+hi String       guifg=#95e454 gui=none   ctermfg=154              cterm=none
+hi Identifier   guifg=#cae682 gui=none   ctermfg=186              cterm=none
+hi Function     guifg=#8ac6f2 gui=none   ctermfg=75               cterm=none
+hi Type         guifg=#cae682 gui=none   ctermfg=149              cterm=none
+hi Statement    guifg=#8ac6f2 gui=none   ctermfg=75               cterm=bold
+hi Keyword      guifg=#8ac6f2 gui=none   ctermfg=75               cterm=none
+hi PreProc      guifg=#e5786d gui=none   ctermfg=167              cterm=none
+hi Number       guifg=#e5786d gui=none   ctermfg=167              cterm=none
+hi Special      guifg=#e7f6da gui=none   ctermfg=7                cterm=none
