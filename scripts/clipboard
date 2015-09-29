@@ -1,7 +1,9 @@
 #!/bin/bash
 
 function usage () {
-    echo "Usage: $0 <copy/paste>"
+    echo "Usage: $0 <copy/paste/tee>"
+    echo ""
+    echo "tee will both copy to clipboard and print the result"
     exit 1
 }
 
@@ -25,7 +27,7 @@ function paste () {
     if type pbpaste &> /dev/null; then
         pbpaste
     elif type xclip &> /dev/null; then
-        xclip -sel clip -o <&0
+        xclip -sel clip -o
     else
         noclip
     fi
@@ -35,6 +37,9 @@ function paste () {
 if [ "$1" == "copy" ]; then
     copy
 elif [ "$1" == "paste" ]; then
+    paste
+elif [ "$1" == "tee" ]; then
+    copy
     paste
 else
     usage
