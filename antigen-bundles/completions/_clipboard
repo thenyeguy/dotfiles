@@ -1,0 +1,3 @@
+#compdef clipboard
+local -a options arguments
+_arguments ':mode:(copy paste tee)'

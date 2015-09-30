@@ -16,6 +16,7 @@ antigen bundle vi-mode
 
 antigen bundle zsh-users/zsh-completions src
 
+antigen bundle ~/.dotfiles/antigen-bundles/completions
 antigen theme ~/.dotfiles/antigen-bundles/themes agnoster-custom
 
 antigen apply
