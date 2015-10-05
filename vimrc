@@ -24,6 +24,7 @@ set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
 set wildmenu "Show cmd autocomplete on its own line
 set mouse=a "Enable mouse use
+set modeline "Enable setting options in file comments
 set backspace=indent,eol,start "Allows backspacing over tab and line breaks
 set completeopt-=preview "Don't open buffer with suggestion
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
