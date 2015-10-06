@@ -61,6 +61,9 @@ bindkey -a 'k' up-line-or-beginning-search
 bindkey -a 'j' down-line-or-beginning-search
 bindkey "^R" history-incremental-search-backward
 
+# Reduce timing delay on escape
+KEYTIMEOUT=1
+
 
 # ------------------------------------ #
 # Make Ctrl-Z reopen suspended process #
