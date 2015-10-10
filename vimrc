@@ -147,6 +147,7 @@ Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rking/ag.vim'
     let g:aghighlight = 1
+Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
 Plug 'tpope/vim-fugitive'
