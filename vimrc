@@ -139,6 +139,7 @@ Plug 'ctrlpvim/ctrlp.vim'
         \ },
     \ } " build index with git-ls-files in git repos (faster)
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
+Plug 'google/vim-searchindex'
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
