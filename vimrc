@@ -91,11 +91,12 @@ nnoremap <C-n> <C-i>
 vnoremap < <gv
 vnoremap > >gv
 
-" System copy/paste
-vnoremap <leader>y "+y
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
+" Improve copy/paste, primarily clipboard interaction
 nnoremap Y y$
+noremap  <leader>y "+y
+nnoremap <leader>Y "+y$
+nnoremap <leader>p :put +<CR>
+nnoremap <leader>P :put! +<CR>
 
 " Clear search highlight
 nnoremap <leader>n :nohlsearch<CR>
