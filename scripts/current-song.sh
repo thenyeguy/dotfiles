@@ -40,16 +40,6 @@ function checkNuvola () {
     fi
 }
 
-# Queries my custom last.fm server for state
-function checkLastFm () {
-    state=$(curl -s "localhost:9999/currentsong/playing")
-    if [ "$state" == "true" ]; then
-        artist=$(curl -s "localhost:9999/currentsong/artist")
-        track=$(curl -s "localhost:9999/currentsong/title")
-        displaySong "playing" "$artist" "$track"
-    fi
-}
-
 # Display the results
 function displaySong () {
     state=$1
@@ -67,21 +57,15 @@ function displaySong () {
     exit 0
 }
 
-# Check for last.fm server
-if [ "$(curl -s "localhost:9999/")" == "last.fm status server" ]; then
-    checkLastFm
-fi
-
 # If we have applescript, then we are on a Mac
 if type osascript &> /dev/null; then
     checkMacPlayer iTunes
     checkMacPlayer Spotify
-fi
-
+    exit 2
 # Check for Nuvola Player
-if type nuvolaplayer3ctl &> /dev/null; then
+elif type nuvolaplayer3ctl &> /dev/null; then
     checkNuvola
+    exit 2
+else
+    exit 1
 fi
-
-# Found no service
-exit 1
