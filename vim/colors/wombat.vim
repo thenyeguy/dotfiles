@@ -17,9 +17,9 @@ let colors_name = "wombat"
 
 " Vim >= 7.0 specific colors
 if version >= 700
-  hi CursorLine   guibg=#303030                                          ctermbg=236 cterm=none
-  hi CursorColumn guibg=#303030                                          ctermbg=236
-  hi ColorColumn  guibg=#303030                                          ctermbg=236
+  hi CursorLine                 guibg=#303030                            ctermbg=236 cterm=none
+  hi CursorColumn               guibg=#303030                            ctermbg=236
+  hi ColorColumn                guibg=#303030                            ctermbg=236
   hi MatchParen   guifg=#ffffd7 guibg=#87875f gui=bold      ctermfg=230  ctermbg=101 cterm=bold
   hi Pmenu        guifg=#ffffd7 guibg=#444444               ctermfg=230  ctermbg=238
   hi PmenuSel     guifg=#000000 guibg=#d7d787               ctermfg=0    ctermbg=186
@@ -38,7 +38,7 @@ hi Title          guifg=#ffffd7 guibg=#000000 gui=bold      ctermfg=230  ctermbg
 hi Visual                       guibg=#444444                            ctermbg=238
 hi SpecialKey     guifg=#585858 guibg=#1c1c1c               ctermfg=240  ctermbg=234
 hi Search         guifg=#1c1c1c guibg=#cae682 gui=bold      ctermfg=234  ctermbg=149 cterm=bold
-hi SpellBad       guifg=#e5786d               gui=undercurl ctermfg=167              cterm=underline
+hi SpellBad       guifg=#e5786d guibg=#1c1c1c gui=undercurl ctermfg=167  ctermbg=234 cterm=underline
 
 " Syntax highlighting
 hi Comment        guifg=#808080               gui=italic    ctermfg=244
