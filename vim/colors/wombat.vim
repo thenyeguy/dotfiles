@@ -42,7 +42,7 @@ hi SpellBad       guifg=#e5786d guibg=#1c1c1c gui=undercurl ctermfg=167  ctermbg
 
 " Syntax highlighting
 hi Comment        guifg=#808080               gui=italic    ctermfg=244
-hi Todo           guifg=#ffaf00               gui=italic    ctermfg=214              cterm=bold,underline
+hi Todo           guifg=#ffaf00 guibg=#1c1c1c gui=italic    ctermfg=214  ctermbg=234 cterm=bold,underline
 hi Constant       guifg=#d75f5f                             ctermfg=167
 hi String         guifg=#afff00                             ctermfg=154
 hi Identifier     guifg=#d7d787                             ctermfg=186              cterm=none

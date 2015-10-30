@@ -150,8 +150,10 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'rking/ag.vim'
     let g:aghighlight = 1
 Plug 'octol/vim-cpp-enhanced-highlight'
+    let g:cpp_class_scope_highlight = 1
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
+    highlight link cCustomClass Constant
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
     let g:ycm_filetype_blacklist = {
