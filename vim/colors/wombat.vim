@@ -29,6 +29,7 @@ endif
 hi Cursor                       guibg=#626262                            ctermbg=241
 hi Normal         guifg=#ffffd7 guibg=#1c1c1c               ctermfg=230  ctermbg=234
 hi NonText        guifg=#808080 guibg=#262626               ctermfg=244  ctermbg=235
+hi Special        guifg=#e7f6da                             ctermfg=7
 hi LineNr         guifg=#87875f guibg=#121212               ctermfg=101  ctermbg=233
 hi StatusLine     guifg=#ffffd7 guibg=#444444 gui=italic    ctermfg=230  ctermbg=238
 hi StatusLineNC   guifg=#87875f guibg=#444444               ctermfg=101  ctermbg=238
@@ -36,7 +37,7 @@ hi VertSplit      guifg=#444444 guibg=#444444               ctermfg=238  ctermbg
 hi Folded         guibg=#3a3a3a guifg=#a8a8a8               ctermbg=237  ctermfg=248
 hi Title          guifg=#ffffd7 guibg=#000000 gui=bold      ctermfg=230  ctermbg=238 cterm=bold
 hi Visual                       guibg=#444444                            ctermbg=238
-hi SpecialKey     guifg=#585858 guibg=#1c1c1c               ctermfg=240  ctermbg=234
+hi SpecialKey     guifg=#404040                             ctermfg=240
 hi Search         guifg=#1c1c1c guibg=#cae682 gui=bold      ctermfg=234  ctermbg=149 cterm=bold
 hi SpellBad       guifg=#e5786d guibg=#1c1c1c gui=undercurl ctermfg=167  ctermbg=234 cterm=underline
 
