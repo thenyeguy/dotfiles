@@ -45,7 +45,7 @@ hi Comment        guifg=#808080               gui=italic    ctermfg=244
 hi Todo           guifg=#ffaf00               gui=italic    ctermfg=214              cterm=bold,underline
 hi Constant       guifg=#d75f5f                             ctermfg=167
 hi String         guifg=#afff00                             ctermfg=154
-hi Identifier     guifg=#d7d787                             ctermfg=186
+hi Identifier     guifg=#d7d787                             ctermfg=186              cterm=none
 hi Function       guifg=#5fafff                             ctermfg=75
 hi Type           guifg=#afd75f                             ctermfg=149
 hi Statement      guifg=#5fafff                             ctermfg=75               cterm=bold
