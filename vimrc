@@ -147,10 +147,11 @@ Plug 'mhinz/vim-startify'
     let g:startify_change_to_vcs_root = 1
     let g:startify_bookmarks = [ '~/.dotfiles/vimrc', '~/.dotfiles/zshrc', '~/.dotfiles/tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'rking/ag.vim'
-    let g:aghighlight = 1
 Plug 'octol/vim-cpp-enhanced-highlight'
     let g:cpp_class_scope_highlight = 1
+Plug 'rking/ag.vim'
+    let g:aghighlight = 1
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
     highlight link cCustomClass Constant
@@ -164,6 +165,5 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
           \} " Ignore these filetypes
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
     highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 call plug#end()
