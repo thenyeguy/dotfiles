@@ -53,3 +53,8 @@ hi Keyword        guifg=#5fafff                             ctermfg=75
 hi PreProc        guifg=#d75f5f                             ctermfg=167
 hi Number         guifg=#d75f5f                             ctermfg=167
 
+" Diff colors
+hi DiffAdd                      guibg=#005f00                            ctermbg=22
+hi DiffDelete                   guibg=#5f0000                            ctermbg=52
+hi DiffChange                   guibg=#444444                            ctermbg=238
+hi DiffText                     guibg=#444444 cterm=bold,reverse         ctermbg=238 cterm=bold,reverse
