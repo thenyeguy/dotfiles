@@ -9,7 +9,6 @@ antigen use oh-my-zsh
 
 antigen bundle brew-cask
 antigen bundle colored-man
-antigen bundle git
 antigen bundle pip
 antigen bundle pylint
 antigen bundle vi-mode
@@ -93,8 +92,10 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 # --------------------------- #
 # Source better ls dir colors #
 # --------------------------- #
-eval `dircolors ~/.dotfiles/colors/solarized.dircolors`
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+if type dircolors > /dev/null; then
+    eval `dircolors ~/.dotfiles/colors/solarized.dircolors`
+    zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+fi
 
 
 # --------------------------- #
