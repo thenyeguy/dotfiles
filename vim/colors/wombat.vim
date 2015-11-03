@@ -44,15 +44,15 @@ hi SpellBad       guifg=#e5786d guibg=#1c1c1c gui=undercurl ctermfg=167  ctermbg
 " Syntax highlighting
 hi Comment        guifg=#808080               gui=italic    ctermfg=244
 hi Todo           guifg=#ffaf00 guibg=#1c1c1c gui=italic    ctermfg=214  ctermbg=234 cterm=bold,underline
-hi Constant       guifg=#d75f5f                             ctermfg=167
-hi String         guifg=#afff00                             ctermfg=154
-hi Identifier     guifg=#d7d787                             ctermfg=186              cterm=none
 hi Function       guifg=#5fafff                             ctermfg=75
-hi Type           guifg=#afd75f                             ctermfg=149
-hi Statement      guifg=#5fafff                             ctermfg=75               cterm=bold
 hi Keyword        guifg=#5fafff                             ctermfg=75
-hi PreProc        guifg=#d75f5f                             ctermfg=167
+hi Statement      guifg=#5fafff                             ctermfg=75               cterm=bold
+hi Identifier     guifg=#d7d787                             ctermfg=186              cterm=none
+hi Type           guifg=#afd75f                             ctermfg=149
+hi Constant       guifg=#d75f5f                             ctermfg=167
 hi Number         guifg=#d75f5f                             ctermfg=167
+hi PreProc        guifg=#d75f5f                             ctermfg=167
+hi String         guifg=#afff00                             ctermfg=154
 
 " Diff colors
 hi DiffAdd                      guibg=#005f00                            ctermbg=22
