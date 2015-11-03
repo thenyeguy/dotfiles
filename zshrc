@@ -94,6 +94,7 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 # Source better ls dir colors #
 # --------------------------- #
 eval `dircolors ~/.dotfiles/colors/solarized.dircolors`
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 
 # --------------------------- #
