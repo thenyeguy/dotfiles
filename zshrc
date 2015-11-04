@@ -83,6 +83,23 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 
+# ---------------------------------------- #
+# Create simpler wrapper around virtualenv #
+# ---------------------------------------- #
+venv () {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        echo "Deactivating virtualenv..."
+        deactivate
+    elif [ -e ./env/bin/activate ]; then
+        echo "Activating virtualenv..."
+        source ./env/bin/activate
+    else
+        echo "Creating new virtualenv..."
+        virtualenv env
+    fi
+}
+
+
 # ---------------------------- #
 # Fix SSH auth socket for tmux #
 # ---------------------------- #
