@@ -90,20 +90,19 @@ export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock;
 
 
 # --------------------------- #
+# SOURCE LOCAL CONFIGURATIONS #
+# --------------------------- #
+if [ -f ~/.zshrc.local ]; then
+    source ~/.zshrc.local
+fi
+
+
+# --------------------------- #
 # Source better ls dir colors #
 # --------------------------- #
 if type dircolors > /dev/null; then
     eval `dircolors ~/.dotfiles/colors/solarized.dircolors`
     zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-fi
-
-
-# --------------------------- #
-# SOURCE LOCAL CONFIGURATIONS #
-# --------------------------- #
-
-if [ -f ~/.zshrc.local ]; then
-    source ~/.zshrc.local
 fi
 
 
