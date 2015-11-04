@@ -70,7 +70,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=true
 # ------------------------------------ #
 # Make Ctrl-Z reopen suspended process #
 # ------------------------------------ #
-fancy-ctrl-z () {
+function fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
     BUFFER="fg"
     zle accept-line
@@ -86,7 +86,7 @@ bindkey '^Z' fancy-ctrl-z
 # ---------------------------------------- #
 # Create simpler wrapper around virtualenv #
 # ---------------------------------------- #
-venv () {
+function venv () {
     if [ -n "$VIRTUAL_ENV" ]; then
         echo "Deactivating virtualenv..."
         deactivate
