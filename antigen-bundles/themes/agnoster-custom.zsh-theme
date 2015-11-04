@@ -119,7 +119,7 @@ prompt_dir() {
 prompt_virtualenv() {
     local virtualenv_path="$VIRTUAL_ENV"
     if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-        prompt_segment blue black "(`basename $virtualenv_path`)"
+        prompt_segment black default "(`basename $virtualenv_path`)"
     fi
 }
 
@@ -157,8 +157,8 @@ build_prompt() {
     prompt_start
     prompt_time
     prompt_status
-    prompt_virtualenv
     prompt_context
+    prompt_virtualenv
     prompt_dir
     prompt_git
     prompt_end

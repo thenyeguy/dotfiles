@@ -63,6 +63,9 @@ bindkey "^R" history-incremental-search-backward
 # Reduce timing delay on escape
 KEYTIMEOUT=1
 
+# Disable virtualenv prompt overrides
+export VIRTUAL_ENV_DISABLE_PROMPT=true
+
 
 # ------------------------------------ #
 # Make Ctrl-Z reopen suspended process #
