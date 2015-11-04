@@ -145,6 +145,11 @@ Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
     let g:startify_change_to_vcs_root = 1
+    let g:startify_list_order = [
+          \   ['  Most recently used files in the current directory:'], 'dir',
+          \   ['  Most recently used files:'], 'files',
+          \   ['  My bookmarks:'], 'bookmarks'
+          \ ]
     let g:startify_bookmarks = [ '~/.dotfiles/vimrc', '~/.dotfiles/zshrc', '~/.dotfiles/tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'octol/vim-cpp-enhanced-highlight'
