@@ -129,6 +129,7 @@ Plug 'bling/vim-airline'
     let g:airline#extensions#whitespace#enabled = 0
 Plug 'blueyed/vim-diminactive'
 Plug 'briancollins/vim-jst'
+Plug 'cespare/vim-toml'
 Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_map = '<c-o>'
     let g:ctrlp_max_height = 30 " show more files
