@@ -156,7 +156,7 @@ Plug 'michaeljsmith/vim-indent-object'
 Plug 'octol/vim-cpp-enhanced-highlight'
     let g:cpp_class_scope_highlight = 1
 Plug 'rking/ag.vim'
-    let g:aghighlight = 1
+    let g:ag_highlight = 1
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
