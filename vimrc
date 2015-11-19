@@ -153,10 +153,6 @@ Plug 'mhinz/vim-startify'
           \ ]
     let g:startify_bookmarks = [ '~/.dotfiles/vimrc', '~/.dotfiles/zshrc', '~/.dotfiles/tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'octol/vim-cpp-enhanced-highlight'
-    highligh link cFunction NONE
-    highligh link cppSTLfunction NONE
-    let g:cpp_class_scope_highlight = 1
 Plug 'rking/ag.vim'
     let g:ag_highlight = 1
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
