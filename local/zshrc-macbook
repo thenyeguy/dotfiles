@@ -1,11 +1,4 @@
-# Shortcuts for common calls
-alias sml='rlwrap sml'
-alias matlab="/Applications/MATLAB.app/bin/matlab -nodesktop"
-alias vociconnect='sudo /usr/local/Cellar/vpnc/0.5.3r512_2/sbin/vpnc --dpd-idle 0 --local-port 0 voci'
-alias vocidisconnect='sudo /usr/local/Cellar/vpnc/0.5.3r512_2/sbin/vpnc-disconnect'
-
 # Add developer tools to path
-export PATH=/Applications/MATLAB.app/bin:$PATH
 export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
 export PATH=/Applications/androidndk:$PATH
