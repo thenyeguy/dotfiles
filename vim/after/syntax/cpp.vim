@@ -1,3 +1,9 @@
+" Highlight common types
+syntax keyword Type shared_ptr
+syntax keyword Type string
+syntax keyword Type unique_ptr
+syntax keyword Type vector
+
 " Define simple highlight groups
 syntax match cCustomParen "(" contains=cParen contains=cCppParen
 
