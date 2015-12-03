@@ -66,6 +66,15 @@ KEYTIMEOUT=1
 # Disable virtualenv prompt overrides
 export VIRTUAL_ENV_DISABLE_PROMPT=true
 
+# ------------------------------------------------------- #
+# Fancy operation for advancing a list.                   #
+#                                                         #
+# The list is kept in a file, and destructively modified. #
+# ------------------------------------------------------- #
+function advance () {
+    sed -i '1d' "$1"
+    head "$1"
+}
 
 # ------------------------------------ #
 # Make Ctrl-Z reopen suspended process #
