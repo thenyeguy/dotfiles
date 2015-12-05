@@ -22,13 +22,11 @@ set backspace=indent,eol,start "Allows backspacing over tab and line breaks
 set completeopt-=preview "Don't open buffer with suggestion
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 set encoding=utf-8 "Use utf-8 for text encoding
-set linebreak "Wrap at word boundaries
 set modeline "Enable setting options in file comments
 set mouse=a "Enable mouse use
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
-set textwidth=80 "Autowrap at 80 chars
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
 set wildmenu "Enable tab-complete menu
 
@@ -48,6 +46,12 @@ set hlsearch "Highlights current search
 set ignorecase "Search ignores case
 set incsearch "Searches as you type
 set smartcase "Doesn't ignore uppercase characters in search
+
+" Linewrapping
+set breakindent "Indent to the same level
+set linebreak "Wrap at word boundaries
+set showbreak=»- "Prefix wrapped text with this
+set textwidth=80 "Autowrap at 80 chars
 
 " Code folding
 set foldlevelstart=99 "Start unfolded
