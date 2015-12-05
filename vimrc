@@ -54,7 +54,7 @@ set showbreak=»- "Prefix wrapped text with this
 set textwidth=80 "Autowrap at 80 chars
 
 " Code folding
-set foldlevelstart=99 "Start unfolded
+set nofoldenable "Start with folds disabled
 set foldmethod=syntax "Use code syntax to fold
 
 " Highlight invisible characters: tabs and trailing whitespace
