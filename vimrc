@@ -9,55 +9,57 @@ set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 
 " Editor displays
 colorscheme wombat "Set colors
-set number "Line number gutter
-set ruler "Current line and column pos
 set cursorline "Highlight current line
-set showcmd "Info on current command
+set display=lastline "When last line wraps off screen, show as much as possible
 set laststatus=2 "Always show status bar w/ filename
+set number "Show line number gutter
+set ruler "Show current line and column
+set showcmd "Show current command being entered
 
 " General editor behavior
 syntax on "Parse code syntax
+set backspace=indent,eol,start "Allows backspacing over tab and line breaks
+set completeopt-=preview "Don't open buffer with suggestion
+set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 set encoding=utf-8 "Use utf-8 for text encoding
-set textwidth=80 "Autowrap at 80 chars
+set linebreak "Wrap at word boundaries
+set modeline "Enable setting options in file comments
+set mouse=a "Enable mouse use
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
-set wildmenu "Show cmd autocomplete on its own line
-set mouse=a "Enable mouse use
-set modeline "Enable setting options in file comments
-set backspace=indent,eol,start "Allows backspacing over tab and line breaks
-set completeopt-=preview "Don't open buffer with suggestion
+set textwidth=80 "Autowrap at 80 chars
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
-set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
+set wildmenu "Enable tab-complete menu
 
 " Editor formatting
-set formatoptions+=j "Remove leading comment chars on join
-set formatoptions+=r "Add comment leader on new line
-set formatoptions+=n "Intelligently format lists
-set linebreak "Wrap at words
 set autoindent "Copies indent from previous line
 set expandtab "Replace tabs with spaces
-set tabstop=4 "Tab stops are 4 wide
-set shiftwidth=4
+set shiftwidth=4 "Tab stops are 4 wide
+set tabstop=4
+
+set formatoptions+=j "Remove leading comment chars on join
+set formatoptions+=n "Intelligently format lists
+set formatoptions+=r "Add comment leader on new line
 
 " Search/replace settings
-set hlsearch "Highlights current search
-set incsearch "Searches as you type
-set ignorecase "Search ignores case
-set smartcase "Doesn't ignore uppercase characters in search
 set gdefault "Defaults to replacing ALL occurrences on a line
+set hlsearch "Highlights current search
+set ignorecase "Search ignores case
+set incsearch "Searches as you type
+set smartcase "Doesn't ignore uppercase characters in search
 
 " Code folding
-set foldmethod=syntax "Use code syntax to fold
 set foldlevelstart=99 "Start unfolded
+set foldmethod=syntax "Use code syntax to fold
 
 " Highlight invisible characters: tabs and trailing whitespace
 set list
 set listchars=tab:»-,trail:·
 
-" Persistent undo
-set undofile
+" Use persistent undo
 set undodir=$HOME/.vim/undo
+set undofile
 
 
 
