@@ -39,8 +39,9 @@ set tabstop=4
 set formatoptions+=j "Remove leading comment chars on join
 set formatoptions+=n "Intelligently format lists
 set formatoptions+=r "Add comment leader on new line
+set nojoinspaces "Do not put two spaces after punctuation on join
 
-" Search/replace settings
+" Search/replace settings.
 set gdefault "Defaults to replacing ALL occurrences on a line
 set hlsearch "Highlights current search
 set ignorecase "Search ignores case
