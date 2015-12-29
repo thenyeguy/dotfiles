@@ -21,15 +21,18 @@ antigen theme ~/.dotfiles/antigen-bundles/themes agnoster-custom
 antigen apply
 
 
-# ------------------ #
-# CONFIGURE COMMANDS #
-# ------------------ #
+# -------------------------- #
+# CONFIGURE GENERAL SETTINGS #
+# -------------------------- #
 
 # Set default editor
 export EDITOR="vim"
 
 # Add scripts to the path
 export PATH=~/.dotfiles/scripts:$PATH
+
+# Only autocomplete my own user
+zstyle ':completion:*' users root $USER
 
 # Fix typos
 alias sl='ls'
