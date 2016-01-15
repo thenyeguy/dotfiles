@@ -167,7 +167,7 @@ Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
     highlight link cCustomClass Constant
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
     let g:ycm_filetype_blacklist = {
           \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
           \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
@@ -175,6 +175,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
           \ 'tex':1
           \} " Ignore these filetypes
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
+    let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.5.0/src'
     highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 
 call plug#end()
