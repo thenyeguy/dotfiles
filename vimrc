@@ -176,6 +176,7 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-c
           \} " Ignore these filetypes
     let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
     let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.5.0/src'
+    nnoremap <leader>g :YcmCompleter GoTo<CR>
     highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 
 call plug#end()
