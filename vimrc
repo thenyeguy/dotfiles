@@ -19,7 +19,7 @@ set showcmd "Show current command being entered
 " General editor behavior
 syntax on "Parse code syntax
 set backspace=indent,eol,start "Allows backspacing over tab and line breaks
-set completeopt-=preview "Don't open buffer with suggestion
+set completeopt=menuone "Only show menu for completion (even for one item)
 set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 set encoding=utf-8 "Use utf-8 for text encoding
 set modeline "Enable setting options in file comments
