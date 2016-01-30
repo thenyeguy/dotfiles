@@ -2,6 +2,7 @@
 export PATH=/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH
 export PATH=/Applications/Android\ Studio.app/sdk/platform-tools:$PATH
 export PATH=/Applications/androidndk:$PATH
+export PATH=~/.cargo/bin:$PATH
 
 # Add tex and homebrew directory to path 
 # Homebrew is last to ensure its packages come first
