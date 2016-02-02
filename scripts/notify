@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function usage () {
+    echo "Usage: $0 <command> [<arg> <arg>...]"
+    exit 1
+}
+
+function nonotification () {
+    echo "No notification function found..."
+    exit 2
+}
+
+
+if [ -z "$1" ]; then
+    usage
+elif type notify-send &> /dev/null; then
+    eval $@
+    notify-send "Command complete" "\n >> $*"
+else
+    nonotification
+fi
