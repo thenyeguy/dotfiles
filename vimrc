@@ -133,6 +133,8 @@ let g:plug_window = 'belowright new'
 Plug 'blueyed/vim-diminactive'
 Plug 'briancollins/vim-jst'
 Plug 'cespare/vim-toml'
+Plug 'Chiel92/vim-autoformat'
+    noremap <leader>= :Autoformat<CR>
 Plug 'ctrlpvim/ctrlp.vim'
     let g:ctrlp_map = '<c-o>'
     let g:ctrlp_max_height = 30 " show more files
