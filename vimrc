@@ -167,6 +167,7 @@ Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
     highlight link cCustomClass Constant
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-liquid'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
     let g:ycm_filetype_blacklist = {
           \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
