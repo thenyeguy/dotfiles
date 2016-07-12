@@ -114,7 +114,8 @@ prompt_virtualenv() {
 prompt_status() {
     local symbols
     symbols=()
-    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$ACTIVE_JOBS_SYM"
+    njobs=$(jobs -l | wc -l | sed 's/ //g')
+    [[ $njobs -gt 0 ]] && symbols+="%{%F{cyan}%}$ACTIVE_JOBS_SYM$njobs"
     [[ $RETVAL -ne 0 && $RETVAL -ne 20 && $RETVAL -ne 146 ]] && \
         symbols+="%{%F{red}%}$BAD_EXIT_SYM"
     [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$ROOT_SYM"
