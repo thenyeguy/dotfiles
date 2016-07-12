@@ -3,35 +3,19 @@
 # My custom theme, based off the wonderful:
 #   agnoster's Theme - https://gist.github.com/3712874
 #
-# In order for this theme to render correctly, you will need a
-# [Powerline-patched font](https://gist.github.com/1595572).
-#
+# This uses some glyphs that may be specific to Source Code Pro.
 
 CURRENT_BG='NONE'
 
-if [[ -n $ZSH_NO_SYMBOLS ]]; then
-    SEGMENT_SEPARATOR=''
+SEGMENT_SEPARATOR=''
 
-    ACTIVE_JOBS_SYM='*'
-    BAD_EXIT_SYM='x'
-    ROOT_SYM='su'
+ACTIVE_JOBS_SYM='☼'
+BAD_EXIT_SYM='‼'
+ROOT_SYM=''
 
-    VCS_SYM=''
-    VCS_DETATCHED_SYM=''
-    VCS_UNSTAGED_SYM='*'
-    VCS_STAGED_SYM='+'
-else
-    SEGMENT_SEPARATOR=''
-
-    ACTIVE_JOBS_SYM=' '
-    BAD_EXIT_SYM=''
-    ROOT_SYM=''
-
-    VCS_SYM=''
-    VCS_DETATCHED_SYM=''
-    VCS_UNSTAGED_SYM=''
-    VCS_STAGED_SYM=' '
-fi
+VCS_SYM=''
+VCS_UNSTAGED_SYM='○'
+VCS_STAGED_SYM='◉'
 
 
 ### Segment drawing
@@ -88,7 +72,7 @@ prompt_git() {
     local ref dirty
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         dirty=$(parse_git_dirty)
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="$VCS_DETATCHED_SYM $(git show-ref --head -s --abbrev |head -n1 2> /dev/null)"
+        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="$(git show-ref --head -s --abbrev |head -n2 2> /dev/null)"
         if [[ -n $dirty ]]; then
             prompt_segment yellow black
         else
