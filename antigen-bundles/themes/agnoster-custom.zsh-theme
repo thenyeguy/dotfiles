@@ -131,7 +131,8 @@ prompt_status() {
     local symbols
     symbols=()
     [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$ACTIVE_JOBS_SYM"
-    [[ $RETVAL -ne 0 && $RETVAL -ne 20 ]] && symbols+="%{%F{red}%}$BAD_EXIT_SYM"
+    [[ $RETVAL -ne 0 && $RETVAL -ne 20 && $RETVAL -ne 146 ]] && \
+        symbols+="%{%F{red}%}$BAD_EXIT_SYM"
     [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$ROOT_SYM"
 
     [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
