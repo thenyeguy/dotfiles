@@ -34,7 +34,7 @@ if [ -n "$music" ]; then
     else
         color="$DIM"
     fi
-    icon=""
+    icon="♫"
     if (( ${#artist} > $MAXARTISTLENGTH+3 )); then
         artist="${artist:0:$MAXARTISTLENGTH}..."
     fi
@@ -67,5 +67,6 @@ if [ -n "$battery" ]; then
     fi
 
     # Display tmux segment
-    echo -en " #[fg=colour31]$SEP #[fg=$color] #[fg=colour81]$percent$remaining"
+    icon="☕"
+    echo -en " #[fg=colour31]$SEP #[fg=$color]$icon #[fg=colour81]$percent$remaining"
 fi
