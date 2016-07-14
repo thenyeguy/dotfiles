@@ -9,12 +9,6 @@ export PATH=~/.cargo/bin:$PATH
 export PATH=/usr/local/texlive/2010/bin/x86_64-darwin:$PATH
 export PATH=/usr/local/include:/usr/local/lib:/usr/local/bin:/usr/local/sbin:$PATH
 
-# Stuff for Festival - set environment variables
-export ESTDIR=/usr/local/festival/build/speech_tools
-export FESTVOXDIR=/usr/local/festival/build/festvox
-export FESTIVALDIR=/usr/local/festival/build/festival
-export SPTKDIR=/usr/local/festival/build/SPTK
-
 # Use GNU dircolors and ls if installed
 if type gdircolors > /dev/null && type gls > /dev/null; then
     alias dircolors='gdircolors'
