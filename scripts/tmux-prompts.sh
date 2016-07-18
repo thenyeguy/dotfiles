@@ -9,7 +9,7 @@ MAXMUSICLENGTH=45
 
 # Display constants
 SEP=""
-RED="colour196"
+RED="colour178"
 BRIGHT="colour81"
 DIM="colour31"
 
@@ -60,13 +60,12 @@ if [ -n "$battery" ]; then
     fi
 
     # Turn icon red at low battery
-    if (( ${percent%?} < 10 )); then
+    if (( ${percent%?} < 15 )); then
         color="$RED"
     else
         color="$BRIGHT"
     fi
 
     # Display tmux segment
-    icon="☕"
-    echo -en " #[fg=colour31]$SEP #[fg=$color]$icon #[fg=colour81]$percent$remaining"
+    echo -en " #[fg=$DIM]$SEP #[fg=$color]☼ #[fg=$BRIGHT]$percent$remaining"
 fi
