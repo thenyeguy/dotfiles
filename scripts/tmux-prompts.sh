@@ -26,15 +26,8 @@ dir=$(dirname $0)
 
 
 # Get current song
-music=$($dir/current-song.sh --tmux)
-if [ -n "$music" ]; then
-    IFS=$'\t' read state artist song <<< "$music"
-    if [ "$state" == "playing" ]; then
-        color="$BRIGHT"
-    else
-        color="$DIM"
-    fi
-    icon="♫"
+if (( $(find $HOME/.currentsong -mtime -5m | wc -w) > 0 )); then
+    IFS=$'\t' read artist song < $HOME/.currentsong
     if (( ${#artist} > $MAXARTISTLENGTH+3 )); then
         artist="${artist:0:$MAXARTISTLENGTH}..."
     fi
@@ -42,7 +35,7 @@ if [ -n "$music" ]; then
     if (( ${#text} > $MAXMUSICLENGTH+3 )); then
         text="${text:0:$MAXMUSICLENGTH}..."
     fi
-    echo -en " #[fg=$DIM]$SEP #[fg=$color]$icon $text"
+    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]♫ $text"
 fi
 
 
