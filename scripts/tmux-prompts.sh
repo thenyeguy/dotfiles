@@ -7,9 +7,11 @@ MINWIDTH=150
 MAXARTISTLENGTH=20
 MAXMUSICLENGTH=45
 
+# Battery lengths
+BATTERYLENGTH=15
+
 # Display constants
 SEP=""
-RED="colour178"
 BRIGHT="colour81"
 DIM="colour31"
 
@@ -44,21 +46,12 @@ battery=$($dir/battery-life.sh --tmux)
 if [ -n "$battery" ]; then
     IFS=$'\t' read state percent remaining <<< "$battery"
 
-    # Only display time remaining if we are on battery
-    if [[ "$state" == "discharging" && -n "$remaining" ]]; then
-        set -- $remaining
-        remaining=" ($1)"
-    else
-        remaining=""
-    fi
-
-    # Turn icon red at low battery
-    if (( ${percent%?} < 15 )); then
-        color="$RED"
-    else
-        color="$BRIGHT"
-    fi
+    # Calculate bar widths
+    barwidth=$(( ($percent + (50/$BATTERYLENGTH)) * $BATTERYLENGTH / 100 ))
+    spacewidth=$(( $BATTERYLENGTH - $barwidth ))
+    bar=$(perl -E "print '═' x $barwidth")
+    space=$(perl -E "print '┄' x $spacewidth")
 
     # Display tmux segment
-    echo -en " #[fg=$DIM]$SEP #[fg=$color]☼ #[fg=$BRIGHT]$percent$remaining"
+    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]╘${bar}${space}╛"
 fi
