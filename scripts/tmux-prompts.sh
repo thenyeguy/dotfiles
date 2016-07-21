@@ -50,8 +50,8 @@ if [ -n "$battery" ]; then
     barwidth=$(( ($percent + (50/$BATTERYLENGTH)) * $BATTERYLENGTH / 100 ))
     spacewidth=$(( $BATTERYLENGTH - $barwidth ))
     bar=$(perl -E "print '═' x $barwidth")
-    space=$(perl -E "print '┄' x $spacewidth")
+    space=$(perl -E "print '┈' x $spacewidth")
 
     # Display tmux segment
-    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]╘${bar}${space}╛"
+    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]╼${bar}${space}╾"
 fi
