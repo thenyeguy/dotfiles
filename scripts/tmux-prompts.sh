@@ -28,16 +28,21 @@ dir=$(dirname $0)
 
 
 # Get current song
-if (( $(find $HOME/.currentsong -mtime -5m | wc -w) > 0 )); then
-    IFS=$'\t' read artist song < $HOME/.currentsong
+if (( $(find $HOME/.currentsong -mtime -1m | wc -w) > 0 )); then
+    IFS=$'\t' read title artist state < $HOME/.currentsong
     if (( ${#artist} > $MAXARTISTLENGTH+3 )); then
         artist="${artist:0:$MAXARTISTLENGTH}..."
     fi
-    text="$artist - $song"
+    text="$artist - $title"
     if (( ${#text} > $MAXMUSICLENGTH+3 )); then
         text="${text:0:$MAXMUSICLENGTH}..."
     fi
-    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]♫ $text"
+    if [ "$state" == "paused" ]; then
+        color="$DIM"
+    else
+        color="$BRIGHT"
+    fi
+    echo -en " #[fg=$DIM]$SEP #[fg=$color]♫ $text"
 fi
 
 
