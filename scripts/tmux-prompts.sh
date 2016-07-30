@@ -4,8 +4,8 @@
 MINWIDTH=150
 
 # Music segment lengths
-MAXARTISTLENGTH=20
-MAXMUSICLENGTH=45
+MAXARTISTLENGTH=25
+MAXMUSICLENGTH=50
 
 # Battery lengths
 BATTERYLENGTH=15
@@ -29,13 +29,17 @@ dir=$(dirname $0)
 
 # Get current song
 if (( $(find $HOME/.currentsong -mtime -1m | wc -w) > 0 )); then
-    IFS=$'\t' read title artist state < $HOME/.currentsong
-    if (( ${#artist} > $MAXARTISTLENGTH+3 )); then
-        artist="${artist:0:$MAXARTISTLENGTH}..."
+    { read title; read artist; read state; } < $HOME/.currentsong
+    if [ -n "$artist" ]; then
+        if (( ${#artist} > $MAXARTISTLENGTH )); then
+            artist="${artist:0:$MAXARTISTLENGTH-3}..."
+        fi
+        text="$artist - $title"
+    else
+        text="$title"
     fi
-    text="$artist - $title"
-    if (( ${#text} > $MAXMUSICLENGTH+3 )); then
-        text="${text:0:$MAXMUSICLENGTH}..."
+    if (( ${#text} > $MAXMUSICLENGTH )); then
+        text="${text:0:$MAXMUSICLENGTH-3}..."
     fi
     if [ "$state" == "paused" ]; then
         color="$DIM"
