@@ -148,6 +148,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fidian/hexmode'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'google/vim-searchindex'
+Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
