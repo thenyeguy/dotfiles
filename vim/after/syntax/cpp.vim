@@ -2,6 +2,7 @@
 syntax keyword Type array
 syntax keyword Type deque
 syntax keyword Type forward_list
+syntax keyword Type function
 syntax keyword Type list
 syntax keyword Type map
 syntax keyword Type multimap
