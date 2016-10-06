@@ -120,6 +120,9 @@ command Q q
 command Wq wq
 command WQ wq
 
+" Shortcut for closing all open buffers.
+command Clear %bd | Startify
+
 
 
 " ---------------------------- "
