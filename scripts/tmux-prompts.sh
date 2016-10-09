@@ -28,8 +28,10 @@ dir=$(dirname $0)
 
 
 # Get current song
-if (( $(find $HOME/.currentsong -mtime -1m | wc -w) > 0 )); then
-    { read title; read artist; read state; } < $HOME/.currentsong
+music=$(nc -U $HOME/.currentsong)
+if [ -n "$music" ]; then
+    IFS=$'\t' read title artist state <<< "$music"
+
     if [ -n "$artist" ]; then
         if (( ${#artist} > $MAXARTISTLENGTH )); then
             artist="${artist:0:$MAXARTISTLENGTH-3}..."
