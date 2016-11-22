@@ -1,0 +1,68 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import re
+import shutil
+import sys
+import textwrap
+
+parser = argparse.ArgumentParser(
+    description=textwrap.dedent("""\
+      Rotates sets of files or directories with a shared base name.
+
+      For example, calling `rotate tmp` will rename files like so:
+          tmp   -> tmp.2
+          tmp.2 -> tmp.3
+          tmp.3 -> tmp.4
+      """).strip(),
+    formatter_class=argparse.RawDescriptionHelpFormatter)
+parser.add_argument("base", type=str, nargs="+", help="Base filename to rotate")
+parser.add_argument("-r", "--reverse", default=False, action="store_true",
+                    help="Rotate files backwards (i.e. tmp.2 -> tmp.1)")
+
+
+def get_extensions(base):
+    """Gets all extensions for basename `base`."""
+    basename = os.path.basename(base)
+    dirname = os.path.dirname(os.path.abspath(base))
+    regex = re.compile(basename + r"\.(\d+)")
+    extensions = []
+    for filename in os.listdir(dirname):
+        match = regex.match(filename)
+        if match:
+            extensions.append(int(match.group(1)))
+    return extensions
+
+
+def rotate(base, reverse=False):
+    """Rotates all files with the basename `base`."""
+    if reverse:
+      if os.path.isdir(base):
+          shutil.rmtree(base)
+      elif os.path.exists(base):
+          os.remove(base)
+      for extension in sorted(get_extensions(base)):
+          src = "{}.{}".format(base, extension)
+          dest = "{}.{}".format(base, extension-1) if extension > 1 else base
+          os.rename(src, dest)
+    else:
+      for extension in sorted(get_extensions(base), reverse=True):
+          src = "{}.{}".format(base, extension)
+          dest = "{}.{}".format(base, extension+1)
+          os.rename(src, dest)
+      if os.path.exists(base):
+          src = base
+          dest = "{}.{}".format(base, 1)
+          os.rename(src, dest)
+
+
+def main(args):
+    args = parser.parse_args()
+    for base in args.base:
+        rotate(base, args.reverse)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
