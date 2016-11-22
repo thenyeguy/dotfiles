@@ -12,6 +12,7 @@ colorscheme wombat "Set colors
 set cursorline "Highlight current line
 set display=lastline "When last line wraps off screen, show as much as possible
 set laststatus=2 "Always show status bar w/ filename
+set lazyredraw "Don't redraw while executing commands
 set number "Show line number gutter
 set ruler "Show current line and column
 set showcmd "Show current command being entered
