@@ -32,6 +32,11 @@ music=$(nc -U $HOME/.currentsong)
 if [ -n "$music" ]; then
     IFS=$'\t' read title artist state <<< "$music"
 
+    if [ -z "$state" ]; then
+      state="$artist"
+      artist=""
+    fi
+
     if [ -n "$artist" ]; then
         if (( ${#artist} > $MAXARTISTLENGTH )); then
             artist="${artist:0:$MAXARTISTLENGTH-3}..."
