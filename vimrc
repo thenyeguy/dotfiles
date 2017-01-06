@@ -126,6 +126,14 @@ command Clear %bd | Startify
 
 
 
+" ----------------------------- "
+" HANDLE MERGE CONFLICT MARKERS "
+" ----------------------------- "
+match Todo '\v^(\<|\=|\||\>){7}([^=].+)?$'
+nnoremap <silent> ]c /\v^(\<){7}([^=].+)?$<CR>
+nnoremap <silent> [c ?\v^(\<){7}([^=].+)\?$<CR>
+
+
 " ---------------------------- "
 " MANAGE OUR INSTALLED PLUGINS "
 " ---------------------------- "
