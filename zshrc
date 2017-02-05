@@ -7,8 +7,6 @@ source ~/.dotfiles/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
-antigen bundle brew-cask
-antigen bundle colored-man
 antigen bundle pip
 antigen bundle pylint
 antigen bundle vi-mode
