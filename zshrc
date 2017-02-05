@@ -51,15 +51,13 @@ alias callgrind="valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot='cd "./`git rev-parse --show-cdup`"'
 
 # Bindings for intelligent history search
-autoload -U up-line-or-beginning-search
-autoload -U down-line-or-beginning-search
-zle -N up-line-or-beginning-search
-zle -N down-line-or-beginning-search
 bindkey '^[[A' up-line-or-beginning-search
-bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
 bindkey -a 'k' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
 bindkey -a 'j' down-line-or-beginning-search
-bindkey "^R" history-incremental-search-backward
+
 
 # Reduce timing delay on escape
 KEYTIMEOUT=1
