@@ -18,7 +18,7 @@ elif type osascript &> /dev/null; then
     osascript -e "display notification \" >> $*\" with title \"Command complete\""
 elif type notify-send &> /dev/null; then
     eval $@
-    notify-send "Command complete" "\n >> $*"
+    notify-send --icon terminal "Command complete:" " >> $*"
 else
     nonotification
 fi
