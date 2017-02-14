@@ -13,6 +13,9 @@ function nonotification () {
 
 if [ -z "$1" ]; then
     usage
+elif type osascript &> /dev/null; then
+    eval $@
+    osascript -e "display notification \" >> $*\" with title \"Command complete\""
 elif type notify-send &> /dev/null; then
     eval $@
     notify-send "Command complete" "\n >> $*"
