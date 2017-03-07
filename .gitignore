@@ -1,5 +1,4 @@
 antigen-bundles/repos
-fish/fishd.*
 fish/fish_history
 vim/swp
 vim/plugged

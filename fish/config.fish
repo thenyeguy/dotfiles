@@ -19,3 +19,9 @@ alias mv 'mv -i'
 # Shortcuts to common calls
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
+
+
+# ------------- #
+# SET GREETING! #
+# ------------- #
+logo

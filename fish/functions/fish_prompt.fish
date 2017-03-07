@@ -42,23 +42,17 @@ end
 # - am I root
 function prompt_status
     set njobs (jobs -l | wc -l | sed 's/ //g')
-    if test $njobs -gt 0
-        new_segment black cyan $active_jobs_symbol
-    end
-    if test $__prompt_last_status -ne 0
-        new_segment black red $bad_exit_symbol
-    end
-    if test (id -u) -eq 0
-        new_segment black normal $root_symbol
-    end
+    test $njobs -gt 0; and new_segment black cyan $active_jobs_symbol
+    test $__prompt_last_status -ne 0; and new_segment black red $bad_exit_symbol
+    test (id -u) -eq 0; and new_segment black normal $root_symbol
 end
 
 function prompt_git
     if git rev-parse --is-inside-work-tree >/dev/null ^/dev/null
-        if test -z "(git status --porcelain)"
-            new_segment green black
-        else
+        if count (git status --short) >/dev/null
             new_segment yellow black
+        else
+            new_segment green black
         end
         printf (__fish_git_prompt "$vcs_symbol %s" | sed -e 's/[ ]*$//')
     end
