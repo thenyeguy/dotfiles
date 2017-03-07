@@ -21,6 +21,14 @@ alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
 
+# --------------------------- #
+# SOURCE LOCAL CONFIGURATIONS #
+# --------------------------- #
+if test -e "$local_fish_config_file"
+    source $local_fish_config_file
+end
+
+
 # ------------- #
 # SET GREETING! #
 # ------------- #

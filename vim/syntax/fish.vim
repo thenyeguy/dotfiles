@@ -23,13 +23,13 @@ syn match   fishSpecial	"\\\d\d\d\|\\[abcfnrtv\\']"
 syn region	fishSinglequote	start=+'+ skip=+\\'+ end=+'+
 " A bunch of useful fish keywords
 syn keyword	fishFunction	function
-syn keyword	fishStatement	. and bg begin bind break builtin	
+syn keyword	fishStatement	. alias and bg begin bind break builtin	
 syn keyword	fishStatement	case cd command commandline complete continue count
 syn keyword	fishStatement	dirh dirs end else eval exec exit
 syn keyword	fishStatement	fg fishd for function functions
 syn keyword	fishStatement	help if jobs mimedb nextd not or
 syn keyword	fishStatement	popd prevd pushd random return read
-syn keyword	fishStatement	set set_color switch tokenize
+syn keyword	fishStatement	set set_color source switch test tokenize
 syn keyword	fishStatement	ulimit umask while
 syn keyword	fishInputrc	backward-char backward-delete-char backward-kill-line backward-kill-word backward-word 
 syn keyword	fishInputrc	beginning-of-history beginning-of-line complete delete-char delete-line
