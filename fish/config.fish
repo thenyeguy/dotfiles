@@ -27,9 +27,3 @@ alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 if test -e "$local_fish_config_file"
     source $local_fish_config_file
 end
-
-
-# ------------- #
-# SET GREETING! #
-# ------------- #
-logo

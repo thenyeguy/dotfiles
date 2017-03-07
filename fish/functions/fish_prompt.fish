@@ -50,9 +50,9 @@ end
 function prompt_git
     if git rev-parse --is-inside-work-tree >/dev/null ^/dev/null
         if count (git status --short) >/dev/null
-            new_segment yellow black
+            new_segment yellow black ""
         else
-            new_segment green black
+            new_segment green black ""
         end
         printf (__fish_git_prompt "$vcs_symbol %s" | sed -e 's/[ ]*$//')
     end
