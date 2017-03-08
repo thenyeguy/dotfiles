@@ -9,7 +9,7 @@ fi
 
 # Enter our directory and initialize our submodules
 echo "Initializing git repos..."
-pushd $HOME/.dotfiles
+pushd $HOME/.dotfiles > /dev/null
 git submodule update --init --recursive
 echo " "
 
@@ -23,6 +23,7 @@ for dotfile in ${dotfiles[*]}
 do
     mv $HOME/.$dotfile $HOME/dotfiles.bak/$dotfile
 done
+mv $HOME/.config/fish $HOME/dotfiles.bak/fish
 echo " "
 
 
@@ -32,11 +33,12 @@ for dotfile in ${dotfiles[*]}
 do
     ln -s $HOME/.dotfiles/$dotfile $HOME/.$dotfile
 done
+ln -s $HOME/.dotfiles/fish $HOME/.config/fish
 echo " "
 
 
 # Create vim subdirectories
-mkdir $HOME/.vim/swp
-mkdir $HOME/.vim/undo
+mkdir -p $HOME/.vim/swp
+mkdir -p $HOME/.vim/undo
 
 echo "Install complete!"
