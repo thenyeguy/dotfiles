@@ -68,5 +68,5 @@ function fish_prompt
     new_segment black normal $USER@(hostname -s)
     new_segment blue black (prompt_pwd)
     prompt_git
-    new_segment normal normal "\n >> "
+    new_segment normal normal "  \n >> "
 end
