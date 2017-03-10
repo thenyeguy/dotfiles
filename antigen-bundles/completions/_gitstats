@@ -1,5 +1,0 @@
-#compdef gitstats
-local -a options arguments
-_arguments \
-    '--nofetch[-n do not fetch remote changes]' \
-    ':directory to check call on:_files'

@@ -1,9 +1,0 @@
-#compdef pretty
-local -a options arguments
-_arguments '1:mode:(none json table)'
-case $words[2] in
-    table)
-        compadd "$@" csv commas spaces tabs
-    ;;
-    *)
-esac
