@@ -23,7 +23,7 @@ syn match   fishSpecial	"\\\d\d\d\|\\[abcfnrtv\\']"
 syn region	fishSinglequote	start=+'+ skip=+\\'+ end=+'+
 " A bunch of useful fish keywords
 syn keyword	fishFunction	function
-syn keyword	fishStatement	. alias and bg begin bind break builtin	
+syn keyword	fishStatement	. abbr alias and bg begin bind break builtin	
 syn keyword	fishStatement	case cd command commandline complete continue count
 syn keyword	fishStatement	dirh dirs end else eval exec exit
 syn keyword	fishStatement	fg fishd for function functions

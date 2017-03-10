@@ -6,10 +6,10 @@ set -x EDITOR "vim"
 set -x PATH ~/.dotfiles/scripts $PATH
 
 # Fix typos
-alias sl 'ls'
-alias dc 'cd'
-alias mr 'rm -i'
-alias pc 'cp -i'
+abbr -a sl 'ls'
+abbr -a dc 'cd'
+abbr -a mr 'rm'
+abbr -a pc 'cp'
 
 # Make standard commands safer
 alias cp 'cp -i'
