@@ -24,7 +24,7 @@ alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 # --------------------------- #
 # Source better ls dir colors #
 # --------------------------- #
-if type dircolors > /dev/null
+if type dircolors > /dev/null ^/dev/null
     eval (dircolors -c ~/.dotfiles/colors/solarized.dircolors)
 end
 
