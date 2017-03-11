@@ -1,72 +1,53 @@
-# My custom theme, based on the wonderful zsh theme:
+# My custom theme, based on this wonderful zsh theme:
 #   agnoster's Theme - https://gist.github.com/3712874
 #
 # This uses some glyphs that may be specific to Source Code Pro.
 
-set segment_seperator 
-set active_jobs_symbol ☼
-set bad_exit_symbol ‼
-set root_symbol 
-
-set vcs_symbol 
-set __fish_git_prompt_describe_style "branch"
-set __fish_git_prompt_showdirtystate "true"
+# Configure fish git prompt
+set __fish_git_prompt_describe_style branch
+set __fish_git_prompt_showdirtystate true
 set __fish_git_prompt_char_dirtystate ○
 set __fish_git_prompt_char_stagedstate ◉
 
-
-### Draws a new segment
-# Usage: new_segment <background> <foreground> [contents]
-# Consecutive calls with the same background will merge segments together.
-function new_segment
-    set background $argv[1]
-    set foreground $argv[2]
-
-    if test \( "$background" != "$__prompt_current_background" \) \
-            -a \( -n $__prompt_current_background \)
-        printf " "
-        set_color -b $background $__prompt_current_background
-        printf "$segment_seperator"
-    end
-    set -g __prompt_current_background $background
-
-    set_color -b $background $foreground
-    if test (count $argv) -gt 2
-        printf " $argv[3..-1]"
-    end
-end
-
-# Status:
-# - are there background jobs?
-# - was there an error (that wasn't suspend)
-# - am I root
-function prompt_status
-    set njobs (jobs -l | wc -l | sed 's/ //g')
-    test $njobs -gt 0; and new_segment black cyan $active_jobs_symbol
-    test $__prompt_last_status -ne 0; and new_segment black red $bad_exit_symbol
-    test (id -u) -eq 0; and new_segment black normal $root_symbol
-end
-
-function prompt_git
-    if git rev-parse --is-inside-work-tree >/dev/null ^/dev/null
-        if count (git status --short) >/dev/null
-            new_segment yellow black ""
-        else
-            new_segment green black ""
-        end
-        printf (__fish_git_prompt "$vcs_symbol %s" | sed -e 's/[ ]*$//')
-    end
-end
-
 function fish_prompt
-    set -g __prompt_current_background ""
-    set -g __prompt_last_status "$status"
+    set last_status $status
+
+    set segment_seperator 
+    set active_jobs_symbol ☼
+    set bad_exit_symbol ‼
+    set vcs_symbol 
+
+    ### Draws a prompt segment
+    # Usage: segment <background> <foreground> [contents]
+    # Consecutive calls with the same background will merge segments together.
+    function segment -S -a background foreground
+        if test \( -n "$__prompt_current_background" \) -a \
+                \( "$background" != "$__prompt_current_background" \)
+            printf " "
+            set_color -b $background $__prompt_current_background
+            printf "$segment_seperator"
+        end
+        set __prompt_current_background $background
+
+        set_color -b $background $foreground
+        if test (count $argv) -gt 2
+            printf " $argv[3..-1]"
+        end
+    end
 
     printf "\n"
-    new_segment cyan black (date "+%l:%M%p" | sed 's/^ //')
-    prompt_status
-    new_segment black normal $USER@(hostname -s)
-    new_segment blue black (prompt_pwd)
-    prompt_git
-    new_segment normal normal "  \n >> "
+    segment cyan black (date "+%l:%M%p" | string trim)
+    test (jobs -l); and segment black cyan $active_jobs_symbol
+    test "$last_status" -ne 0; and segment black red $bad_exit_symbol
+    segment black normal $USER@(hostname -s)
+    segment blue black (prompt_pwd)
+    if silent git rev-parse --git-dir
+        if count (git status --short) >/dev/null
+            segment yellow black ""
+        else
+            segment green black ""
+        end
+        __fish_git_prompt "$vcs_symbol %s"
+    end
+    segment normal normal "  \n >> "
 end
