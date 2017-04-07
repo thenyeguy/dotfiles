@@ -17,6 +17,7 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 
 # Shortcuts to common calls
+abbr rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
