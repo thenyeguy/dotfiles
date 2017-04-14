@@ -1,5 +1,5 @@
 # -------------------------- #
-# CONFIGURE GENERAL SETTINGS #
+# Configure general settings #
 # -------------------------- #
 
 set -x EDITOR "vim"
@@ -31,7 +31,7 @@ end
 
 
 # --------------------------- #
-# SOURCE LOCAL CONFIGURATIONS #
+# Source local configurations #
 # --------------------------- #
 if test -e "$local_fish_config_file"
     source $local_fish_config_file
