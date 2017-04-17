@@ -1,7 +1,7 @@
 Michael Nye's Dotfiles
 ======================
 
-This is a repository for my unix configuration - primarily my vim and zsh
+This is a repository for my unix configuration - primarily my vim and fish
 configs. It includes an install script, which when run will initialize a
 checkout of the repository, and create symlinks in the home directory.
 

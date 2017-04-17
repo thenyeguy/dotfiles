@@ -33,6 +33,7 @@ for dotfile in ${dotfiles[*]}
 do
     ln -s $HOME/.dotfiles/$dotfile $HOME/.$dotfile
 done
+mkdir -p $HOME/.config
 ln -s $HOME/.dotfiles/fish $HOME/.config/fish
 echo " "
 
