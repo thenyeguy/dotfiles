@@ -22,6 +22,12 @@ alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
 
+# --------------------------------------------- #
+# Enable notification for long running commands #
+# --------------------------------------------- #
+source ~/.dotfiles/fish/functions/notify_on_command_complete.fish
+
+
 # --------------------------- #
 # Source better ls dir colors #
 # --------------------------- #
