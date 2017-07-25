@@ -1,0 +1,212 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+import argparse
+import collections
+import inspect
+import os
+import subprocess
+import sys
+import textwrap
+
+parser = argparse.ArgumentParser(
+    description=textwrap.dedent("""\
+      rgit is "recursive git".
+
+      It provides some wrappers around git commands that work with recursively
+      nested repositories.
+      """).strip(),
+    formatter_class=argparse.RawDescriptionHelpFormatter)
+parser.add_argument("--path", "-p", type=str, default=os.curdir,
+                    help="the root path to traverse (defaults to cwd)")
+subparsers = parser.add_subparsers()
+
+
+def Command(*flags):
+  """A decorator that creates a new subcommand."""
+
+  def wrap(cmd):
+    name = cmd.__name__
+    if name.endswith("_"):
+      name = name[:-1]
+    docs = inspect.getdoc(cmd)
+    help_ = docs.splitlines()[0]
+    sp = subparsers.add_parser(name, help=help_, description=docs)
+    sp.set_defaults(func=cmd)
+    for (flag, parameters) in flags:
+      if isinstance(flag, basestring):
+        sp.add_argument(flag, **parameters)
+      else:
+        sp.add_argument(*flag, **parameters)
+    return cmd
+
+  return wrap
+
+
+_ATTRS = {"bold": 1}
+_COLOR_CODES = {
+    "normal": 1,
+    "blue": 34,
+    "cyan": 36,
+    "green": 32,
+    "grey": 30,
+    "purple": 35,
+    "red": 31,
+    "yellow": 33,
+}
+
+
+def colored(s, color, attr=None):
+  """Annotates a string `s` with Unix coloring codes."""
+
+  def code(code):
+    return "\x1b[{}m".format(code)
+
+  codes = code(_COLOR_CODES[color])
+  if attr:
+    codes += code(_ATTRS[attr])
+  return codes + s + code(0)
+
+
+def indented(s, level=2):
+  """Indents every line in `s` with `level` spaces."""
+  indent = " " * level
+  return "\n".join(indent + line for line in s.splitlines())
+
+
+def traverse(args):
+  """Traverses the current working directory, yielding git repositories."""
+  # Looks for the root of the current git repo
+  curdir = os.path.abspath(args.path)
+  while curdir != "/":
+    if ".git" in os.listdir(curdir):
+      yield os.path.relpath(curdir)
+      break
+    curdir = os.path.dirname(curdir)
+
+  # Traverse the subtree
+  for cwd, dirs, _ in os.walk(args.path):
+    if cwd == args.path:
+      continue
+    if ".git" in dirs:
+      yield os.path.relpath(cwd)
+
+
+def run(path, cmd):
+  """Runs the provided `cmd` in `path`, returning its output."""
+  with open(os.devnull, "w") as devnull:
+    return subprocess.check_output(
+        cmd, cwd=os.path.abspath(path), stderr=devnull, shell=True)
+
+
+@Command()
+def branch(args):
+  """Lists all branches in nested repositories."""
+  for path in traverse(args):
+    print colored(path, "normal", "bold")
+    print run(path, "git branch --color")
+
+
+@Command()
+def list_(args):
+  """Lists all nested repositories."""
+  for path in traverse(args):
+    print path
+
+
+@Command(
+    ("commits", dict(type=int, nargs="?", default=5,
+                     help="The number of commits to show")),
+)
+def recent(args):
+  """Lists recent commits in nested repositories."""
+  for path in traverse(args):
+    print colored(path, "normal", "bold")
+    print indented(run(path, "git recent -{}".format(args.commits)))
+    print
+
+
+@Command()
+def pending(args):
+  """Lists all files that differ from master in their respective repo."""
+  for path in traverse(args):
+    try:
+      diff = run(path, "git diff --name-status master")
+    except subprocess.CalledProcessError:
+      continue
+
+    if diff:
+      branch = run(path, "git rev-parse --abbrev-ref HEAD").strip()
+      print colored("{} [{}]".format(path, branch), "normal", "bold")
+
+      added = []
+      modified = []
+      deleted = []
+      for change in diff.splitlines():
+        type_, file_ = change.split("\t", 1)
+        if type_ == "A":
+          added.append(file_)
+        elif type_ == "M":
+          modified.append(file_)
+        elif type_ == "D":
+          deleted.append(file_)
+      for file_ in added:
+        print colored("  + " + file_, "green")
+      for file_ in modified:
+        print colored("    " + file_, "yellow")
+      for file_ in deleted:
+        print colored("  - " + file_, "red")
+      print
+
+
+@Command(
+    (["-s", "--short"], dict(
+        default=False,
+        action="store_true",
+        help="Don't display individual changes.")),
+)
+def status(args):
+  """Shows nested repository statuses."""
+  for path in traverse(args):
+    branch = run(path, "git rev-parse --abbrev-ref HEAD").strip()
+    if branch == "HEAD":
+      branch = run(path, "git rev-parse HEAD")[:8]
+
+    staged = []
+    unstaged = []
+    untracked = []
+    for change in run(path, "git status --short").splitlines():
+      indicator = change[0:2]
+      filename = change[3:]
+      if indicator[0:2] == "??":
+        untracked.append(filename)
+        continue
+      if indicator[0] != " ":
+        staged.append(filename)
+      if indicator[1] != " ":
+        unstaged.append(filename)
+
+    branch_color = "yellow" if staged or unstaged or untracked else "green"
+    print colored("[{}]".format(branch), branch_color),
+    print colored(path, "normal", "bold")
+    if not args.short:
+      if staged:
+        for filename in staged:
+          print "    " + colored(filename, "green")
+      if unstaged:
+        for filename in unstaged:
+          print "    " + colored(filename, "red")
+      if untracked:
+        for filename in untracked:
+          print "    " + colored(filename, "purple")
+      if staged or unstaged or untracked:
+        print
+
+
+def main():
+  args = parser.parse_args()
+  args.func(args)
+
+
+if __name__ == "__main__":
+  main()
