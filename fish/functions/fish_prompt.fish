@@ -17,6 +17,12 @@ function fish_prompt
     set bad_exit_symbol ‼
     set vcs_symbol 
 
+    ### Starts a new, empty line.
+    # This will clear the entire line of any existing contents.
+    function new_line
+        printf "\n\033[K"
+    end
+
     ### Draws a prompt segment
     # Usage: segment <background> <foreground> [contents]
     # Consecutive calls with the same background will merge segments together.
@@ -35,7 +41,7 @@ function fish_prompt
         end
     end
 
-    printf "\n"
+    new_line
     segment cyan black (date "+%l:%M%p" | string trim)
     test (jobs -l); and segment black cyan $active_jobs_symbol
     test "$last_status" -ne 0; and segment black red $bad_exit_symbol
@@ -49,5 +55,18 @@ function fish_prompt
         end
         __fish_git_prompt "$vcs_symbol %s"
     end
-    segment normal normal "  \n >> "
+    segment normal normal ""
+
+    new_line
+    switch $fish_bind_mode
+        case default
+            set_color brred
+            printf " << "
+        case visual
+            set_color yellow
+            printf " << "
+        case "*"
+            printf " >> "
+    end
+    set_color normal
 end
