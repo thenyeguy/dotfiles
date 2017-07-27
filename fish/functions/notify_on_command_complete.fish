@@ -1,4 +1,4 @@
-set __notify_on_command_complete_min_ms 15000
+set __notify_on_command_complete_min_ms 45000
 
 function __notify_get_active_terminal_id \
         -d "Generates a unique ID for the active TMUX pane/terminal."
