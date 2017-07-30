@@ -157,6 +157,7 @@ Plug 'ctrlpvim/ctrlp.vim'
             \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
         \ },
     \ } " build index with git-ls-files in git repos (faster)
+Plug 'dag/vim-fish'
 Plug 'fidian/hexmode'
 Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'google/vim-searchindex'
