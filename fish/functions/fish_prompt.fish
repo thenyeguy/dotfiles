@@ -59,6 +59,15 @@ function __prompt_git_segment
     __fish_git_prompt " $__prompt_vcs_symbol %s"
 end
 
+### Draws a mercurial status segment
+function __prompt_mercurial_segment
+    set prompt (hg_prompt)
+    if test -z "$prompt"
+        return 1
+    end
+    __prompt_segment cyan black "$__prompt_vcs_symbol $prompt"
+end
+
 ### Draw the actual prompt.
 function fish_prompt
     set last_status $status
@@ -71,6 +80,7 @@ function fish_prompt
     __prompt_segment black normal $USER@(hostname -s)
     __prompt_segment blue black (prompt_pwd)
     __prompt_git_segment
+    __prompt_mercurial_segment
     __prompt_finish_segments
 
     __prompt_new_line
