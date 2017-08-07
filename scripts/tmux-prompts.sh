@@ -69,5 +69,5 @@ if [ -n "$battery" ]; then
     space=$(perl -E "print '┈' x $spacewidth")
 
     # Display tmux segment
-    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]╼${bar}${space}╾"
+    echo -en " #[fg=$DIM]$SEP #[fg=$BRIGHT]╼${space}${bar}╾"
 fi
