@@ -21,6 +21,10 @@ rsync.sh
 .ackrc
 .agignore
 
+# Ignore backup files
+*.orig
+*.bk
+
 ######################################
 # Created by http://www.gitignore.io #
 ######################################
