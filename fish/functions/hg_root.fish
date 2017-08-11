@@ -1,6 +1,4 @@
-# Adapted from builtin __fish_hg_prompt
-
-function hg_prompt -d "Prints mercurial VCS info for prompt"
+function hg_root -d "Finds the root of the current mercurial repository"
     # Find an hg directory above $PWD
     # without calling `hg root` because that's too slow
     set -l root
@@ -15,13 +13,7 @@ function hg_prompt -d "Prints mercurial VCS info for prompt"
     end
 
     if test -z "$root"
-        return 0
+        return 1
     end
-
-    # Read branch and bookmark
-    set -l branch (cat $root/branch ^/dev/null; or echo default)
-    if set -l bookmark (cat $root/bookmarks.current ^/dev/null)
-        set branch "$branch|$bookmark"
-    end
-    echo -n $branch
+    echo -n "$root"
 end

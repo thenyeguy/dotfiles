@@ -7,7 +7,8 @@
 set __prompt_segment_seperator 
 set __prompt_active_jobs_symbol ☼
 set __prompt_bad_exit_symbol ‼
-set __prompt_vcs_symbol 
+set __prompt_git_symbol 
+set __prompt_hg_symbol ☿
 
 # Configure fish git prompt
 set __fish_git_prompt_describe_style branch
@@ -56,16 +57,22 @@ function __prompt_git_segment
     else
         __prompt_segment green black
     end
-    __fish_git_prompt " $__prompt_vcs_symbol %s"
+    __fish_git_prompt " $__prompt_git_symbol %s"
 end
 
 ### Draws a mercurial status segment
 function __prompt_mercurial_segment
-    set prompt (hg_prompt)
-    if test -z "$prompt"
+    if silent not hg_root
         return 1
     end
-    __prompt_segment cyan black "$__prompt_vcs_symbol $prompt"
+
+    set prompt (env HGPLAIN=1 hg prompt)
+    if test $status -eq 0
+        __prompt_segment green black
+    else
+        __prompt_segment yellow black
+    end
+    echo -n " $__prompt_hg_symbol $prompt"
 end
 
 ### Draw the actual prompt.
