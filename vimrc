@@ -105,6 +105,7 @@ noremap  <leader>y "+y
 nnoremap <leader>Y "+y$
 nnoremap <leader>p :put +<CR>
 nnoremap <leader>P :put! +<CR>
+vnoremap <leader>p "+p
 
 " Clear search highlight
 nnoremap <leader>n :nohlsearch<CR>
