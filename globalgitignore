@@ -12,6 +12,7 @@
 *.gif
 
 # Other binary files
+*.prof
 *.pdf
 
 # Ignore a specific shell script I put in many repos
