@@ -123,7 +123,7 @@ command Wq wq
 command WQ wq
 
 " Shortcut for closing all open buffers.
-command Clear %bd | Startify
+command CloseAll %bd | Startify
 
 
 
