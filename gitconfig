@@ -29,7 +29,7 @@
 
 [alias]
     amend = commit --amend --no-edit
-    fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash $TARGET^; }; f"
+    fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET && GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash $TARGET^; }; f"
     fuck = reset --hard
     graph = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
     new = "!f() { git checkout -b $1 master; }; f"
