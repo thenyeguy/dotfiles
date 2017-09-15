@@ -20,11 +20,15 @@ def get_payload():
 
 
 def pretty_print(args):
-    print json.dumps(get_payload(), indent=args.indent)
+    print json.dumps(get_payload(), indent=args.indent, sort_keys=args.sort)
 
 parser_pretty = subparsers.add_parser("pretty", help="pretty print JSON")
 parser_pretty.add_argument("--indent", type=int, default=2,
                            help="indent level")
+parser_pretty.add_argument("--nosort", dest="sort", action="store_false")
+parser_pretty.add_argument("--sort", dest="sort", action="store_true",
+                           help="if set, sorts json keys")
+parser_pretty.set_defaults(sort=True)
 parser_pretty.set_defaults(func=pretty_print)
 
 
