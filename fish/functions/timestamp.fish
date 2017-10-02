@@ -1,6 +1,8 @@
 function timestamp
     if test (count $argv) -gt 0
-        date -d @$argv[1]
+        for ts in $argv
+            date -d @$ts
+        end
     else
         date +%s
     end
