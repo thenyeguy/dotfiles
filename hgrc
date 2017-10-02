@@ -8,6 +8,7 @@ mode = auto
 
 [extensions]
 color =
+histedit =
 prompt = ~/.dotfiles/scripts/hg_prompt.py
 strip =
 
