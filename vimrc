@@ -150,8 +150,6 @@ call plug#begin('~/.vim/plugged')
 let g:plug_window = 'belowright new'
 
 Plug 'blueyed/vim-diminactive'
-Plug 'briancollins/vim-jst'
-Plug 'cespare/vim-toml'
 Plug 'Chiel92/vim-autoformat'
     noremap <leader>= :Autoformat<CR>
 Plug 'ctrlpvim/ctrlp.vim'
@@ -164,11 +162,8 @@ Plug 'ctrlpvim/ctrlp.vim'
             \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
         \ },
     \ } " build index with git-ls-files in git repos (faster)
-Plug 'dag/vim-fish'
 Plug 'fidian/hexmode'
-Plug 'gerw/vim-latex-suite', { 'for': 'tex' }
 Plug 'google/vim-searchindex'
-Plug 'leafgarland/typescript-vim'
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
@@ -183,12 +178,11 @@ Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rking/ag.vim'
     let g:ag_highlight = 1
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'scrooloose/nerdcommenter'
     let g:NERDSpaceDelims = 1
     highlight link cCustomClass Constant
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-liquid'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
     let g:ycm_filetype_blacklist = {
           \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
