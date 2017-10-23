@@ -85,6 +85,12 @@ noremap gj j
 noremap k gk
 noremap gk k
 
+" Remap navigation keys
+noremap <Home> gg
+noremap <End> G
+noremap <PageUp> <C-u>
+noremap <PageDown> <C-d>
+
 " Shortcuts for split buffers
 noremap <C-j> <C-W><C-J>
 noremap <C-k> <C-W><C-K>
