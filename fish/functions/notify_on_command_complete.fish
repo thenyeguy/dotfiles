@@ -3,7 +3,7 @@ set __notify_on_command_complete_min_ms 45000
 function __notify_get_active_terminal_id \
         -d "Generates a unique ID for the active TMUX pane/terminal."
     if silent type xprop
-        echo -n (xprop -root _NET_ACTIVE_WINDOW | awk '{print $NF}')
+        echo -n (xprop -root _NET_ACTIVE_WINDOW ^/dev/null | awk '{print $NF}')
     end
 
     if test -n $TMUX
