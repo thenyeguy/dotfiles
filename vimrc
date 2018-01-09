@@ -4,7 +4,6 @@
 
 " Console settings
 set title "Sets terminal title
-set ttymouse=xterm2 "Fixes mouse drag in tmux
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 
 " Editor displays
@@ -14,8 +13,6 @@ set display=lastline "When last line wraps off screen, show as much as possible
 set laststatus=2 "Always show status bar w/ filename
 set lazyredraw "Don't redraw while executing commands
 set number "Show line number gutter
-set ruler "Show current line and column
-set showcmd "Show current command being entered
 
 " General editor behavior
 syntax on "Parse code syntax
@@ -40,6 +37,7 @@ set tabstop=4
 set formatoptions+=j "Remove leading comment chars on join
 set formatoptions+=n "Intelligently format lists
 set formatoptions+=r "Add comment leader on new line
+set formatlistpat=^\\s*[0-9*]\\+[\\]:.)}\\t\ ]\\s* "Configure list pattern
 set nojoinspaces "Do not put two spaces after punctuation on join
 
 " Search/replace settings.
@@ -97,7 +95,7 @@ noremap <C-k> <C-W><C-K>
 noremap <C-l> <C-W><C-L>
 noremap <C-h> <C-W><C-H>
 
-" Jumplist shortcuts
+" Remap shortcuts
 nnoremap <C-p> <C-o>
 nnoremap <C-n> <C-i>
 
@@ -162,7 +160,6 @@ Plug 'ctrlpvim/ctrlp.vim'
             \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
         \ },
     \ } " build index with git-ls-files in git repos (faster)
-Plug 'fidian/hexmode'
 Plug 'google/vim-searchindex'
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
@@ -172,9 +169,7 @@ Plug 'mhinz/vim-startify'
     let g:startify_list_order = [
           \   ['  Most recently used files in the current directory:'], 'dir',
           \   ['  Most recently used files:'], 'files',
-          \   ['  My bookmarks:'], 'bookmarks'
           \ ]
-    let g:startify_bookmarks = [ '~/.dotfiles/vimrc', '~/.dotfiles/zshrc', '~/.dotfiles/tmux.conf' ]
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rking/ag.vim'
     let g:ag_highlight = 1
