@@ -150,17 +150,25 @@ let g:plug_window = 'belowright new'
 Plug 'blueyed/vim-diminactive'
 Plug 'Chiel92/vim-autoformat'
     noremap <leader>= :Autoformat<CR>
-Plug 'ctrlpvim/ctrlp.vim'
-    let g:ctrlp_map = '<c-o>'
-    let g:ctrlp_max_height = 30 " show more files
-    let g:ctrlp_reuse_window  = 'startify' " closes vim extension startify
-    let g:ctrlp_working_path_mode = 'ra' " use vcs root or cwd
-    let g:ctrlp_user_command = {
-        \ 'types': {
-            \ 1: ['.git/', 'git ls-files --cached --others --exclude-standard %s']
-        \ },
-    \ } " build index with git-ls-files in git repos (faster)
 Plug 'google/vim-searchindex'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+    let g:fzf_colors =
+        \ { 'fg':      ['fg', 'Normal'],
+        \   'bg':      ['bg', 'Normal'],
+        \   'hl':      ['fg', 'Comment'],
+        \   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+        \   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+        \   'hl+':     ['fg', 'Comment'],
+        \   'info':    ['fg', 'PreProc'],
+        \   'border':  ['fg', 'Ignore'],
+        \   'prompt':  ['fg', 'Conditional'],
+        \   'pointer': ['fg', 'Exception'],
+        \   'marker':  ['fg', 'Keyword'],
+        \   'spinner': ['fg', 'Label'],
+        \   'header':  ['fg', 'Comment'] }
+    let g:fzf_layout = { 'down': '~50%' }
+    nnoremap <c-o> :Files<CR>
 Plug 'Lokaltog/vim-easymotion'
     highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
