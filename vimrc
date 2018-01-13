@@ -153,45 +153,12 @@ Plug 'google/vim-searchindex'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-    let g:fzf_colors =
-        \ { 'fg':      ['fg', 'Normal'],
-        \   'bg':      ['bg', 'Normal'],
-        \   'hl':      ['fg', 'Comment'],
-        \   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-        \   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-        \   'hl+':     ['fg', 'Comment'],
-        \   'info':    ['fg', 'PreProc'],
-        \   'border':  ['fg', 'Ignore'],
-        \   'prompt':  ['fg', 'Conditional'],
-        \   'pointer': ['fg', 'Exception'],
-        \   'marker':  ['fg', 'Keyword'],
-        \   'spinner': ['fg', 'Label'],
-        \   'header':  ['fg', 'Comment'] }
-    let g:fzf_layout = { 'down': '~50%' }
-    nnoremap <c-o> :Files<CR>
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
-    let g:startify_change_to_vcs_root = 1
-    let g:startify_custom_header = []
-    let g:startify_enable_unsafe = 1
-    let g:startify_list_order = [
-          \   ['  Most recently used files in the current directory:'], 'dir',
-          \   ['  Most recently used files:'], 'files',
-          \ ]
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
-    let g:ycm_filetype_blacklist = {
-          \ 'tagbar':1, 'qf':1, 'notes':1, 'markdown':1, 'unite':1,
-          \ 'text':1, 'vimwiki':1, 'pandoc':1, 'vim':1,
-          \ 'gitconfig':1, 'gitcommit':1, 'gitrebase':1,
-          \ 'tex':1
-          \} " Ignore these filetypes
-    let g:ycm_global_ycm_extra_conf = '~/.vim/ycm/ycm_extra_conf.py'
-    let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.5.0/src'
-    nnoremap <leader>g :YcmCompleter GoTo<CR>
-    highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
 
 call plug#end()
