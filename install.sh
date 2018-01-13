@@ -7,12 +7,6 @@ then
     git clone https://github.com/thenyeguy/dotfiles.git $HOME/.dotfiles
 fi
 
-# Enter our directory and initialize our submodules
-echo "Initializing git repos..."
-pushd $HOME/.dotfiles > /dev/null
-git submodule update --init --recursive
-echo " "
-
 # Define files to hardlink
 dotfiles=(bashrc gitconfig hgrc tmux.conf vim vimrc)
 
@@ -26,7 +20,6 @@ done
 mv $HOME/.config/fish $HOME/dotfiles.bak/fish
 echo " "
 
-
 # Create our hardlinks
 echo "Creating hardlinks in home directory..."
 for dotfile in ${dotfiles[*]}
@@ -36,7 +29,6 @@ done
 mkdir -p $HOME/.config
 ln -s $HOME/.dotfiles/fish $HOME/.config/fish
 echo " "
-
 
 # Create vim subdirectories
 mkdir -p $HOME/.vim/swp
