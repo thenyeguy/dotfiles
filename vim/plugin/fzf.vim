@@ -1,3 +1,4 @@
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_layout = { 'down': '~50%' }
 let g:fzf_colors = {
     \   'fg':      ['fg', 'Normal'],
