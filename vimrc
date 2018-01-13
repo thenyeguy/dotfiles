@@ -149,8 +149,6 @@ call plug#begin('~/.vim/plugged')
 let g:plug_window = 'belowright new'
 
 Plug 'blueyed/vim-diminactive'
-Plug 'Chiel92/vim-autoformat'
-    noremap <leader>= :Autoformat<CR>
 Plug 'google/vim-searchindex'
 Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -172,7 +170,6 @@ Plug 'junegunn/fzf.vim'
     let g:fzf_layout = { 'down': '~50%' }
     nnoremap <c-o> :Files<CR>
 Plug 'Lokaltog/vim-easymotion'
-    highlight link EasyMotionIncSearch String
 Plug 'mhinz/vim-startify'
     let g:startify_change_to_vcs_root = 1
     let g:startify_custom_header = []
@@ -182,8 +179,6 @@ Plug 'mhinz/vim-startify'
           \   ['  Most recently used files:'], 'files',
           \ ]
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'rking/ag.vim'
-    let g:ag_highlight = 1
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
