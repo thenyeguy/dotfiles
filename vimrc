@@ -183,10 +183,8 @@ Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'rking/ag.vim'
     let g:ag_highlight = 1
-Plug 'scrooloose/nerdcommenter'
-    let g:NERDSpaceDelims = 1
-    highlight link cCustomClass Constant
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
     let g:ycm_filetype_blacklist = {
