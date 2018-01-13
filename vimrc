@@ -12,6 +12,7 @@ set cursorline "Highlight current line
 set display=lastline "When last line wraps off screen, show as much as possible
 set laststatus=2 "Always show status bar w/ filename
 set lazyredraw "Don't redraw while executing commands
+set noshowmode "Don't show mode in command line
 set number "Show line number gutter
 
 " General editor behavior
