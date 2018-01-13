@@ -152,6 +152,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 'Chiel92/vim-autoformat'
     noremap <leader>= :Autoformat<CR>
 Plug 'google/vim-searchindex'
+Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
     let g:fzf_colors =
@@ -197,12 +198,5 @@ Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-c
     let g:ycm_rust_src_path = '/usr/local/rust/rustc-1.5.0/src'
     nnoremap <leader>g :YcmCompleter GoTo<CR>
     highlight YcmErrorSection guifg=#f6f3e8 guibg=#3f0000 ctermfg=230 ctermbg=9
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-    let g:airline_powerline_fonts = 1
-    let g:airline_symbols = {}
-    let g:airline_symbols.maxlinenr = ''
-    let g:airline_theme = 'powerlineish'
-    let g:airline#extensions#whitespace#enabled = 0
 
 call plug#end()
