@@ -151,7 +151,7 @@ let g:plug_window = 'belowright new'
 Plug 'blueyed/vim-diminactive'
 Plug 'google/vim-searchindex'
 Plug 'itchyny/lightline.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
