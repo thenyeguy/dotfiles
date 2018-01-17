@@ -11,6 +11,7 @@ let g:lightline = {
     \ }
 
 function! CustomFileInfo()
+    let l:filename = fnamemodify(expand("%"), ":~:.")
     return (&readonly ? ' ' : '') .
-         \ ('' != expand('%') ? expand('%') : '[No Name]')
+         \ ('' != l:filename ? l:filename : '[No Name]')
 endfunction
