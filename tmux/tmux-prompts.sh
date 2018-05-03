@@ -24,7 +24,7 @@ dir=$(dirname $0)
 
 
 # Get battery output
-battery=$($dir/battery-life.sh --tmux)
+battery=$($dir/battery-life.sh)
 if [ -n "$battery" ]; then
     IFS=$'\t' read state percent remaining <<< "$battery"
 

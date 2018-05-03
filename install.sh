@@ -8,7 +8,7 @@ then
 fi
 
 # Define files to hardlink
-dotfiles=(bashrc gitconfig hgrc tmux.conf vim vimrc)
+dotfiles=(bashrc gitconfig hgrc vim vimrc)
 
 # Backup old links
 echo "Backing up old data to dotfiles.bak..."
@@ -18,6 +18,7 @@ do
     mv $HOME/.$dotfile $HOME/dotfiles.bak/$dotfile
 done
 mv $HOME/.config/fish $HOME/dotfiles.bak/fish
+mv $HOME/.tmux.conf $HOME/dotfiles.bak/tmux.conf
 echo " "
 
 # Create our hardlinks
@@ -27,6 +28,7 @@ do
     ln -s $HOME/.dotfiles/$dotfile $HOME/.$dotfile
 done
 mkdir -p $HOME/.config
+ln -s $HOME/.dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/.dotfiles/fish $HOME/.config/fish
 echo " "
 
