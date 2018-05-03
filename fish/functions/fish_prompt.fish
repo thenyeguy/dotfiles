@@ -66,13 +66,7 @@ function __prompt_mercurial_segment
         return 1
     end
 
-    set prompt (env HGPLAIN=1 hg prompt)
-    if test $status -eq 0
-        __prompt_segment green black
-    else
-        __prompt_segment yellow black
-    end
-    echo -n " $__prompt_hg_symbol $prompt"
+    __prompt_segment brmagenta black "$__prompt_hg_symbol "(hg_prompt)
 end
 
 ### Draw the actual prompt.
