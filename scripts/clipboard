@@ -13,10 +13,18 @@ function noclip () {
     exit 2
 }
 
+function fix_tmux_on_linux () {
+    # This is a hack that happens to fix copy/paste on the linux machines I use
+    if [ -n "$TMUX" ] && [ -z "$DISPLAY" ]; then
+        export DISPLAY=:0
+    fi
+}
+
 function copy () {
     if type pbcopy &> /dev/null; then
         pbcopy <&0
     elif type xclip &> /dev/null; then
+        fix_tmux_on_linux
         xclip -sel clip -i <&0
     else
         noclip
@@ -27,6 +35,7 @@ function paste () {
     if type pbpaste &> /dev/null; then
         pbpaste
     elif type xclip &> /dev/null; then
+        fix_tmux_on_linux
         xclip -sel clip -o
     else
         noclip
