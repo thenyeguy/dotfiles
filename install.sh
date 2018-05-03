@@ -8,7 +8,7 @@ then
 fi
 
 # Define files to hardlink
-dotfiles=(bashrc gitconfig hgrc vim vimrc)
+dotfiles=(bashrc gitconfig hgrc vim)
 
 # Backup old links
 echo "Backing up old data to dotfiles.bak..."
