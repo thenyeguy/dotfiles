@@ -118,12 +118,9 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-bin/
-build/
 develop-eggs/
 dist/
 eggs/
-lib/
 lib64/
 parts/
 sdist/
@@ -195,12 +192,10 @@ slprj/
 *.class
 
 # Generated files
-bin/
 gen/
 
 # Gradle files
 .gradle/
-build/
 
 # Local configuration file (sdk path, etc)
 local.properties
