@@ -6,7 +6,7 @@ function __notify_get_active_terminal_id \
         echo -n (xprop -root _NET_ACTIVE_WINDOW ^/dev/null | awk '{print $NF}')
     end
 
-    if test -n $TMUX
+    if test -n "$TMUX"
         set windowid (tmux list-windows -F '#{window_active} #{window_id}' | \
                       awk '{if ($1~/^1/) print $2}')
         set paneid (tmux list-panes -F '#{pane_active} #{pane_pid}' | \
