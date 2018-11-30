@@ -6,7 +6,10 @@ let g:lightline = {
     \     'left': [ ['mode', 'paste'], ['fileinfo', 'modified'] ],
     \     'right': [ ['percent', 'lineinfo'], ['spell', 'filetype'] ],
     \   },
-    \   'inactive': { 'right': [ [], ['lineinfo'] ] },
+    \   'inactive': {
+    \     'left': [ ['fileinfo'] ],
+    \     'right': [ [], ['lineinfo'] ]
+    \   },
     \   'component_function': { 'fileinfo': 'CustomFileInfo' },
     \ }
 
