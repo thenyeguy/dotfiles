@@ -8,7 +8,6 @@ set __prompt_segment_seperator 
 set __prompt_active_jobs_symbol ☼
 set __prompt_bad_exit_symbol ‼
 set __prompt_git_symbol 
-set __prompt_hg_symbol ☿
 
 # Configure fish git prompt
 set __fish_git_prompt_describe_style branch
@@ -60,15 +59,6 @@ function __prompt_git_segment
     __fish_git_prompt " $__prompt_git_symbol %s"
 end
 
-### Draws a mercurial status segment
-function __prompt_mercurial_segment
-    if silent not hg_root
-        return 1
-    end
-
-    __prompt_segment brmagenta black "$__prompt_hg_symbol "(hg_prompt)
-end
-
 ### Draw the actual prompt.
 function fish_prompt
     set last_status $status
@@ -81,7 +71,6 @@ function fish_prompt
     __prompt_segment black normal $USER@(hostname -s)
     __prompt_segment blue black (prompt_pwd)
     __prompt_git_segment
-    __prompt_mercurial_segment
     __prompt_finish_segments
 
     __prompt_new_line
