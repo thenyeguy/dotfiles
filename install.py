@@ -6,24 +6,36 @@ import os
 import shutil
 import sys
 
-class SectionLogger:
+class LogSection:
     """ A utility for creating log sections. """
 
     _is_first_section = True
 
     def __init__(self, header):
         self.header = header
+        self.stdout = sys.stdout
 
-    def log(self, *args):
+    def __enter__(self):
+        sys.stdout = self
+
+    def __exit__(self, type, value, traceback):
+        sys.stdout = self.stdout
+
+    def _write_header(self):
         if self.header:
-            if SectionLogger._is_first_section:
-                SectionLogger._is_first_section = False
+            if LogSection._is_first_section:
+                LogSection._is_first_section = False
             else:
-                print()
-            print("-"*40)
-            print(self.header)
+                self.stdout.write("\n")
+
+            self.stdout.write(self.header)
+            self.stdout.write("\n")
             self.header = None
-        print(*args)
+
+    def write(self, *args):
+        self._write_header()
+        self.stdout.write("    ")
+        self.stdout.write(*args)
 
 def expand(path):
     """ Expands the provided path to an absolute path. """
@@ -38,55 +50,45 @@ def expanded_paths(paths):
             continue
         yield path
 
-def print_header(s):
-    """ Prints a header section to stdout. """
-    try:
-        if print_header.called:
-            print()
-    except AttributeError:
-        print_header.called = True
-    print("-"*40)
-    print(s)
-
 def clean(paths):
     """ Cleans up broken symlinks in the provided directories. """
-    logger = SectionLogger("Cleaning up dead symlinks...")
-    for path in expanded_paths(paths):
-        for item in sorted(os.listdir(path)):
-            item = os.path.join(path, item)
-            if os.path.islink(item) and not os.path.exists(item):
-                logger.log("Removing symlink:", item)
-                os.remove(item)
+    with LogSection("Cleaning up dead symlinks..."):
+        for path in expanded_paths(paths):
+            for item in sorted(os.listdir(path)):
+                item = os.path.join(path, item)
+                if os.path.islink(item) and not os.path.exists(item):
+                    print("Removing symlink:", item)
+                    os.remove(item)
 
-def backup(path, logger):
+def backup(path):
     """ If the path exists, backs it up. """
     dst = path + ".bak"
-    logger.log("{} -> {}".format(path, dst))
+    print("{} -> {}".format(path, dst))
     shutil.move(path, path + ".bak")
 
 def link(paths):
     """ Symlinks the provided paths. """
-    logger = SectionLogger("Setting up symlinks...")
-    dotfile_dir = os.path.dirname(os.path.realpath(__file__))
-    for src, dst in paths.iteritems():
-        src = expand(os.path.join(dotfile_dir, src))
-        dst = expand(dst)
-        if os.path.exists(dst):
-            if os.path.islink(dst):
-                os.remove(dst)
-            else:
-                backup(logger, dst)
-        logger.log("{} -> {}".format(src, dst))
-        os.symlink(src, dst)
+    with LogSection("Setting up symlinks..."):
+        dotfile_dir = os.path.dirname(os.path.realpath(__file__))
+        for src, dst in paths.iteritems():
+            src = expand(os.path.join(dotfile_dir, src))
+            dst = expand(dst)
+            if os.path.exists(dst):
+                if os.path.islink(dst):
+                    os.remove(dst)
+                else:
+                    backup(dst)
+            print("{} -> {}".format(src, dst))
+            os.symlink(src, dst)
 
 def create(paths):
     """ Creates the provided paths if they don't exist. """
-    logger = SectionLogger("Creating directories...")
-    for path in paths:
-        path = expand(path)
-        if not os.path.exists(path):
-            logger.log("Creating:", path)
-            os.makedirs(path)
+    with LogSection("Creating directories..."):
+        for path in paths:
+            path = expand(path)
+            if not os.path.exists(path):
+                print("Creating:", path)
+                os.makedirs(path)
 
 def main(args):
     clean(["~", "~/.config"])
