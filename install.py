@@ -43,7 +43,7 @@ def call(cmd):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
     for line in proc.stdout:
-        print(line)
+        print(line.rstrip())
 
 def expand(path):
     """ Expands the provided path to an absolute path. """
@@ -58,15 +58,20 @@ def expanded_paths(paths):
             continue
         yield path
 
-def clean(paths):
-    """ Cleans up broken symlinks in the provided directories. """
-    with LogSection("Cleaning up dead symlinks..."):
-        for path in expanded_paths(paths):
+def clean(symlink_dirs):
+    """ Cleans up anything from older dotfile installs. """
+    with LogSection("Cleaning up..."):
+        for path in expanded_paths(symlink_dirs):
             for item in sorted(os.listdir(path)):
                 item = os.path.join(path, item)
                 if os.path.islink(item) and not os.path.exists(item):
                     print("Removing symlink:", item)
                     os.remove(item)
+
+        fzf_dir = expand("~/.fzf")
+        if os.path.exists(fzf_dir):
+            print("Removing: ~/.fzf")
+            shutil.rmtree(fzf_dir)
 
 def backup(path):
     """ If the path exists, backs it up. """
@@ -103,9 +108,17 @@ def init_submodules():
     with LogSection("Initializing submodules..."):
         call(["git", "submodule", "update", "--init"])
 
+def init_fzf():
+    """ Initializes fzf. """
+    with LogSection("Initializing fzf..."):
+        dotfile_dir = os.path.dirname(os.path.realpath(__file__))
+        install_script = os.path.join(dotfile_dir, "fzf", "install")
+        call([install_script, "--bin"])
+
 def main(args):
     clean(["~", "~/.config"])
     init_submodules()
+    init_fzf()
     link({
         "bashrc": "~/.bashrc",
         "fish": "~/.config/fish",

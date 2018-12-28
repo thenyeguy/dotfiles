@@ -3,7 +3,7 @@
 # -------------------------- #
 
 set -x EDITOR "vim"
-set -x PATH ~/.dotfiles/scripts $PATH
+set -x PATH ~/.dotfiles/fzf/bin ~/.dotfiles/scripts $PATH
 
 # Fix typos
 abbr -a sl 'ls'
@@ -20,6 +20,13 @@ alias mv 'mv -i'
 abbr rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
+
+
+# ---------- #
+# Source fzf #
+# ---------- #
+source ~/.dotfiles/fzf/shell/key-bindings.fish
+set -g FZF_TMUX 1
 
 
 # --------------------------- #
