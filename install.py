@@ -4,6 +4,7 @@ from __future__ import print_function
 
 import os
 import shutil
+import subprocess
 import sys
 
 class LogSection:
@@ -36,6 +37,13 @@ class LogSection:
         self._write_header()
         self.stdout.write("    ")
         self.stdout.write(*args)
+
+def call(cmd):
+    """ Calls the provided shell command. """
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE)
+    for line in proc.stdout:
+        print(line)
 
 def expand(path):
     """ Expands the provided path to an absolute path. """
@@ -90,8 +98,14 @@ def create(paths):
                 print("Creating:", path)
                 os.makedirs(path)
 
+def init_submodules():
+    """ Initializes git submodules. """
+    with LogSection("Initializing submodules..."):
+        call(["git", "submodule", "update", "--init"])
+
 def main(args):
     clean(["~", "~/.config"])
+    init_submodules()
     link({
         "bashrc": "~/.bashrc",
         "fish": "~/.config/fish",
