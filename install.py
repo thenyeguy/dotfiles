@@ -83,7 +83,7 @@ def link(paths):
     """ Symlinks the provided paths. """
     with LogSection("Setting up symlinks..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
-        for src, dst in paths.iteritems():
+        for src, dst in sorted(paths.iteritems(), key=lambda (k,v): k):
             src = expand(os.path.join(dotfile_dir, src))
             dst = expand(dst)
             if os.path.exists(dst):
