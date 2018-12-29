@@ -37,6 +37,11 @@ let s:p = {
     \       'right': [ [s:darkred, s:white], [s:white, s:red] ],
     \       'middle': [ [s:gray2, s:darkred] ],
     \   },
+    \   'terminal': {
+    \       'left': [ [s:gray1, s:gray3, 'bold'], [s:gray3, s:gray1] ],
+    \       'right': [ [s:black, s:black], [s:black, s:black] ],
+    \       'middle': [ [s:black, s:black] ],
+    \   }
     \ }
 
 let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:p)

@@ -3,7 +3,7 @@ let g:lightline = {
     \   'separator':    { 'left': '', 'right': '' },
     \   'subseparator': { 'left': '', 'right': '' },
     \   'active':   {
-    \     'left': [ ['mode', 'paste'], ['fileinfo', 'modified'] ],
+    \     'left': [ ['mode', 'paste'], ['fileinfo'] ],
     \     'right': [ ['percent', 'lineinfo'], ['spell', 'filetype'] ],
     \   },
     \   'inactive': {
@@ -14,19 +14,29 @@ let g:lightline = {
     \ }
 
 function! CustomFileInfo()
-    " Build a trimmed version of the file that fits in the current window
-    let l:max_width = winwidth(0) * 0.5
-    let l:filename = ""
-    for s in reverse(split(fnamemodify(expand("%"), ":~:."), "/"))
-        let l:extended_filename = s . "/" . l:filename
-        if strlen(l:filename) > l:max_width
-            let l:filename = ".../" . l:filename
-            break
-        end
-        let l:filename = l:extended_filename
-    endfor
-    let l:filename = l:filename[:-2]  " strip trailing / from join
+    if &filetype == "fzf"
+        return "fzf"
+    en
 
-    return (&readonly ? ' ' : '') .
-         \ ('' != l:filename ? l:filename : '[No Name]')
+    let l:filename = expand("%")
+    if l:filename == ""
+        return ""
+    else
+        " Build a trimmed version of the file that fits in the current window
+        let l:max_width = winwidth(0) * 0.5
+        let l:shortened_filename = ""
+        for s in reverse(split(fnamemodify(l:filename, ":~:."), "/"))
+            let l:shortened_filename = s . "/" . l:shortened_filename
+            if strlen(l:filename) > l:max_width
+                let l:shortened_filename = ".../" . l:shortened_filename
+                break
+            end
+        endfor
+        let l:filename = l:shortened_filename[:-2]
+    end
+
+    let l:readonly = &readonly ? " " : ""
+    let l:modified = &modified ? "  +" : ""
+
+    return l:readonly . l:filename . l:modified
 endfunction
