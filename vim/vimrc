@@ -146,7 +146,7 @@ nnoremap <silent> [c ?\v^(\<){7}([^=].+)\?$<CR>
 
 " Configure plugged
 call plug#begin('~/.vim/plugged')
-let g:plug_window = 'belowright new'
+let g:plug_window = 'enew'
 
 Plug '~/.dotfiles/fzf'
 Plug 'blueyed/vim-diminactive'
