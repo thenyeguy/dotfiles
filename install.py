@@ -122,7 +122,7 @@ def main(args):
     link({
         "bashrc": "~/.bashrc",
         "fish": "~/.config/fish",
-        "gitconfig": "~/.gitconfig",
+        "git/gitconfig": "~/.gitconfig",
         "hgrc": "~/.hgrc",
         "tmux/tmux.conf": "~/.tmux.conf",
         "vim": "~/.vim",

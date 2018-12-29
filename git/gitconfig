@@ -6,7 +6,7 @@
 
 [core]
     editor = vim
-    excludesfile = ~/.dotfiles/gitignore
+    excludesfile = ~/.dotfiles/git/gitignore
     pager = "less -F -X"
 
 [color]
