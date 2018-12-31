@@ -5,7 +5,7 @@
 set -x EDITOR "vim"
 
 # Update path
-add_to_path ~/.dotfiles/fzf/bin ~/.dotfiles/git ~/.dotfiles/scripts
+add_to_path ~/.dotfiles/bin ~/.dotfiles/git ~/.dotfiles/fzf/bin 
 
 # Fix typos
 abbr -a sl 'ls'
