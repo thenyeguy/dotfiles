@@ -9,6 +9,8 @@
     excludesfile = ~/.dotfiles/git/ignore
     pager = "less -F -X"
 
+[advice]
+    statusHints = false
 [color]
     ui = auto
 [column]
