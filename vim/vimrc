@@ -127,9 +127,11 @@ command Q q
 command Wq wq
 command WQ wq
 
-" Shortcut for closing all open buffers.
-command CloseAll %bd | Startify
-
+" Mappings for managing buffers/splits.
+command Close if winnr('$') == 1 | Startify | else | close | endif
+command CloseAll %bdelete | Startify
+nnoremap <leader>c :Close<CR>
+nnoremap <leader>C :CloseAll<CR>
 
 
 " ----------------------------- "
