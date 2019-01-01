@@ -91,6 +91,10 @@ def link(paths):
                     os.remove(dst)
                 else:
                     backup(dst)
+            else:
+                parent = os.path.dirname(dst)
+                if not os.path.exists(parent):
+                    os.makedirs(os.path.dirname(dst))
             print("{} -> {}".format(src, dst))
             os.symlink(src, dst)
 
