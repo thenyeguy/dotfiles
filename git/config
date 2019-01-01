@@ -31,7 +31,6 @@
 
 [alias]
     amend = commit --amend --no-edit
-    fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET && GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash $TARGET^; }; f"
     fuck = reset --hard
     new = "!f() { git checkout -b $1 master; }; f"
     reword = commit --amend

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -n "$1" ]; then
+    commit=$1
+else
+    echo "Recent commits:"
+    for i in {0..9}; do
+        format=" %Cgreen$i%Creset) %s%C(yellow)%d%Creset"
+        git log --pretty=format:"$format" -n 1 @~$i 2>/dev/null || break
+    done
+    echo
+
+    read -p "Which commit should we fixup? " i
+    if [ $? -ne 0 ] || [ -z "$i" ]; then
+        exit 0
+    fi
+    commit="@~$i"
+    echo
+fi
+
+revision=$(git rev-parse "$commit" 2>/dev/null)
+if [ $? != 0 ]; then
+    echo "Error: $revision is not a valid revision"
+    exit 1
+fi
+
+git commit --fixup=$revision && \
+    GIT_SEQUENCE_EDITOR=: git rebase -i --autostash --autosquash $revision^
