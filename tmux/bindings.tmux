@@ -43,8 +43,9 @@ bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe "clipboard copy"
 
 # Force opening splits to default to columns, and retain working directory
-bind -r ^s split-window -v -c "#{pane_current_path}"
-bind -r S split-window -h -c "#{pane_current_path}"
+bind -r ^s run-shell "~/.dotfiles/tmux/split.sh"
+bind -r - split-window -v -c "#{pane_current_path}"
+bind -r | split-window -h -c "#{pane_current_path}"
 
 # Window navigation
 bind -r ^p previous-window
@@ -53,18 +54,17 @@ bind -r P swap-window -t -1
 bind -r N swap-window -t +1
 
 # Ask for name on new window
-bind c command-prompt -p "new window:" "new-window; rename-window '%%'"
+bind c command-prompt -p "new window:" "new-window -n '%%'"
 
 # Rename window
 bind r command-prompt -p "window name:" "rename-window '%%'"
-bind , command-prompt -p "rename window:" -I "#W" "rename-window '%%'"
 
 # Pane reformatting
 bind -r ^z resize-pane -Z
 bind -r ^Up resize-pane -Z
-bind -r ^Left run-shell "~/.dotfiles/tmux/resize.sh main-right"
-bind -r ^Right run-shell "~/.dotfiles/tmux/resize.sh main-left"
-bind -r ^Down run-shell "~/.dotfiles/tmux/resize.sh center"
+bind -r ^Left run-shell "~/.dotfiles/tmux/resize.sh small-left"
+bind -r ^Right run-shell "~/.dotfiles/tmux/resize.sh big-left"
+bind -r ^Down run-shell "~/.dotfiles/tmux/resize.sh even-cols"
 
 # Reloading macro
 bind R source-file ~/.tmux.conf \; display "Reloaded!"

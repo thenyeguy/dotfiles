@@ -1,20 +1,17 @@
 #!/bin/bash
 
 case "$1" in
-  main-left)
-    tmux setw main-pane-width 190
-    tmux select-layout main-vertical
+  big-left)
+    tmux resize-pane -t 1 -x 190
     ;;
-  main-right)
-    tmux setw main-pane-width 95
-    tmux select-layout main-vertical
+  small-left)
+    tmux resize-pane -t 1 -x 95
     ;;
-  center)
+  even-cols)
     WINDOW_WIDTH=$(tmux display -p '#{window_width}')
-    tmux setw main-pane-width $(expr $WINDOW_WIDTH \/ 2)
-    tmux select-layout main-vertical
+    tmux resize-pane -t 1 -x $(expr $WINDOW_WIDTH \/ 2)
     ;;
   *)
-    echo "Usage: $0 {left|center|right}"
+    echo "Usage: $0 {big-left|small-left|even-cols}"
     exit 1
 esac
