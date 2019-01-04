@@ -4,7 +4,7 @@ width=$(tmux display -p "#{pane_width}")
 height=$(tmux display -p "#{pane_height}")
 
 # Automatically split based on aspect ratio, favoring wide windows.
-if (( $width < 100)) || (( $width < 2 * $height )); then
+if (( $width < 120)) || (( $width < 2 * $height )); then
     dir="-v"
 else
     dir="-h"
