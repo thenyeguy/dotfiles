@@ -1,24 +1,21 @@
 #!/bin/bash
 
-if [ -n "$1" ]; then
-    commit=$1
-else
-    echo "Recent commits:"
-    for i in {0..9}; do
-        format=" %Cgreen$i%Creset) %s%C(yellow)%d%Creset"
-        git log --pretty=format:"$format" -n 1 @~$i 2>/dev/null || break
-    done
-    echo
-
-    read -p "Which commit should we fixup? " i
-    if [ $? -ne 0 ] || [ -z "$i" ]; then
-        exit 0
-    fi
-    commit="@~$i"
-    echo
+if ! git rev-parse --git-dir > /dev/null; then
+  exit 1
 fi
 
-revision=$(git rev-parse "$commit" 2>/dev/null)
+if [ -n "$1" ]; then
+    revision=$(git rev-parse "$1" 2>/dev/null)
+else
+    revision=$(git log -n 20 --color=always \
+                 --pretty=format:"%Cgreen%h%Creset - %s%C(yellow)%d%Creset" \
+             | fzf-tmux --ansi --no-sort -d 22 --prompt "Which commit to fixup? " \
+             | cut -d' ' -f1)
+    if [ -z "$revision" ]; then
+        exit
+    fi
+fi
+
 if [ $? != 0 ]; then
     echo "Error: $revision is not a valid revision"
     exit 1
