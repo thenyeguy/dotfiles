@@ -8,9 +8,10 @@ set __prompt_segment_seperator 
 set __prompt_subsegment_seperator 
 set __prompt_active_jobs_symbol ☼
 set __prompt_bad_exit_symbol ‼
+set __prompt_dir_symbol 🖿
 
 set __prompt_git_symbol 
-set __prompt_git_dirty ○
+set __prompt_git_unstaged ○
 set __prompt_git_staged ◉
 
 set fish_prompt_pwd_dir_length 0
@@ -50,44 +51,47 @@ function __prompt_finish_segments
     set -e __prompt_current_background
 end
 
+### Draws a new segment for a generic VCS status.
+function __prompt_vcs -a vcs_symbol -a repo_name -a branch -a subtree \
+                      -a background -a unstaged -a staged
+    # Convert repo status to symbols
+    test -n "$unstaged"; and set symbols "$symbols$__prompt_git_unstaged"
+    test -n "$staged"; and set symbols "$symbols$__prompt_git_staged"
+
+    __prompt_segment $background black $vcs_symbol $repo_name
+    test -n "$branch"; and __prompt_subsegment $branch $symbols
+    test -n "$subtree"; and __prompt_subsegment $__prompt_dir_symbol $subtree
+
+    # Override the exit code of the test command above
+    return 0
+end
+
 ### Draws a git status segment.
 function __prompt_git
     if not silent git rev-parse --git-dir
         return 1
     end
 
-    if silent count (git status --short)
-        set color yellow
-    else
-        set color green
-    end
-
-    # Draw repo name.
     set repo (basename (git rev-parse --show-toplevel))
-    __prompt_segment $color black $__prompt_git_symbol $repo
-
-    # Draw branch name, identifying detached heads.
+    set subtree (git rev-parse --show-prefix | string trim --right -c/)
     set branch (git symbolic-ref HEAD --short --quiet; set os $status)
     if test $os -ne 0
+        # Handle detached HEADs
         set branch \((git describe --contains --all HEAD ^/dev/null; \
                       or git rev-parse --short HEAD)\)
     end
-    __prompt_subsegment $branch
 
-    # Attach any status symbols to the current branch.
-    git diff --no-ext-diff --quiet --exit-code 2>/dev/null;
-        or set symbols "$symbols$__prompt_git_dirty"
-    git diff-index --cached --quiet HEAD -- 2>/dev/null;
-        or set symbols "$symbols$__prompt_git_staged"
-    if test -n "$symbols"
-        printf " $symbols"
+    git diff --no-ext-diff --quiet --exit-code 2>/dev/null; or set unstaged y
+    git diff-index --cached --quiet HEAD -- 2>/dev/null; or set staged y
+
+    if silent count (git status --short)
+        set background yellow
+    else
+        set background green
     end
 
-    # Draw the path relative to the git root, if we aren't already in the root.
-    set path (git rev-parse --show-prefix | string trim --right -c/)
-    if test -n "$path"
-        __prompt_subsegment $path
-    end
+    __prompt_vcs $__prompt_git_symbol "$repo" "$branch" "$subtree" \
+        "$background" "$unstaged" "$staged"
 end
 
 ### Draw the actual prompt.
