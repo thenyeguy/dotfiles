@@ -26,11 +26,11 @@ function! CustomFileInfo()
         let l:max_width = winwidth(0) * 0.5
         let l:shortened_filename = ""
         for s in reverse(split(fnamemodify(l:filename, ":~:."), "/"))
-            let l:shortened_filename = s . "/" . l:shortened_filename
             if strlen(l:shortened_filename) > l:max_width
                 let l:shortened_filename = ".../" . l:shortened_filename
                 break
             end
+            let l:shortened_filename = s . "/" . l:shortened_filename
         endfor
         let l:filename = l:shortened_filename[:-2]
     end
