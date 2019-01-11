@@ -118,9 +118,6 @@ nnoremap <leader>n :nohlsearch<CR>
 " Rewrap paragraph
 nnoremap <leader>q gqip
 
-" Auto expand curly braces
-inoremap {<CR> {<CR>}<esc>ko
-
 " Mappings that fix my typos on save and quit
 command W w
 command Q q
@@ -154,6 +151,7 @@ Plug '~/.dotfiles/fzf'
 Plug 'blueyed/vim-diminactive'
 Plug 'google/vim-searchindex'
 Plug 'itchyny/lightline.vim'
+Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
