@@ -127,7 +127,6 @@ def main(args):
         "bashrc": "~/.bashrc",
         "fish": "~/.config/fish",
         "git/config": "~/.gitconfig",
-        "hgrc": "~/.hgrc",
         "tmux/tmux.conf": "~/.tmux.conf",
         "vim": "~/.vim",
     })
