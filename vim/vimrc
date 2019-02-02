@@ -118,8 +118,10 @@ nnoremap <leader>n :nohlsearch<CR>
 " Rewrap paragraph
 nnoremap <leader>q gqip
 
-" Auto expand curly braces
+" Auto expand braces
 inoremap {<CR> {<CR>}<esc>ko
+inoremap (<CR> (<CR>)<esc>ko
+inoremap [<CR> [<CR>]<esc>ko
 
 " Mappings that fix my typos on save and quit
 command W w
