@@ -1,19 +1,21 @@
-let s:black = ['#121212', 233]
-let s:gray1 = ['#3c3836', 237]
-let s:gray2 = ['#504945', 239]
-let s:gray3 = ['#ebdbb2', 15]
-let s:white = ['#ffffdf', 230]
+let s:black = ['#000000', 232]
+let s:gray1 = ['#444444', 238]
+let s:gray2 = ['#585858', 240]
+let s:gray3 = ['#bcbcbc', 250]
+let s:gray4 = ['#dadada', 253]
+let s:white = ['#ffffff', 231]
 
-let s:darkblue = ['#076678', 24]
-let s:darkred = ['#9d0006', 88]
-let s:blue = ['#83a598', 109]
-let s:green = ['#b8bb26', 142]
-let s:orange = ['#fe8019', 208]
-let s:red = ['#fb4934', 167]
+let s:darkblue = ['#005f87', 24]
+let s:darkgreen = ['#005f00', 22]
+let s:darkred = ['#5f0000', 52]
+let s:blue = ['#5f87af', 67]
+let s:green = ['#afd75f', 149]
+let s:orange = ['#d78700', 172]
+let s:red = ['#af5f5f', 131]
 
 let s:p = {
     \   'normal': {
-    \       'left': [ [s:gray1, s:green, 'bold'], [s:gray3, s:gray1] ],
+    \       'left': [ [s:darkgreen, s:green, 'bold'], [s:gray4, s:gray1] ],
     \       'right': [ [s:gray1, s:gray3], [s:gray3, s:gray1] ],
     \       'middle': [ [s:gray1, s:black] ],
     \   },
@@ -23,16 +25,16 @@ let s:p = {
     \       'middle': [ [s:gray2, s:black] ],
     \   },
     \   'insert': {
-    \       'left': [ [s:gray1, s:white, 'bold'], [s:black, s:blue] ],
-    \       'right': [ [s:gray1, s:white], [s:black, s:blue] ],
+    \       'left': [ [s:darkblue, s:white, 'bold'], [s:white, s:blue] ],
+    \       'right': [ [s:darkblue, s:white], [s:white, s:blue] ],
     \       'middle': [ [s:gray2, s:darkblue] ],
     \   },
     \   'visual': {
-    \       'left': [ [s:gray1, s:orange, 'bold'], [s:gray3, s:gray1] ],
+    \       'left': [ [s:darkred, s:orange, 'bold'], [s:gray4, s:gray1] ],
     \   },
     \   'replace': {
-    \       'left': [ [s:darkred, s:white, 'bold'], [s:black, s:red] ],
-    \       'right': [ [s:darkred, s:white], [s:black, s:red] ],
+    \       'left': [ [s:darkred, s:white, 'bold'], [s:white, s:red] ],
+    \       'right': [ [s:darkred, s:white], [s:white, s:red] ],
     \       'middle': [ [s:gray2, s:darkred] ],
     \   },
     \   'terminal': {

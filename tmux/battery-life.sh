@@ -4,8 +4,8 @@
 BATTERYLENGTH=15
 MINWIDTH=150
 SEP=""
-BRIGHT="colour81"
-DIM="colour31"
+BRIGHT="colour249"
+DIM="colour241"
 
 # Don't display battery if the window is too narrow
 columns=$(tmux display-message -p "#{client_width}")

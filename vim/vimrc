@@ -7,7 +7,6 @@ set title "Sets terminal title
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
 
 " Editor displays
-colorscheme wombat "Set colors
 set cursorline "Highlight current line
 set display=lastline,uhex "Improve text display
 set laststatus=2 "Always show status bar w/ filename
@@ -156,6 +155,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'morhetz/gruvbox'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'

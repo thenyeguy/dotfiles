@@ -26,8 +26,13 @@ end
 # Usage: segment <background> <foreground> [contents]
 # Consecutive calls with the same background will merge segments together.
 function __prompt_segment -S -a background foreground
-    if test \( -n "$__prompt_current_background" \) -a \
-            \( "$background" != "$__prompt_current_background" \)
+    if test -z "$__prompt_current_background"
+        # Do nothing - we're starting the first segment.
+    else if test "$background" = "$__prompt_current_background"
+        # The segment is using the same colors, so just draw a seperator.
+        printf " $__prompt_subsegment_seperator"
+    else
+        # Draw the boundary between two different backgrounds.
         printf " "
         set_color -b $background $__prompt_current_background
         printf "$__prompt_segment_seperator"
@@ -100,12 +105,12 @@ function fish_prompt
 
     __prompt_new_line
     test (jobs -l);
-        and __prompt_segment black cyan $__prompt_active_jobs_symbol
+        and __prompt_segment black brred $__prompt_active_jobs_symbol
     test "$last_status" -ne 0; \
-        and __prompt_segment black red $__prompt_bad_exit_symbol
-    __prompt_segment cyan black (date "+%l:%M%p" | string trim)
+        and __prompt_segment black brred $__prompt_bad_exit_symbol
+    __prompt_segment brblue black (date "+%l:%M%p" | string trim)
     __prompt_git;
-        or __prompt_segment blue black (prompt_pwd)
+        or __prompt_segment brblue black (prompt_pwd)
     __prompt_finish_segments
 
     __prompt_new_line
