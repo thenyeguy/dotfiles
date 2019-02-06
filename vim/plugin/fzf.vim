@@ -23,6 +23,6 @@ function! s:fzf_statusline()
 endfunction
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
-nnoremap <c-o> :Files<CR>
+nnoremap <c-p> :Files<CR>
 nnoremap <leader>o :Files<CR>
 nnoremap <leader>b :Buffers<CR>

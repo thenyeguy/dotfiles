@@ -96,10 +96,6 @@ noremap <C-k> <C-W><C-K>
 noremap <C-l> <C-W><C-L>
 noremap <C-h> <C-W><C-H>
 
-" Remap shortcuts
-nnoremap <C-p> <C-o>
-nnoremap <C-n> <C-i>
-
 " Don't deselect after indent
 vnoremap < <gv
 vnoremap > >gv
