@@ -22,6 +22,7 @@ set directory=~/.vim/swp,~/tmp,/var/tmp,/tmp,. "swp file location
 set encoding=utf-8 "Use utf-8 for text encoding
 set modeline "Enable setting options in file comments
 set mouse=a "Enable mouse use
+set ttymouse=sgr "Fix scrolling for 224+ columns
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
