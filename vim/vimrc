@@ -107,8 +107,8 @@ nnoremap <leader>p :put +<CR>
 nnoremap <leader>P :put! +<CR>
 vnoremap <leader>p "+p
 
-" Clear search highlight
-nnoremap <leader>n :nohlsearch<CR>
+" Toggle search highlight
+nnoremap <silent> <leader>n :let v:hlsearch = ! v:hlsearch<CR>
 
 " Rewrap paragraph
 nnoremap <leader>q gqip
