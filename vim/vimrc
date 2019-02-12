@@ -103,8 +103,8 @@ vnoremap > >gv
 nnoremap Y y$
 noremap  <leader>y "+y
 nnoremap <leader>Y "+y$
-nnoremap <leader>p :put +<CR>
-nnoremap <leader>P :put! +<CR>
+nnoremap <silent> <leader>p :put +<CR>
+nnoremap <silent> <leader>P :put! +<CR>
 vnoremap <leader>p "+p
 
 " Toggle search highlight
@@ -127,8 +127,8 @@ command WQ wq
 " Mappings for managing buffers/splits.
 command Close if winnr('$') == 1 | Startify | else | close | endif
 command CloseAll %bdelete | Startify
-nnoremap <leader>c :Close<CR>
-nnoremap <leader>C :CloseAll<CR>
+nnoremap <silent> <leader>c :Close<CR>
+nnoremap <silent> <leader>C :CloseAll<CR>
 
 
 " ----------------------------- "
