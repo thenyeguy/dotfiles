@@ -4,19 +4,35 @@ let g:lightline = {
     \   'subseparator': { 'left': '', 'right': '' },
     \   'active':   {
     \     'left': [ ['mode', 'paste'], ['fileinfo'] ],
-    \     'right': [ ['percent', 'lineinfo'], ['spell', 'filetype'] ],
+    \     'right': [ ['searchindex', 'lineinfo'], ['spell'] ],
     \   },
     \   'inactive': {
     \     'left': [ ['fileinfo'] ],
     \     'right': [ [], ['lineinfo'] ]
     \   },
-    \   'component_function': { 'fileinfo': 'CustomFileInfo' },
+    \   'component': {
+    \     'lineinfo': ' %l:%v',
+    \     'spell': 'spell:%{&spell?&spelllang:""}',
+    \   },
+    \   'component_function': {
+    \     'fileinfo': 'FileInfoSegment',
+    \     'searchindex': 'SearchIndexSegment'
+    \   },
     \ }
 
-function! CustomFileInfo()
+function! SearchIndexSegment()
+    if v:hlsearch
+        let l:matches = searchindex#MatchCounts()
+        return l:matches[0] . "/" . l:matches[1]
+    else
+        return ""
+    end
+endfunction
+
+function! FileInfoSegment()
     if &filetype == "fzf"
         return "fzf"
-    en
+    end
 
     let l:filename = expand("%")
     if l:filename == ""
