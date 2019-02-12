@@ -65,7 +65,7 @@ function __prompt_vcs -a vcs_symbol -a repo_name -a branch -a subtree \
 
     __prompt_segment $background black $vcs_symbol $repo_name
     test -n "$branch"; and __prompt_subsegment $branch $symbols
-    test -n "$subtree"; and __prompt_subsegment $__prompt_dir_symbol $subtree
+    test -n "$subtree"; and __prompt_subsegment ./$subtree
 
     # Override the exit code of the test command above
     return 0
