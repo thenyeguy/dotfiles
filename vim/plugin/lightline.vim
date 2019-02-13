@@ -27,8 +27,10 @@ function! SearchIndexSegment()
         return ""
     end
 
-    if v:hlsearch
-        let [l:current, l:total] = searchindex#MatchCounts()
+    " Only enable the segment if there are currently highlighted results inside
+    " the buffer.
+    let [l:current, l:total] = searchindex#MatchCounts()
+    if v:hlsearch && l:total > 0
         return l:current . "/" . l:total
     else
         return ""
