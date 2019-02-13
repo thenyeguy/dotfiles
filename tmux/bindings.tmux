@@ -7,9 +7,9 @@ bind C-a send-prefix
 
 # Rebind basic commands
 bind : command-prompt
-bind d detach-client
+bind ^d detach-client
 bind D detach-client -a
-bind v copy-mode
+bind ^v copy-mode
 bind -r { swap-pane -U
 bind -r } swap-pane -D
 
@@ -54,10 +54,10 @@ bind -r P swap-window -t -1
 bind -r N swap-window -t +1
 
 # Ask for name on new window
-bind c command-prompt -p "new window:" "new-window -n '%%'"
+bind ^c command-prompt -p "new window:" "new-window -n '%%'"
 
 # Rename window
-bind r command-prompt -p "window name:" "rename-window '%%'"
+bind ^r command-prompt -p "window name:" "rename-window '%%'"
 
 # Pane reformatting
 bind -r ^z resize-pane -Z
