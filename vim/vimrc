@@ -108,6 +108,9 @@ nnoremap <silent> <leader>p :put +<CR>
 nnoremap <silent> <leader>P :put! +<CR>
 vnoremap <leader>p "+p
 
+" Better redo binding
+nnoremap U <C-r>
+
 " Toggle search highlight
 nnoremap <silent> <leader>n :let v:hlsearch = ! v:hlsearch<CR>
 
