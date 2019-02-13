@@ -21,9 +21,15 @@ let g:lightline = {
     \ }
 
 function! SearchIndexSegment()
+    " For some reason, terminal buffers can crash vim if search indices are
+    " visible, so disable them when in a terminal buffer.
+    if &buftype == 'terminal'
+        return ""
+    end
+
     if v:hlsearch
-        let l:matches = searchindex#MatchCounts()
-        return l:matches[0] . "/" . l:matches[1]
+        let [l:current, l:total] = searchindex#MatchCounts()
+        return l:current . "/" . l:total
     else
         return ""
     end
