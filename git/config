@@ -21,13 +21,11 @@
 [pull]
     rebase = true
 
-[diff]
-    tool = vimdiff
 [merge]
-    tool = vimdiff
-    conflictstyle = diff3
+    tool = vimdiff2
 [mergetool]
-    prompt = false
+    keepBackup = false
+    prompt = true
 
 [alias]
     amend = commit --amend --no-edit

@@ -132,14 +132,6 @@ nnoremap <silent> <leader>c :Close<CR>
 nnoremap <silent> <leader>C :CloseAll<CR>
 
 
-" ----------------------------- "
-" HANDLE MERGE CONFLICT MARKERS "
-" ----------------------------- "
-match Todo '\v^(\<|\=|\||\>){7}([^=].+)?$'
-nnoremap <silent> ]c /\v^(\<){7}([^=].+)?$<CR>
-nnoremap <silent> [c ?\v^(\<){7}([^=].+)\?$<CR>
-
-
 " ---------------------------- "
 " MANAGE OUR INSTALLED PLUGINS "
 " ---------------------------- "
@@ -157,6 +149,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-startify'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'morhetz/gruvbox'
+Plug 'rhysd/conflict-marker.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
