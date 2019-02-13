@@ -10,7 +10,7 @@ highlight VertSplit ctermfg=233 ctermbg=233
 highlight SpellBad ctermfg=9 cterm=underline
 
 " Customize YCM highlighting.
-highlight SignColumn ctermbg=0
+highlight SignColumn ctermbg=235
 highlight YcmErrorSign ctermfg=1 ctermbg=0 cterm=bold
 highlight YcmWarningSign ctermfg=11 ctermbg=0 cterm=bold
 
