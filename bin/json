@@ -48,7 +48,10 @@ parser_pretty.set_defaults(func=get_field)
 
 def main(args):
     args = parser.parse_args()
-    args.func(args)
+    try:
+        args.func(args)
+    except Exception:
+        return 1
     return 0
 
 
