@@ -156,6 +156,6 @@ Plug 'rhysd/conflict-marker.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --rust-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --rust-completer' }
 
 call plug#end()
