@@ -26,6 +26,7 @@ set ttymouse=sgr "Fix scrolling for 224+ columns
 set scrolloff=7 "Start scrolling page a few lines from edge
 set showmatch "Briefly flash matching braces when inserted
 set splitbelow "Open split below by default
+set splitright "Open split right by default
 set wildignore+=*.pyc,*.pyo,*.o,*.obj,.git "ignore certain file types
 set wildmenu "Enable tab-complete menu
 

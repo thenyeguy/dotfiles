@@ -1,6 +1,10 @@
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 let g:fzf_layout = { 'window': 'enew' }
+let g:fzf_action = {
+    \   'ctrl-s': 'split',
+    \   'ctrl-v': 'vsplit'
+    \ }
 let g:fzf_colors = {
     \   'fg':      ['fg', 'Normal'],
     \   'bg':      ['bg', 'Normal'],
