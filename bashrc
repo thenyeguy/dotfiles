@@ -43,4 +43,4 @@ export PATH=~/.dotfiles/bin:~/.dotfiles/fzf/bin:$PATH
 
 # Export a simple prompt
 export PROMPT_DIRTRIM=4
-export PS1="\n\e[91;40m bash \e[30;104m \@  \w \e[94;49m\e[m \n » "
+export PS1="\n\e[91;40m bash \e[30;104m \@ \e[94;44m\e[30;44m \w \e[34;49m\e[m \n » "
