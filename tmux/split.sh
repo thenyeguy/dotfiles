@@ -12,4 +12,3 @@ fi
 
 # Split and automatically rebalance the new row or column.
 tmux split-window $dir -c "#{pane_current_path}"
-tmux select-layout -E

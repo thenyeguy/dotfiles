@@ -61,10 +61,9 @@ bind ^r command-prompt -p "window name:" "rename-window '%%'"
 
 # Pane reformatting
 bind -r ^z resize-pane -Z
-bind -r ^Up resize-pane -Z
-bind -r ^Left run-shell "~/.dotfiles/tmux/resize.sh small-left"
-bind -r ^Right run-shell "~/.dotfiles/tmux/resize.sh big-left"
-bind -r ^Down run-shell "~/.dotfiles/tmux/resize.sh even-cols"
+bind -r ^Down run-shell "~/.dotfiles/tmux/layout.sh automatic"
+bind -r ^Left run-shell "~/.dotfiles/tmux/layout.sh editor-small"
+bind -r ^Right run-shell "~/.dotfiles/tmux/layout.sh editor-big"
 
 # Reloading macro
 bind R source-file ~/.tmux.conf \; display "Reloaded!"
