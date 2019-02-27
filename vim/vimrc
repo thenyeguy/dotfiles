@@ -132,8 +132,8 @@ command WQ wq
 " Mappings for managing buffers/splits.
 command Close if winnr('$') == 1 | Startify | else | close | endif
 command CloseAll %bdelete | Startify
-nnoremap <silent> <leader>c :Close<CR>
-nnoremap <silent> <leader>C :CloseAll<CR>
+nnoremap <silent> <leader>w :Close<CR>
+nnoremap <silent> <leader>W :CloseAll<CR>
 
 
 " ---------------------------- "
