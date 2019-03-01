@@ -110,7 +110,7 @@ function fish_prompt
         and __prompt_segment black brred $__prompt_bad_exit_symbol
     __prompt_segment brblue black (date "+%l:%M%p" | string trim)
     __prompt_git;
-        or __prompt_segment brblue black (prompt_pwd)
+        or __prompt_segment blue black (prompt_pwd)
     __prompt_finish_segments
 
     __prompt_new_line
