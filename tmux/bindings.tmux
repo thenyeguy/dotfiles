@@ -54,7 +54,7 @@ bind -r P swap-window -t -1
 bind -r N swap-window -t +1
 
 # Ask for name on new window
-bind ^c command-prompt -p "new window:" "new-window -n '%%'"
+bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
 
 # Rename window
 bind ^r command-prompt -p "window name:" "rename-window '%%'"
