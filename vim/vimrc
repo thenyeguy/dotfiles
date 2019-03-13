@@ -5,6 +5,7 @@
 " Console settings
 set title "Sets terminal title
 set timeoutlen=1000 ttimeoutlen=0 "Fix escape delay
+set shell=bash "Always use bash for terminal buffers
 
 " Editor displays
 set cursorline "Highlight current line
