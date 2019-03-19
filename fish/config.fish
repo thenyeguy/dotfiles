@@ -8,10 +8,10 @@ set -x EDITOR "vim"
 add_to_path ~/.dotfiles/bin ~/.dotfiles/git ~/.dotfiles/fzf/bin 
 
 # Fix typos
-abbr -a sl 'ls'
-abbr -a dc 'cd'
-abbr -a mr 'rm'
-abbr -a pc 'cp'
+abbr --global --add sl 'ls'
+abbr --global --add dc 'cd'
+abbr --global --add mr 'rm'
+abbr --global --add pc 'cp'
 
 # Make standard commands safer
 alias cp 'cp -i'
@@ -19,7 +19,7 @@ alias rm 'rm -i'
 alias mv 'mv -i'
 
 # Shortcuts to common calls
-abbr rmorig 'find . -name "*.orig" -delete'
+abbr --global --add rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
