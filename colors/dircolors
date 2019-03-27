@@ -1,0 +1,30 @@
+# Configure for terminal output
+COLOR tty
+TERM screen-256color
+TERM xterm-256color
+
+# Configure default filetypes
+NORMAL 00  # global default
+FILE 00    # normal file
+DIR 34;01  # directory
+LINK 35    # symbolic link
+EXEC 32;01 # executables
+
+# Configure error conditions
+MISSING 31;01
+ORPHAN 31;01
+
+# Unimportant non-text files
+.bak 30;01
+.BAK 30;01
+.old 30;01
+.OLD 30;01
+.org_archive 30;01
+.off 30;01
+.OFF 30;01
+.dist 30;01
+.DIST 30;01
+.orig 30;01
+.ORIG 30;01
+.swp 30;01
+.swo 30;01

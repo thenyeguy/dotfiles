@@ -125,6 +125,7 @@ def main(args):
     init_fzf()
     link({
         "bashrc": "~/.bashrc",
+        "colors/dircolors": "~/.dircolors",
         "fish": "~/.config/fish",
         "git/config": "~/.gitconfig",
         "tmux/tmux.conf": "~/.tmux.conf",
