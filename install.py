@@ -7,6 +7,7 @@ import shutil
 import subprocess
 import sys
 
+
 class LogSection:
     """ A utility for creating log sections. """
 
@@ -38,6 +39,7 @@ class LogSection:
         self.stdout.write("    ")
         self.stdout.write(*args)
 
+
 def call(cmd):
     """ Calls the provided shell command. """
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
@@ -45,9 +47,11 @@ def call(cmd):
     for line in proc.stdout:
         print(line.rstrip())
 
+
 def expand(path):
     """ Expands the provided path to an absolute path. """
     return os.path.expandvars(os.path.expanduser(path))
+
 
 def expanded_paths(paths):
     """ Helper for iterating safely over the provided paths. """
@@ -57,6 +61,7 @@ def expanded_paths(paths):
             print("Skipping invalid path:", path)
             continue
         yield path
+
 
 def clean(symlink_dirs):
     """ Cleans up anything from older dotfile installs. """
@@ -73,17 +78,19 @@ def clean(symlink_dirs):
             print("Removing: ~/.fzf")
             shutil.rmtree(fzf_dir)
 
+
 def backup(path):
     """ If the path exists, backs it up. """
     dst = path + ".bak"
     print("{} -> {}".format(path, dst))
     shutil.move(path, path + ".bak")
 
+
 def link(paths):
     """ Symlinks the provided paths. """
     with LogSection("Setting up symlinks..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
-        for src, dst in sorted(paths.iteritems(), key=lambda (k,v): k):
+        for src, dst in sorted(paths.iteritems(), key=lambda (k, v): k):
             src = expand(os.path.join(dotfile_dir, src))
             dst = expand(dst)
             if os.path.exists(dst):
@@ -98,6 +105,7 @@ def link(paths):
             print("{} -> {}".format(src, dst))
             os.symlink(src, dst)
 
+
 def create(paths):
     """ Creates the provided paths if they don't exist. """
     with LogSection("Creating directories..."):
@@ -107,10 +115,12 @@ def create(paths):
                 print("Creating:", path)
                 os.makedirs(path)
 
+
 def init_submodules():
     """ Initializes git submodules. """
     with LogSection("Initializing submodules..."):
         call(["git", "submodule", "update", "--init"])
+
 
 def init_fzf():
     """ Initializes fzf. """
@@ -118,6 +128,7 @@ def init_fzf():
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
         install_script = os.path.join(dotfile_dir, "fzf", "install")
         call([install_script, "--bin"])
+
 
 def main(args):
     clean(["~", "~/.config"])
@@ -133,6 +144,7 @@ def main(args):
     })
     create(["~/.vim/swp", "~/.vim/undo"])
     return 0
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
