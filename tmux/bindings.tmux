@@ -37,6 +37,7 @@ bind 0 select-window -t 10
 
 # Enter search without entering copy mode
 bind / command-prompt -p "(search up)" "copy-mode; send -X search-backward \"%%%\""
+bind -T copy-mode-vi / command-prompt -p "(search up)" "copy-mode; send -X search-backward \"%%%\""
 
 # Vim-like selection/copy
 bind -T copy-mode-vi v send-keys -X begin-selection
