@@ -1,0 +1,3 @@
+function k
+    echo 👉
+end
