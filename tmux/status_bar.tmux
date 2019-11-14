@@ -2,11 +2,9 @@ set -g status on
 set -g status-interval 1
 set -g status-justify "left"
 
-set -g status-bg "colour239"
-set -g status-fg "colour241"
+set -g status-style "bg=colour239,fg=colour241"
 
-set -g message-bg "colour239"
-set -g message-fg "colour250"
+set -g message-style "bg=colour239,fg=colour250"
 
 set -g pane-border-style "fg=colour239"
 set -g pane-active-border-style "fg=colour252"
