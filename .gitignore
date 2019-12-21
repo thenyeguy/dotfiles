@@ -1,6 +1,7 @@
 fish/fish_history
 fish/fish_variables
 fish/fishd.*
+kak/plugins
 vim/swp
 vim/plugged
 vim/undo
