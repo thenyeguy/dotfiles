@@ -1,0 +1,71 @@
+# ------------------------- #
+# CUSTOMIZE EDITOR BEHAVIOR #
+# ------------------------- #
+
+colorscheme gruvbox
+
+set-option global startup_info_version 20191211
+set-option global ui_options ncurses_assistant=none
+
+set-option global tabstop 4
+set-option global indentwidth 4
+set-option global scrolloff 5,5
+
+
+# ---------------------- #
+# CUSTOMIZE HIGHLIGHTERS #
+# ---------------------- #
+
+# Line number gutter:
+add-highlighter global/ number-lines -hlcursor
+
+# Line wrapping:
+set-face global WrapMarker rgb:665c54
+add-highlighter global/ wrap -word -indent -marker "└──>"
+
+# Highligh matching braces:
+set-face global MatchingChar default,rgb:665c54+bg
+add-highlighter global/ show-matching
+
+# Highlight whitespace:
+set-face global Whitespace rgb:665c54
+add-highlighter global/ show-whitespaces -lf " " -spc " " -tab "→"
+
+# Highlight todos
+set-face global Todo yellow+bf
+add-highlighter global/todo regex "TODO(\(.*?\))?:?" 0:Todo
+
+
+# ------------------ #
+# CUSTOMIZE KEYBINDS #
+# ------------------ #
+
+# Shuffle leader, command and anchor commands.
+map global normal <space> ,        # leader
+map global normal \; ":"           # command mode
+map global normal , "<a-;>"        # swap anchors
+map global normal <a-,> "<space>"  # cancel multiple selections
+map global normal <esc> ";"        # collapse selection
+
+# More convenient line selection
+map global normal X "<a-x>"
+map global normal <a-x> "X"
+
+# More convenient search
+map global normal / "/(?i)"
+map global normal N <a-n>
+map global normal <a-n> N
+
+# More convenient yanking
+map global normal D "<a-x>d"
+map global normal Y "<a-x>y"
+
+# Clipboard integration
+map global user y "<a-|>clipboard copy<ret>" -docstring "copy to clipboard"
+map global user p "o<esc>!clipboard paste<ret>" \
+    -docstring "paste after from clipboard"
+map global user P "O<esc>!clipboard paste<ret>" \
+    -docstring "paste before from clipboard"
+
+# Commenting shortcut
+map global user c ":comment-line<ret>"  -docstring "comment selected lines"
