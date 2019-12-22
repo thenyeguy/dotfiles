@@ -65,6 +65,19 @@ map global user P "O<esc>!clipboard paste<ret>" \
 # Commenting shortcut
 map global user c ":comment-line<ret>"  -docstring "comment selected lines"
 
+# Pane splitting (preserving buffer and line number)
+define-command split -params 1 -docstring "Splits the current pane" %{
+    nop %sh{
+        if [[ "$kak_buffile" != \**\* ]]; then
+            file="+$kak_cursor_line $kak_buffile"
+        fi
+        ~/.dotfiles/tmux/split.sh $1 kak -c "$kak_session" $file
+    }
+}
+map global user s ":split -v<ret>" -docstring "split vertically"
+map global user S ":split -h<ret>" -docstring "split horizontally"
+map global user q ":quit<ret>" -docstring "close current split"
+
 # Intelligent escape
 define-command escape -docstring "Intelligently handle escape key" %{
     execute-keys -with-hooks %sh{
