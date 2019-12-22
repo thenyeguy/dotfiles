@@ -106,6 +106,28 @@ hook global InsertCompletionHide .* %{
 }
 
 
+# ----------------- #
+# CONFIGURE PLUGINS #
+# ----------------- #
+
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
+
+plug "andreyorst/fzf.kak" defer fzf %{
+    set-option global fzf_file_command "ag -l"
+    set-option global fzf_preview false
+} config %{
+    map global user f ":fzf-mode<ret>" -docstring "fzf mode"
+    map global normal <c-p> ":fzf-mode<ret>f"
+}
+
+plug "andreyorst/smarttab.kak" defer smarttab %{
+    set-option global softtabstop 4
+} config %{
+    hook global WinCreate .* %{ expandtab }
+}
+
+
 # ---------------- #
 # LOAD EXTRA FILES #
 # ---------------- #
