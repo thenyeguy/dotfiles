@@ -10,8 +10,8 @@ bind : command-prompt
 bind ^d detach-client
 bind D detach-client -a
 bind ^v copy-mode
-bind -r { swap-pane -U
-bind -r } swap-pane -D
+bind -r \{ swap-pane -U
+bind -r \} swap-pane -D
 
 # Configure pane navigation with vim-like motions.
 bind -r ^h select-pane -L
