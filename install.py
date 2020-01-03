@@ -93,15 +93,20 @@ def link(paths):
         for src, dst in sorted(paths.items(), key=lambda item: item[0]):
             src = expand(os.path.join(dotfile_dir, src))
             dst = expand(dst)
-            if os.path.exists(dst):
-                if os.path.islink(dst):
-                    os.remove(dst)
-                else:
-                    backup(dst)
+            if os.path.realpath(src) == os.path.realpath(dst):
+              # Skip correct symlinks
+              continue
+            elif os.path.islink(dst):
+              # Remove incorrect symlinks
+              os.remove(dst)
+            elif os.path.exists(dst):
+              # Backup existing files
+              backup(dst)
             else:
-                parent = os.path.dirname(dst)
-                if not os.path.exists(parent):
-                    os.makedirs(os.path.dirname(dst))
+              # Create subdirectories
+              parent = os.path.dirname(dst)
+              if not os.path.exists(parent):
+                  os.makedirs(os.path.dirname(dst))
             print("{} -> {}".format(src, dst))
             os.symlink(src, dst)
 
