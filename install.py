@@ -45,7 +45,7 @@ def call(cmd):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE)
     for line in proc.stdout:
-        print(line.rstrip())
+        print(line.decode("utf8").rstrip())
 
 
 def expand(path):
@@ -90,7 +90,7 @@ def link(paths):
     """ Symlinks the provided paths. """
     with LogSection("Setting up symlinks..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
-        for src, dst in sorted(paths.iteritems(), key=lambda (k, v): k):
+        for src, dst in sorted(paths.items(), key=lambda item: item[0]):
             src = expand(os.path.join(dotfile_dir, src))
             dst = expand(dst)
             if os.path.exists(dst):
