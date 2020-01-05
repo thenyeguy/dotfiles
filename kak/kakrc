@@ -158,6 +158,21 @@ plug "smartcursor" config %{
     }
 }
 
+plug "ul/kak-lsp" do %{
+    cargo install --locked --force --path .
+} config %{
+    set-option global lsp_diagnostic_line_error_sign "▶"
+    set-option global lsp_diagnostic_line_warning_sign "▷"
+
+    set-face global DiagnosticError white,red+bfg
+    set-face global DiagnosticWarning black,yellow+fg
+
+    hook global WinSetOption filetype=(rust|python|c|cpp) %{
+        map window user d ":enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
+        lsp-enable-window
+    }
+}
+
 
 # ---------------- #
 # LOAD EXTRA FILES #
