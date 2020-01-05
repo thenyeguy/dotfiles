@@ -51,8 +51,8 @@ bind -r | split-window -h -c "#{pane_current_path}"
 # Window navigation
 bind -r ^p previous-window
 bind -r ^n next-window
-bind -r P swap-window -t -1
-bind -r N swap-window -t +1
+bind -r P swap-window -d -t -1
+bind -r N swap-window -d -t +1
 
 # Ask for name on new window
 bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
