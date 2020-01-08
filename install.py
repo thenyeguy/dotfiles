@@ -94,21 +94,21 @@ def link(paths):
             src = expand(os.path.join(dotfile_dir, src))
             dst = expand(dst)
             if os.path.realpath(src) == os.path.realpath(dst):
-              # Skip correct symlinks
-              continue
+                # Skip correct symlinks
+                continue
             elif os.path.islink(dst):
-              # Remove incorrect symlinks
-              os.remove(dst)
+                # Remove incorrect symlinks
+                os.remove(dst)
             elif os.path.exists(dst):
-              # Backup existing files
-              backup(dst)
+                # Backup existing files
+                backup(dst)
             else:
-              # Create subdirectories
-              parent = os.path.dirname(dst)
-              if not os.path.exists(parent):
-                  os.makedirs(os.path.dirname(dst))
-            print("{} -> {}".format(src, dst))
-            os.symlink(src, dst)
+                # Create subdirectories
+                parent = os.path.dirname(dst)
+                if not os.path.exists(parent):
+                    os.makedirs(os.path.dirname(dst))
+                print("{} -> {}".format(src, dst))
+                os.symlink(src, dst)
 
 
 def create(paths):
