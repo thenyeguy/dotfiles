@@ -150,6 +150,14 @@ plug "smartsearch" config %{
     smartsearch-enable
 }
 
+plug "smartcursor" config %{
+    set-face global CursorLine default,rgb:3a3a3a
+    hook global WinCreate .* %{
+        smartcursor-enable
+        smartcursor-enable-lines
+    }
+}
+
 
 # ---------------- #
 # LOAD EXTRA FILES #
