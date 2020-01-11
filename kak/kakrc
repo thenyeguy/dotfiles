@@ -142,6 +142,14 @@ plug "danr/kakoune-easymotion" config %{
         -docstring "easymotion"
 }
 
+plug "smartsearch" config %{
+    set-face global SearchMatch +bu
+    map global normal * ":smartsearch-select<ret>"
+    map global user n ":smartsearch-toggle<ret>" \
+        -docstring "toggle search highlighting"
+    smartsearch-enable
+}
+
 
 # ---------------- #
 # LOAD EXTRA FILES #
