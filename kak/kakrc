@@ -95,3 +95,14 @@ hook global InsertCompletionHide .* %{
     unmap window insert <tab> <c-n>
     unmap window insert <s-tab> <c-p>
 }
+
+
+# ---------------- #
+# LOAD EXTRA FILES #
+# ---------------- #
+
+evaluate-commands %sh{
+    for file in $kak_config/rc/*.kak; do
+        printf 'source "%s"\n' $file
+    done
+}
