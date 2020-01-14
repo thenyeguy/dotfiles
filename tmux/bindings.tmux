@@ -43,10 +43,16 @@ bind -T copy-mode-vi / command-prompt -p "(search up)" "copy-mode; send -X searc
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe "clipboard copy"
 
-# Force opening splits to default to columns, and retain working directory
-bind -r ^s run-shell "~/.dotfiles/tmux/split.sh"
-bind -r - split-window -v -c "#{pane_current_path}"
-bind -r | split-window -h -c "#{pane_current_path}"
+# Pane splitting
+bind -r ^s run-shell "~/.dotfiles/tmux/layout.py split"
+bind -r - run-shell "~/.dotfiles/tmux/layout.py split -v"
+bind -r | run-shell "~/.dotfiles/tmux/layout.py split -h"
+
+# Pane zooming
+bind -r ^z resize-pane -Z
+
+# Pane rebalancing
+bind ^b run-shell "~/.dotfiles/tmux/layout.py resize"
 
 # Window navigation
 bind -r ^p previous-window
@@ -59,12 +65,6 @@ bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
 
 # Rename window
 bind ^r command-prompt -p "window name:" "rename-window '%%'"
-
-# Pane reformatting
-bind -r ^z resize-pane -Z
-bind -r ^Down run-shell "~/.dotfiles/tmux/layout.sh automatic"
-bind -r ^Left run-shell "~/.dotfiles/tmux/layout.sh editor-small"
-bind -r ^Right run-shell "~/.dotfiles/tmux/layout.sh editor-big"
 
 # Reloading macro
 bind R source-file ~/.tmux.conf \; display "Reloaded!"
