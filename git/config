@@ -5,7 +5,6 @@
     email = thenyeguy@gmail.com
 
 [core]
-    editor = vim
     excludesfile = ~/.dotfiles/git/ignore
     pager = "less -F -X"
 

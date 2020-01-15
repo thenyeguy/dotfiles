@@ -2,7 +2,7 @@
 # Configure general settings #
 # -------------------------- #
 
-set -x EDITOR "vim"
+set -x EDITOR "kak"
 set -g FZF_TMUX 1
 
 # Update path
