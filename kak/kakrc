@@ -20,19 +20,15 @@ set-option global scrolloff 5,5
 add-highlighter global/ number-lines -hlcursor
 
 # Line wrapping:
-set-face global WrapMarker rgb:665c54
 add-highlighter global/ wrap -word -indent -marker "└──>"
 
 # Highligh matching braces:
-set-face global MatchingChar default,rgb:665c54+bg
 add-highlighter global/ show-matching
 
 # Highlight whitespace:
-set-face global Whitespace rgb:665c54
 add-highlighter global/ show-whitespaces -lf " " -spc " " -tab "→"
 
 # Highlight todos
-set-face global Todo yellow+bf
 add-highlighter global/todo regex "TODO(\(.*?\))?:?" 0:Todo
 
 
