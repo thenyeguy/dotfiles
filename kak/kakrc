@@ -160,6 +160,18 @@ plug "smartcursor" config %{
     }
 }
 
+plug "comment-object" config %{
+    map global object C c -docstring "custom object desc"
+
+    map global object c "<a-;>comment-object<ret>" -docstring "comments"
+    map global object <a-c> "<a-;>comment-object-paragraph<ret>" \
+        -docstring "comment paragraphs"
+
+    hook global WinCreate .* %{
+        comment-object-enable-autowrap
+    }
+}
+
 plug "ul/kak-lsp" do %{
     cargo install --locked --force --path .
 } config %{
