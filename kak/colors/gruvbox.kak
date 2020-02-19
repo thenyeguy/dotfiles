@@ -34,7 +34,7 @@ evaluate-commands %sh{
     set_face MenuBackground     $fg,$gray2
     set_face MenuInfo           $bg
     set_face Information        $bg,$fg
-    set_face Error              $bg,$red
+    set_face Error              $bg,$red+F
     set_face StatusLine         $fg,$bg
     set_face StatusLineMode     $yellow+b
     set_face StatusLineInfo     $purple
@@ -73,7 +73,7 @@ evaluate-commands %sh{
     set_face function  $aqua+b
     set_face string    $green
     set_face keyword   $red
-    set_face operator  $fg
+    set_face operator  $red
     set_face attribute $orange
     set_face comment   $gray4
     set_face meta      $aqua
