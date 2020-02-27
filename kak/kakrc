@@ -90,7 +90,7 @@ define-command escape -docstring "Intelligently handle escape key" %{
         fi
     }
 }
-map global normal <esc> ":escape<ret>" -docstring "smart escape"
+map global normal <esc> ": escape<ret>" -docstring "smart escape"
 
 # Intelligent tab completion
 hook global InsertCompletionShow .* %{
@@ -117,8 +117,8 @@ plug "andreyorst/fzf.kak" defer fzf %{
     set-option global fzf_file_command "ag -l"
     set-option global fzf_preview false
 } config %{
-    map global user f ":fzf-mode<ret>" -docstring "fzf mode"
-    map global normal <c-p> ":fzf-mode<ret>f"
+    map global user f ": fzf-mode<ret>" -docstring "fzf mode"
+    map global normal <c-p> ": fzf-mode<ret>f"
 }
 
 plug "andreyorst/smarttab.kak" defer smarttab %{
@@ -135,17 +135,17 @@ plug "danr/kakoune-easymotion" config %{
     # Fix back-word key-bindings:
     unmap global easymotion q
     unmap global easymotion Q
-    map global easymotion b ":easy-motion-b<ret>" -docstring "word ←"
-    map global easymotion B ":easy-motion-B<ret>" -docstring "WORD ←"
+    map global easymotion b ": easy-motion-b<ret>" -docstring "word ←"
+    map global easymotion B ": easy-motion-B<ret>" -docstring "WORD ←"
 
-    map global user <space> ":enter-user-mode easymotion<ret>" \
+    map global user <space> ": enter-user-mode easymotion<ret>" \
         -docstring "easymotion"
 }
 
 plug "smartsearch" config %{
     set-face global SearchMatch +bu
-    map global normal * ":smartsearch-select<ret>"
-    map global user n ":smartsearch-toggle<ret>" \
+    map global normal * ": smartsearch-select<ret>"
+    map global user n ": smartsearch-toggle<ret>" \
         -docstring "toggle search highlighting"
     smartsearch-enable
 }
@@ -168,7 +168,7 @@ plug "ul/kak-lsp" do %{
     set-face global DiagnosticWarning black,yellow+fg
 
     hook global WinSetOption filetype=(rust|python|c|cpp) %{
-        map window user d ":enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
+        map window user d ": enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
         lsp-enable-window
     }
 }
