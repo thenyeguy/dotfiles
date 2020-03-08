@@ -14,10 +14,10 @@ bind -r \{ swap-pane -U
 bind -r \} swap-pane -D
 
 # Configure pane navigation with vim-like motions.
-bind -r ^h select-pane -L
-bind -r ^j select-pane -D
-bind -r ^k select-pane -U
-bind -r ^l select-pane -R
+bind -T root -r ^j run-shell "~/.dotfiles/tmux/navigate.sh j"
+bind -T root -r ^k run-shell "~/.dotfiles/tmux/navigate.sh k"
+bind -T root -r ^h run-shell "~/.dotfiles/tmux/navigate.sh h"
+bind -T root -r ^l run-shell "~/.dotfiles/tmux/navigate.sh l"
 bind -r H resize-pane -L
 bind -r J resize-pane -D
 bind -r K resize-pane -U
