@@ -56,10 +56,10 @@ map global normal D "<a-x>d"
 map global normal Y "<a-x>y"
 
 # Clipboard integration
-map global user y "<a-|>clipboard copy<ret>" -docstring "copy to clipboard"
-map global user p "o<esc>!clipboard paste<ret>" \
+map global user y ": clipboard-copy<ret>" -docstring "copy to clipboard"
+map global user p ": clipboard-paste after<ret>" \
     -docstring "paste after from clipboard"
-map global user P "O<esc>!clipboard paste<ret>" \
+map global user P ": clipboard-paste before<ret>" \
     -docstring "paste before from clipboard"
 
 # Commenting shortcut
