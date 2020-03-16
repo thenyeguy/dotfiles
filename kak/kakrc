@@ -63,7 +63,7 @@ map global user P "O<esc>!clipboard paste<ret>" \
     -docstring "paste before from clipboard"
 
 # Commenting shortcut
-map global user c ":comment-line<ret>"  -docstring "comment selected lines"
+map global user c ": comment-line<ret>"  -docstring "comment selected lines"
 
 # Pane splitting (preserving buffer and line number)
 define-command split -params 0..1 -docstring "Splits the current pane" %{
@@ -77,8 +77,8 @@ define-command split -params 0..1 -docstring "Splits the current pane" %{
 define-command sp %{ split -v }
 define-command vsp %{ split -h }
 
-map global user s ":split<ret>" -docstring "split window"
-map global user q ":quit<ret>" -docstring "close current split"
+map global user s ": split<ret>" -docstring "split window"
+map global user q ": quit<ret>" -docstring "close current split"
 
 # Intelligent escape
 define-command escape -docstring "Intelligently handle escape key" %{
