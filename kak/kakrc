@@ -68,7 +68,7 @@ map global user c ": comment-line<ret>"  -docstring "comment selected lines"
 # Pane splitting (preserving buffer and line number)
 define-command split -params 0..1 -docstring "Splits the current pane" %{
     nop %sh{
-        if [[ "$kak_buffile" != \**\* ]]; then
+        if [[ -f "$kak_buffile" ]]; then
             file="+$kak_cursor_line $kak_buffile"
         fi
         ~/.dotfiles/tmux/layout.py split $1 -- kak -c "$kak_session" $file
