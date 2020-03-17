@@ -18,6 +18,12 @@ bind -T root -r ^j run-shell "~/.dotfiles/tmux/navigate.sh j"
 bind -T root -r ^k run-shell "~/.dotfiles/tmux/navigate.sh k"
 bind -T root -r ^h run-shell "~/.dotfiles/tmux/navigate.sh h"
 bind -T root -r ^l run-shell "~/.dotfiles/tmux/navigate.sh l"
+bind -T copy-mode-vi -r ^j run-shell "~/.dotfiles/tmux/navigate.sh j"
+bind -T copy-mode-vi -r ^k run-shell "~/.dotfiles/tmux/navigate.sh k"
+bind -T copy-mode-vi -r ^h run-shell "~/.dotfiles/tmux/navigate.sh h"
+bind -T copy-mode-vi -r ^l run-shell "~/.dotfiles/tmux/navigate.sh l"
+
+# Configure pane resizing
 bind -r H resize-pane -L
 bind -r J resize-pane -D
 bind -r K resize-pane -U
