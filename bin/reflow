@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+
+import argparse
+import re
+import sys
+import textwrap
+
+
+def get_paragraphs(lines):
+    paragraph = []
+
+    for line in lines:
+        line = line.rstrip()
+        if line:
+            paragraph.append(line)
+        else:
+            yield paragraph
+            paragraph = []
+    yield paragraph
+
+
+def strip_prefix(prefix, lines):
+    prefix_re = re.compile(r"^\s*{}\s*".format(prefix))
+    match = prefix_re.match(lines[0])
+    if match:
+        return match.group(), [prefix_re.sub("", line) for line in lines]
+    else:
+        return "", lines
+
+
+def main():
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument("--comment_line")
+    argparser.add_argument("--width", type=int, default=80)
+    args = argparser.parse_args()
+
+    prefix = ""
+    lines = sys.stdin.readlines()
+    if args.comment_line:
+        prefix, lines = strip_prefix(args.comment_line, lines)
+
+    first = True
+    for paragraph in get_paragraphs(lines):
+        text = " ".join(paragraph)
+
+        wrapper = textwrap.TextWrapper(
+            initial_indent=prefix,
+            subsequent_indent=prefix,
+            width=args.width,
+            break_long_words=False,
+        )
+
+        if first:
+            first = False
+        else:
+            print(prefix.rstrip())
+        print("\n".join(wrapper.wrap(text)))
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
