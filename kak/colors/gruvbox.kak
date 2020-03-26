@@ -66,6 +66,11 @@ evaluate-commands %sh{
     set_face Whitespace   $gray3
     set_face WrapMarker   $gray3
 
+    # Diff highlighting
+    # -----------------
+
+    set_face DiffMarker   $fg,$gray2+bF
+
     # Code highlighting
     # ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 
