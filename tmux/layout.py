@@ -121,11 +121,11 @@ class Pane(Node):
 
     def preferred_width(self):
         if self.job == "kak":
-            return 90
+            return 88
         return None
 
     def preferred_orientation(self):
-        if self.width < 180:
+        if self.width < 176:
             return Orientation.vertical
         else:
             return Orientation.horizontal
