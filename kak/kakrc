@@ -39,6 +39,7 @@ add-highlighter global/todo regex "TODO(\(.*?\))?:?" 0:Todo
 # Shuffle leader, command and anchor commands.
 map global normal <space> ,        # leader
 map global normal \; ":"           # command mode
+map global normal <ret> ":"        # command mode
 map global normal , "<a-;>"        # swap anchors
 map global normal <a-,> "<space>"  # cancel multiple selections
 
@@ -57,6 +58,7 @@ map global normal Y "<a-x>y"
 
 # Clipboard integration
 map global user y ": clipboard-copy<ret>" -docstring "copy to clipboard"
+map global user Y "<a-x>: clipboard-copy<ret>" -docstring "copy line to clipboard"
 map global user p ": clipboard-paste after<ret>" \
     -docstring "paste after from clipboard"
 map global user P ": clipboard-paste before<ret>" \
@@ -78,7 +80,9 @@ define-command sp %{ split -v }
 define-command vsp %{ split -h }
 
 map global user s ": split<ret>" -docstring "split window"
+map global user w ": write<ret>" -docstring "save buffer"
 map global user q ": quit<ret>" -docstring "close current split"
+map global user <a-q> ": kill<ret>" -docstring "quit kak session"
 
 # Intelligent escape
 define-command escape -docstring "Intelligently handle escape key" %{
@@ -119,7 +123,7 @@ plug "andreyorst/fzf.kak" defer fzf %{
     set-option global fzf_file_command "ag -l"
     set-option global fzf_preview false
 } config %{
-    map global user f ": fzf-mode<ret>" -docstring "fzf mode"
+    map global user z ": fzf-mode<ret>" -docstring "fzf mode"
     map global normal <c-p> ": fzf-mode<ret>f"
 }
 
@@ -182,7 +186,7 @@ plug "ul/kak-lsp" do %{
     set-face global DiagnosticWarning black,yellow+fg
 
     hook global WinSetOption filetype=(rust|python|c|cpp) %{
-        map window user d ": enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
+        map window user l ": enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
         lsp-enable-window
     }
 }
