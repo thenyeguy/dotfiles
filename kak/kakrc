@@ -124,7 +124,7 @@ plug "andreyorst/fzf.kak" defer fzf %{
     set-option global fzf_preview false
 } config %{
     map global user z ": fzf-mode<ret>" -docstring "fzf mode"
-    map global normal <c-p> ": fzf-mode<ret>f"
+    map global normal <c-r> ": fzf-mode<ret>f"
 }
 
 plug "andreyorst/smarttab.kak" defer smarttab %{
