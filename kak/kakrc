@@ -49,6 +49,8 @@ map global normal <a-x> "X"
 
 # More convenient search
 map global normal / "/(?i)"
+map global normal ? <a-/>
+map global normal <a-/> ?
 map global normal N <a-n>
 map global normal <a-n> N
 
