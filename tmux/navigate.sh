@@ -8,7 +8,12 @@ fi
 
 pane_cmd=$(tmux display -p "#{pane_start_command}")
 if [[ "$pane_cmd" == *"fzf"* ]]; then
-    tmux send-keys ^$key
+    case "$key" in
+        j) tmux send-keys ^$key;;
+        k) tmux send-keys ^$key;;
+        h) tmux select-pane -L;;
+        l) tmux select-pane -R;;
+    esac
 else
     case "$key" in
         j) tmux select-pane -D;;
