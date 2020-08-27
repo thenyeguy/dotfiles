@@ -137,8 +137,8 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
 
 plug "danr/kakoune-easymotion" config %{
     set-face global EasyMotionBackground rgb:787878
-    set-face global EasyMotionForeground yellow+b
-    set-face global EasyMotionSelected rgb:875f5f+b
+    set-face global EasyMotionForeground rgb:ffaf00+bF
+    set-face global EasyMotionSelected rgb:875f5f+bF
 
     # Fix back-word key-bindings:
     unmap global easymotion q
