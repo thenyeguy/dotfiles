@@ -19,6 +19,9 @@ evaluate-commands %sh{
     gray3="rgb:585858"
     gray4="rgb:787878"
 
+    brighter="rgba:ebdbb220"
+    dimmer="rgba:28282850"
+
     function set_face() {
         printf "set-face global %s %s\n" "$1" "$2"
     }
@@ -53,7 +56,7 @@ evaluate-commands %sh{
 
     set_face SecondaryCursor    $bg,$gray4+fg
     set_face SecondaryCursorEol $fg,$gray4+fg
-    set_face SecondarySelection $gray4,$gray2+fg
+    set_face SecondarySelection $dimmer,$brighter
 
     # General highlighting
     # ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
