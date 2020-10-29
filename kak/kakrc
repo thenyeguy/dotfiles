@@ -82,6 +82,7 @@ define-command sp %{ split -v }
 define-command vsp %{ split -h }
 
 map global user s ": split<ret>" -docstring "split window"
+map global user <a-s> ": split -v<ret>" -docstring "vertically split window"
 map global user w ": write<ret>" -docstring "save buffer"
 map global user q ": quit<ret>" -docstring "close current split"
 map global user <a-q> ": kill<ret>" -docstring "quit kak session"
