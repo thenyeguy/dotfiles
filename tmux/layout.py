@@ -178,20 +178,25 @@ class Columns(Node):
             return Orientation.horizontal
 
     def resize(self, width, height):
-        # Compute fixed widths, and remaining shares:
+        # Remove the borders from the total width:
+        width = width - len(self.columns) + 1
+
+        # Compute preferred widths, then divide the remaining width between the
+        # rest of the columns. The last column does not get to prefer a width.
         shares = len(self.columns)
-        shared_width = width - len(self.columns) + 1
-        for col in self.columns:
+        shared_width = width
+        for col in self.columns[:-1]:
             if col.preferred_width():
                 shares -= 1
                 shared_width -= col.preferred_width()
-        share = shared_width // shares if shares else 0
+        share = shared_width // shares
 
-        for col in self.columns:
-            if col.preferred_width():
-                col.resize(col.preferred_width(), height)
-            else:
-                col.resize(share, height)
+        remaining = width
+        for col in self.columns[:-1]:
+            col_width = col.preferred_width() or share
+            col.resize(col_width, height)
+            remaining -= col_width
+        self.columns[-1].resize(remaining, height)
 
     def debug_string(self, indent=""):
         cols = "\n".join(
