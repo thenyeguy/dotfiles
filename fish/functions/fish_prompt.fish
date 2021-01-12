@@ -86,10 +86,11 @@ function __prompt_git
                       or git rev-parse --short HEAD)\)
     end
 
-    git diff --no-ext-diff --quiet --exit-code 2>/dev/null; or set unstaged y
+    git diff --ignore-submodules=dirty --no-ext-diff --quiet --exit-code \
+        2>/dev/null; or set unstaged y
     git diff-index --cached --quiet HEAD -- 2>/dev/null; or set staged y
 
-    if silent count (git status --short)
+    if silent count (git status --short --ignore-submodules=dirty)
         set background yellow
     else
         set background green
