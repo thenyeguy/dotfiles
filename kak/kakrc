@@ -125,6 +125,7 @@ plug "andreyorst/plug.kak" noload
 plug "andreyorst/fzf.kak" defer fzf %{
     set-option global fzf_file_command "ag -l"
     set-option global fzf_preview false
+    set-option global fzf_use_main_selection false
 } config %{
     map global user z ": fzf-mode<ret>" -docstring "fzf mode"
     map global normal <c-r> ": fzf-mode<ret>f"
