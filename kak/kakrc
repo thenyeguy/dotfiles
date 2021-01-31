@@ -119,55 +119,30 @@ hook global InsertCompletionHide .* %{
 # CONFIGURE PLUGINS #
 # ----------------- #
 
-source "%val{config}/plugins/plug.kak/rc/plug.kak"
-plug "andreyorst/plug.kak" noload
+require-module plug
 
-plug "andreyorst/fzf.kak" defer fzf %{
+plug-autoload plug %{
+  define-command plug-init -docstring 'update and initialize plugins' %{
+    plug-install
+    plug-execute lsp cargo build --release
+  }
+}
+
+plug fzf https://github.com/andreyorst/fzf.kak %{
     set-option global fzf_file_command "ag -l"
     set-option global fzf_preview false
     set-option global fzf_use_main_selection false
-} config %{
+
     map global user z ": fzf-mode<ret>" -docstring "fzf mode"
     map global normal <c-r> ": fzf-mode<ret>f"
 }
 
-plug "andreyorst/smarttab.kak" defer smarttab %{
+plug smarttab https://github.com/andreyorst/smarttab.kak %{
     set-option global softtabstop 4
-} config %{
     hook global WinCreate .* %{ expandtab }
 }
 
-plug "smartsearch" config %{
-    set-face global SearchMatch +bu
-    map global normal * ": smartsearch-select<ret>"
-    map global user n ": smartsearch-toggle<ret>" \
-        -docstring "toggle search highlighting"
-    smartsearch-enable
-}
-
-plug "smartcursor" config %{
-    set-face global CursorLine default,rgb:3a3a3a
-    hook global WinCreate .* %{
-        smartcursor-enable
-        smartcursor-enable-lines
-    }
-}
-
-plug "comment-object" config %{
-    map global object C c -docstring "custom object desc"
-
-    map global object c "<a-;>comment-object<ret>" -docstring "comments"
-    map global object <a-c> "<a-;>comment-object-paragraph<ret>" \
-        -docstring "comment paragraphs"
-
-    hook global WinCreate .* %{
-        comment-object-enable-autowrap
-    }
-}
-
-plug "ul/kak-lsp" do %{
-    cargo install --locked --force --path .
-} config %{
+plug-old lsp https://github.com/kak-lsp/kak-lsp %{
     set-option global lsp_diagnostic_line_error_sign "▶"
     set-option global lsp_diagnostic_line_warning_sign "▷"
 
@@ -177,6 +152,34 @@ plug "ul/kak-lsp" do %{
     hook global WinSetOption filetype=(rust|python|c|cpp) %{
         map window user l ": enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
         lsp-enable-window
+    }
+}
+
+plug-autoload smartsearch %{
+    set-face global SearchMatch +bu
+    map global normal * ": smartsearch-select<ret>"
+    map global user n ": smartsearch-toggle<ret>" \
+        -docstring "toggle search highlighting"
+    smartsearch-enable
+}
+
+plug-autoload smartcursor %{
+    set-face global CursorLine default,rgb:3a3a3a
+    hook global WinCreate .* %{
+        smartcursor-enable
+        smartcursor-enable-lines
+    }
+}
+
+plug-autoload comment-object %{
+    map global object C c -docstring "custom object desc"
+
+    map global object c "<a-;>comment-object<ret>" -docstring "comments"
+    map global object <a-c> "<a-;>comment-object-paragraph<ret>" \
+        -docstring "comment paragraphs"
+
+    hook global WinCreate .* %{
+        comment-object-enable-autowrap
     }
 }
 
