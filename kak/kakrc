@@ -137,21 +137,6 @@ plug "andreyorst/smarttab.kak" defer smarttab %{
     hook global WinCreate .* %{ expandtab }
 }
 
-plug "danr/kakoune-easymotion" config %{
-    set-face global EasyMotionBackground rgb:787878
-    set-face global EasyMotionForeground rgb:ffaf00+bF
-    set-face global EasyMotionSelected rgb:875f5f+bF
-
-    # Fix back-word key-bindings:
-    unmap global easymotion q
-    unmap global easymotion Q
-    map global easymotion b ": easy-motion-b<ret>" -docstring "word ←"
-    map global easymotion B ": easy-motion-B<ret>" -docstring "WORD ←"
-
-    map global user <space> ": enter-user-mode easymotion<ret>" \
-        -docstring "easymotion"
-}
-
 plug "smartsearch" config %{
     set-face global SearchMatch +bu
     map global normal * ": smartsearch-select<ret>"
