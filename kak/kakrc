@@ -182,14 +182,3 @@ plug-autoload comment-object %{
         comment-object-enable-autowrap
     }
 }
-
-
-# ---------------- #
-# LOAD EXTRA FILES #
-# ---------------- #
-
-evaluate-commands %sh{
-    for file in $kak_config/rc/*.kak; do
-        printf 'source "%s"\n' $file
-    done
-}
