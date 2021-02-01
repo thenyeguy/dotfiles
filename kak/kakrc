@@ -128,13 +128,16 @@ plug-autoload plug %{
   }
 }
 
-plug fzf https://github.com/andreyorst/fzf.kak %{
-    set-option global fzf_file_command "ag -l"
-    set-option global fzf_preview false
-    set-option global fzf_use_main_selection false
+plug prelude https://github.com/alexherbo2/prelude.kak
 
-    map global user z ": fzf-mode<ret>" -docstring "fzf mode"
-    map global normal <c-r> ": fzf-mode<ret>f"
+plug connect https://github.com/alexherbo2/connect.kak %{
+    alias global popup tmux-terminal-vertical
+
+    define-command fzf-files %{ + "%val{config}/connect/fzf-files.sh" }
+    define-command fzf-buffers %{ + "%val{config}/connect/fzf-buffers.sh" }
+    map global normal <c-r> ": fzf-files<ret>"
+    map global user z ": fzf-files<ret>" -docstring "fzf file selector"
+    map global user b ": fzf-buffers<ret>" -docstring "fzf buffer selector"
 }
 
 plug smarttab https://github.com/andreyorst/smarttab.kak %{
