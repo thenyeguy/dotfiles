@@ -124,7 +124,7 @@ require-module plug
 plug-autoload plug %{
   define-command plug-init -docstring 'update and initialize plugins' %{
     plug-install
-    plug-execute lsp cargo build --release
+    plug-execute lsp cargo install --locked --force --path .
   }
 }
 
