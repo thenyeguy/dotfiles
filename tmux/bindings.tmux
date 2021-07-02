@@ -23,6 +23,16 @@ bind -T copy-mode-vi -r ^k run-shell "~/.dotfiles/tmux/navigate.sh k"
 bind -T copy-mode-vi -r ^h run-shell "~/.dotfiles/tmux/navigate.sh h"
 bind -T copy-mode-vi -r ^l run-shell "~/.dotfiles/tmux/navigate.sh l"
 
+# Configure pane navigation with arrow key motions.
+bind -T root -r C-Down  run-shell "~/.dotfiles/tmux/navigate.sh j"
+bind -T root -r C-Up    run-shell "~/.dotfiles/tmux/navigate.sh k"
+bind -T root -r C-Left  run-shell "~/.dotfiles/tmux/navigate.sh h"
+bind -T root -r C-Right run-shell "~/.dotfiles/tmux/navigate.sh l"
+bind -T copy-mode-vi -r C-Down  run-shell "~/.dotfiles/tmux/navigate.sh j"
+bind -T copy-mode-vi -r C-Up    run-shell "~/.dotfiles/tmux/navigate.sh k"
+bind -T copy-mode-vi -r C-Left  run-shell "~/.dotfiles/tmux/navigate.sh h"
+bind -T copy-mode-vi -r C-Right run-shell "~/.dotfiles/tmux/navigate.sh l"
+
 # Configure pane resizing
 bind -r H resize-pane -L
 bind -r J resize-pane -D
