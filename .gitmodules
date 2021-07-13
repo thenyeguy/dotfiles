@@ -7,6 +7,3 @@
 [submodule "kak/autoload/plugins/plug"]
 	path = kak/autoload/plugins/plug
 	url = https://github.com/alexherbo2/plug.kak
-[submodule "kak/autoload/plug"]
-	path = kak/autoload/plug
-	url = https://github.com/alexherbo2/plug.kak

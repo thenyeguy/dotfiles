@@ -120,17 +120,14 @@ hook global InsertCompletionHide .* %{
 # ----------------- #
 
 require-module plug
-
-plug-autoload plug %{
-  define-command plug-init -docstring 'update and initialize plugins' %{
+define-command plug-init -docstring 'update and initialize plugins' %{
     plug-install
     plug-execute lsp cargo install --locked --force --path .
-  }
 }
 
-plug prelude https://github.com/alexherbo2/prelude.kak
+plug prelude https://github.com/kakounedotcom/prelude.kak
 
-plug connect https://github.com/alexherbo2/connect.kak %{
+plug connect https://github.com/kakounedotcom/connect.kak %{
     alias global popup tmux-terminal-vertical
 
     define-command fzf-files %{ + "%val{config}/connect/fzf-files.sh" }
