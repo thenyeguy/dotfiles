@@ -13,8 +13,23 @@ function noclip () {
     exit 2
 }
 
+function use_osc52 () {
+    # Only use osc52 over SSH.
+    if [ -n "$TMUX" ]; then
+        # Check tmux's client environment, which is properly updated when
+        # reconnecting, rather than the shell's, which is based on the state
+        # when the window was created.
+        [[ "$(tmux show-environment SSH_CONNECTION)" == SSH_CONNECTION=* ]]
+    else
+        [[ -n "$SSH_CONNECTION" ]]
+    fi
+}
+
 function copy () {
-    if type pbcopy &> /dev/null; then
+    if use_osc52; then
+        encoded=$(base64 <&0)
+        printf "\033]52;c;%s\a" "$encoded" > /dev/tty
+    elif type pbcopy &> /dev/null; then
         pbcopy <&0
     elif type xclip &> /dev/null; then
         xclip -sel clip -i <&0

@@ -66,6 +66,8 @@ map global user p ": clipboard-paste after<ret>" \
 map global user P ": clipboard-paste before<ret>" \
     -docstring "paste before from clipboard"
 
+map global normal <c-v> "\o" -docstring "paste mode"
+
 # Commenting shortcut
 map global user c ": comment-line<ret>"  -docstring "comment selected lines"
 
