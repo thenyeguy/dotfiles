@@ -31,3 +31,5 @@
     fuck = reset --hard
     new = "!f() { git checkout -b $1 master; }; f"
     reword = commit --amend
+    init-submodules = submodule update --init
+    update-submodules = submodule update --remote --progress
