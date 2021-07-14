@@ -33,6 +33,9 @@ provide-module smartcursor %{
         hook -group smartcursor-toggle window FocusIn .* %{
             smartcursor-show-faces
         }
+        hook -group smartcursor-toggle window WinDisplay .* %{
+            smartcursor-show-faces
+        }
     }
 
     define-command smartcursor-disable %{

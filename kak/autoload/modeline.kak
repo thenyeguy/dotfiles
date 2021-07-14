@@ -80,6 +80,7 @@ hook global WinCreate .* %{
     }
 
     build-modeline
+    hook window WinDisplay .* build-modeline
     hook window FocusIn .* build-modeline
     hook window FocusOut .* build-modeline-unfocused
 }
