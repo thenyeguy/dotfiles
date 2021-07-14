@@ -82,7 +82,7 @@ function __prompt_git
     set branch (git symbolic-ref HEAD --short --quiet; set os $status)
     if test $os -ne 0
         # Handle detached HEADs
-        set branch \((git describe --contains --all HEAD ^/dev/null; \
+        set branch \((git describe --contains --all HEAD 2>/dev/null; \
                       or git rev-parse --short HEAD)\)
     end
 
