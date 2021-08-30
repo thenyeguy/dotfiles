@@ -13,7 +13,9 @@ set -g status-left-length "100"
 set -g status-left "#[fg=colour235,bg=colour252] #S #[fg=colour252,bg=colour239]"
 
 set -g window-status-separator ""
-set -g window-status-format "#[fg=colour249,bg=colour239] [#I] #W "
+set -g window-status-style "fg=colour249,bg=colour239"
+set -g window-status-bell-style "fg=colour3,bg=colour239"
+set -g window-status-format " [#I] #W "
 set -g window-status-current-format "#[fg=colour239,bg=colour241]#[fg=colour252,bg=colour241,bold] [#I] #W #[fg=colour241,bg=colour239]"
 
 set -g status-right-length "200"
