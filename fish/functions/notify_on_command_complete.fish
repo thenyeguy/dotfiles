@@ -25,6 +25,9 @@ function __notify_postexec --on-event fish_postexec
 
     if test $cmd_duration -lt $__notify_on_command_complete_min_ms
         return
+    else if test -n "$SSH_CONNECTION"
+        tput bel
+        return
     else if test "$active_terminal_id" = "$__notify_terminal_id"
         return
     end
