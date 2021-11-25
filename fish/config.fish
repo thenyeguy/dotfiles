@@ -9,6 +9,7 @@ set -x FZF_TMUX_OPTS "-p"
 
 # Update path
 add_to_path ~/.dotfiles/bin ~/.dotfiles/git ~/.dotfiles/fzf/bin
+add_to_path ~/.cargo/bin
 
 # Fix typos
 abbr --global --add sl 'ls'
