@@ -44,8 +44,8 @@ map global normal , "<a-;>"        # swap anchors
 map global normal <a-,> "<space>"  # cancel multiple selections
 
 # More convenient line selection
-map global normal X "<a-x>"
-map global normal <a-x> "X"
+map global normal x "<a-x>"
+map global normal <a-x> "x"
 
 # More convenient search
 map global normal / "/(?i)"
