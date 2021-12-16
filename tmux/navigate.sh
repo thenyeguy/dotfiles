@@ -7,7 +7,7 @@ if [[ "$key" != [jkhl] ]]; then
 fi
 
 pane_cmd=$(tmux display -p "#{pane_start_command}")
-if [[ "$pane_cmd" == *"fzf"* ]]; then
+if [[ "$pane_cmd" == *"exec -a fzf"* ]]; then
     case "$key" in
         j) tmux send-keys ^$key;;
         k) tmux send-keys ^$key;;
