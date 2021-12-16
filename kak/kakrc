@@ -130,7 +130,10 @@ define-command plug-init -docstring 'update and initialize plugins' %{
 plug prelude https://github.com/kakounedotcom/prelude.kak
 
 plug connect https://github.com/kakounedotcom/connect.kak %{
-    alias global popup tmux-terminal-vertical
+    define-command tmux-terminal-popup -params 1.. %{
+        tmux-terminal-impl 'popup -E' %arg{@}
+    }
+    alias global popup tmux-terminal-popup
 
     define-command fzf-files %{ + "%val{config}/connect/fzf-files.sh" }
     define-command fzf-buffers %{ + "%val{config}/connect/fzf-buffers.sh" }

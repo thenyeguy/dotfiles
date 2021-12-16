@@ -3,7 +3,9 @@
 # -------------------------- #
 
 set -x EDITOR "kak"
-set -g FZF_TMUX 1
+
+set -x FZF_TMUX 1
+set -x FZF_TMUX_OPTS "-p"
 
 # Update path
 add_to_path ~/.dotfiles/bin ~/.dotfiles/git ~/.dotfiles/fzf/bin
