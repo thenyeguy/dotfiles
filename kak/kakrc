@@ -4,7 +4,7 @@
 
 colorscheme gruvbox
 
-set-option global startup_info_version 20200901
+set-option global startup_info_version 20211107
 set-option global ui_options ncurses_assistant=none
 
 set-option global tabstop 4
