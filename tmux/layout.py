@@ -7,6 +7,9 @@ import re
 import subprocess
 import sys
 
+PREFERRED_WIDTHS = { "kak": 90 }
+MIN_WIDTH = 100
+
 LAYOUT_RE = re.compile(r"\[layout (?P<layout>.*)\] .* \(active\)$")
 NODE_RE = re.compile(
     r"^(?P<width>\d+)x(?P<height>\d+),\d+,\d+((,(?P<pane>\d+),?(?P<rest>.*))"
@@ -120,12 +123,10 @@ class Pane(Node):
         self.parent = None
 
     def preferred_width(self):
-        if self.job == "kak":
-            return 88
-        return None
+        return PREFERRED_WIDTHS.get(self.job)
 
     def preferred_orientation(self):
-        if self.width < 176:
+        if self.width < 2 * MIN_WIDTH:
             return Orientation.vertical
         else:
             return Orientation.horizontal
@@ -172,7 +173,7 @@ class Columns(Node):
                 shared_width -= col.preferred_width()
         share = shared_width // shares if shares else 0
 
-        if share < 90:
+        if share < MIN_WIDTH:
             return Orientation.vertical
         else:
             return Orientation.horizontal
