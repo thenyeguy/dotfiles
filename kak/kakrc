@@ -156,7 +156,8 @@ plug-old lsp https://github.com/kak-lsp/kak-lsp %{
     set-face global DiagnosticWarning black,yellow+fg
 
     hook global WinSetOption filetype=(rust|python|c|cpp) %{
-        map window user l ": enter-user-mode lsp<ret>" -docstring "lsp diagnostics"
+        map window user <space> ": enter-user-mode lsp<ret>" \
+            -docstring "lsp mode"
         lsp-enable-window
     }
 }
