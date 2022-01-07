@@ -82,6 +82,9 @@ bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
 # Rename window
 bind ^r command-prompt -p "window name:" "rename-window '%%'"
 
+# Opening popups
+bind ^t display-popup -E -d "#{pane_current_path}"
+
 # Reloading macro
 bind R source-file ~/.tmux.conf \; display "Reloaded!"
 
