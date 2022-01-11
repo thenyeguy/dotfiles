@@ -9,7 +9,7 @@ if [ -n "$1" ]; then
 else
     revision=$(git log -n 20 --color=always \
                  --pretty=format:"%Cgreen%h%Creset - %s%C(yellow)%d%Creset" \
-             | fzf-tmux --ansi --no-sort -d 22 --prompt "Which commit to fixup? " \
+             | fzf-tmux --ansi --no-sort -p --prompt "Which commit to fixup? " \
              | cut -d' ' -f1)
     if [ -z "$revision" ]; then
         exit
