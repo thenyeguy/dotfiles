@@ -8,7 +8,7 @@ set __prompt_segment_seperator 
 set __prompt_subsegment_seperator 
 set __prompt_active_jobs_symbol ☼
 set __prompt_bad_exit_symbol ‼
-set __prompt_dir_symbol 🖿
+set __prompt_ssh_symbol 
 
 set __prompt_git_symbol 
 set __prompt_git_unstaged ○
@@ -116,15 +116,14 @@ function fish_prompt
 
     __prompt_new_line
     switch $fish_bind_mode
+        case insert
+            printf " › "
         case default
-            set_color brred
-            printf " « "
-            set_color reset
+            set_color brblack; printf " › "
+        case replace_one
+            set_color brred;   printf " › "
         case visual
-            set_color yellow
-            printf " « "
-            set_color reset
-        case "*"
-            printf " » "
+            set_color brblack; printf " » "
     end
+    set_color reset
 end
