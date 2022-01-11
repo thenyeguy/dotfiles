@@ -19,4 +19,4 @@ set -g window-status-format " [#I] #W "
 set -g window-status-current-format "#[fg=colour239,bg=colour241]#[fg=colour252,bg=colour241,bold] [#I] #W #[fg=colour241,bg=colour239]"
 
 set -g status-right-length "200"
-set -g status-right "#(~/.dotfiles/tmux/battery-life.sh) #[fg=colour241,bg=colour239]#[fg=colour252,bg=colour241] %l:%M %p #[fg=colour252]#[fg=colour252] %m/%d/%Y #[fg=colour252,bg=colour241]#[fg=colour235,bg=colour252] $USER@#H "
+set -g status-right "#(~/.dotfiles/tmux/battery-life.sh) #[fg=colour241,bg=colour239]#[fg=colour252,bg=colour241] %l:%M %p #[fg=colour252]#[fg=colour252] %m/%d/%Y #[fg=colour252,bg=colour241]#[fg=colour235,bg=colour252] $USER  #H #(~/.dotfiles/tmux/ssh.sh)"

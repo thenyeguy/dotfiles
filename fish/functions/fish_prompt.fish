@@ -109,6 +109,8 @@ function fish_prompt
         and __prompt_segment black brred $__prompt_active_jobs_symbol
     test "$last_status" -ne 0; \
         and __prompt_segment black brred $__prompt_bad_exit_symbol
+    test -z "$TMUX" -a -n "$SSH_CONNECTION";
+        and __prompt_segment black brred $__prompt_ssh_symbol
     __prompt_segment brblue black (date "+%l:%M%p" | string trim)
     __prompt_git;
         or __prompt_segment blue black (prompt_pwd)
