@@ -1,12 +1,13 @@
 # My custom theme, based on this wonderful zsh theme:
 #   agnoster's Theme - https://gist.github.com/3712874
 #
-# This uses some glyphs that may be specific to Source Code Pro.
+# This uses some glyphs typically only present in coding-specific fonts (such as
+# Source Code Pro, JetBrains Mono, etc).
 
 # Configure prompt
 set __prompt_segment_seperator 
 set __prompt_subsegment_seperator 
-set __prompt_active_jobs_symbol ☼
+set __prompt_active_jobs_symbol "&"
 set __prompt_bad_exit_symbol ‼
 set __prompt_ssh_symbol 
 
@@ -105,12 +106,12 @@ function fish_prompt
     set last_status $status
 
     __prompt_new_line
+    test -z "$TMUX" -a -n "$SSH_CONNECTION";
+        and __prompt_segment black brred $__prompt_ssh_symbol
     test (jobs -l);
         and __prompt_segment black brred $__prompt_active_jobs_symbol
     test "$last_status" -ne 0; \
         and __prompt_segment black brred $__prompt_bad_exit_symbol
-    test -z "$TMUX" -a -n "$SSH_CONNECTION";
-        and __prompt_segment black brred $__prompt_ssh_symbol
     __prompt_segment brblue black (date "+%l:%M%p" | string trim)
     __prompt_git;
         or __prompt_segment blue black (prompt_pwd)
@@ -121,11 +122,28 @@ function fish_prompt
         case insert
             printf " › "
         case default
-            set_color brblack; printf " › "
-        case replace_one
-            set_color brred;   printf " › "
+            set_color brblack;   printf " › "
+        case replace replace_one
+            set_color brred;     printf " › "
         case visual
-            set_color brblack; printf " » "
+            set_color yellow;    printf " › "
+        case "*"
+            set_color brmagenta; printf " › "
+    end
+    set_color reset
+end
+
+function fish_right_prompt
+    switch $fish_bind_mode
+        case insert
+        case default
+            set_color brblack;   printf " ‹ normal"
+        case replace replace_one
+            set_color brred;     printf " ‹ replace"
+        case visual
+            set_color yellow;    printf " ‹ visual"
+        case "*"
+            set_color brmagenta; printf " ‹ $fish_bind_mode"
     end
     set_color reset
 end
