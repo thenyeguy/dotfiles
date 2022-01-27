@@ -75,6 +75,7 @@ bind -r ^p previous-window
 bind -r ^n next-window
 bind -r P swap-window -d -t -1
 bind -r N swap-window -d -t +1
+bind w run-shell "~/.dotfiles/tmux/fzf_window.sh"
 
 # Ask for name on new window
 bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
