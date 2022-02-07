@@ -142,6 +142,7 @@ def main(args):
             "colors/dircolors": "~/.dircolors",
             "fish": "~/.config/fish",
             "git/config": "~/.gitconfig",
+            "julia": "~/.julia/config",
             "kak": "~/.config/kak",
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
