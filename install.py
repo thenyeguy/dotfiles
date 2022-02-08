@@ -7,7 +7,7 @@ import sys
 
 
 class LogSection:
-    """ A utility for creating log sections. """
+    """A utility for creating log sections."""
 
     _is_first_section = True
 
@@ -39,20 +39,19 @@ class LogSection:
 
 
 def call(cmd):
-    """ Calls the provided shell command. """
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE,
-                            stderr=subprocess.PIPE)
+    """Calls the provided shell command."""
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     for line in proc.stdout:
         print(line.decode("utf8").rstrip())
 
 
 def expand(path):
-    """ Expands the provided path to an absolute path. """
+    """Expands the provided path to an absolute path."""
     return os.path.expandvars(os.path.expanduser(path))
 
 
 def expanded_paths(paths):
-    """ Helper for iterating safely over the provided paths. """
+    """Helper for iterating safely over the provided paths."""
     for path in paths:
         path = expand(path)
         if not os.path.exists(path):
@@ -62,7 +61,7 @@ def expanded_paths(paths):
 
 
 def clean(symlink_dirs):
-    """ Cleans up anything from older dotfile installs. """
+    """Cleans up anything from older dotfile installs."""
     with LogSection("Cleaning up..."):
         for path in expanded_paths(symlink_dirs):
             for item in sorted(os.listdir(path)):
@@ -78,14 +77,14 @@ def clean(symlink_dirs):
 
 
 def backup(path):
-    """ If the path exists, backs it up. """
+    """If the path exists, backs it up."""
     dst = path + ".bak"
     print("{} -> {}".format(path, dst))
     shutil.move(path, path + ".bak")
 
 
 def link(paths):
-    """ Symlinks the provided paths. """
+    """Symlinks the provided paths."""
     with LogSection("Setting up symlinks..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
         for src, dst in sorted(paths.items(), key=lambda item: item[0]):
@@ -110,7 +109,7 @@ def link(paths):
 
 
 def create(paths):
-    """ Creates the provided paths if they don't exist. """
+    """Creates the provided paths if they don't exist."""
     with LogSection("Creating directories..."):
         for path in paths:
             path = expand(path)
@@ -120,13 +119,13 @@ def create(paths):
 
 
 def init_submodules():
-    """ Initializes git submodules. """
+    """Initializes git submodules."""
     with LogSection("Initializing submodules..."):
         call(["git", "submodule", "update", "--init"])
 
 
 def init_fzf():
-    """ Initializes fzf. """
+    """Initializes fzf."""
     with LogSection("Initializing fzf..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
         install_script = os.path.join(dotfile_dir, "fzf", "install")
@@ -137,15 +136,17 @@ def main(args):
     clean(["~", "~/.config"])
     init_submodules()
     init_fzf()
-    link({
-        "bashrc": "~/.bashrc",
-        "colors/dircolors": "~/.dircolors",
-        "fish": "~/.config/fish",
-        "git/config": "~/.gitconfig",
-        "kak": "~/.config/kak",
-        "tmux/tmux.conf": "~/.tmux.conf",
-        "vim": "~/.vim",
-    })
+    link(
+        {
+            "bashrc": "~/.bashrc",
+            "colors/dircolors": "~/.dircolors",
+            "fish": "~/.config/fish",
+            "git/config": "~/.gitconfig",
+            "kak": "~/.config/kak",
+            "tmux/tmux.conf": "~/.tmux.conf",
+            "vim": "~/.vim",
+        }
+    )
     create(["~/.vim/swp", "~/.vim/undo"])
     return 0
 

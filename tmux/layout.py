@@ -7,7 +7,7 @@ import re
 import subprocess
 import sys
 
-PREFERRED_WIDTHS = { "kak": 90 }
+PREFERRED_WIDTHS = {"kak": 90}
 MIN_WIDTH = 100
 
 LAYOUT_RE = re.compile(r"\[layout (?P<layout>.*)\] .* \(active\)$")
@@ -30,7 +30,7 @@ def split_node(node):
         elif node[i] == close:
             levels -= 1
         if levels == 0:
-            return (node[1:i], node[i + 2:])
+            return (node[1:i], node[i + 2 :])
     raise ValueError("Couldn't split node")
 
 
@@ -78,7 +78,6 @@ class Orientation(enum.Enum):
 
 
 class Direction(object):
-
     def __init__(self, orientation, before):
         self.orientation = orientation
         self.before = before
@@ -93,12 +92,12 @@ class Direction(object):
         return flags
 
     def __str__(self):
-        return "Direction({}, {})".format(self.orientation,
-                                          "before" if self.before else "after")
+        return "Direction({}, {})".format(
+            self.orientation, "before" if self.before else "after"
+        )
 
 
 class Node(object):
-
     def preferred_width(self):
         return None
 
@@ -113,7 +112,6 @@ class Node(object):
 
 
 class Pane(Node):
-
     def __init__(self, id, job, active):
         self.id = id
         self.job = job
@@ -136,28 +134,31 @@ class Pane(Node):
             # Prevent flickering due to rounding errors. Any pane within one
             # pixel of its target size is Good Enough.
             return
-        subprocess.call([
-            "tmux", "resize-pane", "-t", self.id, "-x",
-            str(width), "-y",
-            str(height)
-        ])
+        subprocess.call(
+            ["tmux", "resize-pane", "-t", self.id, "-x", str(width), "-y", str(height)]
+        )
 
     def split(self, direction, cmd=[]):
-        subprocess.call([
-            "tmux", "split-window", "-t", self.id, "-c", "#{pane_current_path}"
-        ] + direction.flags() + cmd)
+        subprocess.call(
+            ["tmux", "split-window", "-t", self.id, "-c", "#{pane_current_path}"]
+            + direction.flags()
+            + cmd
+        )
 
     def debug_string(self, indent=""):
         return indent + str(self)
 
     def __str__(self):
         return "Pane({}, {}, {}x{}{})".format(
-            self.id, self.job, self.width, self.height,
-            ", active" if self.active else "")
+            self.id,
+            self.job,
+            self.width,
+            self.height,
+            ", active" if self.active else "",
+        )
 
 
 class Columns(Node):
-
     def __init__(self, width, height, columns):
         self.width = width
         self.height = height
@@ -200,8 +201,7 @@ class Columns(Node):
         self.columns[-1].resize(remaining, height)
 
     def debug_string(self, indent=""):
-        cols = "\n".join(
-            col.debug_string(indent + "  ") for col in self.columns)
+        cols = "\n".join(col.debug_string(indent + "  ") for col in self.columns)
         return "{}{}:\n".format(indent, self) + cols
 
     def __str__(self):
@@ -209,7 +209,6 @@ class Columns(Node):
 
 
 class Rows(Node):
-
     def __init__(self, width, height, rows):
         self.width = width
         self.height = height
@@ -240,7 +239,6 @@ class Rows(Node):
 
 
 class Layout(object):
-
     def __init__(self, panes, top):
         self.panes = panes
         self.top = top
@@ -248,10 +246,14 @@ class Layout(object):
     @classmethod
     def load(cls):
         panes = dict()
-        for line in call([
-                "tmux", "list-panes", "-F",
-                "#{pane_id} #{pane_current_command} #{pane_active}"
-        ]):
+        for line in call(
+            [
+                "tmux",
+                "list-panes",
+                "-F",
+                "#{pane_id} #{pane_current_command} #{pane_active}",
+            ]
+        ):
             pane = Pane(*line.split(" "))
             panes[pane.id[1:]] = pane
 
