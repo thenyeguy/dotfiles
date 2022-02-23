@@ -144,6 +144,7 @@ def main(args):
             "git/config": "~/.gitconfig",
             "julia": "~/.julia/config",
             "kak": "~/.config/kak",
+            "kitty": "~/.config/kitty",
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
         }
