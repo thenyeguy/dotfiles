@@ -6,4 +6,4 @@ if ! which brew > /dev/null; then
 fi
 
 # Install default packages.
-brew bundle --no-lock --file ~/.dotfiles/brew/Brewfile
+brew bundle --no-lock --file ~/.dotfiles/provision/Brewfile
