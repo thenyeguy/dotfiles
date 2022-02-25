@@ -5,17 +5,16 @@
 # Source Code Pro, JetBrains Mono, etc).
 
 # Configure prompt
-set __prompt_segment_seperator 
-set __prompt_subsegment_seperator 
-set __prompt_active_jobs_symbol "&"
-set __prompt_bad_exit_symbol ‼
-set __prompt_ssh_symbol 
+set -g __prompt_segment_seperator ""
+set -g __prompt_subsegment_seperator ""
+set -g __prompt_active_jobs_symbol "&"
+set -g __prompt_bad_exit_symbol "‼"
+set -g __prompt_ssh_symbol ""
 
-set __prompt_git_symbol 
-set __prompt_git_unstaged ○
-set __prompt_git_staged ◉
+set -g __prompt_git_symbol ""
+set -g __prompt_git_unstaged "○"
+set -g __prompt_git_staged "◉"
 
-set fish_prompt_pwd_dir_length 0
 
 ### Starts a new, empty line.
 # This will clear the entire line of any existing contents.
@@ -31,24 +30,24 @@ function __prompt_segment -S -a background foreground
         # Do nothing - we're starting the first segment.
     else if test "$background" = "$__prompt_current_background"
         # The segment is using the same colors, so just draw a seperator.
-        printf " $__prompt_subsegment_seperator"
+        printf " %s" "$__prompt_subsegment_seperator"
     else
         # Draw the boundary between two different backgrounds.
         printf " "
         set_color -b $background $__prompt_current_background
-        printf "$__prompt_segment_seperator"
+        printf "%s" "$__prompt_segment_seperator"
     end
     set -g __prompt_current_background $background
 
     set_color -b $background $foreground
     if test (count $argv) -gt 2
-        printf " $argv[3..-1]"
+        printf " %s" "$argv[3..-1]"
     end
 end
 
 ### Draws a new subsegment of the current prompt segment.
 function __prompt_subsegment
-    printf " $__prompt_subsegment_seperator $argv"
+    printf " %s %s" "$__prompt_subsegment_seperator" "$argv"
 end
 
 ### Clears all segment state and draws any pending segment endings.
@@ -143,7 +142,7 @@ function fish_right_prompt
         case visual
             set_color yellow;    printf " ‹ visual"
         case "*"
-            set_color brmagenta; printf " ‹ $fish_bind_mode"
+            set_color brmagenta; printf " ‹ %s" "$fish_bind_mode"
     end
     set_color reset
 end
