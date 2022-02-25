@@ -73,17 +73,6 @@ map global normal <c-v> "\o" -docstring "paste mode"
 map global user c ": comment-line<ret>"  -docstring "comment selected lines"
 
 # Pane splitting (preserving buffer and line number)
-define-command split -params 0..1 -docstring "Splits the current pane" %{
-    nop %sh{
-        if [[ -f "$kak_buffile" ]]; then
-            file="+$kak_cursor_line $kak_buffile"
-        fi
-        ~/.dotfiles/tmux/layout.py split $1 -- kak -c "$kak_session" $file
-    }
-}
-define-command sp %{ split -v }
-define-command vsp %{ split -h }
-
 map global user s ": split<ret>" -docstring "split window"
 map global user <a-s> ": split -v<ret>" -docstring "vertically split window"
 map global user w ": write<ret>" -docstring "save buffer"
@@ -131,11 +120,6 @@ define-command plug-init -docstring 'update and initialize plugins' %{
 plug prelude https://github.com/kakounedotcom/prelude.kak
 
 plug connect https://github.com/kakounedotcom/connect.kak %{
-    define-command tmux-terminal-popup -params 1.. %{
-        tmux-terminal-impl 'popup -E' %arg{@}
-    }
-    alias global popup tmux-terminal-popup
-
     define-command fzf-files %{ + "%val{config}/connect/fzf-files.sh" }
     define-command fzf-buffers %{ + "%val{config}/connect/fzf-buffers.sh" }
     map global normal <c-r> ": fzf-files<ret>"

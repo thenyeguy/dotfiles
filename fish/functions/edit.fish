@@ -18,6 +18,8 @@ function edit
           set session_flags -s "$kak_session"
         end
         ~/.dotfiles/tmux/layout.py split -b -- kak $session_flags $argv
+    else if test "$TERM" = "xterm-kitty"
+        kitty @ launch --no-response --cwd=$PWD --location=before kak $argv
     else
         kak $argv    
     end
