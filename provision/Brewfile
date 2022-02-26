@@ -1,5 +1,6 @@
 brew "fish"
 brew "git"
+brew "imagemagick"
 cask "julia"
 brew "kakoune"
 cask "kitty"
