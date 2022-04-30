@@ -145,6 +145,7 @@ def main(args):
             "julia": "~/.julia/config",
             "kak": "~/.config/kak",
             "kitty": "~/.config/kitty",
+            "neovim": "~/.config/nvim",
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
         }
