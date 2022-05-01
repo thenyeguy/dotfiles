@@ -31,6 +31,34 @@ return require("packer").startup(function()
         }
     }
 
+    -- Dim inactive splits
+    use {
+        "sunjon/shade.nvim",
+        config = { require("shade").setup({ overlay_opacity = 65 }) }
+    }
+
+    -- Statusline
+    use {
+        "nvim-lualine/lualine.nvim",
+        config = {
+            require("lualine").setup({
+                options = { globalstatus = true },
+                sections = {
+                    lualine_a = {"mode"},
+                    lualine_b = { { "filename", path = 1 } },
+                    lualine_c = {},
+                    lualine_x = { {
+                        "diagnostics",
+                        symbols = { error = "‼ ", warn = "! " },
+                        sections = { "error", "warn", "info" },
+                    } },
+                    lualine_y = {"location"},
+                    lualine_z = {},
+                },
+            })
+        }
+    }
+
     -- Telescope (fuzzy finding)
     use {
         "nvim-telescope/telescope.nvim",
