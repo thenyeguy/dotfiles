@@ -92,4 +92,9 @@ return require("packer").startup(function()
             })
         }
     }
+
+    -- LSP plugins
+    use "neovim/nvim-lspconfig"
+    use "hrsh7th/nvim-cmp"
+    use "hrsh7th/cmp-nvim-lsp"
 end)
