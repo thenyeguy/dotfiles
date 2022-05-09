@@ -111,6 +111,28 @@ return require("packer").startup(function()
         end
     }
 
+    -- Treesitter
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                highlight = { enable = true },
+                indent = { enable = true },
+                incremental_selection = {
+                    enable = true,
+                    keymaps = {
+                        init_selection = "<C-n>",
+                        node_incremental = "<C-n>",
+                        node_decremental = "<C-S-n>",
+                        scope_incremental = "<C-A-n>",
+                    },
+                },
+                ensure_installed = { "cpp", "fish", "julia", "lua", "python", "rust" },
+            })
+        end
+    }
+
     -- LSP plugins
     use "neovim/nvim-lspconfig"
     use "hrsh7th/nvim-cmp"
