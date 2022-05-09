@@ -5,7 +5,10 @@ return require("packer").startup(function()
     -- Colorscheme
     use {
         "ellisonleao/gruvbox.nvim",
-        config = { vim.cmd([[colorscheme gruvbox]]) }
+        config = function ()
+            vim.g.gruvbox_sign_column = "bg0"
+            vim.cmd("colorscheme gruvbox")
+        end,
     }
 
     -- Textobjects
@@ -20,7 +23,8 @@ return require("packer").startup(function()
     -- Mini plugins
     use {
         "echasnovski/mini.nvim",
-        config = {
+        after = "gruvbox.nvim",
+        config = function()
             require("mini.comment").setup({
                 mappings = {
                     comment = "gc",
@@ -28,19 +32,30 @@ return require("packer").startup(function()
                     textobject = "gc",
                 }
             })
-        }
+
+            require("mini.indentscope").setup({
+                draw = {
+                    animation = require("mini.indentscope").gen_animation("none"),
+                    delay = 0,
+                },
+                symbol = "▏",
+            })
+            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "GruvboxBg2" })
+
+            require("mini.pairs").setup({})
+        end,
     }
 
     -- Dim inactive splits
     use {
         "sunjon/shade.nvim",
-        config = { require("shade").setup({ overlay_opacity = 65 }) }
+        config = function() require("shade").setup({ overlay_opacity = 65 }) end
     }
 
     -- Statusline
     use {
         "nvim-lualine/lualine.nvim",
-        config = {
+        config = function()
             require("lualine").setup({
                 options = { globalstatus = true },
                 sections = {
@@ -56,21 +71,26 @@ return require("packer").startup(function()
                     lualine_z = {},
                 },
             })
-        }
+        end
     }
 
     -- Telescope (fuzzy finding)
     use {
         "nvim-telescope/telescope.nvim",
         requires = { {"nvim-lua/plenary.nvim"} },
+        after = "mini.nvim",
         config = function ()
             -- Configure telescope
             require("telescope").setup({
                 defaults = {
+                    generic_sorter = require("mini.fuzzy").get_telescope_sorter,
+                    path_display = { "truncate" },
                     mappings = {
                         i = {
                             ["<C-j>"] = "move_selection_next",
                             ["<C-k>"] = "move_selection_previous",
+                            ["<C-u>"] = "results_scrolling_up",
+                            ["<C-d>"] = "results_scrolling_down",
                             ["<Esc>"] = "close",
                         }
                     }
@@ -79,18 +99,16 @@ return require("packer").startup(function()
 
             -- Map telescope commands
             vim.keymap.set("n", "<C-r>", "<cmd>Telescope find_files<cr>")
+            vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
         end,
     }
 
     -- Lightspeed (easy motion)
     use {
         "ggandor/lightspeed.nvim",
-        config = {
-            require("lightspeed").setup({
-                ignore_case = true,
-                exit_after_idle_msecs = { labeled = 2000 }
-            })
-        }
+        config = function()
+            require("lightspeed").setup({ ignore_case = true })
+        end
     }
 
     -- LSP plugins
