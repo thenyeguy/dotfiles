@@ -1,4 +1,4 @@
-return require("packer").startup(function()
+require("packer").startup(function()
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
@@ -138,3 +138,11 @@ return require("packer").startup(function()
     use "hrsh7th/nvim-cmp"
     use "hrsh7th/cmp-nvim-lsp"
 end)
+
+-- Automatically re-compile plugin config
+local packer_grp = vim.api.nvim_create_augroup("packer_user_config", {})
+vim.api.nvim_create_autocmd("BufWritePost", {
+    pattern = "plugins.lua",
+    command = "source <afile> | PackerCompile",
+    group = packer_grp,
+})
