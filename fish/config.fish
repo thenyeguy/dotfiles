@@ -2,7 +2,7 @@
 # Configure general settings #
 # -------------------------- #
 
-set -x EDITOR "kak"
+set -x EDITOR "nvim"
 
 set -x FZF_TMUX 1
 set -x FZF_TMUX_OPTS "-p"
