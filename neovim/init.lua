@@ -1,4 +1,5 @@
 require("keymap")
 require("options")
+require("windowing")
 require("lsp")
 require("plugins")
