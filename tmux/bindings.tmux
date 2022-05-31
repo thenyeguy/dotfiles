@@ -59,15 +59,16 @@ bind -T copy-mode-vi / command-prompt -p "(search up)" "copy-mode; send -X searc
 bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi y send-keys -X copy-pipe "clipboard copy"
 
-# Pane splitting
+# Pane management
 bind -r ^s run-shell "~/.dotfiles/tmux/layout.py split"
 bind -r - run-shell "~/.dotfiles/tmux/layout.py split -v"
 bind -r | run-shell "~/.dotfiles/tmux/layout.py split -h"
 
-# Pane zooming
+bind -r < run-shell "~/.dotfiles/tmux/layout.py config --remove_column"
+bind -r > run-shell "~/.dotfiles/tmux/layout.py config --add_column"
+
 bind -r ^z resize-pane -Z
 
-# Pane rebalancing
 bind ^b run-shell "~/.dotfiles/tmux/layout.py resize"
 
 # Window navigation

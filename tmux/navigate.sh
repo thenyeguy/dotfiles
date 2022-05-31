@@ -6,14 +6,18 @@ if [[ "$key" != [jkhl] ]]; then
     exit 1
 fi
 
-pane_cmd=$(tmux display -p "#{pane_start_command}")
-if [[ "$pane_cmd" == *"exec -a fzf"* ]]; then
+pane_tty=$(tmux display -p "#{pane_tty}")
+processes=$(ps -o state= -o comm= -t "$pane_tty" | grep -iE "^[^TXZ ]+")
+
+if [[ "$processes" == *"fzf"* ]]; then
     case "$key" in
         j) tmux send-keys ^$key;;
         k) tmux send-keys ^$key;;
         h) tmux select-pane -L;;
         l) tmux select-pane -R;;
     esac
+elif [[ "$processes" == *"nvim"* ]]; then
+    tmux send-keys ^$key
 else
     case "$key" in
         j) tmux select-pane -D;;

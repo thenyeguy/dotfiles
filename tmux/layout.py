@@ -7,8 +7,8 @@ import re
 import subprocess
 import sys
 
-PREFERRED_WIDTHS = {"kak": 90}
-MIN_WIDTH = 100
+EDITOR_WIDTH = 90
+MIN_TERMINAL_WIDTH = 100
 
 LAYOUT_RE = re.compile(r"\[layout (?P<layout>.*)\] .* \(active\)$")
 NODE_RE = re.compile(
@@ -43,7 +43,7 @@ def parse_layout(layout, panes):
             width = int(match.group("width"))
             height = int(match.group("height"))
             if match.group("pane"):
-                node = panes[match.group("pane")]
+                node = panes["%" + match.group("pane")]
                 node.width = width
                 node.height = height
                 layout = match.group("rest")
@@ -66,10 +66,20 @@ def parse_layout(layout, panes):
     return nodes
 
 
-def call(cmd):
+def subprocess_lines(cmd):
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     for line in proc.stdout:
         yield line.decode("utf-8").strip()
+
+
+def main_pane_width():
+    stdout = subprocess.check_output(["tmux", "show", "main-pane-width"])
+    match = re.match(r"main-pane-width (\d+)", stdout.decode("utf-8"))
+    return int(match.group(1)) if match else EDITOR_WIDTH
+
+
+def set_main_pane_width(width):
+    subprocess.call(["tmux", "setw", "main-pane-width", str(width)])
 
 
 class Orientation(enum.Enum):
@@ -112,19 +122,24 @@ class Node(object):
 
 
 class Pane(Node):
-    def __init__(self, id, job, active):
+    def __init__(self, id, active, start_cmd, current_cmd):
         self.id = id
-        self.job = job
+        self.job = start_cmd or current_cmd
         self.active = active == "1"
         self.width = None
         self.height = None
         self.parent = None
 
     def preferred_width(self):
-        return PREFERRED_WIDTHS.get(self.job)
+        if self.job == "kak":
+            return EDITOR_WIDTH
+        elif self.job in ("vim", "nvim"):
+            return main_pane_width()
+        else:
+            return None
 
     def preferred_orientation(self):
-        if self.width < 2 * MIN_WIDTH:
+        if self.width < 2 * MIN_TERMINAL_WIDTH:
             return Orientation.vertical
         else:
             return Orientation.horizontal
@@ -165,7 +180,8 @@ class Columns(Node):
         self.columns = columns
 
     def preferred_orientation(self):
-        # Compute fixed widths, and remaining shares with new column:
+        # Assume we want to add a new column.
+        # Compute fixed widths, and remaining shares with the new column:
         shares = len(self.columns) + 1
         shared_width = self.width - len(self.columns) + 2
         for col in self.columns:
@@ -174,7 +190,8 @@ class Columns(Node):
                 shared_width -= col.preferred_width()
         share = shared_width // shares if shares else 0
 
-        if share < MIN_WIDTH:
+        # If the remaining share is too narrow, then split into rows instead.
+        if share < MIN_TERMINAL_WIDTH:
             return Orientation.vertical
         else:
             return Orientation.horizontal
@@ -246,18 +263,18 @@ class Layout(object):
     @classmethod
     def load(cls):
         panes = dict()
-        for line in call(
+        for line in subprocess_lines(
             [
                 "tmux",
                 "list-panes",
                 "-F",
-                "#{pane_id} #{pane_current_command} #{pane_active}",
+                "#{pane_id} #{pane_active} #{pane_start_command} #{pane_current_command}",
             ]
         ):
-            pane = Pane(*line.split(" "))
-            panes[pane.id[1:]] = pane
+            pane = Pane(*line.split(" ")[:4])
+            panes[pane.id] = pane
 
-        for line in call(["tmux", "list-windows"]):
+        for line in subprocess_lines(["tmux", "list-windows"]):
             match = LAYOUT_RE.search(line)
             if match:
                 layout = match.group("layout").split(",", 1)[1]
@@ -271,11 +288,24 @@ class Layout(object):
 def show(args):
     layout = Layout.load()
     print(layout.top.debug_string())
+    print()
+    print("Editor width:", main_pane_width())
 
 
-def resize(args):
+def resize(args=None):
     layout = Layout.load()
     layout.top.resize(layout.top.width, layout.top.height)
+
+
+def config(args):
+    new_width = None
+    if args.add_column:
+        new_width = main_pane_width() + EDITOR_WIDTH
+    elif args.remove_column:
+        new_width = main_pane_width() - EDITOR_WIDTH
+    if new_width and new_width > 0:
+        set_main_pane_width(new_width)
+        resize()
 
 
 def split(args):
@@ -286,7 +316,7 @@ def split(args):
             if pane.active:
                 args.pane = pane.id
                 break
-    pane = layout.panes[args.pane.replace("%", "")]
+    pane = layout.panes[args.pane]
 
     if args.vertical:
         direction = Direction(Orientation.vertical, args.before)
@@ -308,6 +338,12 @@ parser_show.set_defaults(func=show)
 parser_resize = subparsers.add_parser("resize")
 parser_resize.set_defaults(func=resize)
 
+parser_config = subparsers.add_parser("config")
+parser_config.set_defaults(func=config)
+parser_config_cols = parser_config.add_mutually_exclusive_group()
+parser_config_cols.add_argument("--add_column", action="store_true")
+parser_config_cols.add_argument("--remove_column", action="store_true")
+
 parser_split = subparsers.add_parser("split", add_help=False)
 parser_split.add_argument("--pane", "-p", type=str)
 parser_split_dir = parser_split.add_mutually_exclusive_group()
@@ -321,6 +357,9 @@ if __name__ == "__main__":
     if "TMUX" not in os.environ:
         print("Error: must be run from inside tmux", file=sys.stderr)
         sys.exit(1)
+
+    if len(sys.argv) < 2:
+        sys.argv.append("show")
 
     args = parser.parse_args()
     args.func(args)

@@ -120,6 +120,16 @@ require("packer").startup(function()
         end
     }
 
+    -- Tmux integration
+    use {
+        "aserowy/tmux.nvim",
+        config = function()
+            require("tmux").setup({
+                navigation = { enable_default_keybindings = true }
+            })
+        end
+    }
+
     -- Treesitter
     use {
         "nvim-treesitter/nvim-treesitter",
