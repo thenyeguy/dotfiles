@@ -44,8 +44,6 @@ vim.keymap.set("n", "U", "<C-r>")
 -- Toggle search highlight
 vim.keymap.set("", "<leader>n", "<Cmd>let v:hlsearch = ! v:hlsearch<CR>")
 
--- Split/save/quit management
-vim.keymap.set("", "<leader>s", "<Cmd>split<CR>")
-vim.keymap.set("", "<leader>S", "<Cmd>vsplit<CR>")
+-- Save/quit
 vim.keymap.set("", "<leader>w", "<Cmd>w<CR>")
 vim.keymap.set("", "<leader>q", "<Cmd>q<CR>")
