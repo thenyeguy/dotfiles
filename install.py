@@ -132,10 +132,28 @@ def init_fzf():
         call([install_script, "--bin"])
 
 
+def init_neovim():
+    """Initialzes neovim."""
+    with LogSection("Initializing neovim..."):
+        packer_dir = expand("~/.local/share/nvim/site/pack/packer/start/packer.nvim")
+        if not os.path.exists(packer_dir):
+            print("Installing packer...")
+            call(
+                [
+                    "git",
+                    "clone",
+                    "--depth=1",
+                    "https://github.com/wbthomason/packer.nvim",
+                    packer_dir,
+                ]
+            )
+
+
 def main(args):
     clean(["~", "~/.config"])
     init_submodules()
     init_fzf()
+    init_neovim()
     link(
         {
             "bashrc": "~/.bashrc",
