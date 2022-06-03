@@ -134,9 +134,15 @@ require("packer").startup(function()
     }
 
     -- LSP plugins
-    use "neovim/nvim-lspconfig"
-    use "hrsh7th/nvim-cmp"
-    use "hrsh7th/cmp-nvim-lsp"
+    use {
+        "neovim/nvim-lspconfig",
+        config = function() require("plugins.lsp") end,
+    }
+    use {
+        "hrsh7th/nvim-cmp",
+        requires = { {"hrsh7th/cmp-nvim-lsp"} },
+        config = function() require("plugins.cmp") end,
+    }
 end)
 
 -- Automatically re-compile plugin config
