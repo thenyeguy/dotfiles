@@ -2,6 +2,7 @@
 vim.o.cursorline = true
 vim.o.number = true
 vim.o.showmode = false
+vim.o.signcolumn = "number"
 
 -- Editor behavior
 vim.o.mouse = "a"
