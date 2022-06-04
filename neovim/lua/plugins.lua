@@ -140,7 +140,11 @@ require("packer").startup(function()
     }
     use {
         "hrsh7th/nvim-cmp",
-        requires = { {"hrsh7th/cmp-nvim-lsp"} },
+        requires = {
+            {"hrsh7th/cmp-nvim-lsp"},
+            {"hrsh7th/cmp-nvim-lsp-signature-help"},
+            {"hrsh7th/cmp-buffer"},
+        },
         config = function() require("plugins.cmp") end,
     }
 end)
