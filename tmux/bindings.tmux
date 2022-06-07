@@ -57,7 +57,7 @@ bind -T copy-mode-vi / command-prompt -p "(search up)" "copy-mode; send -X searc
 
 # Vim-like selection/copy
 bind -T copy-mode-vi v send-keys -X begin-selection
-bind -T copy-mode-vi y send-keys -X copy-pipe "clipboard copy"
+bind -T copy-mode-vi y send-keys -X copy-selection
 
 # Pane management
 bind -r ^s run-shell "~/.dotfiles/tmux/layout.py split"
