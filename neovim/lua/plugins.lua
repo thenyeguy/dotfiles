@@ -162,6 +162,13 @@ require("packer").startup(function()
                 },
                 ensure_installed = { "cpp", "fish", "julia", "lua", "python", "rust" },
             })
+
+            -- Fix an error with C++ highlighting where all CamelCase functions
+            -- are considered constructors.
+            vim.api.nvim_create_autocmd("Filetype", {
+                pattern = "cpp",
+                command = "highlight! link TSConstructor Function",
+            })
         end
     }
 
