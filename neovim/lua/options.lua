@@ -28,3 +28,15 @@ vim.o.showbreak = "»-"
 vim.o.gdefault = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
+
+-- Spellcheck
+vim.api.nvim_create_autocmd({"Filetype"}, {
+    pattern = {"gitcommit", "hgcommit", "markdown"},
+    command = "setlocal spell",
+})
+
+-- Line-wrapping
+vim.api.nvim_create_autocmd({"Filetype"}, {
+    pattern = {"hgcommit", "markdown", "text"},
+    command = "setlocal textwidth=80",
+})

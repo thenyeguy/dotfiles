@@ -41,6 +41,9 @@ vim.keymap.set("v", "s", ":s/")
 -- Undo/redo
 vim.keymap.set("n", "U", "<C-r>")
 
+-- Spell-check
+vim.keymap.set("n", "zs", "z=")
+
 -- Toggle search highlight
 vim.keymap.set("", "<leader>n", "<Cmd>let v:hlsearch = ! v:hlsearch<CR>")
 
