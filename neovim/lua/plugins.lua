@@ -43,6 +43,18 @@ require("packer").startup(function()
             vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "GruvboxBg2" })
 
             require("mini.pairs").setup({})
+
+            require("mini.surround").setup({
+                mappings = {
+                    add = "gsa",
+                    delete = "gsd",
+                    find = "gsf",
+                    find_left = "gsF",
+                    highlight = "gsh",
+                    replace = "gsr",
+                    update_n_lines = "",
+                },
+            })
         end,
     }
 
