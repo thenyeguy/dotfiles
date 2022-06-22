@@ -98,13 +98,16 @@ require("packer").startup(function()
     -- Telescope (fuzzy finding)
     use {
         "nvim-telescope/telescope.nvim",
-        requires = { {"nvim-lua/plenary.nvim"} },
-        after = "mini.nvim",
+        requires = {
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-fzf-native.nvim", run = "make" },
+        },
         config = function ()
             -- Configure telescope
-            require("telescope").setup({
+            local telescope = require("telescope")
+            telescope.setup({
                 defaults = {
-                    generic_sorter = require("mini.fuzzy").get_telescope_sorter,
+                    layout_strategy = "vertical",
                     path_display = { "truncate" },
                     mappings = {
                         i = {
@@ -117,6 +120,7 @@ require("packer").startup(function()
                     }
                 }
             })
+            telescope.load_extension("fzf")
 
             -- Map telescope commands
             vim.keymap.set("n", "<C-r>", "<cmd>Telescope find_files<cr>")
