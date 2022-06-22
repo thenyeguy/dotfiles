@@ -178,6 +178,10 @@ require("packer").startup(function()
         config = function() require("plugins.lsp") end,
     }
     use {
+        "stevearc/dressing.nvim",
+        config = function() require("dressing").setup() end,
+    }
+    use {
         "hrsh7th/nvim-cmp",
         requires = {
             {"hrsh7th/cmp-nvim-lsp"},
