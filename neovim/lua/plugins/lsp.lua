@@ -14,7 +14,7 @@ local bind_lsp_keys = function(_, bufnr)
     -- Goto mappings
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+    vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
     vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
