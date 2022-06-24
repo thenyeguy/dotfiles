@@ -24,6 +24,10 @@ vim.o.breakindent = true
 vim.o.linebreak = true
 vim.o.showbreak = "»-"
 
+-- List formatting
+vim.o.formatoptions = vim.o.formatoptions .. "n"
+vim.o.formatlistpat = [[^\s*\([\[{(]\?[a-zA-Z0-9]\+[)}\]:.]\|\([-*]\)\)\s*]]
+
 -- Search/replace settings.
 vim.o.gdefault = true
 vim.o.ignorecase = true
