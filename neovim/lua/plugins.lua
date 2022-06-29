@@ -22,6 +22,11 @@ require("packer").startup(function()
                     Visual = { bg=c.dark2 },
                     -- mini.nvim
                     MiniIndentscopeSymbol = { fg=c.dark2 },
+                    MiniJump = { fg=c.bright_red, bold=true, underline=true },
+                    -- leap.nvim
+                    LeapMatch = { fg=c.bright_red, bold=true, underline=true },
+                    LeapLabelPrimary = { fg=c.light0, bg=c.neutral_red, bold=true, nocombine=true },
+                    LeapLabelSecondary = { fg=c.bright_red, bg=c.dark2, bold=true, nocombine=true },
                 },
             })
             vim.cmd("colorscheme gruvbox")
@@ -47,6 +52,11 @@ require("packer").startup(function()
                     comment_line = "gcc",
                     textobject = "gc",
                 }
+            })
+
+            require("mini.jump").setup({
+                delay = { highlight = 0, idle_stop = 1000 },
+                mappings = { repeat_jump = "" }
             })
 
             require("mini.indentscope").setup({
@@ -155,10 +165,14 @@ require("packer").startup(function()
 
     -- Lightspeed (easy motion)
     use {
-        "ggandor/lightspeed.nvim",
+        "ggandor/leap.nvim",
         config = function()
-            require("lightspeed").setup({ ignore_case = true })
-        end
+            require("leap").set_default_keymaps()
+
+            -- Remap cross-window bindings to not conflict with surround.
+            vim.keymap.del("", "gs")
+            vim.keymap.set("n", "gz", "<Plug>(leap-cross-window)")
+        end,
     }
 
     -- Tmux integration

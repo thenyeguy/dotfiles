@@ -35,9 +35,6 @@ vim.keymap.set("n", "<leader>p", "<cmd>put +<cr>", { silent = true })
 vim.keymap.set("n", "<leader>P", "<cmd>put! +<cr>", { silent = true })
 vim.keymap.set("v", "<leader>p", '"+p')
 
--- Find/replace
-vim.keymap.set("v", "s", ":s/")
-
 -- Undo/redo
 vim.keymap.set("n", "U", "<C-r>")
 
