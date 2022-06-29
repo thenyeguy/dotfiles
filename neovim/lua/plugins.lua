@@ -6,7 +6,24 @@ require("packer").startup(function()
     use {
         "ellisonleao/gruvbox.nvim",
         config = function ()
-            vim.g.gruvbox_sign_column = "bg0"
+            local c = require("gruvbox.palette")
+            require("gruvbox").setup({
+                inverse = false,
+                overrides = {
+                    -- Strings
+                    String = { fg=c.neutral_green, italic=true },
+                    SpecialChar = { link="Special" },
+                    -- Search
+                    Search = { fg="", bg=c.dark2, bold=true, underline=true },
+                    IncSearch = { link="Search" },
+                    -- Vim UI
+                    Cursor = { fg=c.dark0, bg=c.light0 },
+                    FloatBorder = { fg=c.light1, bg=c.dark0 },
+                    Visual = { bg=c.dark2 },
+                    -- mini.nvim
+                    MiniIndentscopeSymbol = { fg=c.dark2 },
+                },
+            })
             vim.cmd("colorscheme gruvbox")
         end,
     }
@@ -23,7 +40,6 @@ require("packer").startup(function()
     -- Mini plugins
     use {
         "echasnovski/mini.nvim",
-        after = "gruvbox.nvim",
         config = function()
             require("mini.comment").setup({
                 mappings = {
@@ -40,7 +56,6 @@ require("packer").startup(function()
                 },
                 symbol = "▏",
             })
-            vim.api.nvim_set_hl(0, "MiniIndentscopeSymbol", { link = "GruvboxBg2" })
 
             require("mini.pairs").setup({})
 
