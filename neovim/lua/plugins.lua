@@ -64,6 +64,10 @@ require("packer").startup(function()
                     animation = require("mini.indentscope").gen_animation("none"),
                     delay = 0,
                 },
+                options = {
+                    border = "top",
+                    try_as_border = true,
+                },
                 symbol = "▏",
             })
 
