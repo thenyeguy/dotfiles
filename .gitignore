@@ -3,6 +3,7 @@ fish/fish_variables
 fish/fishd.*
 kak/autoload/plugins
 neovim/plugin
+neovim/spell
 vim/swp
 vim/plugged
 vim/undo
