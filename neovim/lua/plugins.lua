@@ -34,18 +34,17 @@ require("packer").startup(function()
     }
 
     -- Textobjects
-    use {
-        "wellle/targets.vim",
-        config = function()
-            -- Swao "inner" and "inner with whitespace"
-            vim.g.targets_aiAI = "aIAi"
-        end,
-    }
+    use "kana/vim-textobj-user"
+    use "kana/vim-textobj-entire"
+    use "glts/vim-textobj-comment"
+    use "Julian/vim-textobj-variable-segment"
 
     -- Mini plugins
     use {
         "echasnovski/mini.nvim",
         config = function()
+            require("mini.ai").setup({})
+
             require("mini.comment").setup({
                 mappings = {
                     comment = "gc",
