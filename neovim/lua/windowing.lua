@@ -2,7 +2,9 @@
 -- Caused by a tmux hook that runs immediately after a new pane is created.
 vim.api.nvim_create_autocmd({"VimEnter"}, {
     callback = function()
-        vim.loop.kill(vim.fn.getpid(), vim.loop.constants.SIGWINCH)
+        vim.defer_fn(function()
+            vim.loop.kill(vim.fn.getpid(), vim.loop.constants.SIGWINCH)
+        end, 20)
     end,
     once = true
 })
