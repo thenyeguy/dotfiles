@@ -183,7 +183,12 @@ require("packer").startup(function()
         "aserowy/tmux.nvim",
         config = function()
             require("tmux").setup({
-                copy_sync = { enable = true },
+                -- Only use copy_sync for the clipboard registers
+                copy_sync = {
+                    enable = true,
+                    sync_clipboard = true,
+                    sync_registers = false,
+                },
                 navigation = { enable_default_keybindings = true },
             })
         end
