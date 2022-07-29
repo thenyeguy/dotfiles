@@ -10,7 +10,8 @@ require("packer").startup(function()
             require("gruvbox").setup({
                 inverse = false,
                 overrides = {
-                    -- Strings
+                    -- Syntax
+                    Operator = { fg=c.red, italic=false },
                     String = { fg=c.neutral_green, italic=true },
                     SpecialChar = { link="Special" },
                     -- Search
