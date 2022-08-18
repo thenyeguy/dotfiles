@@ -26,7 +26,7 @@ vim.o.showbreak = "»-"
 
 -- List formatting
 vim.o.formatoptions = vim.o.formatoptions .. "n"
-vim.o.formatlistpat = [[^\s*\([\[{(]\?[a-zA-Z0-9]\+[)}\]:.]\|\([-*]\)\)\s*]]
+vim.o.formatlistpat = [[^\s*\([\[{(]\?[a-zA-Z0-9][0-9]*[)}\]:.]\|\([-*]\)\)\s*]]
 
 -- Search/replace settings.
 vim.o.gdefault = true
