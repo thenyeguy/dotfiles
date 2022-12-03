@@ -1,4 +1,4 @@
 require("keymap")
 require("options")
 require("windowing")
-require("plugins")
+require("lazy").setup("plugins")
