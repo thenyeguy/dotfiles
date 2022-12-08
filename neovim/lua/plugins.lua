@@ -163,6 +163,9 @@ require("packer").startup(function()
                             ["<C-u>"] = "results_scrolling_up",
                             ["<C-d>"] = "results_scrolling_down",
                             ["<Esc>"] = "close",
+                            ["<ScrollWheelUp>"] = "move_selection_previous",
+                            ["<ScrollWheelDown>"] = "move_selection_next",
+                            ["<LeftMouse>"] = function() end,
                         }
                     }
                 }
