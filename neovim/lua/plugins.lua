@@ -174,7 +174,18 @@ require("packer").startup(function()
 
             -- Map telescope commands
             vim.keymap.set("n", "<C-r>", "<cmd>Telescope find_files<cr>")
-            vim.keymap.set("n", "<leader>b", "<cmd>Telescope buffers<cr>")
+
+            vim.keymap.set("n", "<leader>tf", "<cmd>Telescope find_files<cr>")
+            vim.keymap.set("n", "<leader>tb", "<cmd>Telescope buffers<cr>")
+            vim.keymap.set("n", "<leader>tc", "<cmd>Telescope commands<cr>")
+            vim.keymap.set("n", "<leader>tr", function()
+                require("telescope.builtin").oldfiles({only_cwd=true})
+            end)
+            vim.keymap.set("n", "<leader>ts", function()
+                require("telescope.builtin").lsp_document_symbols({
+                    symbol_width=55
+                })
+            end)
         end,
     }
 
