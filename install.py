@@ -38,7 +38,7 @@ class LogSection:
         self.stdout.write(*args)
 
 
-def call(cmd):
+def call(*cmd):
     """Calls the provided shell command."""
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     for line in proc.stdout:
@@ -121,7 +121,7 @@ def create(paths):
 def init_submodules():
     """Initializes git submodules."""
     with LogSection("Initializing submodules..."):
-        call(["git", "submodule", "update", "--init"])
+        call("git", "submodule", "update", "--init")
 
 
 def init_fzf():
@@ -129,7 +129,7 @@ def init_fzf():
     with LogSection("Initializing fzf..."):
         dotfile_dir = os.path.dirname(os.path.realpath(__file__))
         install_script = os.path.join(dotfile_dir, "fzf", "install")
-        call([install_script, "--bin"])
+        call(install_script, "--bin")
 
 
 def init_neovim():
@@ -139,13 +139,11 @@ def init_neovim():
         if not os.path.exists(packer_dir):
             print("Installing packer...")
             call(
-                [
-                    "git",
-                    "clone",
-                    "--depth=1",
-                    "https://github.com/wbthomason/packer.nvim",
-                    packer_dir,
-                ]
+                "git",
+                "clone",
+                "--depth=1",
+                "https://github.com/wbthomason/packer.nvim",
+                packer_dir,
             )
 
 
