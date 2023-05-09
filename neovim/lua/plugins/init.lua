@@ -8,9 +8,13 @@ return {
     { "rhysd/conflict-marker.vim" },
 
     {
-        "sunjon/shade.nvim",
-        enabled = false,
-        config = function() require("shade").setup({ overlay_opacity = 65 }) end
+        "levouh/tint.nvim",
+        config = function()
+            require("tint").setup({
+                tint = -40,
+                highlight_ignore_patterns = { "WinSeparator" },
+            })
+        end,
     },
     {
         "ggandor/leap.nvim",
