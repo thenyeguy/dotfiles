@@ -63,7 +63,7 @@ require("packer").startup(function()
             })
 
             require("mini.jump").setup({
-                delay = { highlight = 0, idle_stop = 1000 },
+                delay = { highlight = 0, idle_stop = 5000 },
                 mappings = { repeat_jump = "" }
             })
 
