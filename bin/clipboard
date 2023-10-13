@@ -16,7 +16,7 @@ function noclip () {
 function copy () {
     if [ -n "$TMUX" ]; then
         tmux load-buffer -w - <&0
-    elif [ -n "$SSH_CONNECTION"]; then
+    elif [ -n "$SSH_CONNECTION" ]; then
         encoded=$(base64 <&0)
         printf "\033]52;c;%s\a" "$encoded" > /dev/tty
     elif type pbcopy &> /dev/null; then
