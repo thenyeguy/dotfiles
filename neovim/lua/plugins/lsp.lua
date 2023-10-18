@@ -31,7 +31,7 @@ return {
 
                 -- LSP commands
                 vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>f", vim.lsp.buf.formatting, opts)
+                vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
             end
 
             -- Setup language servers
