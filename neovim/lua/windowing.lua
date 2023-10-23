@@ -14,4 +14,4 @@ vim.keymap.set("", "<leader>s", function()
     else
         vim.cmd("split")
     end
-end)
+end, { desc = "Split window" })

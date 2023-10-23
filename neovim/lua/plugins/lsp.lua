@@ -13,25 +13,38 @@ return {
 
             -- Configure lsp keybindings
             local bind_lsp_keys = function(_, bufnr)
-                local opts = { buffer = bufnr }
+                local opts = function(d)
+                    return { buffer = bufnr, desc = d }
+                end
 
                 -- Goto mappings
-                vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-                vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gI", vim.lsp.buf.implementation, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+                vim.keymap.set("n", "gd", vim.lsp.buf.definition,
+                    opts("Move to definition"))
+                vim.keymap.set("n", "gD", vim.lsp.buf.declaration,
+                    opts("Move to declaration"))
+                vim.keymap.set("n", "gI", vim.lsp.buf.implementation,
+                    opts("Move to implementation"))
+                vim.keymap.set("n", "gr", vim.lsp.buf.references,
+                    opts("Move to references"))
 
-                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-                vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+                vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
+                    opts("Previous diagnostic"))
+                vim.keymap.set("n", "]d", vim.diagnostic.goto_next,
+                    opts("Next diagnostic"))
 
                 -- Hover info
-                vim.keymap.set("n", "<leader>h", vim.lsp.buf.hover, opts)
-                vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
-                vim.keymap.set("n", "<leader>D", vim.diagnostic.setqflist, opts)
+                vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover,
+                    opts("Show hover information"))
+                vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float,
+                    opts("Show diagnostics"))
+                vim.keymap.set("n", "<leader>lD", vim.diagnostic.setqflist,
+                    opts("Open diagnostics quickfix"))
 
                 -- LSP commands
-                vim.keymap.set("n", "<leader>a", vim.lsp.buf.code_action, opts)
-                vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
+                vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action,
+                    opts("Code actions"))
+                vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format,
+                    opts("Format buffer"))
             end
 
             -- Setup language servers

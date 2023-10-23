@@ -29,21 +29,26 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Clipboard copy/paste
-vim.keymap.set("", "<leader>y", '"+y', { remap = true })
-vim.keymap.set("", "<leader>Y", '"+Y', { remap = true })
-vim.keymap.set("n", "<leader>p", "<cmd>put +<cr>", { silent = true })
-vim.keymap.set("n", "<leader>P", "<cmd>put! +<cr>", { silent = true })
-vim.keymap.set("v", "<leader>p", '"+p')
+vim.keymap.set("", "<leader>y", '"+y',
+    { desc = "Yank to clipboard", remap = true })
+vim.keymap.set("", "<leader>Y", '"+Y',
+    { desc = "Yank to clipboard (end of line)", remap = true })
+vim.keymap.set("n", "<leader>p", "<cmd>put +<cr>",
+    { desc = "Put from clipboard", silent = true })
+vim.keymap.set("n", "<leader>P", "<cmd>put! +<cr>",
+    { desc = "Put from clipboard (above)", silent = true })
+vim.keymap.set("v", "<leader>p", '"+p', { desc = "Put from clipboard" })
 
 -- Undo/redo
 vim.keymap.set("n", "U", "<C-r>")
 
 -- Spell-check
-vim.keymap.set("n", "zs", "z=")
+vim.keymap.set("n", "zs", "z=", { desc = "Spellcheck" })
 
 -- Toggle search highlight
-vim.keymap.set("", "<leader>n", "<Cmd>let v:hlsearch = ! v:hlsearch<CR>")
+vim.keymap.set("", "<leader>n", "<Cmd>let v:hlsearch = ! v:hlsearch<CR>",
+    { desc = "Toggle search highlight" })
 
 -- Save/quit
-vim.keymap.set("", "<leader>w", "<Cmd>w<CR>")
-vim.keymap.set("", "<leader>q", "<Cmd>q<CR>")
+vim.keymap.set("", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
+vim.keymap.set("", "<leader>q", "<Cmd>q<CR>", { desc = "Quit window" })
