@@ -12,8 +12,8 @@ return {
         })
 
         require("mini.jump").setup({
-            delay = { highlight = 0, idle_stop = 5000 },
-            mappings = { repeat_jump = "" }
+            delay = { highlight = 25, idle_stop = 5000 },
+            mappings = { repeat_jump = "," }
         })
 
         local indentscope = require("mini.indentscope")
