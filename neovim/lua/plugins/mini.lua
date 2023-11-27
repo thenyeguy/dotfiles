@@ -24,7 +24,7 @@ return {
             },
             options = {
                 border = "top",
-                try_as_border = true,
+                indent_at_cursor = false,
             },
             symbol = "▏",
         })
