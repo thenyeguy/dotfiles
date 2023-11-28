@@ -37,7 +37,5 @@ end
 # Source additional config #
 # ------------------------ #
 source ~/.dotfiles/fzf/shell/key-bindings.fish
-
-if test -e "$local_fish_config_file"
-    source $local_fish_config_file
-end
+maybe_source $local_fish_config_file
+maybe_source ~/.opam/opam-init/init.fish
