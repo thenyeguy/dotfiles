@@ -34,7 +34,6 @@ return {
 
                 -- mini.nvim
                 MiniIndentscopeSymbol = { fg=c.dark2 },
-                MiniJump = { fg=c.bright_red, bold=true, underline=true },
 
                 -- leap.nvim
                 LeapMatch = { fg=c.bright_red, bold=true, underline=true },

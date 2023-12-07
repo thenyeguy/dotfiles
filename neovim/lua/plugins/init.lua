@@ -17,16 +17,6 @@ return {
         end,
     },
     {
-        "ggandor/leap.nvim",
-        config = function()
-            require("leap").set_default_keymaps()
-
-            -- Remap cross-window bindings to not conflict with surround.
-            vim.keymap.del("", "gs")
-            vim.keymap.set("n", "gz", "<Plug>(leap-cross-window)")
-        end
-    },
-    {
         "aserowy/tmux.nvim",
         config = function()
             require("tmux").setup({
