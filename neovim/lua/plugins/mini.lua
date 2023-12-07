@@ -29,7 +29,22 @@ return {
             symbol = "▏",
         })
 
-        require("mini.pairs").setup({})
+        require("mini.pairs").setup({
+            modes = { command = true },
+            mappings = {
+                -- Don't open pairs on start of words.
+                ["("] = { neigh_pattern = "[^\\][^%w_]" },
+                ["["] = { neigh_pattern = "[^\\][^%w_]" },
+                ["{"] = { neigh_pattern = "[^\\][^%w_]" },
+                ['"'] = { neigh_pattern = "[^\\][^%w_]" },
+                ["'"] = { neigh_pattern = "[^%a\\][^%w_]" },
+                ["`"] = { neigh_pattern = "[^\\][^%w_]" },
+                -- Expand spaces inside brackets
+                [" "] = {
+                    action = "open", pair = "  ", neigh_pattern = "[%(%[{][%)%]}]",
+                },
+            },
+        })
 
         local starter = require("mini.starter")
         starter.setup({
