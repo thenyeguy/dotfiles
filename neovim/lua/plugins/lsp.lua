@@ -51,6 +51,10 @@ return {
             local lspconfig = require("lspconfig")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+            lspconfig.ocamllsp.setup({
+                on_attach = bind_lsp_keys,
+                capabilities = capabilities,
+            })
             lspconfig.rust_analyzer.setup({
                 on_attach = bind_lsp_keys,
                 capabilities = capabilities,

@@ -23,7 +23,8 @@ function edit
 
         ~/.dotfiles/tmux/layout.py split -b -- $EDITOR $argv
     else if test "$TERM" = "xterm-kitty"
-        kitty @ launch --no-response --cwd=$PWD --location=before $EDITOR $argv
+        # Launch in a new kitty split. Use fish,in order to pass down environment.
+        kitty @ launch --no-response --cwd=$PWD --location=before fish -c "$EDITOR $argv"
     else
         eval $EDITOR $argv
     end
