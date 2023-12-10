@@ -24,6 +24,8 @@ return {
             symbol = "▏",
         })
 
+        require("mini.operators").setup({})
+
         require("mini.pairs").setup({
             modes = { command = true },
             mappings = {
