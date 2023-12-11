@@ -12,10 +12,14 @@ vim.keymap.set("", "<C-j>", "<C-w><C-j>")
 vim.keymap.set("", "<C-k>", "<C-w><C-k>")
 vim.keymap.set("", "<C-l>", "<C-w><C-l>")
 
+-- Move to start of line on big jumps.
+vim.keymap.set("", "gg", "gg^")
+vim.keymap.set("", "G", "G^")
+
 -- Kakoune-style navigation
 vim.keymap.set("", "gh", "0")
-vim.keymap.set("", "gj", "G")
-vim.keymap.set("", "gk", "gg")
+vim.keymap.set("", "gj", "G^")
+vim.keymap.set("", "gk", "gg^")
 vim.keymap.set("", "gl", "$")
 vim.keymap.set("", "gi", "^")
 vim.keymap.set("", "m", "%")
