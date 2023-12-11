@@ -69,8 +69,6 @@ bind -r > run-shell "~/.dotfiles/tmux/layout.py config --add_column"
 
 bind -r ^z resize-pane -Z
 
-bind ^b run-shell "~/.dotfiles/tmux/layout.py resize"
-
 # Window navigation
 bind -r ^p previous-window
 bind -r ^n next-window
@@ -82,10 +80,13 @@ bind w run-shell "~/.dotfiles/tmux/fzf_window.sh"
 bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
 
 # Rename window
-bind ^r command-prompt -p "window name:" "rename-window '%%'"
+bind  r command-prompt -p "window name:" "rename-window '%%'"
 
 # Opening popups
 bind ^t display-popup -E -d "#{pane_current_path}"
+
+# Refreshing tmux
+bind ^r refresh-client \; run-shell "~/.dotfiles/tmux/layout.py resize"
 
 # Reloading macro
 bind R source-file ~/.tmux.conf \; display "Reloaded!"
