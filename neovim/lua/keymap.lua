@@ -33,15 +33,14 @@ vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
 -- Clipboard copy/paste
-vim.keymap.set("", "<leader>y", '"+y',
-    { desc = "Yank to clipboard", remap = true })
-vim.keymap.set("", "<leader>Y", '"+Y',
-    { desc = "Yank to clipboard (end of line)", remap = true })
-vim.keymap.set("n", "<leader>p", "<cmd>put +<cr>",
-    { desc = "Put from clipboard", silent = true })
-vim.keymap.set("n", "<leader>P", "<cmd>put! +<cr>",
-    { desc = "Put from clipboard (above)", silent = true })
-vim.keymap.set("v", "<leader>p", '"+p', { desc = "Put from clipboard" })
+vim.keymap.set("", "gy", '"+y', { desc = "Copy to clipboard", remap = true })
+vim.keymap.set("", "gY", '"+Y',
+    { desc = "Copy to clipboard (to EOL)", remap = true })
+vim.keymap.set("n", "gp", '"+p',
+    { desc = "Paste from clipboard", silent = true })
+vim.keymap.set("n", "gP", "<cmd>put! +<cr>",
+    { desc = "Paste from clipboard (above)", silent = true })
+vim.keymap.set("v", "gp", '"+P', { desc = "Paste from clipboard" })
 
 -- Undo/redo
 vim.keymap.set("n", "U", "<C-r>")
