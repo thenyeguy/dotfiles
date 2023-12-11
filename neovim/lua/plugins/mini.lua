@@ -3,13 +3,7 @@ return {
     config = function()
         require("mini.ai").setup({})
 
-        require("mini.comment").setup({
-            mappings = {
-                comment = "gc",
-                comment_line = "gcc",
-                textobject = "gc",
-            }
-        })
+        require("mini.comment").setup({})
 
         local indentscope = require("mini.indentscope")
         indentscope.setup({
