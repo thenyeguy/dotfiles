@@ -18,7 +18,9 @@ return {
             symbol = "▏",
         })
 
-        require("mini.operators").setup({})
+        require("mini.operators").setup({
+            sort = { prefix = "" } -- conflicts with surround
+        })
 
         require("mini.pairs").setup({
             modes = { command = true },

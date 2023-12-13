@@ -24,7 +24,7 @@ return {
                     opts("Move to declaration"))
                 vim.keymap.set("n", "gI", vim.lsp.buf.implementation,
                     opts("Move to implementation"))
-                vim.keymap.set("n", "gr", vim.lsp.buf.references,
+                vim.keymap.set("n", "gR", vim.lsp.buf.references,
                     opts("Move to references"))
 
                 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,
