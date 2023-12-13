@@ -1,5 +1,12 @@
 return {
     {
+        "tpope/vim-repeat",
+        config = function()
+            -- Prevent this plugin from overwriting <C-R>
+            vim.keymap.set("n", "<nop>", "<Plug>(RepeatRedo)")
+        end,
+    },
+    {
         "ggandor/leap.nvim",
         dependencies = { "tpope/vim-repeat" },
         config = function()
