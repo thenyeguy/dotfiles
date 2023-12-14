@@ -1,7 +1,6 @@
 return {
     -- Textobjects
     { "kana/vim-textobj-user", priority=100 },
-    { "kana/vim-textobj-entire" },
     { "glts/vim-textobj-comment" },
     { "Julian/vim-textobj-variable-segment" },
 

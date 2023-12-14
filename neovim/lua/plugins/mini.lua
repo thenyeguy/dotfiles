@@ -1,7 +1,19 @@
 return {
     "echasnovski/mini.nvim",
     config = function()
-        require("mini.ai").setup({})
+        local extra = require("mini.extra")
+        extra.setup({})
+
+        require("mini.ai").setup({
+            mappings = {
+              around_last = "aN",
+              inside_last = "iN",
+            },
+            custom_textobjects = {
+                e = extra.gen_ai_spec.buffer(),
+                l = extra.gen_ai_spec.line(),
+            },
+        })
 
         require("mini.comment").setup({})
 
@@ -19,7 +31,7 @@ return {
         })
 
         require("mini.operators").setup({
-            sort = { prefix = "" } -- conflicts with surround
+            sort = { prefix = "" } 
         })
 
         require("mini.pairs").setup({
