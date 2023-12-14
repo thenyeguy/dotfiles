@@ -64,8 +64,7 @@ bind -r ^s run-shell "~/.dotfiles/tmux/layout.py split"
 bind -r - run-shell "~/.dotfiles/tmux/layout.py split -v"
 bind -r | run-shell "~/.dotfiles/tmux/layout.py split -h"
 
-bind -r < run-shell "~/.dotfiles/tmux/layout.py config --remove_column"
-bind -r > run-shell "~/.dotfiles/tmux/layout.py config --add_column"
+bind ^w run-shell "~/.dotfiles/tmux/layout.py config --toggle_width"
 
 bind -r ^z resize-pane -Z
 
@@ -80,7 +79,7 @@ bind w run-shell "~/.dotfiles/tmux/fzf_window.sh"
 bind ^c command-prompt -p "new window:" "new-window -n '%%' -a"
 
 # Rename window
-bind  r command-prompt -p "window name:" "rename-window '%%'"
+bind r command-prompt -p "window name:" "rename-window '%%'"
 
 # Opening popups
 bind ^t display-popup -E -d "#{pane_current_path}"

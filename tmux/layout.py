@@ -298,13 +298,11 @@ def resize(args=None):
 
 
 def config(args):
-    new_width = None
-    if args.add_column:
-        new_width = main_pane_width() + EDITOR_WIDTH
-    elif args.remove_column:
-        new_width = main_pane_width() - EDITOR_WIDTH
-    if new_width and new_width > 0:
-        set_main_pane_width(new_width)
+    if args.toggle_width:
+        if main_pane_width() > EDITOR_WIDTH:
+            set_main_pane_width(EDITOR_WIDTH)
+        else:
+            set_main_pane_width(2*EDITOR_WIDTH)
         resize()
 
 
@@ -341,8 +339,7 @@ parser_resize.set_defaults(func=resize)
 parser_config = subparsers.add_parser("config")
 parser_config.set_defaults(func=config)
 parser_config_cols = parser_config.add_mutually_exclusive_group()
-parser_config_cols.add_argument("--add_column", action="store_true")
-parser_config_cols.add_argument("--remove_column", action="store_true")
+parser_config_cols.add_argument("--toggle_width", action="store_true")
 
 parser_split = subparsers.add_parser("split", add_help=False)
 parser_split.add_argument("--pane", "-p", type=str)
