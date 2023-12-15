@@ -165,6 +165,7 @@ def main(args):
             "neovim": "~/.config/nvim",
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
+            "wezterm": "~/.config/wezterm",
         }
     )
     create(["~/.vim/swp", "~/.vim/undo"])
