@@ -51,13 +51,34 @@ return {
             },
         })
 
+        require("mini.pick").setup({
+            mappings = {
+                move_down = "<C-j>",
+                move_up = "<C-k>",
+                scroll_left = "<Left>",
+                scroll_right = "<Right>",
+            },
+            window = { config = { width=120 } },
+        })
+        vim.keymap.set("n", "<C-r>", "<cmd>Pick files<cr>")
+        vim.keymap.set("n", "<leader>pf", "<cmd>Pick files<cr>",
+            { desc="Files" })
+        vim.keymap.set("n", "<leader>po", "<cmd>Pick buffers<cr>",
+            { desc="Open buffers" })
+        vim.keymap.set("n", "<leader>pr", "<cmd>Pick visit_paths<cr>",
+            { desc="Recent files" })
+        vim.keymap.set("n", "<leader>pc", "<cmd>Pick commands<cr>",
+            { desc="Commands" })
+        vim.keymap.set("n", "<leader>ph", "<cmd>Pick help<cr>",
+            { desc="Help files" })
+
         local starter = require("mini.starter")
         starter.setup({
             evaluate_single = true,
             items = {
                 starter.sections.builtin_actions(),
                 starter.sections.recent_files(10, true),
-                starter.sections.telescope(),
+                starter.sections.pick(),
             },
         })
 
@@ -72,5 +93,7 @@ return {
                 update_n_lines = "",
             },
         })
+
+        require("mini.visits").setup({})
     end,
 }

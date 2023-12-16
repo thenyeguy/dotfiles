@@ -16,7 +16,7 @@ return {
             },
         })
         wk.register({
-            ["<leader>t"] = "+Telescope",
+            ["<leader>p"] = "+Pick",
             ["<leader>l"] = "+LSP",
             ["gs"] = "+Surround",
         })

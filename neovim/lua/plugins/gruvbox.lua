@@ -34,6 +34,8 @@ return {
 
                 -- mini.nvim
                 MiniIndentscopeSymbol = { fg=c.dark2 },
+                MiniPickNormal = { link="Normal" },
+                MiniPickMatchCurrent = { fg=c.bright_orange, bold=true },
 
                 -- leap.nvim
                 LeapMatch = { fg=c.bright_red, bold=true, underline=true },
