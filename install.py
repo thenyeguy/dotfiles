@@ -163,6 +163,7 @@ def main(args):
             "kak": "~/.config/kak",
             "kitty": "~/.config/kitty",
             "neovim": "~/.config/nvim",
+            "terminfo": "~/.terminfo",
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
             "wezterm": "~/.config/wezterm",

@@ -2,6 +2,10 @@ local wezterm = require("wezterm")
 local config = {}
 
 --
+-- Terminal behavior
+config.term = "wezterm"
+
+--
 -- Color scheme
 config.color_scheme = "Gruvbox Dark (Gogh)"
 config.colors = {

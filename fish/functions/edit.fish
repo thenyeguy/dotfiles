@@ -25,6 +25,8 @@ function edit
     else if test "$TERM" = "xterm-kitty"
         # Launch in a new kitty split. Use fish,in order to pass down environment.
         kitty @ launch --no-response --cwd=$PWD --location=before fish -c "$EDITOR $argv"
+    else if test "$TERM_PROGRAM" = "WezTerm"
+        wezterm cli split-pane --left -- $EDITOR $argv
     else
         eval $EDITOR $argv
     end
