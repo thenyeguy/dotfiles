@@ -6,7 +6,7 @@ if ! which rustup > /dev/null; then
 fi
 
 # Add components.
-rustup component add rust-src
+rustup component add rust-src rust-analyzer
 
 # Install utils.
 cargo install edit
