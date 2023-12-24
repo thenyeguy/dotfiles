@@ -9,10 +9,20 @@ return {
               vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
             end
 
-            vim.diagnostic.config({ virtual_text = false })
+            vim.diagnostic.config({
+                float = { border = "rounded" },
+                virtual_text = false,
+            })
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+                vim.lsp.handlers.hover, { border = "rounded" }
+            )
+            vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+                vim.lsp.handlers.signature_help, { border = "rounded" }
+            )
 
-            -- Configure lsp keybindings
-            local bind_lsp_keys = function(_, bufnr)
+            vim.api.nvim_create_autocmd("LspAttach", {
+              desc = "LSP actions",
+              callback = function(event)
                 local opts = function(d)
                     return { buffer = bufnr, desc = d }
                 end
@@ -35,6 +45,8 @@ return {
                 -- Hover info
                 vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover,
                     opts("Show hover information"))
+                vim.keymap.set("n", "<leader>ls", vim.lsp.buf.signature_help,
+                    opts("Show signature help"))
                 vim.keymap.set("n", "<leader>ld", vim.diagnostic.open_float,
                     opts("Show diagnostics"))
                 vim.keymap.set("n", "<leader>lD", vim.diagnostic.setqflist,
@@ -45,20 +57,15 @@ return {
                     opts("Code actions"))
                 vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format,
                     opts("Format buffer"))
-            end
+              end
+            })
 
             -- Setup language servers
             local lspconfig = require("lspconfig")
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-            lspconfig.ocamllsp.setup({
-                on_attach = bind_lsp_keys,
-                capabilities = capabilities,
-            })
-            lspconfig.rust_analyzer.setup({
-                on_attach = bind_lsp_keys,
-                capabilities = capabilities,
-            })
+            lspconfig.ocamllsp.setup({ capabilities = capabilities })
+            lspconfig.rust_analyzer.setup({ capabilities = capabilities })
         end,
     },
     {
