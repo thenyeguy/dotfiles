@@ -79,6 +79,7 @@ let g:mapleader=" "
 
 " Use semicolon for commands
 noremap ; :
+nnoremap <CR> :
 
 " Swap jkhl and g+jkhl
 noremap j gj
@@ -104,11 +105,11 @@ vnoremap > >gv
 
 " Improve copy/paste, primarily clipboard interaction
 nnoremap Y y$
-noremap  <leader>y "+y
-nnoremap <leader>Y "+y$
-nnoremap <silent> <leader>p :put +<CR>
-nnoremap <silent> <leader>P :put! +<CR>
-vnoremap <leader>p "+p
+noremap  gy "+y
+nnoremap gY "+y$
+nnoremap <silent> gp :put +<CR>
+nnoremap <silent> gP :put! +<CR>
+vnoremap gp "+p
 
 " Better redo binding
 nnoremap U <C-r>
@@ -129,6 +130,12 @@ command W w
 command Q q
 command Wq wq
 command WQ wq
+
+" Leader mappings for buffer management
+nnoremap <silent> <leader>s :sp<CR>
+nnoremap <silent> <leader>S :vsp<CR>
+nnoremap <silent> <leader>w :w<CR>
+nnoremap <silent> <leader>q :q<CR>
 
 
 " ---------------------------- "
