@@ -7,6 +7,12 @@ return {
     { "rhysd/conflict-marker.vim" },
 
     {
+        "nvim-tree/nvim-web-devicons",
+        opts = {
+            color_icons = false
+        },
+    },
+    {
         "levouh/tint.nvim",
         config = function()
             require("tint").setup({

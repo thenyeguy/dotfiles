@@ -1,6 +1,9 @@
 return {
     "nvim-lualine/lualine.nvim",
-    dependencies = { "arkav/lualine-lsp-progress" },
+    dependencies = {
+        "arkav/lualine-lsp-progress",
+        "nvim-tree/nvim-web-devicons",
+    },
     config = function()
         require("lualine").setup({
             options = { globalstatus = true },
@@ -17,7 +20,6 @@ return {
                     },
                     {
                         "diagnostics",
-                        symbols = { error = "‼ ", warn = "! " },
                         sections = { "error", "warn", "info" },
                     },
                 },
