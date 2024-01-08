@@ -5,6 +5,7 @@ return {
         extra.setup({})
 
         require("mini.ai").setup({
+            search_method = "cover",
             mappings = {
                 around_last = "aN",
                 inside_last = "iN",
