@@ -1,6 +1,3 @@
 [submodule "fzf"]
 	path = fzf
 	url = https://github.com/junegunn/fzf
-[submodule "colors/gnome-terminal-colors"]
-	path = colors/gnome-terminal-colors
-	url = https://github.com/metalelf0/gnome-terminal-colors.git
