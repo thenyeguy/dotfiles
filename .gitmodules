@@ -4,6 +4,3 @@
 [submodule "colors/gnome-terminal-colors"]
 	path = colors/gnome-terminal-colors
 	url = https://github.com/metalelf0/gnome-terminal-colors.git
-[submodule "kak/autoload/plugins/plug"]
-	path = kak/autoload/plugins/plug
-	url = https://github.com/alexherbo2/plug.kak

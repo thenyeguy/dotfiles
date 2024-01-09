@@ -131,9 +131,7 @@ class Pane(Node):
         self.parent = None
 
     def preferred_width(self):
-        if self.job == "kak":
-            return EDITOR_WIDTH
-        elif self.job in ("vim", "nvim"):
+        if self.job in ("vim", "nvim"):
             return main_pane_width()
         else:
             return None
