@@ -27,11 +27,6 @@ abbr --global --add rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
-#
-if test "$TERM" = "xterm-kitty"
-    alias icat="kitty +kitten icat"
-end
-
 
 # ------------------------ #
 # Source additional config #

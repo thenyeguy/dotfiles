@@ -160,7 +160,6 @@ def main(args):
             "fish": "~/.config/fish",
             "git/config": "~/.gitconfig",
             "julia": "~/.julia/config",
-            "kitty": "~/.config/kitty",
             "neovim": "~/.config/nvim",
             "terminfo": "~/.terminfo",
             "tmux/tmux.conf": "~/.tmux.conf",
