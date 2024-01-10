@@ -35,7 +35,6 @@ return {
         })
 
         require("mini.pairs").setup({
-            modes = { command = true },
             mappings = {
                 -- Don't open pairs on start of words.
                 ["("] = { neigh_pattern = "[^\\][^%w_]" },
