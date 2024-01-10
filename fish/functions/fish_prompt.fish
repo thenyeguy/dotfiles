@@ -1,19 +1,15 @@
-# My custom theme, based on this wonderful zsh theme:
-#   agnoster's Theme - https://gist.github.com/3712874
-#
-# This uses some glyphs typically only present in coding-specific fonts (such as
-# Source Code Pro, JetBrains Mono, etc).
-
-# Configure prompt
+### Configure symbols
 set -g __prompt_segment_seperator ""
 set -g __prompt_subsegment_seperator ""
-set -g __prompt_active_jobs_symbol "&"
-set -g __prompt_bad_exit_symbol "‼"
-set -g __prompt_ssh_symbol ""
 
-set -g __prompt_git_symbol ""
-set -g __prompt_git_unstaged "○"
-set -g __prompt_git_staged "◉"
+set -g __prompt_active_jobs_symbol "󰣕 "
+set -g __prompt_bad_exit_symbol " "
+set -g __prompt_ssh_symbol " "
+
+set -g __prompt_git_symbol ""
+set -g __prompt_git_staged " "
+set -g __prompt_git_semistaged "󰦕 "
+set -g __prompt_git_untracked " "
 
 
 ### Starts a new, empty line.
@@ -56,16 +52,27 @@ function __prompt_finish_segments
     set -e __prompt_current_background
 end
 
-### Draws a new segment for a generic VCS status.
-function __prompt_vcs -a vcs_symbol -a repo_name -a branch -a subtree \
-                      -a background -a unstaged -a staged
-    # Convert repo status to symbols
-    test -n "$unstaged"; and set symbols "$symbols$__prompt_git_unstaged"
-    test -n "$staged"; and set symbols "$symbols$__prompt_git_staged"
+### Prints colored text.
+function __prompt_colored -a color
+    set_color "$color"
+    printf "%s" "$argv[2..]"
+    set_color reset
+end
 
-    __prompt_segment $background black $vcs_symbol $repo_name
-    test -n "$branch"; and __prompt_subsegment $branch $symbols
+function __prompt_ssh
+    if test -n "$TMUX" -o -z "$SSH_CONNECTION";
+        return 1
+    end
+    __prompt_segment black magenta $__prompt_ssh_symbol (hostname -s)
+end
+
+### Draws a new segment for a generic VCS status.
+function __prompt_vcs -a color -a vcs_symbol -a repo_name -a branch -a subtree \
+                      -a symbols
+    __prompt_segment black $color $vcs_symbol $repo_name
+    test -n "$branch"; and __prompt_subsegment $branch
     test -n "$subtree"; and __prompt_subsegment ./$subtree
+    test -n "$symbols"; and __prompt_subsegment $symbols
 
     # Override the exit code of the test command above
     return 0
@@ -79,6 +86,7 @@ function __prompt_git
 
     set repo (basename (git rev-parse --show-toplevel))
     set subtree (git rev-parse --show-prefix | string trim --right -c/)
+
     set branch (git symbolic-ref HEAD --short --quiet; set os $status)
     if test $os -ne 0
         # Handle detached HEADs
@@ -86,18 +94,33 @@ function __prompt_git
                       or git rev-parse --short HEAD)\)
     end
 
-    git diff --ignore-submodules=dirty --no-ext-diff --quiet --exit-code \
-        2>/dev/null; or set unstaged y
-    git diff-index --cached --quiet HEAD -- 2>/dev/null; or set staged y
+    set symbols ""
+    set git_status (git status --short --ignore-submodules=dirty)
+    if string match -qr "^[A-Z]" $git_status
+        if string match -qr "^.[A-Z]" $git_status
+            set symbols "$symbols$__prompt_git_semistaged"
+        else
+            set symbols "$symbols$__prompt_git_staged"
+        end
+    end
+    string match -qr "^\?\?" $git_status;
+        and set symbols "$symbols$__prompt_git_untracked"
 
-    if silent count (git status --short --ignore-submodules=dirty)
-        set background yellow
+    if test -n "$git_status"
+        set color yellow
     else
-        set background green
+        set color green
     end
 
-    __prompt_vcs $__prompt_git_symbol "$repo" "$branch" "$subtree" \
-        "$background" "$unstaged" "$staged"
+    __prompt_vcs "$color" "$__prompt_git_symbol" "$repo" "$branch" "$subtree" "$symbols"
+end
+
+### Draws a new segment for general shell status.
+function __prompt_shell_status -a last_status
+    test "$last_status" -ne 0;
+        and __prompt_colored red " $__prompt_bad_exit_symbol"
+    test (jobs -l);
+        and __prompt_colored yellow " $__prompt_active_jobs_symbol"
 end
 
 ### Draw the actual prompt.
@@ -105,18 +128,14 @@ function fish_prompt
     set last_status $status
 
     __prompt_new_line
-    test -z "$TMUX" -a -n "$SSH_CONNECTION";
-        and __prompt_segment black brred $__prompt_ssh_symbol
-    test (jobs -l);
-        and __prompt_segment black brred $__prompt_active_jobs_symbol
-    test "$last_status" -ne 0; \
-        and __prompt_segment black brred $__prompt_bad_exit_symbol
-    __prompt_segment brblue black (date "+%l:%M%p" | string trim)
+    __prompt_segment blue black (date "+%l:%M%p" | string trim)
+    __prompt_ssh
     __prompt_git;
-        or __prompt_segment blue black (prompt_pwd)
+        or __prompt_segment black blue (prompt_pwd)
     __prompt_finish_segments
 
     __prompt_new_line
+    __prompt_shell_status $last_status
     switch $fish_bind_mode
         case insert
             printf " › "
