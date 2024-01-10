@@ -7,11 +7,21 @@ config.term = "wezterm"
 
 --
 -- Color scheme
-config.color_scheme = "Gruvbox Dark (Gogh)"
+config.color_scheme = "nord"
 config.colors = {
+    split = "#434c5e",
     tab_bar = {
-        active_tab = { fg_color="#ddd", bg_color='#444', intensity="Bold" },
+        active_tab = { fg_color="#d8dee9", bg_color="#2e3440"  },
+        inactive_tab = { fg_color="#91949c", bg_color="#3b4252" },
+        inactive_tab_hover = { fg_color="#c7cdd9", bg_color="#444c5e" },
+        inactive_tab_edge = "#91949c",
+        new_tab = { fg_color="91949c", bg_color="#3b4252" },
+        new_tab_hover = { fg_color="#c7cdd9", bg_color="#444c5e" },
     },
+}
+config.window_frame = {
+    active_titlebar_bg = "#3b4252",
+    inactive_titlebar_bg = "#3b4252",
 }
 
 --
