@@ -55,3 +55,5 @@ vim.keymap.set("", "<leader>n", "<Cmd>let v:hlsearch = ! v:hlsearch<CR>",
 -- Save/quit
 vim.keymap.set("", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
 vim.keymap.set("", "<leader>q", "<Cmd>q<CR>", { desc = "Quit window" })
+
+vim.keymap.set("", "<leader>i", "<Cmd>Inspect<CR>")
