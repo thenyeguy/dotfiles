@@ -16,7 +16,10 @@ return {
         "levouh/tint.nvim",
         opts = {
             tint = -40,
-            highlight_ignore_patterns = { "WinSeparator" },
+            highlight_ignore_patterns = {
+                -- These colors are too dark to tint properly.
+                "EndOfBuffer", "LineNr", "MiniIndentscopeSymbol", "WinSeparator"
+            },
         },
     },
     {
