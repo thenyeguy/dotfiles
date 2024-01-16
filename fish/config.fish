@@ -27,6 +27,9 @@ abbr --global --add rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
+# FZF colors
+set -x FZF_DEFAULT_OPTS "--color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#81A1C1,fg:#D8DEE9,header:#616E88,info:#5E81AC,pointer:#EBCB8B,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1"
+
 
 # ------------------------ #
 # Source additional config #
