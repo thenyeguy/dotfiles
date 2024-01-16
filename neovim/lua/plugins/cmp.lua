@@ -7,6 +7,7 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-vsnip",
         "hrsh7th/vim-vsnip",
+        "onsails/lspkind.nvim",
     },
     config = function()
         local cmp = require("cmp");
@@ -24,11 +25,18 @@ return {
         end
 
         cmp.setup({
+            formatting = {
+                fields = { "kind", "abbr", "menu" },
+                format = require("lspkind").cmp_format({
+                    ellipsis_char = "…",
+                    mode = "symbol",
+                    symbol_map = { TypeParameter = "" },
+                }),
+            },
             mapping = cmp.mapping.preset.insert({
-                ["<CR>"] = if_active(cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace
-                })),
-                ["<Esc>"] = if_active(cmp.abort),
+                ["<CR>"] = if_active(cmp.confirm),
+                ["<C-f>"] = if_visible(cmp.mapping.confirm({ select=true })),
+                ["<Esc>"] = if_active(cmp.close),
                 ["<C-c>"] = if_visible(cmp.abort),
                 ["<Tab>"] = if_visible(cmp.select_next_item),
                 ["<S-Tab>"] = if_visible(cmp.select_prev_item),
@@ -49,7 +57,11 @@ return {
             }, {
                 { name = "buffer" },
                 { name = "path" },
-            })
+            }),
+            window = {
+                completion = cmp.config.window.bordered({ col_offset=-3 }),
+                documentation = cmp.config.window.bordered(),
+            },
         })
 
         cmp.setup.filetype({"gitcommit", "markdown", "text"}, {
