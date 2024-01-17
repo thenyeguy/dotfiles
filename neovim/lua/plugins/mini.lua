@@ -6,8 +6,8 @@ return {
 
         require("mini.ai").setup({
             mappings = {
-              around_last = "aN",
-              inside_last = "iN",
+                around_last = "aN",
+                inside_last = "iN",
             },
             custom_textobjects = {
                 e = extra.gen_ai_spec.buffer(),
@@ -31,7 +31,7 @@ return {
         })
 
         require("mini.operators").setup({
-            sort = { prefix = "" } 
+            sort = { prefix = "" },
         })
 
         require("mini.pairs").setup({
@@ -45,7 +45,9 @@ return {
                 ["`"] = { neigh_pattern = "[^\\][^%w_]" },
                 -- Expand spaces inside brackets
                 [" "] = {
-                    action = "open", pair = "  ", neigh_pattern = "[%(%[{][%)%]}]",
+                    action = "open",
+                    pair = "  ",
+                    neigh_pattern = "[%(%[{][%)%]}]",
                 },
             },
         })
@@ -57,19 +59,39 @@ return {
                 scroll_left = "<Left>",
                 scroll_right = "<Right>",
             },
-            window = { config = { width=120 } },
+            window = { config = { width = 120 } },
         })
         vim.keymap.set("n", "<C-r>", "<cmd>Pick files<cr>")
-        vim.keymap.set("n", "<leader>pf", "<cmd>Pick files<cr>",
-            { desc="Files" })
-        vim.keymap.set("n", "<leader>po", "<cmd>Pick buffers<cr>",
-            { desc="Open buffers" })
-        vim.keymap.set("n", "<leader>pr", "<cmd>Pick visit_paths<cr>",
-            { desc="Recent files" })
-        vim.keymap.set("n", "<leader>pc", "<cmd>Pick commands<cr>",
-            { desc="Commands" })
-        vim.keymap.set("n", "<leader>ph", "<cmd>Pick help<cr>",
-            { desc="Help files" })
+        vim.keymap.set(
+            "n",
+            "<leader>pf",
+            "<cmd>Pick files<cr>",
+            { desc = "Files" }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>po",
+            "<cmd>Pick buffers<cr>",
+            { desc = "Open buffers" }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>pr",
+            "<cmd>Pick visit_paths<cr>",
+            { desc = "Recent files" }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>pc",
+            "<cmd>Pick commands<cr>",
+            { desc = "Commands" }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>ph",
+            "<cmd>Pick help<cr>",
+            { desc = "Help files" }
+        )
 
         local starter = require("mini.starter")
         starter.setup({

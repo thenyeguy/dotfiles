@@ -1,6 +1,6 @@
 return {
     -- Textobjects
-    { "kana/vim-textobj-user", priority=100 },
+    { "kana/vim-textobj-user", priority = 100 },
     { "glts/vim-textobj-comment" },
     { "Julian/vim-textobj-variable-segment" },
 
@@ -9,7 +9,7 @@ return {
     {
         "nvim-tree/nvim-web-devicons",
         opts = {
-            color_icons = false
+            color_icons = false,
         },
     },
     {
@@ -18,7 +18,10 @@ return {
             tint = -40,
             highlight_ignore_patterns = {
                 -- These colors are too dark to tint properly.
-                "EndOfBuffer", "LineNr", "MiniIndentscopeSymbol", "WinSeparator"
+                "EndOfBuffer",
+                "LineNr",
+                "MiniIndentscopeSymbol",
+                "WinSeparator",
             },
         },
     },
@@ -32,6 +35,6 @@ return {
                 sync_registers = false,
             },
             navigation = { enable_default_keybindings = true },
-        }
+        },
     },
 }

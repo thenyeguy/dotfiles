@@ -10,16 +10,18 @@ return {
         "onsails/lspkind.nvim",
     },
     config = function()
-        local cmp = require("cmp");
+        local cmp = require("cmp")
 
         -- Helpers for completion mappings
         local if_active = function(f)
             return cmp.mapping(function(fallback)
+                -- stylua: ignore
                 if cmp.get_active_entry() then f() else fallback() end
             end)
         end
         local if_visible = function(f)
             return cmp.mapping(function(fallback)
+                -- stylua: ignore
                 if cmp.visible() then f() else fallback() end
             end)
         end
@@ -35,7 +37,7 @@ return {
             },
             mapping = cmp.mapping.preset.insert({
                 ["<CR>"] = if_active(cmp.confirm),
-                ["<C-f>"] = if_visible(cmp.mapping.confirm({ select=true })),
+                ["<C-f>"] = if_visible(cmp.mapping.confirm({ select = true })),
                 ["<Esc>"] = if_active(cmp.close),
                 ["<C-c>"] = if_visible(cmp.abort),
                 ["<Tab>"] = if_visible(cmp.select_next_item),
@@ -47,9 +49,7 @@ return {
                 ["<C-p>"] = if_visible(cmp.select_prev_item),
             }),
             snippet = {
-                expand = function(args)
-                    vim.fn["vsnip#anonymous"](args.body)
-                end,
+                expand = function(args) vim.fn["vsnip#anonymous"](args.body) end,
             },
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
@@ -59,13 +59,13 @@ return {
                 { name = "path" },
             }),
             window = {
-                completion = cmp.config.window.bordered({ col_offset=-3 }),
+                completion = cmp.config.window.bordered({ col_offset = -3 }),
                 documentation = cmp.config.window.bordered(),
             },
         })
 
-        cmp.setup.filetype({"gitcommit", "markdown", "text"}, {
-            completion = { autocomplete = false }
+        cmp.setup.filetype({ "gitcommit", "markdown", "text" }, {
+            completion = { autocomplete = false },
         })
-    end
+    end,
 }

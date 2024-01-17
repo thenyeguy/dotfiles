@@ -15,11 +15,11 @@ return {
             -- Remap cross-window bindings to not conflict with surround.
             vim.keymap.del("", "gs")
             vim.keymap.set("n", "gz", "<Plug>(leap-cross-window)")
-        end
+        end,
     },
     {
         "ggandor/flit.nvim",
         dependencies = { "ggandor/leap.nvim" },
         opts = {},
-    }
+    },
 }

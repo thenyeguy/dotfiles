@@ -20,5 +20,5 @@ return {
             ["<leader>l"] = "+LSP",
             ["gs"] = "+Surround",
         })
-    end
+    end,
 }
