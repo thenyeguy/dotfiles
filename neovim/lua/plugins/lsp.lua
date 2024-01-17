@@ -21,6 +21,7 @@ return {
                 vim.lsp.handlers.signature_help,
                 { border = "rounded" }
             )
+            require("lspconfig.ui.windows").default_options.border = "rounded"
 
             -- Configure keybinds
             vim.api.nvim_create_autocmd("LspAttach", {
