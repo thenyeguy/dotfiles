@@ -1,22 +1,22 @@
-set -g status on
-set -g status-interval 1
-set -g status-justify "left"
+# Borders:
+set -g pane-border-style "bg=default,fg=brightblack"
+set -g pane-active-border-style "bg=default,fg=blue"
 
-set -g status-style "bg=colour239,fg=colour241"
+# Messages:
+set -g message-style "bg=brightblack,fg=cyan"
+set -g message-command-style "bg=brightblack,fg=cyan"
 
-set -g message-style "bg=colour239,fg=colour250"
+# Status bar:
+set -g status-position top
+set -g status-style "bg=black,fg=white"
 
-set -g pane-border-style "fg=colour239"
-set -g pane-active-border-style "fg=colour252"
+set -g status-right-length 20
+set -g status-left "#[fg=black,bg=blue,bold] #S #[fg=blue,bg=black]"
 
-set -g status-left-length "100"
-set -g status-left "#[fg=colour235,bg=colour252] #S #[fg=colour252,bg=colour239]"
+set -g window-status-bell-style ""
+set -g window-status-separator ""
+set -g window-status-format "#[fg=black,bg=brightblack] #[fg=white,bg=brightblack]#I  #W #(~/.dotfiles/tmux/window_flags.sh '#{window_flags}')#[fg=brightblack,bg=black]"
+set -g window-status-current-format "#[fg=black,bg=cyan] #[fg=black,bg=cyan,bold]#I  #W #(~/.dotfiles/tmux/window_flags.sh '#{window_flags}')#[fg=cyan,bg=black]"
 
-set -g window-status-separator ""
-set -g window-status-style "fg=colour249,bg=colour239"
-set -g window-status-bell-style "fg=colour3,bg=colour239"
-set -g window-status-format " [#I] #W "
-set -g window-status-current-format "#[fg=colour239,bg=colour241]#[fg=colour252,bg=colour241,bold] [#I] #W #[fg=colour241,bg=colour239]"
-
-set -g status-right-length "200"
-set -g status-right "#(~/.dotfiles/tmux/battery-life.sh) #[fg=colour241,bg=colour239]#[fg=colour252,bg=colour241] %l:%M %p #[fg=colour252]#[fg=colour252] %m/%d/%Y #[fg=colour252,bg=colour241]#[fg=colour235,bg=colour252] $USER  #H #(~/.dotfiles/tmux/ssh.sh)"
+set -g status-right-length 80
+set -g status-right "#[fg=brightblack,bg=black]#[fg=white,bg=brightblack] %l:%M %p  %m/%d/%Y #[fg=blue,bg=brightblack]#[fg=black,bg=blue,bold] #H #(~/.dotfiles/tmux/ssh.sh)"
