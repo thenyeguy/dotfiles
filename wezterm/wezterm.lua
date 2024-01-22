@@ -62,6 +62,11 @@ config.keys = {
     { key = "h", mods = "CMD|SHIFT", action = action.HideApplication },
     { key = "r", mods = "CMD|SHIFT", action = action.ReloadConfiguration },
     -- Tab management
+    {
+        key = "t",
+        mods = "CMD",
+        action = action.SpawnCommandInNewTab({ cwd = wezterm.home_dir }),
+    },
     { key = "r", mods = "CMD", action = RenameTabInteractive },
     { key = "[", mods = "CMD|OPT", action = action.MoveTabRelative(-1) },
     { key = "]", mods = "CMD|OPT", action = action.MoveTabRelative(1) },
