@@ -21,6 +21,7 @@ return {
                 hl.CursorLineNr =
                     { fg = c.aurora.yellow, bg = c.polar_night.bright }
                 hl.IncSearch = { link = "Search" }
+                hl.WinSeparator = { fg = c.polar_night.brightest }
 
                 -- Syntax highlighting
                 hl["@constant"] = { fg = c.aurora.purple }
