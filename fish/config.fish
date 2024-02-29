@@ -22,6 +22,9 @@ alias cp 'cp -i'
 alias rm 'rm -i'
 alias mv 'mv -i'
 
+# Customize ripgrep flags
+alias rg "rg --smart-case"
+
 # Shortcuts to common calls
 abbr --global --add rmorig 'find . -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
