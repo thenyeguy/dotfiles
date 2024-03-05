@@ -6,6 +6,8 @@ set -g __prompt_active_jobs_symbol "󰣕 "
 set -g __prompt_bad_exit_symbol " "
 set -g __prompt_ssh_symbol " "
 
+set -g __prompt_dir_symbol "󰉖"
+
 set -g __prompt_git_symbol ""
 set -g __prompt_git_staged " "
 set -g __prompt_git_semistaged "󰦕 "
@@ -71,7 +73,7 @@ function __prompt_vcs -a color -a vcs_symbol -a repo_name -a branch -a subtree \
                       -a symbols
     __prompt_segment black $color $vcs_symbol $repo_name
     test -n "$branch"; and __prompt_subsegment $branch
-    test -n "$subtree"; and __prompt_subsegment ./$subtree
+    test -n "$subtree"; and __prompt_subsegment $__prompt_dir_symbol $subtree
     test -n "$symbols"; and __prompt_subsegment $symbols
 
     # Override the exit code of the test command above
@@ -131,7 +133,7 @@ function fish_prompt
     __prompt_segment blue black (date "+%l:%M%p" | string trim)
     __prompt_ssh
     __prompt_git;
-        or __prompt_segment black blue (prompt_pwd)
+        or __prompt_segment black blue $__prompt_dir_symbol (prompt_pwd)
     __prompt_finish_segments
 
     __prompt_new_line
