@@ -18,6 +18,22 @@ return {
 
         require("mini.comment").setup({})
 
+        local hipatterns = require("mini.hipatterns")
+        hipatterns.setup({
+            highlighters = {
+                todo = {
+                    pattern = "%f[%w]()TODO()%f[%W]",
+                    group = "@comment.todo"
+                },
+                note = {
+                    pattern = "%f[%w]()NOTE()%f[%W]",
+                    group = "@comment.note"
+                },
+                -- Highlight hex color strings (`#rrggbb`) using that color
+                hex_color = hipatterns.gen_highlighter.hex_color(),
+            },
+        })
+
         local indentscope = require("mini.indentscope")
         indentscope.setup({
             draw = {

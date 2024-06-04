@@ -24,6 +24,8 @@ return {
                 hl.WinSeparator = { fg = c.polar_night.brightest }
 
                 -- Syntax highlighting
+                hl["@comment.note"] = { fg = c.aurora.purple, bold = true }
+                hl["@comment.todo"] = { fg = c.aurora.yellow, bold = true }
                 hl["@constant"] = { fg = c.aurora.purple }
                 hl["@function.call"] = { link = "@function" }
                 hl["@method"] = { link = "@function" }
