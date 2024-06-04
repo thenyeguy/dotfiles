@@ -37,4 +37,8 @@ return {
             navigation = { enable_default_keybindings = true },
         },
     },
+    {
+        "windwp/nvim-autopairs",
+        opts = {},
+    },
 }

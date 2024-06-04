@@ -35,24 +35,6 @@ return {
             sort = { prefix = "" },
         })
 
-        require("mini.pairs").setup({
-            mappings = {
-                -- Don't open pairs on start of words.
-                ["("] = { neigh_pattern = "[^\\][^%w_]" },
-                ["["] = { neigh_pattern = "[^\\][^%w_]" },
-                ["{"] = { neigh_pattern = "[^\\][^%w_]" },
-                ['"'] = { neigh_pattern = "[^\\][^%w_]" },
-                ["'"] = { neigh_pattern = "[^%a\\][^%w_]" },
-                ["`"] = { neigh_pattern = "[^\\][^%w_]" },
-                -- Expand spaces inside brackets
-                [" "] = {
-                    action = "open",
-                    pair = "  ",
-                    neigh_pattern = "[%(%[{][%)%]}]",
-                },
-            },
-        })
-
         require("mini.pick").setup({
             mappings = {
                 move_down = "<C-j>",
