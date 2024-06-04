@@ -7,14 +7,12 @@ return {
         vim.o.timeoutlen = 250
     end,
     config = function()
+        -- Don't trigger which-key for visual mode
+        local presets = require("which-key.plugins.presets")
+        presets.operators["v"] = nil
+
         local wk = require("which-key")
-        wk.setup({
-            plugins = {
-                -- Don't show for operator movements. Primarily because visual
-                -- mode is considered an operator.
-                presets = { operators = false },
-            },
-        })
+        wk.setup({})
         wk.register({
             ["<leader>p"] = "+Pick",
             ["<leader>l"] = "+LSP",
