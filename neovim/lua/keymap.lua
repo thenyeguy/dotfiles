@@ -18,8 +18,8 @@ vim.keymap.set("", "G", "G^")
 
 -- Kakoune-style navigation
 vim.keymap.set("", "gh", "0")
-vim.keymap.set("", "gj", "G^")
-vim.keymap.set("", "gk", "gg^")
+vim.keymap.set("", "gJ", "G^")
+vim.keymap.set("", "gK", "gg^")
 vim.keymap.set("", "gl", "$")
 vim.keymap.set("", "gi", "^")
 vim.keymap.set("", "m", "%")

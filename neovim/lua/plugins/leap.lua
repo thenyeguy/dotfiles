@@ -1,3 +1,28 @@
+function leap_linewise(dir)
+    local winid = vim.api.nvim_get_current_win()
+    local wininfo = vim.fn.getwininfo(winid)[1]
+
+    local step = 1
+    if dir == "up" then step = -1 end
+
+    -- Start far away from the cursor
+    local lnum = vim.fn.line(".") + 3 * step
+    local targets = {}
+    while wininfo.topline <= lnum and lnum <= wininfo.botline do
+        -- Always jump to the first non-empty character.
+        -- Empty lines will be skipped
+        local col = vim.fn.getline(lnum):find("%S")
+        if col then table.insert(targets, { pos = { lnum, col } }) end
+        lnum = lnum + step
+    end
+
+    require("leap").leap({
+        target_windows = { winid },
+        targets = targets,
+        opts = { safe_labels = "" }, -- prevent autojump
+    })
+end
+
 return {
     {
         "tpope/vim-repeat",
@@ -9,13 +34,14 @@ return {
     {
         "ggandor/leap.nvim",
         dependencies = { "tpope/vim-repeat" },
-        config = function()
-            require("leap").set_default_keymaps()
-
-            -- Remap cross-window bindings to not conflict with surround.
-            vim.keymap.del("", "gs")
-            vim.keymap.set("n", "gz", "<Plug>(leap-cross-window)")
-        end,
+        keys = {
+            -- Default leap movments
+            { "s", "<Plug>(leap-forward)", mode = { "n", "x", "o" } },
+            { "S", "<Plug>(leap-backward)", mode = { "n", "x", "o" } },
+            -- Linewise movement
+            { "gj", function() leap_linewise("down") end },
+            { "gk", function() leap_linewise("up") end },
+        },
     },
     {
         "ggandor/flit.nvim",
