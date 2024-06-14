@@ -26,7 +26,7 @@ alias mv 'mv -i'
 alias rg "rg --smart-case"
 
 # Shortcuts to common calls
-abbr --global --add rmorig 'find . -name "*.orig" -delete'
+abbr --add rmorig --position command --set-cursor=% 'find % -name "*.orig" -delete'
 alias callgrind "valgrind --tool=callgrind --callgrind-out-file=callgrind.out"
 alias gitroot 'cd "./`git rev-parse --show-cdup`"'
 
