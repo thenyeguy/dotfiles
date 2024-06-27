@@ -21,6 +21,7 @@ return {
                 "EndOfBuffer",
                 "LineNr",
                 "MiniIndentscopeSymbol",
+                "Whitespace",
                 "WinSeparator",
             },
         },
