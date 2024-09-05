@@ -70,6 +70,7 @@ vim.keymap.set(
 
 -- Save/quit
 vim.keymap.set("", "<leader>w", "<Cmd>w<CR>", { desc = "Write" })
-vim.keymap.set("", "<leader>q", "<Cmd>q<CR>", { desc = "Quit window" })
+vim.keymap.set("", "<leader>q", "<Cmd>q<CR>", { desc = "Close window" })
+vim.keymap.set("", "<leader>Q", "<Cmd>qall<CR>", { desc = "Quit neovim" })
 
 vim.keymap.set("", "<leader>i", "<Cmd>Inspect<CR>")
