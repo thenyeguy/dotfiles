@@ -82,6 +82,7 @@ return {
             local capabilities = vim.lsp.protocol.make_client_capabilities()
 
             lspconfig.ocamllsp.setup({ capabilities = capabilities })
+            lspconfig.pyright.setup({ capabilities = capabilities })
             lspconfig.rust_analyzer.setup({ capabilities = capabilities })
         end,
     },
