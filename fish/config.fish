@@ -10,6 +10,7 @@ set -x FZF_TMUX_OPTS "-p"
 # Update path
 fish_add_path --move /opt/homebrew/bin ~/.cargo/bin
 fish_add_path --move ~/.dotfiles/bin ~/.dotfiles/git ~/.dotfiles/fzf/bin
+fish_add_path --move ~/.local/bin
 
 # Fix typos
 abbr --global --add sl 'ls'
