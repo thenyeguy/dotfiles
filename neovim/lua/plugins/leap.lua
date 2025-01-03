@@ -39,8 +39,16 @@ return {
             { "s", "<Plug>(leap-forward)", mode = { "n", "x", "o" } },
             { "S", "<Plug>(leap-backward)", mode = { "n", "x", "o" } },
             -- Linewise movement
-            { "gj", function() leap_linewise("down") end },
-            { "gk", function() leap_linewise("up") end },
+            {
+                "gj",
+                function() leap_linewise("down") end,
+                desc = "Leap down to line",
+            },
+            {
+                "gk",
+                function() leap_linewise("up") end,
+                desc = "Leap up to line",
+            },
         },
     },
     {

@@ -74,6 +74,9 @@ return {
                     -- LSP commands
                     bind("<leader>la", vim.lsp.buf.code_action, "Code actions")
                     bind("<leader>lf", vim.lsp.buf.format, "Format buffer")
+
+                    -- Configure which-key
+                    require("which-key").add({ { "<leader>l", desc = "+LSP" } })
                 end,
             })
 

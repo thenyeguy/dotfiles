@@ -17,11 +17,11 @@ vim.keymap.set("", "gg", "gg^")
 vim.keymap.set("", "G", "G^")
 
 -- Kakoune-style navigation
-vim.keymap.set("", "gh", "0")
-vim.keymap.set("", "gJ", "G^")
-vim.keymap.set("", "gK", "gg^")
-vim.keymap.set("", "gl", "$")
-vim.keymap.set("", "gi", "^")
+vim.keymap.set("", "gh", "0", { desc = "Start of line" })
+vim.keymap.set("", "gJ", "G^", { desc = "First line" })
+vim.keymap.set("", "gK", "gg^", { desc = "Last line" })
+vim.keymap.set("", "gl", "$", { desc = "End of line" })
+vim.keymap.set("", "gi", "^", { desc = "First non-blank character" })
 vim.keymap.set("", "m", "%")
 
 -- Remap move by display line, since they're overwritten above.
