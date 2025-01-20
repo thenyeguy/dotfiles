@@ -1,4 +1,4 @@
 #!/bin/bash
 
 opam init
-opam install dune merlin ocaml-lsp-server odoc ocamlformat utop dune-release
+opam install dune ocaml-lsp-server ocamlformat utop
