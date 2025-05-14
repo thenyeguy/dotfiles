@@ -43,11 +43,13 @@ return {
                 "gj",
                 function() leap_linewise("down") end,
                 desc = "Leap down to line",
+                mode = { "n", "x", "o" },
             },
             {
                 "gk",
                 function() leap_linewise("up") end,
                 desc = "Leap up to line",
+                mode = { "n", "x", "o" },
             },
         },
     },
