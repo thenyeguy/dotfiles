@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import itertools
 import os
 import shutil
 import subprocess
@@ -79,8 +80,12 @@ def clean(symlink_dirs):
 def backup(path):
     """If the path exists, backs it up."""
     dst = path + ".bak"
+    i = 1
+    while os.path.exists(dst):
+        dst = path + ".bak.{}".format(i)
+        i += 1
     print("{} -> {}".format(path, dst))
-    shutil.move(path, path + ".bak")
+    shutil.move(path, dst)
 
 
 def link(paths):
@@ -99,13 +104,14 @@ def link(paths):
             elif os.path.exists(dst):
                 # Backup existing files
                 backup(dst)
-            else:
-                # Create subdirectories
-                parent = os.path.dirname(dst)
-                if not os.path.exists(parent):
-                    os.makedirs(os.path.dirname(dst))
-                print("{} -> {}".format(src, dst))
-                os.symlink(src, dst)
+
+            # Create subdirectories
+            parent = os.path.dirname(dst)
+            if not os.path.exists(parent):
+                os.makedirs(os.path.dirname(dst))
+            # Create link
+            os.symlink(src, dst)
+            print("{} -> {}".format(src, dst))
 
 
 def create(paths):
