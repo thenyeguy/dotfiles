@@ -9,6 +9,7 @@ return {
         },
         spec = {
             { "<leader>p", desc = "Mini.Pick" },
+            { "<leader>y", desc = "Yank" },
             { "gs", desc = "Surround" },
         },
     },
