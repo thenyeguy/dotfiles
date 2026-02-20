@@ -8,7 +8,7 @@ return {
             mappings = false,
         },
         spec = {
-            { "<leader>p", desc = "Mini.Pick" },
+            { "<leader>p", desc = "Picker" },
             { "<leader>y", desc = "Yank" },
             { "gs", desc = "Surround" },
         },

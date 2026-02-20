@@ -49,6 +49,10 @@ return {
                 hl.MiniStarterQuery = { fg = c.aurora.yellow }
                 hl.MiniStarterFooter = { link = "Comment" }
 
+                -- snacks.nvim
+                hl.SnacksPickerDir = { fg = c.polar_night.light }
+                hl.SnacksPickerMatch = { fg = c.aurora.yellow }
+
                 -- leap.nvim
                 hl.LeapMatch =
                     { fg = c.aurora.yellow, bold = true, underline = true }
