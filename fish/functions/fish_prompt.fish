@@ -62,7 +62,7 @@ function __prompt_colored -a color
 end
 
 function __prompt_ssh
-    if test -n "$TMUX" -o -z "$SSH_CONNECTION";
+    if test -n "$TMUX" -o -n "$ZELLIJ" -o -z "$SSH_CONNECTION";
         return 1
     end
     __prompt_segment black magenta $__prompt_ssh_symbol (hostname -s)
