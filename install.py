@@ -171,6 +171,7 @@ def main(args):
             "tmux/tmux.conf": "~/.tmux.conf",
             "vim": "~/.vim",
             "wezterm": "~/.config/wezterm",
+            "zellij": "~/.config/zellij",
         }
     )
     create(["~/.vim/swp", "~/.vim/undo"])
