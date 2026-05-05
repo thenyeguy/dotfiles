@@ -35,7 +35,7 @@ function yank_file_path_and_line()
         line = vim.fn.line(".")
     end
 
-    local result = path .. ":" .. line
+    local result = path .. "#L" .. line
     vim.fn.setreg("+", result)
     print("Copied: " .. result)
 end
